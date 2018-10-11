@@ -1,9 +1,14 @@
 import * as React from "react";
 import Card from "../atoms/Card";
+import Logo from "../atoms/Logo";
 
 class Header extends React.Component {
   render() {
-    return <Card>hi</Card>;
+    return (
+      <Card type="left">
+        <Logo />
+      </Card>
+    );
   }
 }
 
