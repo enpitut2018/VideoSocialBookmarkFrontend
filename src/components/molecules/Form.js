@@ -7,8 +7,8 @@ export default class Form extends Component {
   render() {
     return (
       <Wrapper>
-        <TextInput />
-        <Button>Submit</Button>
+        <TextInput placeholder={this.props.placeholder} />
+        <Button mode="Primary">Submit</Button>
       </Wrapper>
     );
   }

@@ -13,11 +13,13 @@ const StyledInput = styled.input`
   margin: ${sizes.atoms.TextInput.Default.Margin};
   border-radius: ${sizes.atoms.TextInput.Default.BorderRadius};
 
-  background-color: ${palette[colors.atoms.TextInput.Background]};
-  color: ${palette[colors.atoms.TextInput.Font]};
-  border: 0px solid #f00;
+  /* background-color: ${palette[colors.atoms.TextInput.Background]}; */
 
-  ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
+  color: ${palette[colors.atoms.TextInput.Font]};
+  border-width: 0px;
+  outline: none;
+
+  ${props => elevate(props.elevation ? props.elevation : 2)};
 `;
 
 export default class TextInput extends React.Component {
@@ -44,6 +46,7 @@ export default class TextInput extends React.Component {
         type="text"
         value={this.state.value}
         onChange={this.handleChange}
+        placeholder={this.props.placeholder}
       />
     );
   }

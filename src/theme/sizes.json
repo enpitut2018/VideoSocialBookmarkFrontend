@@ -226,6 +226,18 @@
         "Width": ""
       }
     },
+    "URLSubmitForm": {
+      "Default": {
+        "Margin": "auto auto 60px auto"
+      },
+      "Title": {
+        "Default": {
+          "Font": "1.5rem",
+          "Margin": "23px auto 0px auto",
+          "Padding": "10px"
+        }
+      }
+    },
     "Ranking": {
       "Title": {
         "Default": {
