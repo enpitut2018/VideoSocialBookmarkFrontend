@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import ThreadItem from "./ThreadItem";
 import Wrapper from "../atoms/Wrapper";
 
-export default class ThreadStream extends Component {
+export default class ThreadItem extends Component {
   render() {
     return (
       <Wrapper>
-        <ThreadItem />
+        <h3>{this.props.url}</h3>
       </Wrapper>
     );
   }

@@ -33,4 +33,5 @@ export default styled.div`
     props.type
       ? table[props.type]["align-items"]
       : table.center["align-items"]};
+  ${props => props.dir && "flex-direction: " + props.dir};
 `;
