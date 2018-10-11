@@ -25,6 +25,10 @@ injectGlobal`
     background-color: ${palette[colors.Background]};
     color: ${palette[colors.Font]};
   }
+  button, input, select, textarea {
+    font-family : inherit;
+    font-size   : 100%;
+  }
 `;
 
 const initialState = {
