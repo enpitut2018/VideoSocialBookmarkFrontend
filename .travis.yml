@@ -11,13 +11,12 @@ cache:
 
 before_install:
   # Setup backend
-  - npm install -g json-server
-  - npm run mock
+  - yarn mock
   - "sleep 5" # Wait for the Rails app to start
   - "cd .."
 
 install:
-  - npm install
+  - yarn
 
 script:
-  - npm test
+  - yarn test
