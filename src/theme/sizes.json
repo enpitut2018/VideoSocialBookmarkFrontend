@@ -119,7 +119,7 @@
   "molecules": {
     "RankingItem": {
       "Default": {
-        "Width": "400px"
+        "Width": "800px"
       },
       "Title": {
         "Default": {

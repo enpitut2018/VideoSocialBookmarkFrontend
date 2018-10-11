@@ -6,9 +6,9 @@ import Wrapper from "../atoms/Wrapper";
 import RankingItem from "../molecules/RankingItem";
 import { getRanking } from "../../actions/RankingActions";
 
-import colors from "../theme/colors.json";
-import palette from "../theme/palette.json";
-import sizes from "../theme/sizes.json";
+import colors from "../../theme/colors.json";
+import palette from "../../theme/palette.json";
+import sizes from "../../theme/sizes.json";
 
 const StyledTitle = styled.span`
   font-size: ${sizes.organisms.Ranking.Title.Default.Font};
