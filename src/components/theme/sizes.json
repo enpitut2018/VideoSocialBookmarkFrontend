@@ -116,6 +116,27 @@
       }
     }
   },
+  "molecules": {
+    "RankingItem": {
+      "Default": {
+        "Width": "400px"
+      },
+      "Title": {
+        "Default": {
+          "Size": "1.2rem",
+          "Margin": "10px 20px",
+          "Padding": "10px 20px"
+        }
+      },
+      "StyledNumOfBookmarked": {
+        "Default": {
+          "Size": "1.2rem",
+          "Margin": "10px 20px",
+          "Padding": "10px 20px"
+        }
+      }
+    }
+  },
   "organisms": {
     "ContentWrapper": {
       "Default": {

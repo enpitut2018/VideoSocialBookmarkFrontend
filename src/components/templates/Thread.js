@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import Header from "../organisms/Header";
 import styled from "styled-components";
+import AnkerStyle from "../atoms/AnkerStyle";
 
 const StyledA = styled.a`
   display: flex;
   flex-direction: column;
+
+  ${AnkerStyle};
 `;
 
 export default class Thread extends Component {

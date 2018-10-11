@@ -7,6 +7,14 @@
       "Font": "Black00"
     }
   },
+  "molecules": {
+    "RankingItem": {
+      "Font": "Black00",
+      "Hover": {
+        "Font": "Black02"
+      }
+    }
+  },
   "organisms": {
     "headers": {
       "Header": {

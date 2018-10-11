@@ -22,7 +22,9 @@ class Ranking extends Component {
         <h2>Ranking</h2>
         <Wrapper dir="column">
           {this.props.hasLoaded &&
-            this.props.ranking.map(item => <RankingItem thread={item} />)}
+            this.props.ranking.map((item, i) => (
+              <RankingItem thread={item} ranking={i + 1} />
+            ))}
         </Wrapper>
       </Wrapper>
     );
