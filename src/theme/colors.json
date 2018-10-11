@@ -4,6 +4,14 @@
   "atoms": {
     "Button": {
       "Background": "White00",
+      "Font": "Black00",
+      "Primary": {
+        "Background": "Blue00",
+        "Font": "White00"
+      }
+    },
+    "TextInput": {
+      "Background": "White00",
       "Font": "Black00"
     }
   },
@@ -24,6 +32,11 @@
     "Header": {
       "Backgournd": "Black00",
       "Font": "Black00"
+    },
+    "URLSubmitForm": {
+      "Title": {
+        "Font": "Black00"
+      }
     },
     "Ranking": {
       "Title": {

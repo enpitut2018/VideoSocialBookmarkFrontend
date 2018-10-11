@@ -44,7 +44,44 @@
         "MinHeight": "",
         "MinWidth": "",
         "Width": "46px",
-        "Margin": "",
+        "Margin": "10px",
+        "BorderRadius": "23px",
+        "Padding": "12px 26px"
+      },
+      "Large": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Medium": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Small": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      }
+    },
+    "TextInput": {
+      "Default": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "180px",
+        "Margin": "10px",
         "BorderRadius": "23px",
         "Padding": "12px 26px"
       },
@@ -187,6 +224,18 @@
         "MinHeight": "",
         "MinWidth": "",
         "Width": ""
+      }
+    },
+    "URLSubmitForm": {
+      "Default": {
+        "Margin": "auto auto 60px auto"
+      },
+      "Title": {
+        "Default": {
+          "Font": "1.5rem",
+          "Margin": "23px auto 0px auto",
+          "Padding": "10px"
+        }
       }
     },
     "Ranking": {
