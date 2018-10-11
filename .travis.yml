@@ -11,14 +11,7 @@ cache:
 
 before_install:
   # Setup backend
-  - rvm use 2.5.0 --install --binary --fuzzy
-  - "[ -d backend/.git ] || git clone https://github.com/enpitut2018/VideoSocialBookmark.git backend"
-  - "cd backend"
-  - "git reset --hard"
-  - "git clean -f"
-  - "git pull"
-  - "bundle install --path=../vendor/bundle --jobs=3 --retry=3 --deployment"
-  - "./bin/rails s &"
+  - npm mock
   - "sleep 5" # Wait for the Rails app to start
   - "cd .."
 

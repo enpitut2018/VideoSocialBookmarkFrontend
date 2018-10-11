@@ -11,7 +11,7 @@ it('renders without crashing', () => {
 
 it('Access backend', () => {
   return axios
-  .get("http://localhost:3000/")
+  .get("http://localhost:3001/")
   .catch(error => {
     expect(error.message).not.toEqual('Network Error')
   });
