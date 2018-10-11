@@ -12,14 +12,22 @@
       "Font": "Black00",
       "Hover": {
         "Font": "Black02"
+      },
+      "StyledNumOfBookmarked": {
+        "Bookmarks": {
+          "Font": "Black03"
+        }
       }
     }
   },
   "organisms": {
-    "headers": {
-      "Header": {
-        "Backgournd": "Black00",
-        "Font": "Red00"
+    "Header": {
+      "Backgournd": "Black00",
+      "Font": "Black00"
+    },
+    "Ranking": {
+      "Title": {
+        "Font": "Black00"
       }
     }
   }

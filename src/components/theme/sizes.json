@@ -123,16 +123,21 @@
       },
       "Title": {
         "Default": {
-          "Size": "1.2rem",
+          "Font": "1.2rem",
           "Margin": "10px 20px",
           "Padding": "10px 20px"
         }
       },
       "StyledNumOfBookmarked": {
         "Default": {
-          "Size": "1.2rem",
+          "Font": "1.2rem",
           "Margin": "10px 20px",
           "Padding": "10px 20px"
+        },
+        "Bookmarks": {
+          "Default": {
+            "Font": "0.9rem"
+          }
         }
       }
     }
@@ -182,6 +187,15 @@
         "MinHeight": "",
         "MinWidth": "",
         "Width": ""
+      }
+    },
+    "Ranking": {
+      "Title": {
+        "Default": {
+          "Font": "1.5rem",
+          "Margin": "23px auto 0px auto",
+          "Padding": "10px"
+        }
       }
     }
   }

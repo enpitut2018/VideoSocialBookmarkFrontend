@@ -1,9 +1,21 @@
 import React, { Component } from "react";
-import Wrapper from "../atoms/Wrapper";
-import RankingItem from "../molecules/RankingItem";
+import styled from "styled-components";
 import { connect } from "react-redux";
 
+import Wrapper from "../atoms/Wrapper";
+import RankingItem from "../molecules/RankingItem";
 import { getRanking } from "../../actions/RankingActions";
+
+import colors from "../theme/colors.json";
+import palette from "../theme/palette.json";
+import sizes from "../theme/sizes.json";
+
+const StyledTitle = styled.span`
+  font-size: ${sizes.organisms.Ranking.Title.Default.Font};
+  color: ${palette[colors.organisms.Ranking.Title.Font]};
+  padding: ${sizes.organisms.Ranking.Title.Default.Padding};
+  margin: ${sizes.organisms.Ranking.Title.Default.Margin};
+`;
 
 class Ranking extends Component {
   static fetchData({ dispatch }) {
@@ -19,7 +31,7 @@ class Ranking extends Component {
   render() {
     return (
       <Wrapper dir="column">
-        <h2>Ranking</h2>
+        <StyledTitle>Ranking</StyledTitle>
         <Wrapper dir="column">
           {this.props.hasLoaded &&
             this.props.ranking.map((item, i) => (
