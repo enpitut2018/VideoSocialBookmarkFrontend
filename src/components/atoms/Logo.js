@@ -2,7 +2,7 @@ import * as React from "react";
 import LogoImage from "../../assets/images/logo.svg";
 import styled from "styled-components";
 
-import sizes from "../theme/sizes";
+import sizes from "../../theme/sizes";
 
 const StyledLogo = styled.img`
   width: ${sizes.atoms.Logo.Default.Width};

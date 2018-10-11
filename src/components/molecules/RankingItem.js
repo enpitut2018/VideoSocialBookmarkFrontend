@@ -4,9 +4,9 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 
-import colors from "../theme/colors.json";
-import palette from "../theme/palette.json";
-import sizes from "../theme/sizes.json";
+import colors from "../../theme/colors.json";
+import palette from "../../theme/palette.json";
+import sizes from "../../theme/sizes.json";
 
 const StyledLink = styled(Link)`
   display: flex;

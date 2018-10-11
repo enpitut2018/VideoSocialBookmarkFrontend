@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { applyMiddleware, createStore } from "redux";
-import colors from "./components/theme/colors";
-import palette from "./components/theme/palette";
+import colors from "./theme/colors";
+import palette from "./theme/palette";
 
 import { Provider } from "react-redux";
 import Routes from "./Routes";
