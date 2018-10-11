@@ -12,6 +12,7 @@ cache:
 
 before_install:
   # Setup backend
+  - yarn cache clean
   - yarn mock &
   - "sleep 5" # Wait for the Rails app to start
   - "cd .."
