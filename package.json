@@ -9,14 +9,17 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
+    "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^3.4.10"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:dev": "react-scripts start",
+    "start:prod": "yarn build; serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mock": "json-server --watch db.json"
   },
   "eslintConfig": {
     "extends": "react-app"
