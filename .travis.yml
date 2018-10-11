@@ -11,7 +11,7 @@ cache:
 
 before_install:
   # Setup backend
-  - npm mock
+  - npm run mock
   - "sleep 5" # Wait for the Rails app to start
   - "cd .."
 
