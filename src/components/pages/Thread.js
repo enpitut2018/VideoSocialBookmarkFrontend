@@ -6,9 +6,7 @@ import { getThread } from "../../actions/ThreadActions";
 
 class Thread extends Component {
   componentWillMount() {
-    if (!this.props.hasLoaded) {
-      this.props.dispatch(getThread(this.props.match.params.id));
-    }
+    this.props.dispatch(getThread(this.props.match.params.id));
   }
 
   render() {
