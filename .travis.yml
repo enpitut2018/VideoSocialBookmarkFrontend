@@ -1,0 +1,23 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - backend
+    - vendor/bundle
+
+before_install:
+  # Setup backend
+  - yarn add --dev json-server
+  - yarn mock &
+  - "sleep 5" # Wait for the Rails app to start
+
+install:
+  - yarn
+
+script:
+  - yarn test
