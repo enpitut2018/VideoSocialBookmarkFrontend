@@ -4,12 +4,8 @@ import Header from "../organisms/Header";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
 
-const StyledA = styled.a`
-  display: flex;
-  flex-direction: column;
-
-  ${AnkerStyle};
-`;
+import ThreadTop from "../molecules/ThreadTop";
+import ThreadItem from "../molecules/ThreadItem";
 
 export default class Thread extends Component {
   render() {
@@ -17,20 +13,14 @@ export default class Thread extends Component {
       <>
         <Header />
         {this.props.hasLoaded && (
-          <Wrapper dir="column">
-            <StyledA
-              target="_blank"
-              rel="noopener noreferrer"
-              href={this.props.thread.url}
-            >
-              <h2>{this.props.thread.title}</h2>
-              <img src={this.props.thread.img} alt={this.props.thread.title} />
-            </StyledA>
-            <h2>
-              {this.props.thread.num_of_bookmarked + " "}
-              Bookmarks
-            </h2>
-          </Wrapper>
+          <>
+            <ThreadTop {...this.props} />
+            <Wrapper dir="column">
+              {this.props.thread.bookmarks.map(bookmark => (
+                <ThreadItem bookmark={bookmark} />
+              ))}
+            </Wrapper>
+          </>
         )}
       </>
     );
