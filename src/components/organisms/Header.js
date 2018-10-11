@@ -11,14 +11,18 @@ const StyledLink = styled(Link)`
   margin: 0;
   height: ${sizes.organisms.Header.Default.Height};
 `;
+
+const StyledCard = styled(Card)`
+  display: flex;
+`;
 class Header extends React.Component {
   render() {
     return (
-      <Card type="between">
+      <StyledCard type="between">
         <StyledLink to="/">
           <Logo />
         </StyledLink>
-      </Card>
+      </StyledCard>
     );
   }
 }

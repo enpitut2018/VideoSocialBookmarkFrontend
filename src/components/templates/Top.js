@@ -2,23 +2,16 @@ import * as React from "react";
 import Button from "../atoms/Button";
 import Header from "../organisms/Header";
 
-// import ContentWrapper from "../organisms/ContentWrapper";
-// import Header from "../organisms/Header";
-// import Stream from "../organisms/Stream";
+import Ranking from "../organisms/Ranking";
 
 export default class Top extends React.Component<{}> {
   render() {
     return (
       <>
         <Header />
-        <Button />
+        <Ranking />
+        <Button>CLICK ME</Button>
       </>
-      // <>
-      //   <Header />
-      //   <ContentWrapper>
-      //     <Stream />
-      //   </ContentWrapper>
-      // </>
     );
   }
 }
