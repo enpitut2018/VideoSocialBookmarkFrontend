@@ -1,17 +1,35 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
-import RankingItem from "./RankingItem";
+import RankingItem from "../molecules/RankingItem";
+import { connect } from "react-redux";
 
-export default class Ranking extends Component {
+import { getRanking } from "../../actions/RankingActions";
+
+class Ranking extends Component {
+  static fetchData({ dispatch }) {
+    return dispatch(getRanking());
+  }
+
+  componentWillMount() {
+    if (!this.props.hasLoaded) {
+      Ranking.fetchData({ dispatch: this.props.dispatch });
+    }
+  }
+
   render() {
     return (
       <Wrapper dir="column">
         <h2>Ranking</h2>
         <Wrapper dir="column">
-          <RankingItem url="https://www.google.com" />
-          <RankingItem url="https://www.google.com" />
+          {this.props.hasLoaded &&
+            this.props.ranking.map(item => <RankingItem thread={item} />)}
         </Wrapper>
       </Wrapper>
     );
   }
 }
+
+export default connect(store => ({
+  hasLoaded: store.ranking.hasLoaded,
+  ranking: store.ranking.ranking
+}))(Ranking);

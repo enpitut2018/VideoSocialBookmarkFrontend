@@ -7,9 +7,9 @@ export default class RankingItem extends Component {
     return (
       <Wrapper>
         <h3>
-          <a target="_blank" rel="noopener noreferrer" href={this.props.url}>
-            {this.props.url}
-          </a>
+          <Link to={"/threads/" + this.props.thread.id}>
+            {this.props.thread.url}
+          </Link>
         </h3>
       </Wrapper>
     );

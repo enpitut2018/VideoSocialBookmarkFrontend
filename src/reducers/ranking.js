@@ -1,4 +1,4 @@
-import { GET_THREAD } from "../actions/ThreadActions";
+import { GET_RANKING } from "../actions/RankingActions";
 
 const initialState = {
   hasLoaded: false,
@@ -7,11 +7,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_THREAD:
+    case GET_RANKING:
       return {
         ...state,
         hasLoaded: true,
-        thread: action.thread
+        ranking: action.ranking
       };
     default:
       return state;

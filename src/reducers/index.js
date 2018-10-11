@@ -1,3 +1,10 @@
 import threads from "./threads";
+import ranking from "./ranking";
+import { combineReducers } from "redux";
 
-export default threads;
+const app = combineReducers({
+  threads,
+  ranking
+});
+
+export default app;
