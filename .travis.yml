@@ -12,6 +12,7 @@ cache:
 
 before_install:
   # Setup backend
+  - yarn add --dev json-server
   - yarn mock &
   - "sleep 5" # Wait for the Rails app to start
 

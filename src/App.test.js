@@ -10,7 +10,7 @@ it("renders without crashing", () => {
 });
 
 it("Access backend", () => {
-  return axios.get("http://localhost:3000/ranking").catch(error => {
+  return axios.get("http://localhost:3001/ranking").catch(error => {
     expect(error.message).not.toEqual("Network Error");
   });
 });
