@@ -5,6 +5,10 @@
     "Button": {
       "Background": "White00",
       "Font": "Black00"
+    },
+    "TextInput": {
+      "Background": "White00",
+      "Font": "Black00"
     }
   },
   "molecules": {

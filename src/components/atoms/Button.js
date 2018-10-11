@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import Card from "./Card";
-import { elevate } from "../theme/shadows";
+import { elevate } from "../../theme/shadows";
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import styled from "styled-components";
@@ -13,6 +13,7 @@ const StyledButton = styled(Card)`
   user-select: none;
 
   padding: ${sizes.atoms.Button.Default.Padding};
+  margin: ${sizes.atoms.Button.Default.Margin};
   border-radius: ${sizes.atoms.Button.Default.BorderRadius};
 
   background-color: ${palette[colors.atoms.Button.Background]};
