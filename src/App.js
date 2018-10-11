@@ -10,7 +10,14 @@ import reducers from "./reducers";
 import thunk from "redux-thunk";
 
 injectGlobal`
-  html, body {
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: ${pallette.White00};
+    color: ${colors.FontColor};
+  }
+  body {
     margin: 0;
     padding: 0;
     min-height: 100%;

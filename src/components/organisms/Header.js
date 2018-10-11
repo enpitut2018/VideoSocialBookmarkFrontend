@@ -2,12 +2,16 @@ import * as React from "react";
 import Card from "../atoms/Card";
 import Logo from "../atoms/Logo";
 
+import { Link } from "react-router-dom";
+
 class Header extends React.Component {
   render() {
     return (
-      <Card type="left">
-        <Logo />
-      </Card>
+      <Link to="/">
+        <Card type="between">
+          <Logo />
+        </Card>
+      </Link>
     );
   }
 }
