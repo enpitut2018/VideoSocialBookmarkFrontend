@@ -18,7 +18,7 @@ const StyledCard = styled(Card)`
 class Header extends React.Component {
   render() {
     return (
-      <StyledCard type="between">
+      <StyledCard type="between" elevation={0}>
         <StyledLink to="/">
           <Logo />
         </StyledLink>

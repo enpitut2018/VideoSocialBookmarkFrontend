@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import { applyMiddleware, createStore } from "redux";
-import colors, { pallette } from "./components/theme/colors";
+import colors from "./components/theme/colors";
+import palette from "./components/theme/palette";
 
 import { Provider } from "react-redux";
 import Routes from "./Routes";
@@ -14,15 +15,15 @@ injectGlobal`
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: ${pallette.White00};
-    color: ${colors.FontColor};
+    background-color: ${palette[colors.Background]};
+    color: ${palette[colors.Font]};
   }
   body {
     margin: 0;
     padding: 0;
     min-height: 100%;
-    background-color: ${pallette.White00};
-    color: ${colors.FontColor};
+    background-color: ${palette[colors.Background]};
+    color: ${palette[colors.Font]};
   }
 `;
 

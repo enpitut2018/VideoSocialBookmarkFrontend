@@ -1,0 +1,18 @@
+{
+  "Background": "White00",
+  "Font": "Black00",
+  "atoms": {
+    "Button": {
+      "Background": "White00",
+      "Font": "Black00"
+    }
+  },
+  "organisms": {
+    "headers": {
+      "Header": {
+        "Backgournd": "Black00",
+        "Font": "Red00"
+      }
+    }
+  }
+}

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "../atoms/Button";
 import Header from "../organisms/Header";
 import Wrapper from "../atoms/Wrapper";
 
