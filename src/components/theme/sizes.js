@@ -90,42 +90,40 @@ export default {
         Width: "800px"
       }
     },
-    headers: {
-      Header: {
+    Header: {
+      Default: {
+        Height: "58px",
+        MaxHeight: "",
+        MaxWidth: "",
+        MinHeight: "",
+        MinWidth: "",
+        Width: "100%"
+      },
+      Logo: {
         Default: {
-          Height: "52px",
+          Height: "42px",
           MaxHeight: "",
           MaxWidth: "",
           MinHeight: "",
           MinWidth: "",
-          Width: "100%"
-        },
-        Logo: {
-          Default: {
-            Height: "42px",
-            MaxHeight: "",
-            MaxWidth: "",
-            MinHeight: "",
-            MinWidth: "",
-            Width: "42px"
-          },
-          Small: {
-            Height: "40px",
-            MaxHeight: "",
-            MaxWidth: "",
-            MinHeight: "",
-            MinWidth: "",
-            Width: ""
-          }
+          Width: "42px"
         },
         Small: {
-          Height: "48px",
+          Height: "40px",
           MaxHeight: "",
           MaxWidth: "",
           MinHeight: "",
           MinWidth: "",
           Width: ""
         }
+      },
+      Small: {
+        Height: "48px",
+        MaxHeight: "",
+        MaxWidth: "",
+        MinHeight: "",
+        MinWidth: "",
+        Width: ""
       }
     }
   }
