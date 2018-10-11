@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import axios from "axios";
+import * as config from "./config";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
@@ -10,7 +11,7 @@ it("renders without crashing", () => {
 });
 
 it("Access backend", () => {
-  return axios.get("http://localhost:3001/ranking").catch(error => {
+  return axios.get(config.backend_api_url + "/ranking").catch(error => {
     expect(error.message).not.toEqual("Network Error");
   });
 });
