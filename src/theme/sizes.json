@@ -77,10 +77,10 @@
       "Default": {
         "Height": "",
         "MaxHeight": "",
-        "MaxWidth": "",
+        "MaxWidth": "150px",
         "MinHeight": "",
         "MinWidth": "",
-        "Width": "180px",
+        "Width": "250px",
         "Margin": "10px",
         "BorderRadius": "23px",
         "Padding": "12px 26px"
