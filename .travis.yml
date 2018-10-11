@@ -12,7 +12,7 @@ cache:
 before_install:
   # Setup backend
   - rvm use 2.5.0 --install --binary --fuzzy
-  - "[ -d backend/.git ] || git clone git@github.com:enpitut2018/VideoSocialBookmark.git backend"
+  - "[ -d backend/.git ] || git clone https://github.com/enpitut2018/VideoSocialBookmark.git backend"
   - "cd backend"
   - "git reset --hard"
   - "git clean -f"
