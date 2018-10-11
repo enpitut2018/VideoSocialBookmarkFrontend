@@ -31,27 +31,13 @@ injectGlobal`
   }
 `;
 
-const initialState = {
-  reduxTokenAuth: {
-    reduxTokenAuth: {
-      currentUser: {
-        attributes: {
-          firstName: null
-        },
-        isLoading: false,
-        isSignedIn: false
-      }
-    }
-  }
-};
-
 const devtool =
   process.env.NODE_ENV === "development" && window["devToolsExtension"]
     ? window["devToolsExtension"]()
     : f => f;
 const middleware = applyMiddleware(thunk);
 
-const store = middleware(devtool(createStore))(reducers, initialState);
+const store = middleware(devtool(createStore))(reducers);
 
 class App extends React.Component {
   render() {
