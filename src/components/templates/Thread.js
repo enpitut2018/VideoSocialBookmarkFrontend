@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import Header from "../organisms/Header";
-import styled from "styled-components";
-import AnkerStyle from "../atoms/AnkerStyle";
 
 import ThreadTop from "../molecules/ThreadTop";
 import ThreadItem from "../molecules/ThreadItem";
