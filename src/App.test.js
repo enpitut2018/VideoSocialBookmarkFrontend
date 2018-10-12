@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import axios from "axios";
-import * as config from "./config";
+import config from "./config";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

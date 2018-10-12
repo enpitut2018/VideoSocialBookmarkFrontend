@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as config from "../config";
+import config from "../config";
 
 export const GET_RANKING = "GET_RANKING";
 
