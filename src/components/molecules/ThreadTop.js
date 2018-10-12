@@ -2,12 +2,20 @@ import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
+import ThumbnailStyle from "../atoms/ThumbnailStyle";
+
+import sizes from "../../theme/sizes.json";
 
 const StyledA = styled.a`
   display: flex;
   flex-direction: column;
 
   ${AnkerStyle};
+`;
+
+const StyledThumbnail = styled.img`
+  ${ThumbnailStyle};
+  margin: ${sizes.molecules.RankingItem.StyledThumbnail.Default.Margin};
 `;
 
 export default class ThreadTop extends Component {
@@ -19,8 +27,13 @@ export default class ThreadTop extends Component {
           rel="noopener noreferrer"
           href={this.props.thread.url}
         >
-          <h2>{this.props.thread.title}</h2>
-          <img src={this.props.thread.img} alt={this.props.thread.title} />
+          <Wrapper dir="column">
+            <h2>{this.props.thread.title}</h2>
+            <StyledThumbnail
+              src={this.props.thread.img}
+              alt={this.props.thread.title}
+            />
+          </Wrapper>
         </StyledA>
 
         <h2>
