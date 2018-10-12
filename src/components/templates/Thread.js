@@ -15,7 +15,10 @@ export default class Thread extends Component {
             <ThreadTop {...this.props} />
             <Wrapper dir="column">
               {this.props.thread.bookmarks.map(bookmark => (
-                <ThreadItem bookmark={bookmark} />
+                <ThreadItem
+                  bookmark={bookmark}
+                  key={bookmark.id}
+                />
               ))}
             </Wrapper>
           </>
