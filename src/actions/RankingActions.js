@@ -1,9 +1,10 @@
 import axios from "axios";
+import config from "../config";
 
 export const GET_RANKING = "GET_RANKING";
 
 export const getRanking = () => dispatch => {
   axios
-    .get("http://localhost:3001/ranking")
+    .get(config.backend_api_url + "/ranking")
     .then(res => dispatch({ type: GET_RANKING, ranking: res.data }));
 };

@@ -11,11 +11,14 @@
     "react-scripts": "2.0.4",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^3.4.10"
+    "serve": "^10.0.2",
+    "styled-components": "^3.4.10",
+    "json-server": "^0.14.0"
   },
   "scripts": {
     "start:dev": "react-scripts start",
     "start:prod": "yarn build; serve -s build",
+    "start": "yarn mock & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -29,8 +32,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "json-server": "^0.14.0"
-  }
+  ]
 }

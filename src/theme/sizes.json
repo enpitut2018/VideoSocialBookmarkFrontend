@@ -73,6 +73,43 @@
         "Width": ""
       }
     },
+    "TextArea": {
+      "Default": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "150px",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "400px",
+        "Margin": "10px",
+        "BorderRadius": "23px",
+        "Padding": "12px 26px"
+      },
+      "Large": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Medium": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Small": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      }
+    },
     "TextInput": {
       "Default": {
         "Height": "",
@@ -80,7 +117,7 @@
         "MaxWidth": "150px",
         "MinHeight": "",
         "MinWidth": "",
-        "Width": "250px",
+        "Width": "400px",
         "Margin": "10px",
         "BorderRadius": "23px",
         "Padding": "12px 26px"
