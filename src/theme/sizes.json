@@ -144,6 +144,40 @@
         "Width": ""
       }
     },
+    "Thumbnail": {
+      "Default": {
+        "Height": "90px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "120px"
+      },
+      "Large": {
+        "Height": "480px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "360px"
+      },
+      "Medium": {
+        "Height": "180px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "320px"
+      },
+      "Small": {
+        "Height": "90px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "120px"
+      }
+    },
     "users": {
       "UserIcon": {
         "Default": {
@@ -162,7 +196,8 @@
         "Default": {
           "Font": "1.2rem",
           "Margin": "10px 20px",
-          "Padding": "10px 20px"
+          "Padding": "10px 20px",
+          "Width": "420px"
         }
       },
       "StyledNumOfBookmarked": {
@@ -175,6 +210,11 @@
           "Default": {
             "Font": "0.9rem"
           }
+        }
+      },
+      "StyledThumbnail": {
+        "Default": {
+          "Margin": "10px 20px"
         }
       }
     }
