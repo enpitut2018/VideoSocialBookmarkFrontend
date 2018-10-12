@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import Form from "../molecules/Form";
+import TextInput from "../atoms/TextInput";
+import Button from "../atoms/Button";
+import TextArea from "../atoms/TextArea";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 
@@ -23,7 +26,15 @@ export default class URLSubmitForm extends Component {
     return (
       <StyledWrapper dir="column">
         <StyledTitle>Bookmark Video</StyledTitle>
-        <Form placeholder="URL" />
+        <Form
+          render={props => (
+            <>
+              <TextInput placeholder="URL" />
+              <TextArea placeholder="Comment" />
+              <Button mode="Primary">Submit</Button>
+            </>
+          )}
+        />
       </StyledWrapper>
     );
   }
