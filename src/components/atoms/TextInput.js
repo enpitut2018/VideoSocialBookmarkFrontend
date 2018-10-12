@@ -13,8 +13,7 @@ const StyledInput = styled.input`
   margin: ${sizes.atoms.TextInput.Default.Margin};
   border-radius: ${sizes.atoms.TextInput.Default.BorderRadius};
 
-  /* background-color: ${palette[colors.atoms.TextInput.Background]}; */
-
+  background-color: ${palette[colors.atoms.TextInput.Background]};
   color: ${palette[colors.atoms.TextInput.Font]};
   border-width: 0px;
   outline: none;
