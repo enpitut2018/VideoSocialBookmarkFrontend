@@ -7,17 +7,13 @@ cache:
   yarn: true
   directories:
     - node_modules
-    - backend
-    - vendor/bundle
-
-before_install:
-  # Setup backend
-  - yarn add --dev json-server
-  - yarn mock &
-  - "sleep 5" # Wait for the Rails app to start
 
 install:
   - yarn
+
+before_script:
+  - yarn mock &
+  - "sleep 5" # Wait for the mock server to start
 
 script:
   - yarn test
