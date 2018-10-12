@@ -6,23 +6,23 @@ import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import { elevate } from "../../theme/shadows";
 
-const StyledInput = styled.input`
-  width: ${sizes.atoms.TextInput.Default.Width};
-  height: ${sizes.atoms.TextInput.Default.Height};
-  padding: ${sizes.atoms.TextInput.Default.Padding};
-  margin: ${sizes.atoms.TextInput.Default.Margin};
-  border-radius: ${sizes.atoms.TextInput.Default.BorderRadius};
+const StyledInput = styled.textarea`
+  width: ${sizes.atoms.TextArea.Default.Width};
+  height: ${sizes.atoms.TextArea.Default.Height};
+  padding: ${sizes.atoms.TextArea.Default.Padding};
+  margin: ${sizes.atoms.TextArea.Default.Margin};
+  border-radius: ${sizes.atoms.TextArea.Default.BorderRadius};
 
-  background-color: ${palette[colors.atoms.TextInput.Background]};
+  background-color: ${palette[colors.atoms.TextArea.Background]};
 
-  color: ${palette[colors.atoms.TextInput.Font]};
+  color: ${palette[colors.atoms.TextArea.Font]};
   border-width: 0px;
   outline: none;
 
   ${props => elevate(props.elevation ? props.elevation : 2)};
 `;
 
-export default class TextInput extends React.Component {
+export default class TextArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
