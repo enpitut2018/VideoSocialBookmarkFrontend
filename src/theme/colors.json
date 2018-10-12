@@ -13,6 +13,10 @@
     "TextInput": {
       "Background": "White01",
       "Font": "Black00"
+    },
+    "TextArea": {
+      "Background": "White01",
+      "Font": "Black00"
     }
   },
   "molecules": {
