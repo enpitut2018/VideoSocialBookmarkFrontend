@@ -2,7 +2,7 @@
   "atoms": {
     "Title": {
       "Default": {
-        "Font": "1.2rem",
+        "Font": "13",
         "Margin": "10px 20px",
         "Padding": "10px 20px",
         "Width": "420px"

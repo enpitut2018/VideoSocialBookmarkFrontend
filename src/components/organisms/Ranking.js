@@ -20,7 +20,7 @@ class Ranking extends Component {
   render() {
     return (
       <Wrapper dir="column">
-        <Title>Ranking</Title>
+        <Title level={2}>Ranking</Title>
         <Wrapper dir="column">
           {this.props.hasLoaded &&
             this.props.ranking.map((item, i) => (
