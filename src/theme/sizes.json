@@ -2,7 +2,7 @@
   "atoms": {
     "Title": {
       "Default": {
-        "Font": "1.2rem",
+        "Font": "13",
         "Margin": "10px 20px",
         "Padding": "10px 20px",
         "Width": "420px"
@@ -272,7 +272,7 @@
   "molecules": {
     "RankingItem": {
       "Default": {
-        "Width": "800px"
+        "Width": "100%"
       },
       "StyledNumOfBookmarked": {
         "Default": {
@@ -342,7 +342,7 @@
     },
     "URLSubmitForm": {
       "Default": {
-        "Margin": "auto auto 60px auto"
+        "Margin": "20px auto 60px auto"
       }
     },
     "Ranking": {}

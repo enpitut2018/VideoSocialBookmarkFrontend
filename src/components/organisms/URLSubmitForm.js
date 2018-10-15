@@ -17,7 +17,7 @@ export default class URLSubmitForm extends Component {
   render() {
     return (
       <StyledWrapper dir="column">
-        <Title>Bookmark Video</Title>
+        <Title level={2}>Bookmark Video</Title>
         <Form
           render={props => (
             <>

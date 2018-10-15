@@ -12,10 +12,12 @@ export default class MyPageTemplate extends Component {
         <Header />
         <Wrapper dir="column">
           <Title>My Bookmarks</Title>
-          {this.props.hasLoaded &&
-            this.props.user.threads.map(thread => (
-              <MyPageItem key={thread.id} thread={thread} />
-            ))}
+          <Wrapper dir="column">
+            {this.props.hasLoaded &&
+              this.props.user.threads.map(thread => (
+                <MyPageItem key={thread.id} thread={thread} />
+              ))}
+          </Wrapper>
         </Wrapper>
       </>
     );
