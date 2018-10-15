@@ -20,6 +20,9 @@
     "TextArea": {
       "Background": "White01",
       "Font": "Black00"
+    },
+    "Icon": {
+      "Opacity": "Opacity00"
     }
   },
   "molecules": {

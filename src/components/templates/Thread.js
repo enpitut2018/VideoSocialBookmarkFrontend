@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import Header from "../organisms/Header";
+import Footer from "../organisms/Footer";
 import Form from "../molecules/Form";
 
 import ThreadTop from "../molecules/ThreadTop";
@@ -23,6 +24,7 @@ export default class Thread extends Component {
             <Form render={props => <CommentSubmitForm />} />
           </>
         )}
+        <Footer />
       </>
     );
   }

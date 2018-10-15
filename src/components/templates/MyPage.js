@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import Header from "../organisms/Header";
+import Footer from "../organisms/Footer";
 
 import MyPageItem from "../molecules/MyPageItem";
 import Title from "../atoms/Title";
@@ -19,6 +20,7 @@ export default class MyPageTemplate extends Component {
               ))}
           </Wrapper>
         </Wrapper>
+        <Footer />
       </>
     );
   }

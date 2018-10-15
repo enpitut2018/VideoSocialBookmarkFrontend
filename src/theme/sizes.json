@@ -45,6 +45,42 @@
         "Width": ""
       }
     },
+    "Icon": {
+      "Default": {
+        "Height": "40px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "",
+        "Margin": "9px 10px",
+        "Padding": "0px"
+      },
+      "Large": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Medium": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Small": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      }
+    },
     "Logo": {
       "Default": {
         "Height": "40px",
