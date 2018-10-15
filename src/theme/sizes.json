@@ -324,7 +324,7 @@
       },
       "StyledThumbnail": {
         "Default": {
-          "Margin": "10px 20px"
+          "Margin": "10px 0"
         }
       }
     }

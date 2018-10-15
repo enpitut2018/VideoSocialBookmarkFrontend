@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
-import ThumbnailStyle from "../atoms/ThumbnailStyle";
+import ThumbnailStyle from "../atoms/Thumbnail";
 import { Text } from "../atoms/Text";
 
 import sizes from "../../theme/sizes.json";
