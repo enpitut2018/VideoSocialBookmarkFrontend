@@ -1,5 +1,13 @@
 {
   "atoms": {
+    "Title": {
+      "Default": {
+        "Font": "1.2rem",
+        "Margin": "10px 20px",
+        "Padding": "10px 20px",
+        "Width": "420px"
+      }
+    },
     "UserIcon": {
       "Default": {
         "Height": "40px",
@@ -266,14 +274,6 @@
       "Default": {
         "Width": "800px"
       },
-      "Title": {
-        "Default": {
-          "Font": "1.2rem",
-          "Margin": "10px 20px",
-          "Padding": "10px 20px",
-          "Width": "420px"
-        }
-      },
       "StyledNumOfBookmarked": {
         "Default": {
           "Font": "1.2rem",
@@ -343,23 +343,8 @@
     "URLSubmitForm": {
       "Default": {
         "Margin": "auto auto 60px auto"
-      },
-      "Title": {
-        "Default": {
-          "Font": "1.5rem",
-          "Margin": "23px auto 0px auto",
-          "Padding": "10px"
-        }
       }
     },
-    "Ranking": {
-      "Title": {
-        "Default": {
-          "Font": "1.5rem",
-          "Margin": "23px auto 0px auto",
-          "Padding": "10px"
-        }
-      }
-    }
+    "Ranking": {}
   }
 }
