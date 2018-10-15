@@ -3,7 +3,7 @@ import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
 import ThumbnailStyle from "../atoms/ThumbnailStyle";
-import Title from "../atoms/Title";
+import { Text } from "../atoms/Text";
 
 import sizes from "../../theme/sizes.json";
 
@@ -29,7 +29,7 @@ export default class ThreadTop extends Component {
           href={this.props.thread.url}
         >
           <Wrapper dir="column">
-            <Title level={2}>{this.props.thread.title}</Title>
+            <Text level="XL">{this.props.thread.title}</Text>
             <StyledThumbnail
               src={this.props.thread.img}
               alt={this.props.thread.title}
@@ -37,10 +37,10 @@ export default class ThreadTop extends Component {
           </Wrapper>
         </StyledA>
 
-        <Title level={1}>
+        <Text level="L">
           {this.props.thread.num_of_bookmarked + " "}
           Bookmarks
-        </Title>
+        </Text>
       </Wrapper>
     );
   }
