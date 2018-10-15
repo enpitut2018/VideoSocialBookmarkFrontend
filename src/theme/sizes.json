@@ -1,5 +1,42 @@
 {
   "atoms": {
+    "UserIcon": {
+      "Default": {
+        "Height": "40px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "",
+        "Margin": "9px 15px",
+        "Padding": "0px",
+        "BorderRadius": "50%"
+      },
+      "Large": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Medium": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Small": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      }
+    },
     "Logo": {
       "Default": {
         "Height": "40px",

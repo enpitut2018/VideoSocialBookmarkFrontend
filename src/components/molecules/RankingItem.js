@@ -49,7 +49,7 @@ export default class RankingItem extends Component {
     return (
       <StyledLink to={"/threads/" + this.props.thread.id}>
         <Wrapper>
-          {String(this.props.ranking) + ". "}
+          {this.props.ranking && String(this.props.ranking) + ". "}
           <StyledThumbnail
             src={this.props.thread.img}
             alt={this.props.thread.title}
