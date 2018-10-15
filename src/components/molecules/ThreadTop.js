@@ -14,8 +14,7 @@ const StyledA = styled.a`
   ${AnkerStyle};
 `;
 
-const StyledThumbnail = styled.img`
-  ${ThumbnailStyle};
+const StyledThumbnail = styled.div`
   margin: ${sizes.molecules.RankingItem.StyledThumbnail.Default.Margin};
 `;
 
