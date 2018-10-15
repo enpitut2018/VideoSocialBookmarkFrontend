@@ -342,7 +342,7 @@
     },
     "URLSubmitForm": {
       "Default": {
-        "Margin": "auto auto 60px auto"
+        "Margin": "20px auto 60px auto"
       }
     },
     "Ranking": {}
