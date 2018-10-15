@@ -272,7 +272,7 @@
   "molecules": {
     "RankingItem": {
       "Default": {
-        "Width": "800px"
+        "Width": "100%"
       },
       "StyledNumOfBookmarked": {
         "Default": {
