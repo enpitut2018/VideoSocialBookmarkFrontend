@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import ThumbnailStyle from "../atoms/ThumbnailStyle";
+import Title from "../atoms/Title";
 
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
@@ -24,13 +25,6 @@ const StyledBookmarks = styled.span`
   color: ${palette[
     colors.molecules.RankingItem.StyledNumOfBookmarked.Bookmarks.Font
   ]};
-`;
-
-const StyledTitle = styled.span`
-  font-size: ${sizes.molecules.RankingItem.Title.Default.Font};
-  padding: ${sizes.molecules.RankingItem.Title.Default.Padding};
-  margin: ${sizes.molecules.RankingItem.Title.Default.Margin};
-  width: ${sizes.molecules.RankingItem.Title.Default.Width};
 `;
 
 const StyledNumOfBookmarked = styled.span`
@@ -54,7 +48,7 @@ export default class RankingItem extends Component {
             src={this.props.thread.img}
             alt={this.props.thread.title}
           />
-          <StyledTitle>{this.props.thread.title}</StyledTitle>
+          <Title>{this.props.thread.title}</Title>
         </Wrapper>
         <StyledNumOfBookmarked>
           {this.props.thread.num_of_bookmarked}
