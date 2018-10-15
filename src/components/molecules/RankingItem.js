@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
-import ThumbnailStyle from "../atoms/ThumbnailStyle";
+import Thumbnail from "../atoms/Thumbnail";
 import { Text } from "../atoms/Text";
 
 import colors from "../../theme/colors.json";
@@ -35,8 +35,7 @@ const StyledNumOfBookmarked = styled.span`
   margin: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Default.Margin};
 `;
 
-const StyledThumbnail = styled.img`
-  ${ThumbnailStyle};
+const StyledThumbnail = styled.div`
   margin: ${sizes.molecules.RankingItem.StyledThumbnail.Default.Margin};
 `;
 
@@ -45,11 +44,15 @@ export default class RankingItem extends Component {
     return (
       <StyledLink to={"/threads/" + this.props.thread.id}>
         <Wrapper>
-          {this.props.ranking && String(this.props.ranking) + ". "}
-          <StyledThumbnail
-            src={this.props.thread.img}
-            alt={this.props.thread.title}
-          />
+          {this.props.ranking && (
+            <Text>{String(this.props.ranking) + ". "}</Text>
+          )}
+          <StyledThumbnail>
+            <Thumbnail
+              src={this.props.thread.img}
+              alt={this.props.thread.title}
+            />
+          </StyledThumbnail>
           <Text level="L">{this.props.thread.title}</Text>
         </Wrapper>
         <StyledNumOfBookmarked>
