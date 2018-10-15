@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import ThumbnailStyle from "../atoms/ThumbnailStyle";
-import Title from "../atoms/Title";
+import { Text } from "../atoms/Text";
 
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
@@ -50,7 +50,7 @@ export default class RankingItem extends Component {
             src={this.props.thread.img}
             alt={this.props.thread.title}
           />
-          <Title>{this.props.thread.title}</Title>
+          <Text level="L">{this.props.thread.title}</Text>
         </Wrapper>
         <StyledNumOfBookmarked>
           {this.props.thread.num_of_bookmarked}

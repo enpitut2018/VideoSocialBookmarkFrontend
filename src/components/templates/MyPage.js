@@ -4,7 +4,7 @@ import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 
 import MyPageItem from "../molecules/MyPageItem";
-import Title from "../atoms/Title";
+import { Text } from "../atoms/Text";
 
 export default class MyPageTemplate extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class MyPageTemplate extends Component {
       <>
         <Header />
         <Wrapper dir="column">
-          <Title>My Bookmarks</Title>
+          <Text level="XL">My Bookmarks</Text>
           <Wrapper dir="column">
             {this.props.hasLoaded &&
               this.props.user.threads.map(thread => (

@@ -2,7 +2,7 @@ import * as React from "react";
 import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 import Wrapper from "../atoms/Wrapper";
-import Title from "../atoms/Title";
+import { Text } from "../atoms/Text";
 
 export default class About extends React.Component {
   render() {
@@ -10,7 +10,7 @@ export default class About extends React.Component {
       <>
         <Header />
         <Wrapper>
-          <Title level={2}>VSBとは</Title>
+          <Text level="XL">VSBとは</Text>
         </Wrapper>
         <Footer />
       </>

@@ -3,7 +3,7 @@
   "Font": "Black00",
   "Shadow": "Black01",
   "atoms": {
-    "Title": {
+    "Text": {
       "Font": "Black00"
     },
     "Button": {

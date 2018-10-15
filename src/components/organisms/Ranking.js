@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Title from "../atoms/Title";
+import { Text } from "../atoms/Text";
 import styled from "styled-components";
 
 import Wrapper from "../atoms/Wrapper";
@@ -27,7 +27,7 @@ class Ranking extends Component {
     return (
       <StyledRanking>
         <Wrapper dir="column">
-          <Title level={2}>Ranking</Title>
+          <Text level="XL">Ranking</Text>
           <Wrapper dir="column">
             {this.props.hasLoaded &&
               this.props.ranking.map((item, i) => (

@@ -5,7 +5,7 @@ import Button from "../atoms/Button";
 import TextArea from "../atoms/TextArea";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
-import Title from "../atoms/Title";
+import { Text } from "../atoms/Text";
 
 import sizes from "../../theme/sizes.json";
 
@@ -17,7 +17,7 @@ export default class URLSubmitForm extends Component {
   render() {
     return (
       <StyledWrapper dir="column">
-        <Title level={2}>Bookmark Video</Title>
+        <Text level="XL">Bookmark Video</Text>
         <Form
           render={props => (
             <>
