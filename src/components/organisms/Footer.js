@@ -5,6 +5,8 @@ import Icon from "../atoms/Icon";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import sizes from "../../theme/sizes";
+import colors from "../../theme/colors";
+import palette from "../../theme/palette";
 
 const StyledLink = styled(Link)`
   padding: 0;
@@ -14,6 +16,7 @@ const StyledLink = styled(Link)`
 
 const StyledCard = styled(Card)`
   display: flex;
+  box-shadow: 0 -1px 0 0 ${palette[colors.Shadow]};
 `;
 
 export default class Header extends React.Component {

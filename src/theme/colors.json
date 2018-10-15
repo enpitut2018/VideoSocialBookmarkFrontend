@@ -1,6 +1,7 @@
 {
   "Background": "White00",
   "Font": "Black00",
+  "Shadow": "Black01",
   "atoms": {
     "Title": {
       "Font": "Black00"
