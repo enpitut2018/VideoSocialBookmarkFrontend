@@ -8,7 +8,7 @@ const StyledLogo = styled.img`
   width: ${sizes.atoms.Logo.Default.Width};
   height: ${sizes.atoms.Logo.Default.Height};
   margin: ${sizes.atoms.Logo.Default.Margin};
-  paddign: ${sizes.atoms.Logo.Default.Padding};
+  padding: ${sizes.atoms.Logo.Default.Padding};
 `;
 
 class Logo extends React.Component {

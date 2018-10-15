@@ -2,13 +2,13 @@
   "atoms": {
     "Logo": {
       "Default": {
-        "Height": "46px",
+        "Height": "40px",
         "MaxHeight": "",
         "MaxWidth": "",
         "MinHeight": "",
         "MinWidth": "",
-        "Width": "46px",
-        "Margin": "6px 10px",
+        "Width": "",
+        "Margin": "9px 10px",
         "Padding": "0px"
       },
       "Large": {
