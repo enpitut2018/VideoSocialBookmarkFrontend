@@ -8,7 +8,6 @@ import { Text } from "../atoms/Text";
 
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
-import sizes from "../../theme/sizes.json";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -16,27 +15,26 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  width: ${sizes.molecules.RankingItem.Default.Width};
+  width: 100%;
 
   ${AnkerStyle};
 `;
 
 const StyledBookmarks = styled.span`
-  font-size: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Bookmarks
-    .Default.Font};
+  font-size: 0.9rem;
   color: ${palette[
     colors.molecules.RankingItem.StyledNumOfBookmarked.Bookmarks.Font
   ]};
 `;
 
 const StyledNumOfBookmarked = styled.span`
-  font-size: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Default.Font};
-  padding: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Default.Padding};
-  margin: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Default.Margin};
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  margin: 10px 20px;
 `;
 
 const StyledThumbnail = styled.div`
-  margin: ${sizes.molecules.RankingItem.StyledThumbnail.Default.Margin};
+  margin: 10px 0;
 `;
 
 export default class RankingItem extends Component {

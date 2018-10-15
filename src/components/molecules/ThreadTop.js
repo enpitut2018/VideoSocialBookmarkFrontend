@@ -5,8 +5,6 @@ import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
 import { Text } from "../atoms/Text";
 
-import sizes from "../../theme/sizes.json";
-
 const StyledA = styled.a`
   display: flex;
   flex-direction: column;
@@ -15,7 +13,7 @@ const StyledA = styled.a`
 `;
 
 const StyledThumbnail = styled.div`
-  margin: ${sizes.molecules.RankingItem.StyledThumbnail.Default.Margin};
+  margin: 10px 0;
 `;
 
 export default class ThreadTop extends Component {

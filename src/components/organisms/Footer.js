@@ -8,18 +8,16 @@ import { textStyle } from "../atoms/Text";
 
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
-import sizes from "../../theme/sizes";
 
 const StyledText = styled.span`
   padding: 0;
-  margin: ${sizes.organisms.Footer.Link.Default.Margin};
+  margin: 0 10px;
   ${textStyle("S")};
 `;
 
 const StyledLink = styled(Link)`
   padding: 0;
-  margin: ${sizes.organisms.Footer.Link.Default.Margin};
-  padding: ${sizes.organisms.Footer.Link.Default.Padding};
+  margin: 0 10px;
   ${AnkerStyle};
   ${textStyle("S")};
 `;
@@ -27,8 +25,8 @@ const StyledLink = styled(Link)`
 const StyledCard = styled(Card)`
   display: flex;
   box-shadow: 0 -1px 0 0 ${palette[colors.Shadow]};
-  margin: ${sizes.organisms.Footer.Default.Margin};
-  padding: ${sizes.organisms.Footer.Default.Padding};
+  margin: 0;
+  padding: 0;
 `;
 
 export default class Footer extends React.Component {

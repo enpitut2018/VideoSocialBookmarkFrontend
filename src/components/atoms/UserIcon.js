@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import { elevate } from "../../theme/shadows";
-import sizes from "../../theme/sizes";
 
 const StyledUserIcon = styled.img`
-  width: ${sizes.atoms.UserIcon.Default.Width};
-  height: ${sizes.atoms.UserIcon.Default.Height};
-  margin: ${sizes.atoms.UserIcon.Default.Margin};
-  border-radius: ${sizes.atoms.UserIcon.Default.BorderRadius};
+  height: 40px;
+  margin: 9px 15px;
+  border-radius: 50%;
 
   ${props => elevate(2)};
 

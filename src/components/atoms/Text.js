@@ -1,15 +1,14 @@
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
-import sizes from "../../theme/sizes.json";
 import styled, { css } from "styled-components";
 
 export const textStyle = level => {
   const fontSizes = {
-    XS: 0.7,
-    S: 0.85,
-    M: 1.0,
-    L: 1.2,
-    XL: 1.7
+    XS: 8,
+    S: 10,
+    M: 12,
+    L: 14,
+    XL: 20
   };
   const fontOpacities = {
     XS: 0.75,
@@ -19,11 +18,7 @@ export const textStyle = level => {
     XL: 1.0
   };
   const fontSize = level =>
-    level
-      ? level in fontSizes
-        ? sizes.atoms.Text.Default.Font * fontSizes[level]
-        : sizes.atoms.Text.Default.Font * fontSizes.M
-      : sizes.atoms.Text.Default.Font * fontSizes.M;
+    level ? (level in fontSizes ? fontSizes[level] : fontSizes.M) : fontSizes.M;
   const fontOpacity = level =>
     level
       ? level in fontOpacities
@@ -33,8 +28,8 @@ export const textStyle = level => {
   return css`
     font-size: ${fontSize(level)}pt;
     color: ${palette[colors.atoms.Text.Font]};
-    padding: ${sizes.atoms.Text.Default.Padding};
-    margin: ${sizes.atoms.Text.Default.Margin};
+    padding: 10px 20px;
+    margin: 10px 20px;
     opacity: ${fontOpacity(level)};
   `;
 };

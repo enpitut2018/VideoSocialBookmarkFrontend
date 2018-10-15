@@ -7,15 +7,13 @@ import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import styled from "styled-components";
 
-import sizes from "../../theme/sizes";
-
 const StyledButton = styled(Card)`
   cursor: pointer;
   user-select: none;
 
-  padding: ${sizes.atoms.Button.Default.Padding};
-  margin: ${sizes.atoms.Button.Default.Margin};
-  border-radius: ${sizes.atoms.Button.Default.BorderRadius};
+  padding: 12px 26px;
+  margin: 10px;
+  border-radius: 23px;
 
   background-color: ${props =>
     props.mode

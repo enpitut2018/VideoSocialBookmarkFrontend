@@ -7,10 +7,8 @@ import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import { Text } from "../atoms/Text";
 
-import sizes from "../../theme/sizes.json";
-
 const StyledWrapper = styled(Wrapper)`
-  margin: ${sizes.organisms.URLSubmitForm.Default.Margin};
+  margin: 20px auto 60px auto;
 `;
 
 export default class URLSubmitForm extends Component {
