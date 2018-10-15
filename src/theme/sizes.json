@@ -345,6 +345,10 @@
         "Margin": "20px auto 60px auto"
       }
     },
-    "Ranking": {}
+    "Ranking": {
+      "Default": {
+        "Padding": "0 0 20px 0"
+      }
+    }
   }
 }
