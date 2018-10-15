@@ -7,6 +7,7 @@ import Thread from "./components/pages/Thread";
 import MyPage from "./components/pages/MyPage";
 import Login from "./components/pages/Login";
 import NotFound_404 from "./components/pages/NotFound_404";
+import About from "./components/pages/About";
 
 class Routes extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class Routes extends React.Component {
           <Route exact={true} path="/" component={Top} />
           <Route exact={true} path="/threads/:id" component={Thread} />
           <Route exact={true} path="/mypage" component={MyPage} />
+          <Route exact={true} path="/about" component={About} />
           <Route exact={true} path="/login" component={Login} />
           <Route path="*" component={NotFound_404} />
         </Switch>

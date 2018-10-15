@@ -16,6 +16,8 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
+  width: ${sizes.molecules.RankingItem.Default.Width};
+
   ${AnkerStyle};
 `;
 

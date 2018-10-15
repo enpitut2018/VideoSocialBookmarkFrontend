@@ -47,13 +47,13 @@
     },
     "Icon": {
       "Default": {
-        "Height": "40px",
+        "Height": "42px",
         "MaxHeight": "",
         "MaxWidth": "",
         "MinHeight": "",
         "MinWidth": "",
-        "Width": "",
-        "Margin": "9px 10px",
+        "Width": "42px",
+        "Margin": "8px 10px",
         "Padding": "0px"
       },
       "Large": {
@@ -338,6 +338,33 @@
         "MinHeight": "",
         "MinWidth": "",
         "Width": "800px"
+      }
+    },
+    "Footer": {
+      "Default": {
+        "Height": "58px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "100%",
+        "Margin": "0",
+        "Padding": "10px 0 0 0"
+      },
+      "Link": {
+        "Default": {
+          "Margin": "8px 10px"
+        }
+      },
+      "Logo": {
+        "Default": {
+          "Height": "42px",
+          "MaxHeight": "",
+          "MaxWidth": "",
+          "MinHeight": "",
+          "MinWidth": "",
+          "Width": "42px"
+        }
       }
     },
     "Header": {
