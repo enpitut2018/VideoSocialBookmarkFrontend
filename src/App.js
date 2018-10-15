@@ -12,6 +12,8 @@ import thunk from "redux-thunk";
 
 injectGlobal`
   html {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
     margin: 0;
     padding: 0;
     height: 100%;

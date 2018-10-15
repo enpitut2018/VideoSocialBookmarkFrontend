@@ -1,8 +1,8 @@
 {
   "atoms": {
-    "Title": {
+    "Text": {
       "Default": {
-        "Font": "1.2rem",
+        "Font": 12,
         "Margin": "10px 20px",
         "Padding": "10px 20px",
         "Width": "420px"
@@ -19,6 +19,42 @@
         "Margin": "9px 15px",
         "Padding": "0px",
         "BorderRadius": "50%"
+      },
+      "Large": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Medium": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      },
+      "Small": {
+        "Height": "",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": ""
+      }
+    },
+    "Icon": {
+      "Default": {
+        "Height": "42px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "42px",
+        "Margin": "0 10px",
+        "Padding": "0px"
       },
       "Large": {
         "Height": "",
@@ -272,7 +308,7 @@
   "molecules": {
     "RankingItem": {
       "Default": {
-        "Width": "800px"
+        "Width": "100%"
       },
       "StyledNumOfBookmarked": {
         "Default": {
@@ -302,6 +338,33 @@
         "MinHeight": "",
         "MinWidth": "",
         "Width": "800px"
+      }
+    },
+    "Footer": {
+      "Default": {
+        "Height": "58px",
+        "MaxHeight": "",
+        "MaxWidth": "",
+        "MinHeight": "",
+        "MinWidth": "",
+        "Width": "100%",
+        "Margin": "0",
+        "Padding": "0 0 0 0"
+      },
+      "Link": {
+        "Default": {
+          "Margin": "0 10px"
+        }
+      },
+      "Logo": {
+        "Default": {
+          "Height": "42px",
+          "MaxHeight": "",
+          "MaxWidth": "",
+          "MinHeight": "",
+          "MinWidth": "",
+          "Width": "42px"
+        }
       }
     },
     "Header": {
@@ -342,9 +405,13 @@
     },
     "URLSubmitForm": {
       "Default": {
-        "Margin": "auto auto 60px auto"
+        "Margin": "20px auto 60px auto"
       }
     },
-    "Ranking": {}
+    "Ranking": {
+      "Default": {
+        "Padding": "0 0 20px 0"
+      }
+    }
   }
 }

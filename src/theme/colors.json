@@ -1,8 +1,9 @@
 {
   "Background": "White00",
   "Font": "Black00",
+  "Shadow": "Black01",
   "atoms": {
-    "Title": {
+    "Text": {
       "Font": "Black00"
     },
     "Button": {
@@ -20,6 +21,9 @@
     "TextArea": {
       "Background": "White01",
       "Font": "Black00"
+    },
+    "Icon": {
+      "Opacity": "Opacity00"
     }
   },
   "molecules": {
