@@ -39,6 +39,7 @@ export default class Header extends React.Component {
         </StyledLink>
         <StyledLink to="/about">VSBとは</StyledLink>
         <StyledLink to="/terms">利用規約</StyledLink>
+        <StyledLink to="/help">Help</StyledLink>
       </StyledCard>
     );
   }
