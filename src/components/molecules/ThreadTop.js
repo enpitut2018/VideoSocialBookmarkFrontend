@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
-import ThumbnailStyle from "../atoms/Thumbnail";
+import Thumbnail from "../atoms/Thumbnail";
 import { Text } from "../atoms/Text";
 
 import sizes from "../../theme/sizes.json";
@@ -30,10 +30,12 @@ export default class ThreadTop extends Component {
         >
           <Wrapper dir="column">
             <Text level="XL">{this.props.thread.title}</Text>
-            <StyledThumbnail
-              src={this.props.thread.img}
-              alt={this.props.thread.title}
-            />
+            <StyledThumbnail>
+              <Thumbnail
+                src={this.props.thread.img}
+                alt={this.props.thread.title}
+              />
+            </StyledThumbnail>
           </Wrapper>
         </StyledA>
 
