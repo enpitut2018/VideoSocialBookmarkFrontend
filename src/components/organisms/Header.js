@@ -5,6 +5,7 @@ import Logo from "../atoms/Logo";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import sizes from "../../theme/sizes";
+import UserIcon from "../atoms/UserIcon";
 
 const StyledLink = styled(Link)`
   padding: 0;
@@ -21,6 +22,10 @@ class Header extends React.Component {
       <StyledCard type="between" elevation={0}>
         <StyledLink to="/">
           <Logo />
+        </StyledLink>
+
+        <StyledLink to="/mypage">
+          <UserIcon />
         </StyledLink>
       </StyledCard>
     );
