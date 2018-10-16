@@ -1,1 +1,1 @@
-web: bin/start-nginx yarn mock & yarn start:prod
+web: bin/start-nginx yarn mock & yarn start:prod & sleep 10 && /tmp/app-initialized
