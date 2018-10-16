@@ -1,1 +1,1 @@
-web: bin/start-nginx yarn mock & yarn start:prod & sleep 30 && touch /tmp/app-initialized
+web: sleep 15 && touch /tmp/app-initialized & bin/start-nginx yarn mock & yarn start:heroku
