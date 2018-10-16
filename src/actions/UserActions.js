@@ -14,10 +14,11 @@ export const getUser = () => dispatch => {
     .get(config.backend_api_url + "/user/")
     .then(res => {
       dispatch({ type: GET_USER_SUCCESS, user: res.data });
-    }).catch(_ => {
-      dispatch({ type: GET_USER_FAILURE, error: '' });
+    })
+    .catch(_ => {
+      dispatch({ type: GET_USER_FAILURE, error: "" });
     });
-}
+};
 
 export const getUserIcon = () => dispatch => {
   dispatch({ type: GET_USER_ICON_REQUEST });
@@ -25,7 +26,8 @@ export const getUserIcon = () => dispatch => {
     .get(config.backend_api_url + "/userIcon/")
     .then(res => {
       dispatch({ type: GET_USER_ICON_SUCCESS, userIcon: res.data });
-    }).catch(_ => {
-      dispatch({ type: GET_USER_ICON_FAILURE, error: '' });
+    })
+    .catch(_ => {
+      dispatch({ type: GET_USER_ICON_FAILURE, error: "" });
     });
-}
+};

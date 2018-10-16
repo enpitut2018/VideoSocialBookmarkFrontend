@@ -1,4 +1,8 @@
-import { GET_USER_ICON_REQUEST, GET_USER_ICON_SUCCESS, GET_USER_ICON_FAILURE } from "../actions/UserActions";
+import {
+  GET_USER_ICON_REQUEST,
+  GET_USER_ICON_SUCCESS,
+  GET_USER_ICON_FAILURE
+} from "../actions/UserActions";
 
 const initialState = {
   hasLoaded: false,
@@ -10,7 +14,7 @@ export default (state = initialState, action) => {
     case GET_USER_ICON_REQUEST:
       return {
         ...state,
-        hasLoaded: false,
+        hasLoaded: false
       };
     case GET_USER_ICON_SUCCESS:
       return {
@@ -19,7 +23,7 @@ export default (state = initialState, action) => {
         url: action.userIcon.url
       };
     case GET_USER_ICON_FAILURE:
-      break;
+      return state;
     default:
       return state;
   }
