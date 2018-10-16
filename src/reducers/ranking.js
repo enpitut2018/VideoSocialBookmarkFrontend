@@ -1,4 +1,8 @@
-import { GET_RANKING_REQUEST, GET_RANKING_SUCCESS, GET_RANKING_FAILURE } from "../actions/RankingActions";
+import {
+  GET_RANKING_REQUEST,
+  GET_RANKING_SUCCESS,
+  GET_RANKING_FAILURE
+} from "../actions/RankingActions";
 
 const initialState = {
   hasLoaded: false,
@@ -10,7 +14,7 @@ export default (state = initialState, action) => {
     case GET_RANKING_REQUEST:
       return {
         ...state,
-        hasLoaded: false,
+        hasLoaded: false
       };
     case GET_RANKING_SUCCESS:
       return {
@@ -19,7 +23,7 @@ export default (state = initialState, action) => {
         ranking: action.ranking
       };
     case GET_RANKING_FAILURE:
-      break;
+      return state;
     default:
       return state;
   }
