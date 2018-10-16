@@ -1,3 +1,3 @@
 module.exports = {
-    backend_api_url: 'http://localhost:80'
+    backend_api_url: '/api'
 }
