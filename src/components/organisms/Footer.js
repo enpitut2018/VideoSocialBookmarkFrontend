@@ -11,16 +11,12 @@ import palette from "../../theme/palette";
 import { style, component } from "../mediaQuery";
 
 const StyledText = styled.span`
-  padding: 0;
-  margin: 0 10px;
-  ${textStyle("S")};
+  ${textStyle({ level: "XS", margin: "10px 15px" })};
 `;
 
 const StyledLink = styled(Link)`
-  padding: 0;
-  margin: 0 10px;
   ${AnkerStyle};
-  ${textStyle("S")};
+  ${textStyle({ level: "XS", margin: "10px 15px" })};
 `;
 
 const StyledCard = styled(Card)`
@@ -67,7 +63,7 @@ const StyledWrapper = styled.div`
 
 export default class Footer extends React.Component {
   render() {
-    const res = component({
+    return component({
       XL: (
         <StyledCard type="center" elevation={0}>
           <StyledText>© 2018 Vimacs</StyledText>
@@ -117,6 +113,5 @@ export default class Footer extends React.Component {
         </StyledCard>
       )
     });
-    return res;
   }
 }

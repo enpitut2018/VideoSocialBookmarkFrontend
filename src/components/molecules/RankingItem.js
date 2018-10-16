@@ -5,9 +5,7 @@ import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
 import { Text } from "../atoms/Text";
-
-import colors from "../../theme/colors.json";
-import palette from "../../theme/palette.json";
+import { style, component } from "../mediaQuery";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -16,25 +14,25 @@ const StyledLink = styled(Link)`
   align-items: center;
 
   width: 100%;
+  height: 90px;
+  margin: 10px 0;
 
   ${AnkerStyle};
 `;
 
-const StyledBookmarks = styled.span`
-  font-size: 0.9rem;
-  color: ${palette[
-    colors.molecules.RankingItem.StyledNumOfBookmarked.Bookmarks.Font
-  ]};
-`;
-
-const StyledNumOfBookmarked = styled.span`
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  margin: 10px 20px;
-`;
-
 const StyledThumbnail = styled.div`
-  margin: 10px 0;
+  margin: 10px 20px 10px 0px;
+`;
+
+const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 800px;
+  height: 90px;
+
+  ${style({ S: "", M: "", L: "", XL: "" })};
 `;
 
 export default class RankingItem extends Component {
@@ -43,7 +41,7 @@ export default class RankingItem extends Component {
       <StyledLink to={"/threads/" + this.props.thread.id}>
         <Wrapper>
           {this.props.ranking && (
-            <Text>{String(this.props.ranking) + ". "}</Text>
+            <Text level="XL">{String(this.props.ranking) + ". "}</Text>
           )}
           <StyledThumbnail>
             <Thumbnail
@@ -51,12 +49,20 @@ export default class RankingItem extends Component {
               alt={this.props.thread.title}
             />
           </StyledThumbnail>
-          <Text level="L">{this.props.thread.title}</Text>
+          <StyledWrapper type="right" dir="column">
+            <Text level="L" margin="0">
+              {this.props.thread.title}
+            </Text>
+            <Wrapper>
+              <Text level="S" margin="0">
+                {this.props.thread.num_of_bookmarked}
+              </Text>
+              <Text level="XS" margin="0">
+                Bookmarks
+              </Text>
+            </Wrapper>
+          </StyledWrapper>
         </Wrapper>
-        <StyledNumOfBookmarked>
-          {this.props.thread.num_of_bookmarked}
-          <StyledBookmarks>Bookmarks</StyledBookmarks>
-        </StyledNumOfBookmarked>
       </StyledLink>
     );
   }
