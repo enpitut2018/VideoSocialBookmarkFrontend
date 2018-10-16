@@ -4,13 +4,12 @@ import styled from "styled-components";
 
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
-import sizes from "../../theme/sizes";
 
 const StyledIcon = styled.img`
-  width: ${sizes.atoms.Icon.Default.Width};
-  height: ${sizes.atoms.Icon.Default.Height};
-  margin: ${sizes.atoms.Icon.Default.Margin};
-  padding: ${sizes.atoms.Icon.Default.Padding};
+  width: 42px;
+  height: 42px;
+  margin: 0 10px;
+  padding: 0;
   opacity: ${palette[colors.atoms.Icon.Opacity]};
 `;
 

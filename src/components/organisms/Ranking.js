@@ -6,10 +6,9 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import RankingItem from "../molecules/RankingItem";
 import { getRanking } from "../../actions/RankingActions";
-import sizes from "../../theme/sizes.json";
 
 const StyledRanking = styled.div`
-  padding: ${sizes.organisms.Ranking.Default.Padding};
+  padding: 0 0 20px 0;
 `;
 
 class Ranking extends Component {

@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import sizes from "../../theme/sizes";
 import UserIcon from "../atoms/UserIcon";
 
 import { getUserIcon } from "../../actions/UserActions";
@@ -14,7 +13,7 @@ import { getUserIcon } from "../../actions/UserActions";
 const StyledLink = styled(Link)`
   padding: 0;
   margin: 0;
-  height: ${sizes.organisms.Header.Default.Height};
+  height: 58px;
 `;
 
 const StyledCard = styled(Card)`

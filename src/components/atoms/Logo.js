@@ -2,13 +2,10 @@ import * as React from "react";
 import LogoImage from "../../assets/images/logo.svg";
 import styled from "styled-components";
 
-import sizes from "../../theme/sizes";
-
 const StyledLogo = styled.img`
-  width: ${sizes.atoms.Logo.Default.Width};
-  height: ${sizes.atoms.Logo.Default.Height};
-  margin: ${sizes.atoms.Logo.Default.Margin};
-  padding: ${sizes.atoms.Logo.Default.Padding};
+  height: 40px;
+  margin: 9px 10px;
+  padding: 0;
 `;
 
 class Logo extends React.Component {
