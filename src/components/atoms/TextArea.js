@@ -1,17 +1,22 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import sizes from "../../theme/sizes";
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import { elevate } from "../../theme/shadows";
+import { style } from "../mediaQuery";
 
 const StyledInput = styled.textarea`
-  width: ${sizes.atoms.TextArea.Default.Width};
-  height: ${sizes.atoms.TextArea.Default.Height};
-  padding: ${sizes.atoms.TextArea.Default.Padding};
-  margin: ${sizes.atoms.TextArea.Default.Margin};
-  border-radius: ${sizes.atoms.TextArea.Default.BorderRadius};
+  ${style({
+    XL: `width: 400px`,
+    L: `width: 400px`,
+    M: `max-width: 100%`,
+    S: `max-width: 100%`
+  })};
+
+  padding: 12px 26px;
+  margin: 10px;
+  border-radius: 23px;
 
   background-color: ${palette[colors.atoms.TextArea.Background]};
 

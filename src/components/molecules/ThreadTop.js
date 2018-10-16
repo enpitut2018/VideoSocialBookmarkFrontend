@@ -4,8 +4,7 @@ import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
 import { Text } from "../atoms/Text";
-
-import sizes from "../../theme/sizes.json";
+import { component } from "../mediaQuery";
 
 const StyledA = styled.a`
   display: flex;
@@ -15,7 +14,7 @@ const StyledA = styled.a`
 `;
 
 const StyledThumbnail = styled.div`
-  margin: ${sizes.molecules.RankingItem.StyledThumbnail.Default.Margin};
+  margin: 10px 0;
 `;
 
 export default class ThreadTop extends Component {
@@ -28,7 +27,20 @@ export default class ThreadTop extends Component {
           href={this.props.thread.url}
         >
           <Wrapper dir="column">
-            <Text level="XL">{this.props.thread.title}</Text>
+            {component({
+              XL: <Text level="XL">{this.props.thread.title}</Text>,
+              L: <Text level="XL">{this.props.thread.title}</Text>,
+              M: (
+                <Text level="L" margin="17px 49px">
+                  {this.props.thread.title}
+                </Text>
+              ),
+              S: (
+                <Text level="L" margin="17px 49px">
+                  {this.props.thread.title}
+                </Text>
+              )
+            })}
             <StyledThumbnail>
               <Thumbnail
                 src={this.props.thread.img}

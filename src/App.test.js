@@ -5,6 +5,10 @@ import axios from "axios";
 import config from "./config";
 
 it("renders without crashing", () => {
+  window.matchMedia = () => ({
+    addListener: () => {},
+    removeListener: () => {}
+  });
   const div = document.createElement("div");
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
