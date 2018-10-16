@@ -76,7 +76,7 @@ export default class RankingItem extends Component {
               ),
               L: (
                 <>
-                  <Text level="M" margin="0">
+                  <Text level="M" margin="0" fontSize="14pt">
                     {this.props.thread.title}
                   </Text>
                   <Wrapper>

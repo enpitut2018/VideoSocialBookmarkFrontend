@@ -4,11 +4,11 @@ import styled, { css } from "styled-components";
 
 export const textStyle = props => {
   const fontSizes = {
-    XS: 10,
-    S: 11,
-    M: 12,
-    L: 16,
-    XL: 20
+    XS: "10pt",
+    S: "11pt",
+    M: "12pt",
+    L: "16pt",
+    XL: "20pt"
   };
   const fontOpacities = {
     XS: 0.75,
@@ -52,7 +52,7 @@ export const textStyle = props => {
         : fontWeights.M
       : fontWeights.M;
   return css`
-    font-size: ${props.fontSize ? props.fontSize : fontSize(props.level)}pt;
+    font-size: ${props.fontSize ? props.fontSize : fontSize(props.level)};
     color: ${props.color ? props.color : palette[colors.atoms.Text.Font]};
     margin: ${props.margin ? props.margin : fontMargin(props.level)};
     opacity: ${props.opacity ? props.opacity : fontOpacity(props.level)};
