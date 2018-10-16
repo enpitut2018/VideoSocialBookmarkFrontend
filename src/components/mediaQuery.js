@@ -40,7 +40,7 @@ export const style = styles => `
   @media screen and (min-width: ${width.M}px) and (max-width:${width.L - 1}px) {
     ${"L" in styles && styles.L}
   }
-  @media screen and (min-width: ${width.S}) and (max-width:${width.M - 1}px) {
+  @media screen and (min-width: ${width.S}px) and (max-width:${width.M - 1}px) {
     ${"M" in styles && styles.M}
   }
   @media screen and (max-width:${width.S - 1}px) {
