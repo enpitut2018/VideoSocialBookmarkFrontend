@@ -4,9 +4,16 @@ import styled from "styled-components";
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import { elevate } from "../../theme/shadows";
+import { style } from "../mediaQuery";
 
 const StyledInput = styled.input`
-  width: 400px;
+  ${style({
+    XL: `width: 400px`,
+    L: `width: 400px`,
+    M: `max-width: 100%`,
+    S: `max-width: 100%`
+  })};
+
   padding: 12px 26px;
   margin: 10px;
   border-radius: 23px;
