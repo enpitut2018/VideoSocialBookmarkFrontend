@@ -18,11 +18,11 @@
     "styled-components": "^3.4.10"
   },
   "scripts": {
-    "start:dev": "react-scripts start",
-    "start:prod": "yarn build; serve -s build",
+    "start:dev": "cross-env REACT_APP_ENV=development react-scripts start",
+    "start:prod": "cross-env REACT_APP_ENV=production yarn build; serve -s build",
     "start:heroku": "cross-env REACT_APP_ENV=production PORT=3000 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "cross-env REACT_APP_ENV=production react-scripts build",
+    "test": "cross-env REACT_APP_ENV=test react-scripts test",
     "eject": "react-scripts eject",
     "mock": "json-server --watch db.json --port 3001"
   },
