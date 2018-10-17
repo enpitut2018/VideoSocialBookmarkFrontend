@@ -303,6 +303,37 @@
           "Width": "42px"
         }
       }
+    },
+    "Accordion": {
+      "Default": {
+        "Padding": "0px",
+        "BorderRadius": "10px",
+        "Width": "800px"
+      }
+    },
+    "AccordionItem": {
+      "Default": {
+        "Padding": "0px",
+        "Margin": "0px",
+        "BorderRadius": "10px",
+        "Width": "100%"
+      }
+    },
+    "AccordionItemHeader": {
+      "Default": {
+        "Padding": "0px",
+        "Margin": "0px",
+        "BorderRadius": "10px",
+        "Width": "100%"
+      }
+    },
+    "AccordionItemBody": {
+      "Default": {
+        "Padding": "0px",
+        "Margin": "0px",
+        "BorderRadius": "10px",
+        "Width": "100%"
+      }
     }
   },
   "molecules": {
