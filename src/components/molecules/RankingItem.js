@@ -5,10 +5,7 @@ import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
 import { Text } from "../atoms/Text";
-
-import colors from "../../theme/colors.json";
-import palette from "../../theme/palette.json";
-import sizes from "../../theme/sizes.json";
+import { style, component } from "../mediaQuery";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -16,27 +13,30 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  width: ${sizes.molecules.RankingItem.Default.Width};
+  width: 100%;
+  height: 90px;
+  margin: 10px 0;
 
   ${AnkerStyle};
 `;
 
-const StyledBookmarks = styled.span`
-  font-size: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Bookmarks
-    .Default.Font};
-  color: ${palette[
-    colors.molecules.RankingItem.StyledNumOfBookmarked.Bookmarks.Font
-  ]};
-`;
-
-const StyledNumOfBookmarked = styled.span`
-  font-size: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Default.Font};
-  padding: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Default.Padding};
-  margin: ${sizes.molecules.RankingItem.StyledNumOfBookmarked.Default.Margin};
-`;
-
 const StyledThumbnail = styled.div`
-  margin: ${sizes.molecules.RankingItem.StyledThumbnail.Default.Margin};
+  margin: 10px 20px 10px 0px;
+`;
+
+const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 90px;
+
+  ${style({
+    S: `max-width: 300px`,
+    M: `max-width: 400px`,
+    L: `max-width: 500px`,
+    XL: `max-width: 800px`
+  })};
 `;
 
 export default class RankingItem extends Component {
@@ -44,21 +44,84 @@ export default class RankingItem extends Component {
     return (
       <StyledLink to={"/threads/" + this.props.thread.id}>
         <Wrapper>
-          {this.props.ranking && (
-            <Text>{String(this.props.ranking) + ". "}</Text>
-          )}
+          {this.props.ranking &&
+            component({
+              XL: <Text level="XL">{String(this.props.ranking) + ". "}</Text>,
+              L: <Text level="L">{String(this.props.ranking) + ". "}</Text>,
+              M: <Text level="M">{String(this.props.ranking) + ". "}</Text>,
+              S: <Text level="M">{String(this.props.ranking) + ". "}</Text>
+            })}
           <StyledThumbnail>
             <Thumbnail
               src={this.props.thread.img}
               alt={this.props.thread.title}
             />
           </StyledThumbnail>
-          <Text level="L">{this.props.thread.title}</Text>
+          <StyledWrapper type="right" dir="column">
+            {component({
+              XL: (
+                <>
+                  <Text level="L" margin="0">
+                    {this.props.thread.title}
+                  </Text>
+                  <Wrapper>
+                    <Text level="S" margin="0">
+                      {this.props.thread.num_of_bookmarked}
+                    </Text>
+                    <Text level="XS" margin="0">
+                      Bookmarks
+                    </Text>
+                  </Wrapper>
+                </>
+              ),
+              L: (
+                <>
+                  <Text level="M" margin="0" fontSize="14pt">
+                    {this.props.thread.title}
+                  </Text>
+                  <Wrapper>
+                    <Text level="S" margin="0">
+                      {this.props.thread.num_of_bookmarked}
+                    </Text>
+                    <Text level="XS" margin="0">
+                      Bookmarks
+                    </Text>
+                  </Wrapper>
+                </>
+              ),
+              M: (
+                <>
+                  <Text level="M" margin="0">
+                    {this.props.thread.title}
+                  </Text>
+                  <Wrapper>
+                    <Text level="S" margin="0">
+                      {this.props.thread.num_of_bookmarked}
+                    </Text>
+                    <Text level="XS" margin="0">
+                      Bookmarks
+                    </Text>
+                  </Wrapper>
+                </>
+              ),
+              S: (
+                <>
+                  <Text level="M" margin="0">
+                    {this.props.thread.title}
+                  </Text>
+                  <Wrapper>
+                    <Text level="S" margin="0">
+                      {this.props.thread.num_of_bookmarked}
+                    </Text>
+                    <Text level="XS" margin="0">
+                      Bookmarks
+                    </Text>
+                  </Wrapper>
+                </>
+              )
+            })}
+          </StyledWrapper>
         </Wrapper>
-        <StyledNumOfBookmarked>
-          {this.props.thread.num_of_bookmarked}
-          <StyledBookmarks>Bookmarks</StyledBookmarks>
-        </StyledNumOfBookmarked>
       </StyledLink>
     );
   }

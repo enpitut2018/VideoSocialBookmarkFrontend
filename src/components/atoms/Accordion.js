@@ -5,14 +5,12 @@ import { elevate } from "../../theme/shadows";
 
 import styled from "styled-components";
 
-import sizes from "../../theme/sizes";
-
 const StyledAccordion = styled(Card)`
   user-select: none;
 
-  padding: ${sizes.atoms.Accordion.Default.Padding};
-  border-radius: ${sizes.atoms.Accordion.Default.BorderRadius};
-  width: ${sizes.atoms.Accordion.Default.Width};
+  padding: 0px;
+  border-radius: 10px;
+  width: 800px;
 
   &:hover {
     ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
@@ -48,7 +46,7 @@ export default class Accordion extends React.Component {
         elevation={this.props.elevation ? this.props.elevation : 2}
       >
         {React.Children.map(
-          this.props.children, 
+          this.props.children,
           (elem, i) => React.cloneElement(elem, {
             isOpen: this.state.opens[i],
             handleClick: () => this.handleClick(i),

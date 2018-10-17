@@ -6,15 +6,13 @@ import { elevate } from "../../theme/shadows";
 
 import styled from "styled-components";
 
-import sizes from "../../theme/sizes";
-
 const StyledAccordionItemBody = styled(Card)`
   cursor: pointer;
 
-  padding: ${sizes.atoms.AccordionItemBody.Default.Padding};
-  margin: ${sizes.atoms.AccordionItemBody.Default.Margin}; 
-  width: ${sizes.atoms.AccordionItemBody.Default.Width};
-  border-radius: ${sizes.atoms.AccordionItemBody.Default.BorderRadius};
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  border-radius: 10px;
   box-shadow: none;
 
   &:hover {
