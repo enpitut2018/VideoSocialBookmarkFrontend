@@ -100,13 +100,13 @@ export default class Text extends Component {
     level = level ? level : "M";
     return (
       <StyledText {...this.props}>
-        {children &&
-          (typeof children === "string" || children instanceof String) &&
-          children.split("\n").map((line, i) => (
-            <StyledLine key={i} level={level} lineHeight={lineHeight}>
-              {line}
-            </StyledLine>
-          ))}
+        {typeof children === "string" || children instanceof String
+          ? children.split("\n").map((line, i) => (
+              <StyledLine key={i} level={level} lineHeight={lineHeight}>
+                {line}
+              </StyledLine>
+            ))
+          : children}
       </StyledText>
     );
   }
