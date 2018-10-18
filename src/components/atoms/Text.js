@@ -1,56 +1,72 @@
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import styled, { css } from "styled-components";
+import React, { Component } from "react";
+
+const fontSizes = {
+  XS: "10pt",
+  S: "11pt",
+  M: "12pt",
+  L: "16pt",
+  XL: "20pt"
+};
+const fontOpacities = {
+  XS: 0.75,
+  S: 0.85,
+  M: 1.0,
+  L: 1.0,
+  XL: 1.0
+};
+const fontMargins = {
+  XS: "2px 4px",
+  S: "3px 7px",
+  M: "5px 13px",
+  L: "10px 15px",
+  XL: "30px 20px"
+};
+const fontWeights = {
+  XS: "300",
+  S: "300",
+  M: "300",
+  L: "300",
+  XL: "300"
+};
+const fontLineHeights = {
+  XS: "1.2rem",
+  S: "1.3rem",
+  M: "1.8rem",
+  L: "2.0rem",
+  XL: "2.6rem"
+};
+
+const fontSize = level =>
+  level ? (level in fontSizes ? fontSizes[level] : fontSizes.M) : fontSizes.M;
+const fontOpacity = level =>
+  level
+    ? level in fontOpacities
+      ? fontOpacities[level]
+      : fontOpacities.M
+    : fontOpacities.M;
+const fontMargin = level =>
+  level
+    ? level in fontMargins
+      ? fontMargins[level]
+      : fontMargins.M
+    : fontMargins.M;
+const fontWeight = level =>
+  level
+    ? level in fontWeights
+      ? fontWeights[level]
+      : fontWeights.M
+    : fontWeights.M;
+const fontLineHeight = level =>
+  level
+    ? level in fontLineHeights
+      ? fontLineHeights[level]
+      : fontLineHeights.M
+    : fontLineHeights.M;
 
 export const textStyle = props => {
-  const fontSizes = {
-    XS: "10pt",
-    S: "11pt",
-    M: "12pt",
-    L: "16pt",
-    XL: "20pt"
-  };
-  const fontOpacities = {
-    XS: 0.75,
-    S: 0.85,
-    M: 1.0,
-    L: 1.0,
-    XL: 1.0
-  };
-  const fontMargins = {
-    XS: "2px 4px",
-    S: "3px 7px",
-    M: "5px 13px",
-    L: "9px 25px",
-    XL: "17px 49px"
-  };
-  const fontWeights = {
-    XS: "300",
-    S: "300",
-    M: "300",
-    L: "300",
-    XL: "300"
-  };
-  const fontSize = level =>
-    level ? (level in fontSizes ? fontSizes[level] : fontSizes.M) : fontSizes.M;
-  const fontOpacity = level =>
-    level
-      ? level in fontOpacities
-        ? fontOpacities[level]
-        : fontOpacities.M
-      : fontOpacities.M;
-  const fontMargin = level =>
-    level
-      ? level in fontMargins
-        ? fontMargins[level]
-        : fontMargins.M
-      : fontMargins.M;
-  const fontWeight = level =>
-    level
-      ? level in fontWeights
-        ? fontWeights[level]
-        : fontWeights.M
-      : fontWeights.M;
   return css`
     font-size: ${props.fontSize ? props.fontSize : fontSize(props.level)};
     color: ${props.color ? props.color : palette[colors.atoms.Text.Font]};
@@ -59,9 +75,39 @@ export const textStyle = props => {
     font-weight: ${props.fontWeight
       ? props.fontWeight
       : fontWeight(props.level)};
+    line-height: ${props =>
+      props.lineHeight ? props.lineHeight : fontLineHeight(props.level)};
+    ${props.userSelect && `user-select: ${props.userSelect};`};
+    ${props.cursor && `cursor: ${props.cursor};`};
   `;
 };
 
-export const Text = styled.span`
+const StyledLine = styled.p`
+  line-height: ${props =>
+    props.lineHeight ? props.lineHeight : fontLineHeight(props.level)};
+  margin: 0;
+`;
+
+const StyledText = styled.div`
   ${props => textStyle(props)};
 `;
+
+// Textのchildrenは文字列のみ許される
+export default class Text extends Component {
+  render() {
+    const children = this.props.children;
+    let { level, lineHeight } = this.props;
+    level = level ? level : "M";
+    return (
+      <StyledText {...this.props}>
+        {children &&
+          (typeof children === "string" || children instanceof String) &&
+          children.split("\n").map((line, i) => (
+            <StyledLine key={i} level={level} lineHeight={lineHeight}>
+              {line}
+            </StyledLine>
+          ))}
+      </StyledText>
+    );
+  }
+}

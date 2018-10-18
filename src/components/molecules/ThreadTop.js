@@ -3,7 +3,7 @@ import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
-import { Text } from "../atoms/Text";
+import Text from "../atoms/Text";
 import { component } from "../mediaQuery";
 
 const StyledA = styled.a`

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Text } from "../atoms/Text";
+import Text from "../atoms/Text";
 import styled from "styled-components";
 
 import Wrapper from "../atoms/Wrapper";
