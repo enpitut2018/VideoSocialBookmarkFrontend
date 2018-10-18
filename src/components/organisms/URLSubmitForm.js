@@ -5,7 +5,7 @@ import Button from "../atoms/Button";
 import TextArea from "../atoms/TextArea";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
-import { Text } from "../atoms/Text";
+import Text from "../atoms/Text";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 60px auto;

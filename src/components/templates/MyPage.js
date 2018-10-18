@@ -4,7 +4,7 @@ import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 
 import MyPageItem from "../molecules/MyPageItem";
-import { Text } from "../atoms/Text";
+import Text from "../atoms/Text";
 
 export default class MyPageTemplate extends Component {
   render() {

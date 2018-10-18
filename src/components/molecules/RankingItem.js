@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
-import { Text } from "../atoms/Text";
+import Text from "../atoms/Text";
 import { style, component } from "../mediaQuery";
 
 const StyledLink = styled(Link)`
