@@ -2,6 +2,7 @@
   "Background": "White00",
   "Font": "Black00",
   "Shadow": "Black01",
+  "Border": "Black01",
   "atoms": {
     "Text": {
       "Font": "Black00"
