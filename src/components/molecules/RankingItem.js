@@ -41,7 +41,6 @@ const StyledWrapper = styled.div`
 
 export default class RankingItem extends Component {
   render() {
-    window.console.log(this.props.thread);
     return (
       <StyledLink to={"/threads/" + this.props.thread.id}>
         <Wrapper>
