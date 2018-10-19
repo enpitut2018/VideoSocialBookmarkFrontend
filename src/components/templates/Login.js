@@ -9,6 +9,7 @@ import Text from "../atoms/Text";
 
 import { connect } from "react-redux";
 import { signInUser } from "../../redux-token-auth-config";
+import { Redirect } from "react-router";
 
 class Login extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class Login extends Component {
     };
     return (
       <>
+        {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
           <Text level="XL">Login</Text>
@@ -63,6 +65,9 @@ class Login extends Component {
 }
 
 export default connect(
-  null,
+  store => ({
+    isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
+    isLoading: store.reduxTokenAuth.currentUser.isLoading
+  }),
   { signInUser }
 )(Login);
