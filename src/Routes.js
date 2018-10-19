@@ -10,7 +10,11 @@ import NotFound_404 from "./components/pages/NotFound_404";
 import About from "./components/pages/About";
 import Terms from "./components/pages/Terms";
 import Help from "./components/pages/Help";
+import { generateRequireSignInWrapper } from "redux-token-auth";
 
+const requireSignIn = generateRequireSignInWrapper({
+  redirectPathIfNotSignedIn: "/login"
+});
 class Routes extends React.Component {
   render() {
     return (
@@ -18,7 +22,11 @@ class Routes extends React.Component {
         <Switch>
           <Route exact={true} path="/" component={Top} />
           <Route exact={true} path="/threads/:id" component={Thread} />
-          <Route exact={true} path="/mypage" component={MyPage} />
+          <Route
+            exact={true}
+            path="/mypage"
+            component={requireSignIn(MyPage)}
+          />
           <Route exact={true} path="/about" component={About} />
           <Route exact={true} path="/terms" component={Terms} />
           <Route exact={true} path="/login" component={Login} />

@@ -7,8 +7,33 @@ import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button";
 import Text from "../atoms/Text";
 
-export default class Login extends Component {
+import { connect } from "react-redux";
+import { signInUser } from "../../redux-token-auth-config";
+
+class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { email: "", password: "" };
+
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+  }
+
+  handleEmailChange(email) {
+    this.setState({ email });
+  }
+
+  handlePasswordChange(password) {
+    this.setState({ password });
+  }
+
   render() {
+    const { signInUser } = this.props;
+    const { email, password } = this.state;
+    const submit = () => {
+      signInUser({ email, password });
+    };
     return (
       <>
         <Header />
@@ -17,9 +42,17 @@ export default class Login extends Component {
           <Form
             render={() => (
               <>
-                <TextInput placeholder="email" />
-                <TextInput placeholder="password" />
-                <Button mode="Primary">Submit</Button>
+                <TextInput
+                  placeholder="email"
+                  handleChange={this.handleEmailChange}
+                />
+                <TextInput
+                  placeholder="password"
+                  handleChange={this.handlePasswordChange}
+                />
+                <Button mode="Primary" onClick={submit}>
+                  Submit
+                </Button>
               </>
             )}
           />
@@ -28,3 +61,8 @@ export default class Login extends Component {
     );
   }
 }
+
+export default connect(
+  null,
+  { signInUser }
+)(Login);

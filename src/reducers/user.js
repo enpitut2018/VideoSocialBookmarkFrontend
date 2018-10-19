@@ -1,4 +1,8 @@
-import { GET_USER_REQUEST, GET_USER_SUCCESS, GET_USER_FAILURE } from "../actions/UserActions";
+import {
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS,
+  GET_USER_FAILURE
+} from "../actions/UserActions";
 
 const initialState = {
   hasLoaded: false,
@@ -10,7 +14,7 @@ export default (state = initialState, action) => {
     case GET_USER_REQUEST:
       return {
         ...state,
-        hasLoaded: false,
+        hasLoaded: false
       };
     case GET_USER_SUCCESS:
       return {
@@ -19,7 +23,7 @@ export default (state = initialState, action) => {
         user: action.user
       };
     case GET_USER_FAILURE:
-      break;
+      return state;
     default:
       return state;
   }
