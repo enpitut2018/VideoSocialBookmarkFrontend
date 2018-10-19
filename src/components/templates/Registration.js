@@ -56,10 +56,12 @@ class Registration extends Component {
                   handleChange={this.handleEmailChange}
                 />
                 <TextInput
+                  type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
                 />
                 <TextInput
+                  type="password"
                   placeholder="password confirmation"
                   handleChange={this.handlePasswordConfirmationChange}
                 />

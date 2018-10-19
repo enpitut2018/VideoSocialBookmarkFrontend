@@ -4,16 +4,21 @@ import Footer from "../organisms/Footer";
 
 import Ranking from "../organisms/Ranking";
 import URLSubmitForm from "../organisms/URLSubmitForm";
+import { connect } from "react-redux";
 
-export default class Top extends React.Component<{}> {
+class Top extends React.Component {
   render() {
     return (
       <>
         <Header />
-        <URLSubmitForm />
+        {this.props.isSignedIn && <URLSubmitForm />}
         <Ranking />
         <Footer />
       </>
     );
   }
 }
+
+export default connect(store => ({
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+}))(Top);

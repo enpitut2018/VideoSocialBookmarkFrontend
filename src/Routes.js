@@ -23,7 +23,7 @@ class Routes extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact={true} path="/" component={Top} />
-          <Route exact={true} path="/threads/:id" component={Thread} />
+          <Route exact={true} path="/entries/:id" component={Thread} />
           <Route
             exact={true}
             path="/mypage"

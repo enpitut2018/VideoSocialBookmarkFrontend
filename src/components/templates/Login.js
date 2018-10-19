@@ -49,6 +49,7 @@ class Login extends Component {
                   handleChange={this.handleEmailChange}
                 />
                 <TextInput
+                  type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
                 />
