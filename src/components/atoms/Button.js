@@ -1,15 +1,17 @@
 import * as React from "react";
 
-import Card from "./Card";
 import { elevate } from "../../theme/shadows";
 
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import styled from "styled-components";
 
-const StyledButton = styled(Card)`
+const StyledButton = styled.button`
+  display: inline-flex;
+
   cursor: pointer;
   user-select: none;
+  outline: none;
 
   padding: 12px 26px;
   margin: 10px;
@@ -27,6 +29,9 @@ const StyledButton = styled(Card)`
         ? palette[colors.atoms.Button[props.mode].Font]
         : palette[colors.atoms.Button.Font]
       : palette[colors.atoms.Button.Font]};
+
+  ${props => props.dir && "flex-direction: " + props.dir};
+  ${props => (props.elevation ? elevate(props.elevation) : elevate(0))};
 
   &:hover {
     ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
