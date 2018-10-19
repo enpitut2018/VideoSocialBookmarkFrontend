@@ -35,14 +35,20 @@ class Header extends React.Component {
         <StyledLink to="/mypage">
           <UserIcon url={this.props.url} />
         </StyledLink>
+
         {this.props.isSignedIn ? (
           <StyledLink to="/logout">
             <Text>Logout</Text>
           </StyledLink>
         ) : (
-          <StyledLink to="/login">
-            <Text>Login</Text>
-          </StyledLink>
+          <>
+            <StyledLink to="/login">
+              <Text>Login</Text>
+            </StyledLink>
+            <StyledLink to="/registration">
+              <Text>登録</Text>
+            </StyledLink>
+          </>
         )}
       </StyledCard>
     );

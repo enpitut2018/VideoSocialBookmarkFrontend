@@ -12,6 +12,7 @@ import About from "./components/pages/About";
 import Terms from "./components/pages/Terms";
 import Help from "./components/pages/Help";
 import { generateRequireSignInWrapper } from "redux-token-auth";
+import Registration from "./components/pages/Registration";
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: "/login"
@@ -32,6 +33,7 @@ class Routes extends React.Component {
           <Route exact={true} path="/terms" component={Terms} />
           <Route exact={true} path="/login" component={Login} />
           <Route exact={true} path="/logout" component={Logout} />
+          <Route exact={true} path="/registration" component={Registration} />
           <Route exact={true} path="/help" component={Help} />
           <Route path="*" component={NotFound_404} />
         </Switch>
