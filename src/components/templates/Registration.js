@@ -49,6 +49,7 @@ class Registration extends Component {
         <Wrapper dir="column">
           <Text level="XL">Registration</Text>
           <Form
+            onSubmit={submit} 
             render={() => (
               <>
                 <TextInput
@@ -65,7 +66,7 @@ class Registration extends Component {
                   placeholder="password confirmation"
                   handleChange={this.handlePasswordConfirmationChange}
                 />
-                <Button mode="Primary" onClick={submit}>
+                <Button mode="Primary" type="submit">
                   Submit
                 </Button>
               </>

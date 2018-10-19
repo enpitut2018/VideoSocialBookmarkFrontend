@@ -41,6 +41,7 @@ class URLSubmitForm extends Component {
       <StyledWrapper dir="column">
         <Text level="XL">Bookmark Video</Text>
         <Form
+          onSubmit={submit}
           render={props => (
             <>
               <TextInput
@@ -51,7 +52,7 @@ class URLSubmitForm extends Component {
                 placeholder="Comment"
                 handleChange={this.handleCommentChange}
               />
-              <Button mode="Primary" onClick={submit}>
+              <Button mode="Primary" type="submit">
                 Submit
               </Button>
             </>
