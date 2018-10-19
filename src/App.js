@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, compose } from "redux";
 import colors from "./theme/colors";
 import palette from "./theme/palette";
 
@@ -9,6 +9,7 @@ import Routes from "./Routes";
 import { injectGlobal } from "styled-components";
 import reducers from "./reducers";
 import thunk from "redux-thunk";
+import { verifyCredentials } from "./redux-token-auth-config";
 
 injectGlobal`
   html {
@@ -33,13 +34,22 @@ injectGlobal`
   }
 `;
 
-const devtool =
-  process.env.NODE_ENV === "development" && window["devToolsExtension"]
-    ? window["devToolsExtension"]()
-    : f => f;
-const middleware = applyMiddleware(thunk);
-
-const store = middleware(devtool(createStore))(reducers);
+const initialState = {
+  reduxTokenAuth: {
+    currentUser: {
+      isLoading: false,
+      isSignedIn: false,
+      attributes: {}
+    }
+  }
+};
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducers,
+  initialState,
+  composeEnhancers(applyMiddleware(thunk))
+);
+verifyCredentials(store);
 
 class App extends React.Component {
   render() {

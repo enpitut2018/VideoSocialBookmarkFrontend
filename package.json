@@ -13,12 +13,13 @@
     "react-scripts": "2.0.4",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "redux-token-auth": "^0.19.0",
     "serve": "^10.0.2",
     "styled-components": "^3.4.10"
   },
   "scripts": {
     "start:dev": "react-scripts start",
-    "start:prod": "yarn build; serve -s build",
+    "start:prod": "yarn build; cp -r build/* ../VideoSocialBookmark/VideoSocialBookmark/public",
     "start": "yarn mock & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
