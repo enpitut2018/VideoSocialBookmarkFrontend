@@ -8,17 +8,20 @@ import Button from "../atoms/Button";
 import Text from "../atoms/Text";
 
 import { connect } from "react-redux";
-import { signInUser } from "../../redux-token-auth-config";
+import { registerUser } from "../../redux-token-auth-config";
 import { Redirect } from "react-router";
 
-class Login extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { email: "", password: "" };
+    this.state = { email: "", password: "", passwordConfirmation: "" };
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handlePasswordConfirmationChange = this.handlePasswordConfirmationChange.bind(
+      this
+    );
   }
 
   handleEmailChange(email) {
@@ -29,18 +32,22 @@ class Login extends Component {
     this.setState({ password });
   }
 
+  handlePasswordConfirmationChange(passwordConfirmation) {
+    this.setState({ passwordConfirmation });
+  }
+
   render() {
-    const { signInUser } = this.props;
-    const { email, password } = this.state;
+    const { registerUser } = this.props;
+    const { email, password, passwordConfirmation } = this.state;
     const submit = () => {
-      signInUser({ email, password });
+      registerUser({ email, password, passwordConfirmation });
     };
     return (
       <>
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">Login</Text>
+          <Text level="XL">Registration</Text>
           <Form
             render={() => (
               <>
@@ -51,6 +58,10 @@ class Login extends Component {
                 <TextInput
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
+                />
+                <TextInput
+                  placeholder="password confirmation"
+                  handleChange={this.handlePasswordConfirmationChange}
                 />
                 <Button mode="Primary" onClick={submit}>
                   Submit
@@ -66,8 +77,7 @@ class Login extends Component {
 
 export default connect(
   store => ({
-    isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
-    isLoading: store.reduxTokenAuth.currentUser.isLoading
+    isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
   }),
-  { signInUser }
-)(Login);
+  { registerUser }
+)(Registration);

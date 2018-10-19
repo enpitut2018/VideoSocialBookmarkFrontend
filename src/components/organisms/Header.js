@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UserIcon from "../atoms/UserIcon";
+import Text from "../atoms/Text";
 
 import { getUserIcon } from "../../actions/UserActions";
 
@@ -34,6 +35,21 @@ class Header extends React.Component {
         <StyledLink to="/mypage">
           <UserIcon url={this.props.url} />
         </StyledLink>
+
+        {this.props.isSignedIn ? (
+          <StyledLink to="/logout">
+            <Text>Logout</Text>
+          </StyledLink>
+        ) : (
+          <>
+            <StyledLink to="/login">
+              <Text>Login</Text>
+            </StyledLink>
+            <StyledLink to="/registration">
+              <Text>登録</Text>
+            </StyledLink>
+          </>
+        )}
       </StyledCard>
     );
   }
@@ -41,5 +57,6 @@ class Header extends React.Component {
 
 export default connect(store => ({
   hasLoaded: store.userIcon.hasLoaded,
-  url: store.userIcon.url
+  url: store.userIcon.url,
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
 }))(Header);

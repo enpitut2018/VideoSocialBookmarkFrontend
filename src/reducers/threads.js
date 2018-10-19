@@ -1,4 +1,8 @@
-import { GET_THREAD_REQUEST, GET_THREAD_SUCCESS, GET_THREAD_FAILURE } from "../actions/ThreadActions";
+import {
+  GET_THREAD_REQUEST,
+  GET_THREAD_SUCCESS,
+  GET_THREAD_FAILURE
+} from "../actions/ThreadActions";
 
 const initialState = {
   hasLoaded: false,
@@ -10,7 +14,7 @@ export default (state = initialState, action) => {
     case GET_THREAD_REQUEST:
       return {
         ...state,
-        hasLoaded: false,
+        hasLoaded: false
       };
     case GET_THREAD_SUCCESS:
       return {
@@ -19,7 +23,7 @@ export default (state = initialState, action) => {
         thread: action.thread
       };
     case GET_THREAD_FAILURE:
-      break;
+      return state;
     default:
       return state;
   }

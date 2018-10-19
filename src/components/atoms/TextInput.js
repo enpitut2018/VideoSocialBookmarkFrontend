@@ -40,6 +40,9 @@ export default class TextInput extends React.Component {
     this.setState({
       value: e.target.value
     });
+    if (this.props.handleChange) {
+      this.props.handleChange(e.target.value);
+    }
     if (this.props.onChange) {
       this.props.onChange(e.target.value);
     }
