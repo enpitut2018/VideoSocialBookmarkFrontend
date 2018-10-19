@@ -3,6 +3,12 @@ import Wrapper from "../atoms/Wrapper";
 
 export default class Form extends Component {
   render() {
-    return <Wrapper dir="column">{this.props.render()}</Wrapper>;
+    return(
+      <form onSubmit={this.props.onSubmit}>
+        <Wrapper dir="column">
+          {this.props.render()}
+        </Wrapper>
+      </form>
+    );
   }
 }
