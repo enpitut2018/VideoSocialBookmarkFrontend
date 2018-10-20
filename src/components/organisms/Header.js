@@ -41,6 +41,8 @@ const RightContentsWrapper = styled(Wrapper)`
 `;
 
 const StyledUserIcon = styled(UserIcon)`
+  margin: 20px;
+
   &:hover {
     cursor: pointer;
   }
