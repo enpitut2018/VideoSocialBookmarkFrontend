@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UserIcon from "../atoms/UserIcon";
 import Text from "../atoms/Text";
+import Wrapper from "../atoms/Wrapper";
+import AnkerStyle from "../atoms/AnkerStyle";
 
 import { getUserIcon } from "../../actions/UserActions";
 
@@ -20,6 +22,19 @@ const StyledLink = styled(Link)`
 const StyledCard = styled(Card)`
   display: flex;
 `;
+
+const StyledTextLink = styled(StyledLink)`
+  ${AnkerStyle};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const RightContentsWrapper = styled(Wrapper)`
+  margin-right: 15px;
+`;
+
 class Header extends React.Component {
   componentWillMount() {
     this.props.dispatch(getUserIcon());
@@ -32,23 +47,24 @@ class Header extends React.Component {
           <Logo />
         </StyledLink>
 
-        <StyledLink to="/mypage">
-          <UserIcon url={this.props.url} />
-        </StyledLink>
-
         {this.props.isSignedIn ? (
-          <StyledLink to="/logout">
-            <Text>Logout</Text>
-          </StyledLink>
+          <Wrapper type="right">
+            <StyledLink to="/mypage">
+              <UserIcon url={this.props.url} />
+            </StyledLink>
+            <StyledLink to="/logout">
+              <Text>Logout</Text>
+            </StyledLink>
+          </Wrapper>
         ) : (
-          <>
-            <StyledLink to="/login">
-              <Text>Login</Text>
-            </StyledLink>
-            <StyledLink to="/registration">
-              <Text>登録</Text>
-            </StyledLink>
-          </>
+          <RightContentsWrapper type="right">
+            <StyledTextLink to="/login">
+              <Text margin="auto 20px">Login</Text>
+            </StyledTextLink>
+            <StyledTextLink to="/registration">
+              <Text margin="auto 20px">登録</Text>
+            </StyledTextLink>
+          </RightContentsWrapper>
         )}
       </StyledCard>
     );

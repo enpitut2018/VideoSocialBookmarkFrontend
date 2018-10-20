@@ -7,7 +7,8 @@ import {
 const initialState = {
   hasLoaded: false,
   ranking: [],
-  url: ""
+  url: "",
+  error: ""
 };
 
 export default (state = initialState, action) => {
@@ -24,7 +25,11 @@ export default (state = initialState, action) => {
         ranking: action.ranking
       };
     case GET_RANKING_FAILURE:
-      return state;
+      return {
+        ...state,
+        hasLoaded: false,
+        error: action.error
+      };
     default:
       return state;
   }
