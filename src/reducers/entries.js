@@ -1,8 +1,8 @@
 import {
-  GET_THREAD_REQUEST,
-  GET_THREAD_SUCCESS,
-  GET_THREAD_FAILURE
-} from "../actions/ThreadActions";
+  GET_ENTRY_REQUEST,
+  GET_ENTRY_SUCCESS,
+  GET_ENTRY_FAILURE
+} from "../actions/EntryActions";
 
 const initialState = {
   hasLoaded: false,
@@ -11,18 +11,18 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_THREAD_REQUEST:
+    case GET_ENTRY_REQUEST:
       return {
         ...state,
         hasLoaded: false
       };
-    case GET_THREAD_SUCCESS:
+    case GET_ENTRY_SUCCESS:
       return {
         ...state,
         hasLoaded: true,
-        thread: action.thread
+        entry: action.entry
       };
-    case GET_THREAD_FAILURE:
+    case GET_ENTRY_FAILURE:
       return state;
     default:
       return state;

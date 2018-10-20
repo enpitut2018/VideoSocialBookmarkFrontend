@@ -77,6 +77,8 @@ export const textStyle = props => {
       : fontWeight(props.level)};
     line-height: ${props =>
       props.lineHeight ? props.lineHeight : fontLineHeight(props.level)};
+    ${props.height && `height: ${props.height}`};
+    ${props.width && `width: ${props.width}`};
     ${props.userSelect && `user-select: ${props.userSelect};`};
     ${props.cursor && `cursor: ${props.cursor};`};
   `;

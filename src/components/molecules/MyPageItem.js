@@ -5,8 +5,8 @@ export default class MyPageItem extends Component {
   render() {
     return (
       <>
-        <RankingItem thread={this.props.thread} key={this.props.thread.id} />
-        <p>{this.props.thread.bookmark.comment}</p>
+        <RankingItem entry={this.props.entry} key={this.props.entry.id} />
+        <p>{this.props.entry.bookmark.comment}</p>
       </>
     );
   }
