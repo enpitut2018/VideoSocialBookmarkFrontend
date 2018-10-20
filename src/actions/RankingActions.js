@@ -6,12 +6,14 @@ export const GET_RANKING_SUCCESS = "GET_RANKING_SUCCESS";
 export const GET_RANKING_FAILURE = "GET_RANKING_FAILURE";
 
 export const getRanking = () => dispatch => {
+  const page = 1;
   dispatch({ type: GET_RANKING_REQUEST });
   return axios
-    .get(config.backend_api_url + "/ranking")
+    .get(config.backend_api_url + "/ranking/" + String(page))
     .then(res => {
       dispatch({ type: GET_RANKING_SUCCESS, ranking: res.data });
-    }).catch(_ => {
-      dispatch({ type: GET_RANKING_FAILURE, error: '' });
+    })
+    .catch(_ => {
+      dispatch({ type: GET_RANKING_FAILURE, error: "" });
     });
-}
+};

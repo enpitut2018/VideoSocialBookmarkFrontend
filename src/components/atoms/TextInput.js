@@ -51,7 +51,7 @@ export default class TextInput extends React.Component {
   render() {
     return (
       <StyledInput
-        type="text"
+        {...this.props}
         value={this.state.value}
         onChange={this.handleChange}
         placeholder={this.props.placeholder}
