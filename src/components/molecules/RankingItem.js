@@ -53,7 +53,7 @@ export default class RankingItem extends Component {
             })}
           <StyledThumbnail>
             <Thumbnail
-              src={this.props.thread.img}
+              src={this.props.thread.thumbnail_url}
               alt={this.props.thread.title}
             />
           </StyledThumbnail>
