@@ -16,18 +16,15 @@ class Login extends Component {
     super(props);
 
     this.state = { email: "", password: "" };
-
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
-  handleEmailChange(email) {
+  handleEmailChange = email => {
     this.setState({ email });
-  }
+  };
 
-  handlePasswordChange(password) {
+  handlePasswordChange = password => {
     this.setState({ password });
-  }
+  };
 
   render() {
     const { signInUser } = this.props;

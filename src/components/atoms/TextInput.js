@@ -33,10 +33,9 @@ export default class TextInput extends React.Component {
     this.state = {
       value: ""
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
+  handleChange = e => {
     this.setState({
       value: e.target.value
     });
@@ -46,7 +45,7 @@ export default class TextInput extends React.Component {
     if (this.props.onChange) {
       this.props.onChange(e.target.value);
     }
-  }
+  };
 
   render() {
     return (

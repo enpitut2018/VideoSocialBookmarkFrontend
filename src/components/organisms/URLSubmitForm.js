@@ -20,17 +20,15 @@ class URLSubmitForm extends Component {
       url: "",
       comment: ""
     };
-    this.handleUrlChange = this.handleUrlChange.bind(this);
-    this.handleCommentChange = this.handleCommentChange.bind(this);
   }
 
-  handleUrlChange(url) {
+  handleUrlChange = url => {
     this.setState({ url });
-  }
+  };
 
-  handleCommentChange(comment) {
+  handleCommentChange = comment => {
     this.setState({ comment });
-  }
+  };
 
   submit = e => {
     e.preventDefault();
