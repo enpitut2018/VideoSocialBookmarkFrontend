@@ -3,7 +3,7 @@ import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 
 import Ranking from "../organisms/Ranking";
-import URLSubmitForm from "../organisms/URLSubmitForm";
+import URLSubmitForm from "../organisms/URLSubmitForm";
 import { connect } from "react-redux";
 
 class Top extends React.Component {
