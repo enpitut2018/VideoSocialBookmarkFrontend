@@ -39,7 +39,8 @@ class Registration extends Component {
   render() {
     const { registerUser } = this.props;
     const { email, password, passwordConfirmation } = this.state;
-    const submit = () => {
+    const submit = e => {
+      e.preventDefault();
       registerUser({ email, password, passwordConfirmation });
     };
     return (
@@ -49,6 +50,7 @@ class Registration extends Component {
         <Wrapper dir="column">
           <Text level="XL">Registration</Text>
           <Form
+            onSubmit={submit}
             render={() => (
               <>
                 <TextInput
@@ -56,14 +58,16 @@ class Registration extends Component {
                   handleChange={this.handleEmailChange}
                 />
                 <TextInput
+                  type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
                 />
                 <TextInput
+                  type="password"
                   placeholder="password confirmation"
                   handleChange={this.handlePasswordConfirmationChange}
                 />
-                <Button mode="Primary" onClick={submit}>
+                <Button mode="Primary" type="submit">
                   Submit
                 </Button>
               </>

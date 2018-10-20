@@ -41,9 +41,8 @@ const StyledWrapper = styled.div`
 
 export default class RankingItem extends Component {
   render() {
-    window.console.log(this.props.thread);
     return (
-      <StyledLink to={"/threads/" + this.props.thread.id}>
+      <StyledLink to={"/entries/" + this.props.thread.id}>
         <Wrapper>
           {this.props.ranking &&
             component({
@@ -54,7 +53,7 @@ export default class RankingItem extends Component {
             })}
           <StyledThumbnail>
             <Thumbnail
-              src={this.props.thread.img}
+              src={this.props.thread.thumbnail_url}
               alt={this.props.thread.title}
             />
           </StyledThumbnail>
