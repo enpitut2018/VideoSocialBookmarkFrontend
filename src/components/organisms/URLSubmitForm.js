@@ -32,17 +32,17 @@ class URLSubmitForm extends Component {
     this.setState({ comment });
   }
 
-  render() {
-    const submit = e => {
-      e.preventDefault();
-      this.props.dispatch(postBookmark(this.state.url, this.state.comment));
-    };
+  submit = e => {
+    e.preventDefault();
+    this.props.dispatch(postBookmark(this.state.url, this.state.comment));
+  };
 
+  render() {
     return (
       <StyledWrapper dir="column">
         <Text level="XL">Bookmark Video</Text>
         <Form
-          onSubmit={submit}
+          onSubmit={this.submit}
           render={props => (
             <>
               <TextInput

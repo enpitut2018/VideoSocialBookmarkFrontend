@@ -55,6 +55,18 @@ export default class TextArea extends React.Component {
         value={this.state.value}
         onChange={this.handleChange}
         placeholder={this.props.placeholder}
+        title={`送信: Ctrl+Enter
+改行: Enter`}
+        onKeyDown={e => {
+          if (
+            e.keyCode === 13 &&
+            e.ctrlKey &&
+            e.target.form &&
+            e.target.form.reportValidity()
+          ) {
+            e.target.form.submit();
+          }
+        }}
       />
     );
   }
