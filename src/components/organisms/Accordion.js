@@ -22,14 +22,13 @@ export default class Accordion extends React.Component {
     this.state = {
       openedItemIndex: null
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(i) {
+  handleClick = i => {
     this.setState({
       openedItemIndex: i === this.state.openedItemIndex ? null : i
     });
-  }
+  };
 
   render() {
     return (

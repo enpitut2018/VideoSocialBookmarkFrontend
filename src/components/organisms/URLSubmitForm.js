@@ -20,34 +20,33 @@ class URLSubmitForm extends Component {
       url: "",
       comment: ""
     };
-    this.handleUrlChange = this.handleUrlChange.bind(this);
-    this.handleCommentChange = this.handleCommentChange.bind(this);
   }
 
-  handleUrlChange(url) {
+  handleUrlChange = url => {
     this.setState({ url });
-  }
+  };
 
-  handleCommentChange(comment) {
+  handleCommentChange = comment => {
     this.setState({ comment });
-  }
+  };
+
+  submit = e => {
+    e.preventDefault();
+    this.props.dispatch(postBookmark(this.state.url, this.state.comment));
+  };
 
   render() {
-    const submit = e => {
-      e.preventDefault();
-      this.props.dispatch(postBookmark(this.state.url, this.state.comment));
-    };
-
     return (
       <StyledWrapper dir="column">
         <Text level="XL">Bookmark Video</Text>
         <Form
-          onSubmit={submit}
+          onSubmit={this.submit}
           render={props => (
             <>
               <TextInput
                 placeholder="URL"
                 handleChange={this.handleUrlChange}
+                required
               />
               <TextArea
                 placeholder="Comment"
