@@ -52,9 +52,9 @@ class Header extends React.Component {
             <StyledLink to="/mypage">
               <UserIcon url={this.props.url} />
             </StyledLink>
-            <StyledLink to="/logout">
-              <Text>Logout</Text>
-            </StyledLink>
+            <StyledTextLink to="/logout">
+              <Text margin="auto 20px">Logout</Text>
+            </StyledTextLink>
           </Wrapper>
         ) : (
           <RightContentsWrapper type="right">
