@@ -7,6 +7,7 @@ const StyledUserIcon = styled.img`
   height: 46px;
   margin: 2px;
   border-radius: 50%;
+  border-width: 0;
 
   ${props => elevate(2)};
 
