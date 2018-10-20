@@ -49,11 +49,13 @@ class Login extends Component {
                 <TextInput
                   placeholder="email"
                   handleChange={this.handleEmailChange}
+                  required
                 />
                 <TextInput
                   type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
+                  required
                 />
                 <Button mode="Primary" type="submit">
                   Submit

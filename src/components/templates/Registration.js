@@ -56,16 +56,19 @@ class Registration extends Component {
                 <TextInput
                   placeholder="email"
                   handleChange={this.handleEmailChange}
+                  required
                 />
                 <TextInput
                   type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
+                  required
                 />
                 <TextInput
                   type="password"
                   placeholder="password confirmation"
                   handleChange={this.handlePasswordConfirmationChange}
+                  required
                 />
                 <Button mode="Primary" type="submit">
                   Submit
