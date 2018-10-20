@@ -45,6 +45,9 @@
       "Backgournd": "Black00",
       "Font": "Black00"
     },
+    "DropdownMenu": {
+      "Background": "White01"
+    },
     "URLSubmitForm": {},
     "Ranking": {}
   }
