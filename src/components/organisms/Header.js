@@ -26,6 +26,7 @@ const StyledLink = styled(Link)`
 
 const StyledCard = styled(Card)`
   display: flex;
+  padding-right: 18px;
 `;
 
 const StyledTextLink = styled(StyledLink)`
@@ -41,8 +42,6 @@ const RightContentsWrapper = styled(Wrapper)`
 `;
 
 const StyledUserIcon = styled(UserIcon)`
-  margin: 20px;
-
   &:hover {
     cursor: pointer;
   }
