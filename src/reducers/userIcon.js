@@ -3,6 +3,7 @@ import {
   GET_USER_ICON_SUCCESS,
   GET_USER_ICON_FAILURE
 } from "../actions/UserActions";
+import userIcon from "../assets/images/usericon.svg";
 
 const initialState = {
   hasLoaded: false,
@@ -23,7 +24,11 @@ export default (state = initialState, action) => {
         url: action.userIcon.url
       };
     case GET_USER_ICON_FAILURE:
-      return state;
+      return {
+        ...state,
+        hasLoaded: true,
+        url: userIcon
+      };
     default:
       return state;
   }

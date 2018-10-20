@@ -42,7 +42,7 @@ const StyledWrapper = styled.div`
 export default class RankingItem extends Component {
   render() {
     return (
-      <StyledLink to={"/entries/" + this.props.thread.id}>
+      <StyledLink to={"/entries/" + this.props.entry.id}>
         <Wrapper>
           {this.props.ranking &&
             component({
@@ -53,8 +53,8 @@ export default class RankingItem extends Component {
             })}
           <StyledThumbnail>
             <Thumbnail
-              src={this.props.thread.thumbnail_url}
-              alt={this.props.thread.title}
+              src={this.props.entry.thumbnail_url}
+              alt={this.props.entry.title}
             />
           </StyledThumbnail>
           <StyledWrapper type="right" dir="column">
@@ -62,11 +62,11 @@ export default class RankingItem extends Component {
               XL: (
                 <>
                   <Text level="L" margin="0">
-                    {this.props.thread.title}
+                    {this.props.entry.title}
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.thread.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -77,11 +77,11 @@ export default class RankingItem extends Component {
               L: (
                 <>
                   <Text level="M" margin="0" fontSize="14pt">
-                    {this.props.thread.title}
+                    {this.props.entry.title}
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.thread.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -92,11 +92,11 @@ export default class RankingItem extends Component {
               M: (
                 <>
                   <Text level="M" margin="0">
-                    {this.props.thread.title}
+                    {this.props.entry.title}
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.thread.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -107,11 +107,11 @@ export default class RankingItem extends Component {
               S: (
                 <>
                   <Text level="M" margin="0">
-                    {this.props.thread.title}
+                    {this.props.entry.title}
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.thread.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks

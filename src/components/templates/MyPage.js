@@ -15,8 +15,8 @@ export default class MyPageTemplate extends Component {
           <Text level="XL">My Bookmarks</Text>
           <Wrapper dir="column">
             {this.props.hasLoaded &&
-              this.props.user.threads.map(thread => (
-                <MyPageItem key={thread.id} thread={thread} />
+              this.props.user.entries.map(entry => (
+                <MyPageItem key={entry.id} entry={entry} />
               ))}
           </Wrapper>
         </Wrapper>

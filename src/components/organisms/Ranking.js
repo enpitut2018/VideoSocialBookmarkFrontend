@@ -30,7 +30,7 @@ class Ranking extends Component {
           <Wrapper dir="column">
             {this.props.hasLoaded &&
               this.props.ranking.map((item, i) => (
-                <RankingItem thread={item} ranking={i + 1} key={item.id} />
+                <RankingItem entry={item} ranking={i + 1} key={item.id} />
               ))}
           </Wrapper>
         </Wrapper>
