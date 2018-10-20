@@ -20,6 +20,6 @@ class Entry extends Component {
 }
 
 export default connect(store => ({
-  hasLoaded: store.entrys.hasLoaded,
-  entry: store.entrys.entry
+  hasLoaded: store.entries.hasLoaded,
+  entry: store.entries.entry
 }))(Entry);

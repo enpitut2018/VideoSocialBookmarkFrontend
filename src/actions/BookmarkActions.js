@@ -6,6 +6,13 @@ export const POST_BOOKMARK_REQUEST = "POST_BOOKMARK_REQUEST";
 export const POST_BOOKMARK_SUCCESS = "POST_BOOKMARK_SUCCESS";
 export const POST_BOOKMARK_FAILURE = "POST_BOOKMARK_FAILURE";
 
+export const POST_BOOKMARK_BY_ENTRY_ID_REQUEST =
+  "POST_BOOKMARK_BY_ENTRY_ID_REQUEST";
+export const POST_BOOKMARK_BY_ENTRY_ID_SUCCESS =
+  "POST_BOOKMARK_BY_ENTRY_ID_SUCCESS";
+export const POST_BOOKMARK_BY_ENTRY_ID_FAILURE =
+  "POST_BOOKMARK_BY_ENTRY_ID_FAILURE";
+
 export const postBookmark = (url, comment) => dispatch => {
   dispatch({ type: POST_BOOKMARK_REQUEST });
   setAuthKeys();
@@ -20,5 +27,21 @@ export const postBookmark = (url, comment) => dispatch => {
     })
     .catch(_ => {
       dispatch({ type: POST_BOOKMARK_FAILURE, error: "" });
+    });
+};
+
+export const postBookmarkByEntryId = (entryId, comment) => dispatch => {
+  dispatch({ type: POST_BOOKMARK_BY_ENTRY_ID_REQUEST });
+  setAuthKeys();
+
+  return axios
+    .post(config.backend_api_url + "/entries/" + String(entryId), {
+      comment
+    })
+    .then(res => {
+      dispatch({ type: POST_BOOKMARK_BY_ENTRY_ID_SUCCESS });
+    })
+    .catch(_ => {
+      dispatch({ type: POST_BOOKMARK_BY_ENTRY_ID_FAILURE, error: "" });
     });
 };
