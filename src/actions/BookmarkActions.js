@@ -1,6 +1,8 @@
 import axios from "axios";
 import config from "../config";
 import { setAuthKeys } from "../auth";
+import { getRanking } from "./RankingActions";
+import { getEntry } from "./EntryActions";
 
 export const POST_BOOKMARK_REQUEST = "POST_BOOKMARK_REQUEST";
 export const POST_BOOKMARK_SUCCESS = "POST_BOOKMARK_SUCCESS";
@@ -24,6 +26,7 @@ export const postBookmark = (url, comment) => dispatch => {
     })
     .then(res => {
       dispatch({ type: POST_BOOKMARK_SUCCESS });
+      dispatch(getRanking());
     })
     .catch(_ => {
       dispatch({ type: POST_BOOKMARK_FAILURE, error: "" });
@@ -40,6 +43,7 @@ export const postBookmarkByEntryId = (entryId, comment) => dispatch => {
     })
     .then(res => {
       dispatch({ type: POST_BOOKMARK_BY_ENTRY_ID_SUCCESS });
+      dispatch(getEntry(entryId));
     })
     .catch(_ => {
       dispatch({ type: POST_BOOKMARK_BY_ENTRY_ID_FAILURE, error: "" });

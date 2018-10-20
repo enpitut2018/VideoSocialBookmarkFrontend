@@ -33,6 +33,8 @@ class URLSubmitForm extends Component {
   submit = e => {
     e.preventDefault();
     this.props.dispatch(postBookmark(this.state.url, this.state.comment));
+    window.console.log(e.target.form);
+    e.target.form.reset();
   };
 
   render() {

@@ -28,6 +28,8 @@ class CommentSubmitForm extends Component {
     this.props.dispatch(
       postBookmarkByEntryId(this.props.entryId, this.state.comment)
     );
+    window.console.log(e.target.form);
+    e.target.form.reset();
   };
 
   render() {
