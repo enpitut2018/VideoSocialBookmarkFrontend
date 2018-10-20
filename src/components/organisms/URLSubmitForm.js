@@ -48,6 +48,7 @@ class URLSubmitForm extends Component {
               <TextInput
                 placeholder="URL"
                 handleChange={this.handleUrlChange}
+                required
               />
               <TextArea
                 placeholder="Comment"
