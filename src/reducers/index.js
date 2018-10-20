@@ -1,5 +1,5 @@
 import bookmarks from "./bookmarks";
-import threads from "./threads";
+import entries from "./entries";
 import ranking from "./ranking";
 import user from "./user";
 import userIcon from "./userIcon";
@@ -8,7 +8,7 @@ import { reduxTokenAuthReducer } from "redux-token-auth";
 
 const app = combineReducers({
   bookmarks,
-  threads,
+  entries,
   ranking,
   user,
   userIcon,

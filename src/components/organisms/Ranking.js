@@ -28,10 +28,15 @@ class Ranking extends Component {
         <Wrapper dir="column">
           <Text level="XL">Ranking</Text>
           <Wrapper dir="column">
-            {this.props.hasLoaded &&
+            {this.props.error ? (
+              <Text>ランキング取得に失敗しました</Text>
+            ) : this.props.hasLoaded ? (
               this.props.ranking.map((item, i) => (
-                <RankingItem thread={item} ranking={i + 1} key={item.id} />
-              ))}
+                <RankingItem entry={item} ranking={i + 1} key={item.id} />
+              ))
+            ) : (
+              <Text>Loading</Text>
+            )}
           </Wrapper>
         </Wrapper>
       </StyledRanking>
@@ -41,5 +46,6 @@ class Ranking extends Component {
 
 export default connect(store => ({
   hasLoaded: store.ranking.hasLoaded,
-  ranking: store.ranking.ranking
+  ranking: store.ranking.ranking,
+  error: store.ranking.error
 }))(Ranking);

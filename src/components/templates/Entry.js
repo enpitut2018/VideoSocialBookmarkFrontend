@@ -4,21 +4,21 @@ import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 import Form from "../molecules/Form";
 
-import ThreadTop from "../molecules/ThreadTop";
-import ThreadItem from "../molecules/ThreadItem";
+import EntryTop from "../molecules/EntryTop";
+import EntryItem from "../molecules/EntryItem";
 import CommentSubmitForm from "../organisms/CommentSubmitForm";
 
-export default class Thread extends Component {
+export default class Entry extends Component {
   render() {
     return (
       <>
         <Header />
         {this.props.hasLoaded && (
           <>
-            <ThreadTop {...this.props} />
+            <EntryTop {...this.props} />
             <Wrapper dir="column">
-              {this.props.thread.bookmarks.map(bookmark => (
-                <ThreadItem bookmark={bookmark} key={bookmark.id} />
+              {this.props.entry.bookmarks.map(bookmark => (
+                <EntryItem bookmark={bookmark} key={bookmark.id} />
               ))}
             </Wrapper>
             <Form render={props => <CommentSubmitForm />} />

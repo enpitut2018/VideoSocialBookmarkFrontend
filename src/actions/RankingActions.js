@@ -13,7 +13,7 @@ export const getRanking = () => dispatch => {
     .then(res => {
       dispatch({ type: GET_RANKING_SUCCESS, ranking: res.data });
     })
-    .catch(_ => {
-      dispatch({ type: GET_RANKING_FAILURE, error: "" });
+    .catch(e => {
+      dispatch({ type: GET_RANKING_FAILURE, error: e });
     });
 };
