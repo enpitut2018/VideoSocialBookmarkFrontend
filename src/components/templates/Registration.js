@@ -39,7 +39,8 @@ class Registration extends Component {
   render() {
     const { registerUser } = this.props;
     const { email, password, passwordConfirmation } = this.state;
-    const submit = () => {
+    const submit = e => {
+      e.preventDefault();
       registerUser({ email, password, passwordConfirmation });
     };
     return (
@@ -49,7 +50,7 @@ class Registration extends Component {
         <Wrapper dir="column">
           <Text level="XL">Registration</Text>
           <Form
-            onSubmit={submit} 
+            onSubmit={submit}
             render={() => (
               <>
                 <TextInput

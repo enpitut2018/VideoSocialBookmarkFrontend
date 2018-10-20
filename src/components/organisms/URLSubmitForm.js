@@ -33,7 +33,8 @@ class URLSubmitForm extends Component {
   }
 
   render() {
-    const submit = () => {
+    const submit = e => {
+      e.preventDefault();
       this.props.dispatch(postBookmark(this.state.url, this.state.comment));
     };
 

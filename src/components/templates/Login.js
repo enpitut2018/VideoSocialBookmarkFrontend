@@ -32,7 +32,8 @@ class Login extends Component {
   render() {
     const { signInUser } = this.props;
     const { email, password } = this.state;
-    const submit = () => {
+    const submit = e => {
+      e.preventDefault();
       signInUser({ email, password });
     };
     return (

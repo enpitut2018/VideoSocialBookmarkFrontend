@@ -45,6 +45,7 @@ export default class Button extends React.Component {
   render() {
     return (
       <StyledButton
+        {...this.props}
         mode={this.props.mode}
         elevation={this.props.elevation ? this.props.elevation : 2}
         onClick={this.props.onClick}
