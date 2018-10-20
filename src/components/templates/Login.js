@@ -16,18 +16,15 @@ class Login extends Component {
     super(props);
 
     this.state = { email: "", password: "" };
-
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
-  handleEmailChange(email) {
+  handleEmailChange = email => {
     this.setState({ email });
-  }
+  };
 
-  handlePasswordChange(password) {
+  handlePasswordChange = password => {
     this.setState({ password });
-  }
+  };
 
   render() {
     const { signInUser } = this.props;
@@ -49,11 +46,13 @@ class Login extends Component {
                 <TextInput
                   placeholder="email"
                   handleChange={this.handleEmailChange}
+                  required
                 />
                 <TextInput
                   type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
+                  required
                 />
                 <Button mode="Primary" type="submit">
                   Submit

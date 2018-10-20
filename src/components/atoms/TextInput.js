@@ -33,10 +33,9 @@ export default class TextInput extends React.Component {
     this.state = {
       value: ""
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
+  handleChange = e => {
     this.setState({
       value: e.target.value
     });
@@ -46,7 +45,7 @@ export default class TextInput extends React.Component {
     if (this.props.onChange) {
       this.props.onChange(e.target.value);
     }
-  }
+  };
 
   render() {
     return (
@@ -55,6 +54,16 @@ export default class TextInput extends React.Component {
         value={this.state.value}
         onChange={this.handleChange}
         placeholder={this.props.placeholder}
+        onKeyDown={e => {
+          if (
+            e.keyCode === 13 &&
+            e.ctrlKey &&
+            e.target.form &&
+            e.target.form.reportValidity()
+          ) {
+            e.target.form.submit();
+          }
+        }}
       />
     );
   }
