@@ -16,6 +16,7 @@ const StyledButton = styled.button`
   padding: 12px 26px;
   margin: 10px;
   border-radius: 23px;
+  border-width: 0;
 
   background-color: ${props =>
     props.mode
@@ -31,7 +32,7 @@ const StyledButton = styled.button`
       : palette[colors.atoms.Button.Font]};
 
   ${props => props.dir && "flex-direction: " + props.dir};
-  ${props => (props.elevation ? elevate(props.elevation) : elevate(0))};
+  ${props => (props.elevation ? elevate(props.elevation) : elevate(2))};
 
   &:hover {
     ${props => elevate(props.elevation ? props.elevation + 2 : 4)};

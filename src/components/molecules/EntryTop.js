@@ -43,7 +43,7 @@ export default class EntryTop extends Component {
             })}
             <StyledThumbnail>
               <Thumbnail
-                src={this.props.entry.img}
+                src={this.props.entry.thumbnail_url}
                 alt={this.props.entry.title}
               />
             </StyledThumbnail>

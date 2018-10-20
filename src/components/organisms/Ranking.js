@@ -31,6 +31,7 @@ class Ranking extends Component {
             {this.props.error ? (
               <Text>ランキング取得に失敗しました</Text>
             ) : this.props.hasLoaded ? (
+              this.props.ranking &&
               this.props.ranking.map((item, i) => (
                 <RankingItem entry={item} ranking={i + 1} key={item.id} />
               ))
