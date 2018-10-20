@@ -22,7 +22,7 @@ const StyledDropdownMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin: 5px;
+  margin: 2px;
 `;
 
 export default class DropdownMenu extends Component {

@@ -26,6 +26,7 @@ const StyledLink = styled(Link)`
 
 const StyledCard = styled(Card)`
   display: flex;
+  padding-right: 18px;
 `;
 
 const StyledTextLink = styled(StyledLink)`
