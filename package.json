@@ -18,7 +18,7 @@
     "styled-components": "^3.4.10"
   },
   "scripts": {
-    "start:dev": "react-scripts start",
+    "start:dev": "PORT=3001 react-scripts start",
     "start:prod": "yarn build; cp -r build/* ../public",
     "start": "yarn mock & react-scripts start",
     "build": "react-scripts build",
