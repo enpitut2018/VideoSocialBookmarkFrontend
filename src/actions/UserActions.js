@@ -7,6 +7,34 @@ export const GET_USER_FAILURE = "GET_USER_FAILURE";
 export const GET_USER_ICON_REQUEST = "GET_USER_ICON_REQUEST";
 export const GET_USER_ICON_SUCCESS = "GET_USER_ICON_SUCCESS";
 export const GET_USER_ICON_FAILURE = "GET_USER_ICON_FAILURE";
+export const GET_USER_BOOKMARKS_REQUEST = "GET_USER_BOOKMARKS_REQUEST";
+export const GET_USER_BOOKMARKS_SUCCESS = "GET_USER_BOOKMARKS_SUCCESS";
+export const GET_USER_BOOKMARKS_FAILURE = "GET_USER_BOOKMARKS_FAILURE";
+
+export const getUserBookmarks = () => dispatch => {
+  dispatch({ type: GET_USER_BOOKMARKS_REQUEST });
+  dispatch({
+    type: GET_USER_BOOKMARKS_SUCCESS,
+    bookmarks: [
+      {
+        id: 1,
+        comment: "Test",
+        user: {
+          id: 1,
+          name: "TestMan",
+        }
+      },
+      {
+        id: 2,
+        comment: "Test2",
+        user: {
+          id: 1,
+          name: "TestMan",
+        }
+      }
+    ]
+  })
+}
 
 export const getUser = () => dispatch => {
   dispatch({ type: GET_USER_REQUEST });

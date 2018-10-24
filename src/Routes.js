@@ -11,6 +11,7 @@ import NotFound_404 from "./components/pages/NotFound_404";
 import About from "./components/pages/About";
 import Terms from "./components/pages/Terms";
 import Help from "./components/pages/Help";
+import User from "./components/pages/User";
 import { generateRequireSignInWrapper } from "redux-token-auth";
 import Registration from "./components/pages/Registration";
 
@@ -24,6 +25,7 @@ class Routes extends React.Component {
         <Switch>
           <Route exact={true} path="/" component={Top} />
           <Route exact={true} path="/entries/:id" component={Entry} />
+          <Route exact={true} path="/users/:id" component={User} />
           <Route
             exact={true}
             path="/mypage"
