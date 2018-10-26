@@ -7,7 +7,7 @@ import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import Text from "../atoms/Text";
 import { connect } from "react-redux";
-import { postBookmark } from "../../actions/BookmarkActions";
+import { postComment } from "../../actions/CommentActions";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 60px auto;
@@ -32,8 +32,7 @@ class URLSubmitForm extends Component {
 
   submit = e => {
     e.preventDefault();
-    this.props.dispatch(postBookmark(this.state.url, this.state.comment));
-    window.console.log(e.target.form);
+    this.props.dispatch(postComment(this.state.url, this.state.comment));
     e.target.form.reset();
   };
 
@@ -66,5 +65,5 @@ class URLSubmitForm extends Component {
 }
 
 export default connect(store => ({
-  isLoading: store.bookmarks.isLoading
+  isLoading: store.comments.isLoading
 }))(URLSubmitForm);
