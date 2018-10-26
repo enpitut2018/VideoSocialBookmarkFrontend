@@ -18,18 +18,22 @@ export const getUserBookmarks = () => dispatch => {
     bookmarks: [
       {
         id: 1,
-        comment: "Test",
-        user: {
-          id: 1,
-          name: "TestMan",
+        comment: "SYNODOS】方言とコミュニケーション――「ヴァーチャル方言」とその効能／田中ゆかり / 日本語学",
+        entry: {
+          id: 3,
+          url: "https://www.youtube.com/watch?v=5AEbq6X33A8",
+          title: "24/7 lofi hip hop radio - beats to chill/study/relax - YouTube",
+          thumbnail_url: "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg"
         }
       },
       {
         id: 2,
-        comment: "Test2",
-        user: {
-          id: 1,
-          name: "TestMan",
+        comment: "わいも90分授業を2回ぐらいやったことがあるぜ、スマートフォンとプロセッサ、スマートフォンのOSってので2コマ",
+        entry: {
+          id: 12,
+          url: "https://www.youtube.com/watch?v=ET6657PH9gQ",
+          title: "TANUKI - BABYBABYの夢 - YouTube",
+          thumbnail_url: "https://img.youtube.com/vi/ET6657PH9gQ/default.jpg"
         }
       }
     ]
