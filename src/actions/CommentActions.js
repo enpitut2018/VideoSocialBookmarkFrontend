@@ -13,7 +13,9 @@ export const postComment = (entryId, comment) => dispatch => {
 
   return axios
     .post(config.backend_api_url + "/entries/" + String(entryId) + "/comments", {
-      comment
+      comment: {
+        content: comment
+      }
     })
     .then(res => {
       dispatch({ type: POST_COMMENT_SUCCESS });
