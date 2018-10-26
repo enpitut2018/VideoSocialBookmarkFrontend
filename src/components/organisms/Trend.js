@@ -6,19 +6,17 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import TrendItem from "../molecules/TrendItem";
 import { getTrend } from "../../actions/TrendActions";
+import { preloadTrend } from "../../actions/EntryActions";
 
 const StyledTrend = styled.div`
   padding: 0 0 20px 0;
 `;
 
 class Trend extends Component {
-  static fetchData({ dispatch }) {
-    return dispatch(getTrend());
-  }
-
   componentWillMount() {
     if (!this.props.hasLoaded) {
-      Trend.fetchData({ dispatch: this.props.dispatch });
+      this.props.getTrend();
+      this.props.preloadTrend();
     }
   }
 
@@ -49,4 +47,6 @@ export default connect(store => ({
   hasLoaded: store.trend.hasLoaded,
   trend: store.trend.trend,
   error: store.trend.error
-}))(Trend);
+}),
+  { getTrend, preloadTrend }
+)(Trend);
