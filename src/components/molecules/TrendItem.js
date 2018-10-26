@@ -66,7 +66,7 @@ export default class TrendItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -81,7 +81,7 @@ export default class TrendItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -96,7 +96,7 @@ export default class TrendItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -111,7 +111,7 @@ export default class TrendItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks

@@ -1,16 +1,38 @@
 import {
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
-  GET_USER_FAILURE
+  GET_USER_FAILURE,
+  GET_USER_BOOKMARKS_REQUEST,
+  GET_USER_BOOKMARKS_SUCCESS,
+  GET_USER_BOOKMARKS_FAILURE,
 } from "../actions/UserActions";
 
 const initialState = {
   hasLoaded: false,
-  user: ""
+  hasBookmarkLoaded: false,
+  user: "",
+  bookmarks: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case GET_USER_BOOKMARKS_REQUEST:
+      return {
+        ...state,
+        hasBookmarkLoaded: false
+      };
+    case GET_USER_BOOKMARKS_SUCCESS:
+      return {
+        ...state,
+        hasBookmarkLoaded: true,
+        bookmarks: action.bookmarks
+      };
+    case GET_USER_BOOKMARKS_FAILURE:
+      return state;
+      return {
+        ...state,
+        hasBookmarkLoaded: true,
+      }
     case GET_USER_REQUEST:
       return {
         ...state,

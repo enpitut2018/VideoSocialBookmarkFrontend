@@ -12,8 +12,8 @@ install:
   - yarn
 
 before_script:
-  - yarn mock &
-  - "sleep 5" # Wait for the mock server to start
+#  - yarn mock &
+#  - "sleep 5" # Wait for the mock server to start
 
 script:
   - yarn test

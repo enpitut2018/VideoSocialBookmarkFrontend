@@ -6,19 +6,17 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import TrendItem from "../molecules/TrendItem";
 import { getTrend } from "../../actions/TrendActions";
+import { preloadTrend } from "../../actions/EntryActions";
 
 const StyledTrend = styled.div`
   padding: 0 0 20px 0;
 `;
 
 class Trend extends Component {
-  static fetchData({ dispatch }) {
-    return dispatch(getTrend());
-  }
-
   componentWillMount() {
     if (!this.props.hasLoaded) {
-      Trend.fetchData({ dispatch: this.props.dispatch });
+      this.props.getTrend();
+      this.props.preloadTrend();
     }
   }
 
@@ -29,7 +27,7 @@ class Trend extends Component {
           <Text level="XL">Trend</Text>
           <Wrapper dir="column">
             {this.props.error ? (
-              <Text>Trend取得に失敗しました</Text>
+              <Text>トレンドの取得に失敗しました</Text>
             ) : this.props.hasLoaded ? (
               this.props.trend &&
               this.props.trend.map((item, i) => (
@@ -49,4 +47,6 @@ export default connect(store => ({
   hasLoaded: store.trend.hasLoaded,
   trend: store.trend.trend,
   error: store.trend.error
-}))(Trend);
+}),
+  { getTrend, preloadTrend }
+)(Trend);
