@@ -6,10 +6,10 @@ export const GET_ENTRY_SUCCESS = "GET_ENTRY_SUCCESS";
 export const GET_ENTRY_FAILURE = "GET_ENTRY_FAILURE";
 export const PRELOAD_ENTRIES = "PRELOAD_ENTRIES";
 
-export const preloadRanking = () => dispatch => {
+export const preloadTrend = () => dispatch => {
   const page = 1
   return axios
-    .get(`${config.backend_api_url}/ranking/${String(page)}/preload`)
+    .get(`${config.backend_api_url}/trend/${String(page)}/preload`)
     .then(res => {
       dispatch({ type: PRELOAD_ENTRIES, entries: res.data });
     })
