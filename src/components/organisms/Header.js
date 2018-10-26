@@ -18,6 +18,9 @@ import { getUserIcon } from "../../actions/UserActions";
 import personIcon from "../../assets/images/material-icon/baseline-person-24px.svg";
 import exitIcon from "../../assets/images/material-icon/baseline-exit_to_app-24px.svg";
 
+import colors from "../../theme/colors.json";
+import palette from "../../theme/palette.json";
+
 const StyledLink = styled(Link)`
   padding: 0;
   margin: 0;
@@ -27,6 +30,7 @@ const StyledLink = styled(Link)`
 const StyledCard = styled(Card)`
   display: flex;
   padding-right: 18px;
+  background-color: ${palette[colors.organisms.Header.Background]};
 `;
 
 const StyledTextLink = styled(StyledLink)`

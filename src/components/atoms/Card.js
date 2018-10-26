@@ -1,6 +1,6 @@
 import Wrapper from "./Wrapper";
 
-import { elevate } from "../../theme/shadows";
+import elevate from "../../theme/shadows";
 import styled from "styled-components";
 
 export default styled(Wrapper)`

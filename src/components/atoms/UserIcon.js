@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { elevate } from "../../theme/shadows";
+import elevate from "../../theme/shadows";
 
 const StyledUserIcon = styled.img`
   height: 46px;

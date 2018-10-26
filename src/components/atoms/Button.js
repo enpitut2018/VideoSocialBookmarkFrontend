@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { elevate } from "../../theme/shadows";
+import elevate from "../../theme/shadows";
 
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
