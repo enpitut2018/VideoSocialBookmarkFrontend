@@ -5,9 +5,9 @@ import palette from "../../theme/palette.json";
 
 export default css`
   text-decoration: none;
-  color: ${palette[colors.molecules.RankingItem.Font]};
+  color: ${palette[colors.molecules.TrendItem.Font]};
 
   &:hover {
-    color: ${palette[colors.molecules.RankingItem.Hover.Font]};
+    color: ${palette[colors.molecules.TrendItem.Hover.Font]};
   }
 `;

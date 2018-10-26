@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { elevate } from "../../theme/shadows";
+import elevate from "../../theme/shadows";
 
 const StyledUserIcon = styled.img`
   height: 46px;
   margin: 2px;
   border-radius: 50%;
   border-width: 0;
-
-  ${props => elevate(2)};
 
   &:hover {
     ${props => elevate(4)};

@@ -28,7 +28,18 @@
     }
   },
   "molecules": {
-    "RankingItem": {
+    "Star": {
+      "Enable": {
+        "Fill": "Red00"
+      },
+      "Hover": {
+        "Fill": "Red00"
+      },
+      "Disable": {
+        "Fill": "Black04"
+      }
+    },
+    "TrendItem": {
       "Font": "Black00",
       "Hover": {
         "Font": "Black02"
@@ -42,13 +53,13 @@
   },
   "organisms": {
     "Header": {
-      "Backgournd": "Black00",
+      "Background": "White00",
       "Font": "Black00"
     },
     "DropdownMenu": {
       "Background": "White01"
     },
     "URLSubmitForm": {},
-    "Ranking": {}
+    "Trend": {}
   }
 }

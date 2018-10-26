@@ -5,16 +5,25 @@ import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
 import Text from "../atoms/Text";
 import { component } from "../mediaQuery";
+import { style } from "../mediaQuery";
+import Star from "./Star";
 
 const StyledA = styled.a`
   display: flex;
   flex-direction: column;
 
+  ${style({
+    S: `width: 95%`,
+    M: `width: 90%`,
+    L: `width: 90%`,
+    XL: `width: 800px`
+  })};
   ${AnkerStyle};
 `;
 
 const StyledThumbnail = styled.div`
   margin: 10px 0;
+  width: 100%;
 `;
 
 export default class EntryTop extends Component {
@@ -50,10 +59,12 @@ export default class EntryTop extends Component {
           </Wrapper>
         </StyledA>
 
-        <Text level="L">
+        <Text level="L" margin="25px auto 15px auto">
           {this.props.entry.num_of_bookmarked + " "}
           Bookmarks
         </Text>
+
+        <Star></Star>
       </Wrapper>
     );
   }

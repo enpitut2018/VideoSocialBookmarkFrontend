@@ -16,9 +16,9 @@ export default class Entry extends Component {
           <>
             <EntryTop {...this.props} />
             <Wrapper dir="column">
-              {this.props.entry.bookmarks &&
-                this.props.entry.bookmarks.map(bookmark => (
-                  <EntryItem bookmark={bookmark} key={bookmark.id} />
+              {this.props.entry.comments &&
+                this.props.entry.comments.map(comment => (
+                  <EntryItem comment={comment} key={comment.id} />
                 ))}
             </Wrapper>
             <CommentSubmitForm entryId={this.props.entry.id} />

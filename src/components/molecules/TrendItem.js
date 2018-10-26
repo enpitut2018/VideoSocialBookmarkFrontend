@@ -32,24 +32,24 @@ const StyledWrapper = styled.div`
   height: 90px;
 
   ${style({
-    S: `max-width: 300px`,
-    M: `max-width: 400px`,
-    L: `max-width: 500px`,
-    XL: `max-width: 800px`
+    S: `width: 95%`,
+    M: `width: 90%`,
+    L: `width: 90%`,
+    XL: `width: 800px`
   })};
 `;
 
-export default class RankingItem extends Component {
+export default class TrendItem extends Component {
   render() {
     return (
       <StyledLink to={"/entries/" + this.props.entry.id}>
         <Wrapper>
-          {this.props.ranking &&
+          {this.props.trend &&
             component({
-              XL: <Text level="XL">{String(this.props.ranking) + ". "}</Text>,
-              L: <Text level="L">{String(this.props.ranking) + ". "}</Text>,
-              M: <Text level="M">{String(this.props.ranking) + ". "}</Text>,
-              S: <Text level="M">{String(this.props.ranking) + ". "}</Text>
+              XL: <Text level="XL">{String(this.props.trend) + ". "}</Text>,
+              L: <Text level="L">{String(this.props.trend) + ". "}</Text>,
+              M: <Text level="M">{String(this.props.trend) + ". "}</Text>,
+              S: <Text level="M">{String(this.props.trend) + ". "}</Text>
             })}
           <StyledThumbnail>
             <Thumbnail
@@ -66,7 +66,7 @@ export default class RankingItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -81,7 +81,7 @@ export default class RankingItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -96,7 +96,7 @@ export default class RankingItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks
@@ -111,7 +111,7 @@ export default class RankingItem extends Component {
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
-                      {this.props.entry.num_of_bookmarked}
+                      {this.props.entry.num_of_bookmarked}
                     </Text>
                     <Text level="XS" margin="0">
                       Bookmarks

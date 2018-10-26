@@ -4,10 +4,13 @@ import React from "react";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 
 const StyledImg = styled.img`
-  width: 120px;
-  height: 90px;
+  width: ${props => (props.width ? props.width : "100%")};
 `;
 
 export default props => (
-  <StyledImg src={props.src ? props.src : Placeholder} alt={props.alt} />
+  <StyledImg
+    {...props}
+    src={props.src ? props.src : Placeholder}
+    alt={props.alt}
+  />
 );

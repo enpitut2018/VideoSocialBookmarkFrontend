@@ -1,10 +1,10 @@
 import colors from "./colors";
 import palette from "./palette";
 
-export const elevate = e => {
+export default e => {
   return `
-    box-shadow: 0 ${e * 1.2}px ${e * 1.4}px ${e * 0.2 + 1.0}px ${
+    filter: drop-shadow(0 ${e * 1.2 + 1}px ${e * 1.4 + 1}px ${
     palette[colors.Shadow]
-  };
+  });
   `;
 };
