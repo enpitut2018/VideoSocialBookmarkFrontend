@@ -2,7 +2,7 @@ import * as React from "react";
 import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 
-import Ranking from "../organisms/Ranking";
+import Trend from "../organisms/Trend";
 import URLSubmitForm from "../organisms/URLSubmitForm";
 import { connect } from "react-redux";
 
@@ -12,7 +12,7 @@ class Top extends React.Component {
       <>
         <Header />
         {this.props.isSignedIn && <URLSubmitForm />}
-        <Ranking />
+        <Trend />
         <Footer />
       </>
     );
