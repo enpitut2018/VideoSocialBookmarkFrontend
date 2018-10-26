@@ -21,7 +21,9 @@ export default class Entry extends Component {
                   <EntryItem comment={comment} key={comment.id} />
                 ))}
             </Wrapper>
-            <CommentSubmitForm entryId={this.props.entry.id} />
+            {this.props.isSignedIn && (
+              <CommentSubmitForm entryId={this.props.entry.id} />
+            )}
           </>
         )}
         <Footer />

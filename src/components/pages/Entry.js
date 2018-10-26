@@ -14,6 +14,7 @@ class Entry extends Component {
       <EntryTemplate
         hasLoaded={this.props.hasLoaded}
         entry={this.props.entry}
+        isSignedIn={this.props.isSignedIn}
       />
     );
   }
@@ -21,5 +22,6 @@ class Entry extends Component {
 
 export default connect(store => ({
   hasLoaded: store.entries.hasLoaded,
-  entry: store.entries.entry
+  entry: store.entries.entry,
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
 }))(Entry);

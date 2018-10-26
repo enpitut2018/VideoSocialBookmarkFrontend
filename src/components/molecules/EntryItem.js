@@ -12,6 +12,11 @@ const StyledWrapper = styled(Wrapper)`
 
   margin: 16px 5px;
 
+  &:last-child {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+
   ${style({
     S: `width: 95%`,
     M: `width: 90%`,
