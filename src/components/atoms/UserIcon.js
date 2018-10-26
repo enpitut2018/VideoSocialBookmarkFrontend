@@ -9,8 +9,6 @@ const StyledUserIcon = styled.img`
   border-radius: 50%;
   border-width: 0;
 
-  ${props => elevate(2)};
-
   &:hover {
     ${props => elevate(4)};
   }

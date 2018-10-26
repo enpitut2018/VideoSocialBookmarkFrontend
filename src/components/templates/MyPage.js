@@ -15,6 +15,8 @@ export default class MyPageTemplate extends Component {
           <Text level="XL">My Bookmarks</Text>
           <Wrapper dir="column">
             {this.props.hasLoaded &&
+              this.props.user &&
+              this.props.user.entries &&
               this.props.user.entries.map(entry => (
                 <MyPageItem key={entry.id} entry={entry} />
               ))}

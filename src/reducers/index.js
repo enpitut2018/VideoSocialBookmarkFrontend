@@ -1,4 +1,4 @@
-import bookmarks from "./bookmarks";
+import comments from "./comments";
 import entries from "./entries";
 import trend from "./trend";
 import user from "./user";
@@ -7,7 +7,7 @@ import { combineReducers } from "redux";
 import { reduxTokenAuthReducer } from "redux-token-auth";
 
 const app = combineReducers({
-  bookmarks,
+  comments,
   entries,
   trend,
   user,

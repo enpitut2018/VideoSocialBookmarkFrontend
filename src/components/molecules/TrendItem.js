@@ -32,10 +32,10 @@ const StyledWrapper = styled.div`
   height: 90px;
 
   ${style({
-    S: `max-width: 300px`,
-    M: `max-width: 400px`,
-    L: `max-width: 500px`,
-    XL: `max-width: 800px`
+    S: `width: 95%`,
+    M: `width: 90%`,
+    L: `width: 90%`,
+    XL: `width: 800px`
   })};
 `;
 

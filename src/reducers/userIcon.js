@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         hasLoaded: true,
-        url: action.userIcon.url
+        url: action.userIcon.url || userIcon
       };
     case GET_USER_ICON_FAILURE:
       return {
