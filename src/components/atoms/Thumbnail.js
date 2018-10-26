@@ -4,7 +4,8 @@ import React from "react";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 
 const StyledImg = styled.img`
-  width: ${props => (props.width ? props.width : "100%")};
+  ${props => props.width && `width: ` + props.width};
+  ${props => props.height && `height: ` + props.height};
 `;
 
 export default props => (

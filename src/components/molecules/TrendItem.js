@@ -13,8 +13,6 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  width: 100%;
-  height: 90px;
   margin: 10px 0;
 
   ${AnkerStyle};
@@ -55,6 +53,7 @@ export default class TrendItem extends Component {
             <Thumbnail
               src={this.props.entry.thumbnail_url}
               alt={this.props.entry.title}
+              height="90px"
             />
           </StyledThumbnail>
           <StyledWrapper type="right" dir="column">
@@ -68,7 +67,7 @@ export default class TrendItem extends Component {
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0">
+                    <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
                   </Wrapper>
@@ -83,7 +82,7 @@ export default class TrendItem extends Component {
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0">
+                    <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
                   </Wrapper>
@@ -98,7 +97,7 @@ export default class TrendItem extends Component {
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0">
+                    <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
                   </Wrapper>
@@ -113,7 +112,7 @@ export default class TrendItem extends Component {
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0">
+                    <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
                   </Wrapper>

@@ -54,6 +54,7 @@ export default class EntryTop extends Component {
               <Thumbnail
                 src={this.props.entry.thumbnail_url}
                 alt={this.props.entry.title}
+                width="100%"
               />
             </StyledThumbnail>
           </Wrapper>
@@ -64,7 +65,7 @@ export default class EntryTop extends Component {
           Bookmarks
         </Text>
 
-        <Star></Star>
+        <Star />
       </Wrapper>
     );
   }
