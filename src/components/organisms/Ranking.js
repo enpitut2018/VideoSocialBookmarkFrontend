@@ -6,19 +6,17 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import RankingItem from "../molecules/RankingItem";
 import { getRanking } from "../../actions/RankingActions";
+import { preloadRanking } from "../../actions/EntryActions";
 
 const StyledRanking = styled.div`
   padding: 0 0 20px 0;
 `;
 
 class Ranking extends Component {
-  static fetchData({ dispatch }) {
-    return dispatch(getRanking());
-  }
-
   componentWillMount() {
     if (!this.props.hasLoaded) {
-      Ranking.fetchData({ dispatch: this.props.dispatch });
+      this.props.getRanking();
+      this.props.preloadRanking();
     }
   }
 
@@ -49,4 +47,6 @@ export default connect(store => ({
   hasLoaded: store.ranking.hasLoaded,
   ranking: store.ranking.ranking,
   error: store.ranking.error
-}))(Ranking);
+}),
+  { getRanking, preloadRanking }
+)(Ranking);
