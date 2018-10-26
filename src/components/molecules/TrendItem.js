@@ -39,17 +39,17 @@ const StyledWrapper = styled.div`
   })};
 `;
 
-export default class RankingItem extends Component {
+export default class TrendItem extends Component {
   render() {
     return (
       <StyledLink to={"/entries/" + this.props.entry.id}>
         <Wrapper>
-          {this.props.ranking &&
+          {this.props.trend &&
             component({
-              XL: <Text level="XL">{String(this.props.ranking) + ". "}</Text>,
-              L: <Text level="L">{String(this.props.ranking) + ". "}</Text>,
-              M: <Text level="M">{String(this.props.ranking) + ". "}</Text>,
-              S: <Text level="M">{String(this.props.ranking) + ". "}</Text>
+              XL: <Text level="XL">{String(this.props.trend) + ". "}</Text>,
+              L: <Text level="L">{String(this.props.trend) + ". "}</Text>,
+              M: <Text level="M">{String(this.props.trend) + ". "}</Text>,
+              S: <Text level="M">{String(this.props.trend) + ". "}</Text>
             })}
           <StyledThumbnail>
             <Thumbnail

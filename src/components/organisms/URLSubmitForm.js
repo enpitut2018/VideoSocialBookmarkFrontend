@@ -7,7 +7,7 @@ import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import Text from "../atoms/Text";
 import { connect } from "react-redux";
-import { postComment } from "../../actions/CommentActions";
+import { postEntry } from "../../actions/EntryActions";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 60px auto;
@@ -32,7 +32,7 @@ class URLSubmitForm extends Component {
 
   submit = e => {
     e.preventDefault();
-    this.props.dispatch(postComment(this.state.url, this.state.comment));
+    this.props.dispatch(postEntry(this.state.url, this.state.comment));
     e.target.form.reset();
   };
 

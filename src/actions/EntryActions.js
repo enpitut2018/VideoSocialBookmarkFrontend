@@ -1,7 +1,7 @@
 import axios from "axios";
 import config from "../config";
 import { setAuthKeys } from "../auth";
-import { getRanking } from "./RankingActions";
+import { getTrend } from "./TrendActions";
 
 export const GET_ENTRY_REQUEST = "GET_ENTRY_REQUEST";
 export const GET_ENTRY_SUCCESS = "GET_ENTRY_SUCCESS";
@@ -28,12 +28,16 @@ export const postEntry = (url, comment) => dispatch => {
 
   return axios
     .post(config.backend_api_url + "/entries", {
-      original_url: url,
-      comment
+      entry: {
+        original_url: url,
+      },
+      comment: {
+        content: comment
+      }
     })
     .then(res => {
       dispatch({ type: POST_ENTRY_SUCCESS });
-      dispatch(getRanking());
+      dispatch(getTrend());
     })
     .catch(_ => {
       dispatch({ type: POST_ENTRY_FAILURE, error: "" });

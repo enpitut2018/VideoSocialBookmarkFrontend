@@ -28,7 +28,7 @@
     }
   },
   "molecules": {
-    "RankingItem": {
+    "TrendItem": {
       "Font": "Black00",
       "Hover": {
         "Font": "Black02"
@@ -49,6 +49,6 @@
       "Background": "White01"
     },
     "URLSubmitForm": {},
-    "Ranking": {}
+    "Trend": {}
   }
 }

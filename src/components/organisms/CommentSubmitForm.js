@@ -55,5 +55,5 @@ class CommentSubmitForm extends Component {
 }
 
 export default connect(store => ({
-  isLoading: store.bookmarks.isLoading
+  isLoading: store.comments.isLoading
 }))(CommentSubmitForm);

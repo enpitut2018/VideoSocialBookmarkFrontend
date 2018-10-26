@@ -41,13 +41,13 @@ export default class EntryItem extends Component {
     return (
       <StyledWrapper>
         <StyledInnerWrapper dir="column">
-          <Text margin="0">{this.props.bookmark.user.name || "NoName"}</Text>
+          <Text margin="0">{this.props.comment.user.name || "NoName"}</Text>
           <Text margin="0" level="XS">
-            {this.props.bookmark.user.id}
+            {this.props.comment.user.id}
           </Text>
         </StyledInnerWrapper>
 
-        <StyledComment>{this.props.bookmark.comment}</StyledComment>
+        <StyledComment>{this.props.comment.content}</StyledComment>
       </StyledWrapper>
     );
   }

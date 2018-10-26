@@ -1,30 +1,30 @@
 import {
-  GET_RANKING_REQUEST,
-  GET_RANKING_SUCCESS,
-  GET_RANKING_FAILURE
-} from "../actions/RankingActions";
+  GET_TREND_REQUEST,
+  GET_TREND_SUCCESS,
+  GET_TREND_FAILURE
+} from "../actions/TrendActions";
 
 const initialState = {
   hasLoaded: false,
-  ranking: [],
+  trend: [],
   url: "",
   error: ""
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_RANKING_REQUEST:
+    case GET_TREND_REQUEST:
       return {
         ...state,
         hasLoaded: false
       };
-    case GET_RANKING_SUCCESS:
+    case GET_TREND_SUCCESS:
       return {
         ...state,
         hasLoaded: true,
-        ranking: action.ranking
+        trend: action.trend
       };
-    case GET_RANKING_FAILURE:
+    case GET_TREND_FAILURE:
       return {
         ...state,
         hasLoaded: false,

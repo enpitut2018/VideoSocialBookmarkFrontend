@@ -28,7 +28,7 @@ export const getUserIcon = () => dispatch => {
   setAuthKeys();
 
   return axios
-    .get(config.backend_api_url + "/userIcon")
+    .get(config.backend_api_url + "/current_user/icon")
     .then(res => {
       dispatch({ type: GET_USER_ICON_SUCCESS, userIcon: res.data });
     })
