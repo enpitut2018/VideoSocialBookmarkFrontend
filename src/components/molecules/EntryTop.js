@@ -6,6 +6,7 @@ import Thumbnail from "../atoms/Thumbnail";
 import Text from "../atoms/Text";
 import { component } from "../mediaQuery";
 import { style } from "../mediaQuery";
+import Star from "./Star";
 
 const StyledA = styled.a`
   display: flex;
@@ -62,6 +63,8 @@ export default class EntryTop extends Component {
           {this.props.entry.num_of_bookmarked + " "}
           Bookmarks
         </Text>
+
+        <Star></Star>
       </Wrapper>
     );
   }

@@ -28,6 +28,17 @@
     }
   },
   "molecules": {
+    "Star": {
+      "Enable": {
+        "Fill": "Red00"
+      },
+      "Hover": {
+        "Fill": "Red00"
+      },
+      "Disable": {
+        "Fill": "Black04"
+      }
+    },
     "TrendItem": {
       "Font": "Black00",
       "Hover": {
@@ -42,7 +53,7 @@
   },
   "organisms": {
     "Header": {
-      "Backgournd": "Black00",
+      "Background": "White00",
       "Font": "Black00"
     },
     "DropdownMenu": {

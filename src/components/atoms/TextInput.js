@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
-import { elevate } from "../../theme/shadows";
+import elevate from "../../theme/shadows";
 import { style } from "../mediaQuery";
 
 const StyledInput = styled.input`
