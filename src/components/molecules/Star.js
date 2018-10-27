@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import StarIcon from "../../assets/images/material-icon/baseline-star-24px.svg.js";
 import StarBorderIcon from "../../assets/images/material-icon/baseline-star_border-24px.svg.js";
-// import StarIcon from "../../assets/images/material-icon/baseline-favorite-24px.svg.js";
-// import StarBorderIcon from "../../assets/images/material-icon/baseline-favorite_border-24px.svg.js";
 import styled from "styled-components";
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import elevate from "../../theme/shadows";
+import { postStar, deleteStar } from "../../actions/StarActions.js";
+
+import { connect } from "react-redux";
 
 const width = 42;
 const height = 42;
@@ -25,7 +26,7 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default class Star extends Component {
+class Star extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,9 +36,17 @@ export default class Star extends Component {
   }
 
   onClickHandler = e => {
-    this.setState(prev => ({
-      enabled: !prev.enabled
-    }));
+    if (this.state.enabled) {
+      this.setState({
+        enabled: false
+      });
+      this.props.dispatch(deleteStar(this.props.entryId));
+    } else {
+      this.setState({
+        enabled: true
+      });
+      this.props.dispatch(postStar(this.props.entryId));
+    }
   };
 
   onMouseEnterHandler = e => {
@@ -72,3 +81,7 @@ export default class Star extends Component {
     );
   }
 }
+
+export default connect(store => ({
+  isLoading: store.stars.isLoading
+}))(Star);
