@@ -65,7 +65,7 @@ export default class EntryTop extends Component {
           Bookmarks
         </Text>
 
-        <Star entryId={this.props.entry.id} />
+        {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
       </Wrapper>
     );
   }
