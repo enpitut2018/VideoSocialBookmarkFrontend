@@ -5,7 +5,7 @@ import styled from "styled-components";
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import elevate from "../../theme/shadows";
-import { postStar, deleteStar } from "../../actions/StarActions.js";
+import { getStar, postStar, deleteStar } from "../../actions/StarActions.js";
 
 import { connect } from "react-redux";
 
@@ -30,21 +30,25 @@ class Star extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      enabled: false,
       hover: false
     };
   }
 
+  componentWillMount() {
+    this.props.dispatch(getStar(this.props.entryId));
+  }
+
+  isEnabled = () => {
+    const entry = this.props.entries.find(
+      e => e.entryId === this.props.entryId
+    );
+    return entry !== undefined && entry.enabled;
+  };
+
   onClickHandler = e => {
-    if (this.state.enabled) {
-      this.setState({
-        enabled: false
-      });
+    if (this.isEnabled()) {
       this.props.dispatch(deleteStar(this.props.entryId));
     } else {
-      this.setState({
-        enabled: true
-      });
       this.props.dispatch(postStar(this.props.entryId));
     }
   };
@@ -64,7 +68,7 @@ class Star extends Component {
         onMouseEnter={this.onMouseEnterHandler}
         onMouseLeave={this.onMouseLeaveHandler}
       >
-        {this.state.enabled
+        {this.isEnabled()
           ? StarIcon({
               fill: palette[colors.molecules.Star.Enable.Fill],
               width,
@@ -83,5 +87,6 @@ class Star extends Component {
 }
 
 export default connect(store => ({
+  entries: store.stars.entries,
   isLoading: store.stars.isLoading
 }))(Star);
