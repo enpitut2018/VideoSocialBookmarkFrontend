@@ -4,11 +4,11 @@ import styled, { css } from "styled-components";
 import React, { Component } from "react";
 
 const fontSizes = {
-  XS: "10pt",
-  S: "11pt",
-  M: "12pt",
-  L: "16pt",
-  XL: "20pt"
+  XS: "0.8rem",
+  S: "0.9rem",
+  M: "1.1rem",
+  L: "1.4rem",
+  XL: "1.8rem"
 };
 const fontOpacities = {
   XS: 0.75,
@@ -75,12 +75,11 @@ export const textStyle = props => {
     font-weight: ${props.fontWeight
       ? props.fontWeight
       : fontWeight(props.level)};
-    line-height: ${props =>
-      props.lineHeight ? props.lineHeight : fontLineHeight(props.level)};
     ${props.height && `height: ${props.height}`};
     ${props.width && `width: ${props.width}`};
     ${props.userSelect && `user-select: ${props.userSelect};`};
     ${props.cursor && `cursor: ${props.cursor};`};
+    ${props.css && props.css};
   `;
 };
 
