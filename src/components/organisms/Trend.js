@@ -30,8 +30,8 @@ class Trend extends Component {
               <Text>トレンドの取得に失敗しました</Text>
             ) : this.props.hasLoaded ? (
               this.props.trend &&
-              this.props.trend.map((item, i) => (
-                <TrendItem entry={item} trend={i + 1} key={item.id} />
+              this.props.trend.map(item => (
+                <TrendItem entry={item} key={item.id} />
               ))
             ) : (
               <Text>Loading</Text>
@@ -43,10 +43,11 @@ class Trend extends Component {
   }
 }
 
-export default connect(store => ({
-  hasLoaded: store.trend.hasLoaded,
-  trend: store.trend.trend,
-  error: store.trend.error
-}),
+export default connect(
+  store => ({
+    hasLoaded: store.trend.hasLoaded,
+    trend: store.trend.trend,
+    error: store.trend.error
+  }),
   { getTrend, preloadTrend }
 )(Trend);

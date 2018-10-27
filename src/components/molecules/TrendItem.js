@@ -16,6 +16,13 @@ const StyledLink = styled(Link)`
   margin: 10px 0;
 
   ${AnkerStyle};
+
+  ${style({
+    S: `width: 95%`,
+    M: `width: 90%`,
+    L: `width: 90%`,
+    XL: `width: 800px`
+  })};
 `;
 
 const StyledThumbnail = styled.div`
@@ -28,13 +35,6 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   height: 90px;
-
-  ${style({
-    S: `width: 95%`,
-    M: `width: 90%`,
-    L: `width: 90%`,
-    XL: `width: 800px`
-  })};
 `;
 
 export default class TrendItem extends Component {
@@ -42,13 +42,6 @@ export default class TrendItem extends Component {
     return (
       <StyledLink to={"/entries/" + this.props.entry.id}>
         <Wrapper>
-          {this.props.trend &&
-            component({
-              XL: <Text level="XL">{String(this.props.trend) + ". "}</Text>,
-              L: <Text level="L">{String(this.props.trend) + ". "}</Text>,
-              M: <Text level="M">{String(this.props.trend) + ". "}</Text>,
-              S: <Text level="M">{String(this.props.trend) + ". "}</Text>
-            })}
           <StyledThumbnail>
             <Thumbnail
               src={this.props.entry.thumbnail_url}

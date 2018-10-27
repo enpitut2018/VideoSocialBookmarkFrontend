@@ -9,7 +9,7 @@ export const getTrend = () => dispatch => {
   const page = 1;
   dispatch({ type: GET_TREND_REQUEST });
   return axios
-    .get(config.backend_api_url + "/trend/" + String(page))
+    .get(`${config.backend_api_url}/trend/${page}`)
     .then(res => {
       dispatch({ type: GET_TREND_SUCCESS, trend: res.data });
     })
