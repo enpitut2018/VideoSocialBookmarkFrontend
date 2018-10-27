@@ -17,6 +17,7 @@ const StyledText = styled.span`
 const StyledLink = styled(Link)`
   ${AnkerStyle};
   ${textStyle({ level: "XS", margin: "10px 15px" })};
+  ${props => props.height && `height: ${props.height}`};
 `;
 
 const StyledCard = styled(Card)`
@@ -67,7 +68,7 @@ export default class Footer extends React.Component {
       XL: (
         <StyledCard type="center" elevation={0}>
           <StyledText>© 2018 Vimacs</StyledText>
-          <StyledLink to="/">
+          <StyledLink to="/" height="42px">
             <Icon />
           </StyledLink>
           <StyledWrapper>
@@ -80,7 +81,7 @@ export default class Footer extends React.Component {
       L: (
         <StyledCard type="center" elevation={0}>
           <StyledText>© 2018 Vimacs</StyledText>
-          <StyledLink to="/">
+          <StyledLink to="/" height="42px">
             <Icon />
           </StyledLink>
           <StyledWrapper>
@@ -92,7 +93,7 @@ export default class Footer extends React.Component {
       ),
       M: (
         <StyledCard type="center" elevation={0} dir="column">
-          <StyledLink to="/">
+          <StyledLink to="/" height="42px">
             <Icon />
           </StyledLink>
           <StyledText>© 2018 Vimacs</StyledText>
@@ -103,7 +104,7 @@ export default class Footer extends React.Component {
       ),
       S: (
         <StyledCard type="center" elevation={0} dir="column">
-          <StyledLink to="/">
+          <StyledLink to="/" height="42px">
             <Icon />
           </StyledLink>
           <StyledText>© 2018 Vimacs</StyledText>

@@ -13,7 +13,7 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  margin: 10px 0;
+  margin: 0;
 
   ${AnkerStyle};
 
@@ -26,7 +26,12 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledThumbnail = styled.div`
-  margin: 10px 20px 10px 0px;
+  ${style({
+    S: `margin-right: 10px`,
+    M: `margin-right: 13px`,
+    L: `margin-right: 17px`,
+    XL: `margin-right: 20px`
+  })};
 `;
 
 const StyledWrapper = styled.div`
@@ -35,6 +40,23 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   height: 90px;
+`;
+
+const titleStyle = `
+  overflow: hidden;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -ms-box-orient: vertical;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -o-box;
+  display: -ms-box;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  -o-line-clamp: 2;
+  -ms-line-clamp: 2;
 `;
 
 export default class TrendItem extends Component {
@@ -53,7 +75,7 @@ export default class TrendItem extends Component {
             {component({
               XL: (
                 <>
-                  <Text level="L" margin="0">
+                  <Text level="L" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
@@ -68,7 +90,7 @@ export default class TrendItem extends Component {
               ),
               L: (
                 <>
-                  <Text level="M" margin="0" fontSize="14pt">
+                  <Text level="M" margin="0" fontSize="14pt" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
@@ -83,7 +105,7 @@ export default class TrendItem extends Component {
               ),
               M: (
                 <>
-                  <Text level="M" margin="0">
+                  <Text level="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
@@ -98,7 +120,7 @@ export default class TrendItem extends Component {
               ),
               S: (
                 <>
-                  <Text level="M" margin="0">
+                  <Text level="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
