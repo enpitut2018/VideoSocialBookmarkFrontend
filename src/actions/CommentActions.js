@@ -12,7 +12,7 @@ export const postComment = (entryId, comment) => dispatch => {
   setAuthKeys();
 
   return axios
-    .post(config.backend_api_url + "/entries/" + String(entryId) + "/comments", {
+    .post(`${config.backend_api_url}/entries/${entryId}/comments`, {
       comment: {
         content: comment
       }

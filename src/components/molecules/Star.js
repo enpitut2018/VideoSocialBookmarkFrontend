@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import StarIcon from "../../assets/images/material-icon/baseline-star-24px.svg.js";
 import StarBorderIcon from "../../assets/images/material-icon/baseline-star_border-24px.svg.js";
-// import StarIcon from "../../assets/images/material-icon/baseline-favorite-24px.svg.js";
-// import StarBorderIcon from "../../assets/images/material-icon/baseline-favorite_border-24px.svg.js";
 import styled from "styled-components";
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import elevate from "../../theme/shadows";
+import { getStar, postStar, deleteStar } from "../../actions/StarActions.js";
+
+import { connect } from "react-redux";
 
 const width = 42;
 const height = 42;
@@ -25,19 +26,31 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default class Star extends Component {
+class Star extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      enabled: false,
       hover: false
     };
   }
 
+  componentWillMount() {
+    this.props.dispatch(getStar(this.props.entryId));
+  }
+
+  isEnabled = () => {
+    const entry = this.props.entries.find(
+      e => e.entryId === this.props.entryId
+    );
+    return entry !== undefined && entry.enabled;
+  };
+
   onClickHandler = e => {
-    this.setState(prev => ({
-      enabled: !prev.enabled
-    }));
+    if (this.isEnabled()) {
+      this.props.dispatch(deleteStar(this.props.entryId));
+    } else {
+      this.props.dispatch(postStar(this.props.entryId));
+    }
   };
 
   onMouseEnterHandler = e => {
@@ -55,7 +68,7 @@ export default class Star extends Component {
         onMouseEnter={this.onMouseEnterHandler}
         onMouseLeave={this.onMouseLeaveHandler}
       >
-        {this.state.enabled
+        {this.isEnabled()
           ? StarIcon({
               fill: palette[colors.molecules.Star.Enable.Fill],
               width,
@@ -72,3 +85,8 @@ export default class Star extends Component {
     );
   }
 }
+
+export default connect(store => ({
+  entries: store.stars.entries,
+  isLoading: store.stars.isLoading
+}))(Star);
