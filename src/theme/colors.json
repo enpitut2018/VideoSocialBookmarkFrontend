@@ -4,6 +4,15 @@
   "Shadow": "Black01",
   "Border": "Black01",
   "atoms": {
+    "AnkerStyle": {
+      "Font": "Black00",
+      "Hover": {
+        "Font": "Black00"
+      },
+      "Active": {
+        "Background": "Black01"
+      }
+    },
     "Text": {
       "Font": "Black00"
     },

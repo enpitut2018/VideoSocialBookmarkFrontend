@@ -8,9 +8,22 @@ import styled from "styled-components";
 import Text from "../atoms/Text";
 import { connect } from "react-redux";
 import { postEntry } from "../../actions/EntryActions";
+import { style } from "../mediaQuery";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 60px auto;
+  ${style({
+    S: `margin-top: 10px`,
+    M: `margin-top: 12px`,
+    L: `margin-top: 16px`,
+    XL: `margin-top: 20px`
+  })};
+  ${style({
+    S: `margin-bottom: 20px`,
+    M: `margin-bottom: 30px`,
+    L: `margin-bottom: 40px`,
+    XL: `margin-bottom: 50px`
+  })};
 `;
 
 class URLSubmitForm extends Component {
@@ -39,7 +52,9 @@ class URLSubmitForm extends Component {
   render() {
     return (
       <StyledWrapper dir="column">
-        <Text level="XL">Bookmark Video</Text>
+        <Text level="L" margin="10px 0">
+          Bookmark Video
+        </Text>
         <Form
           onSubmit={this.submit}
           render={props => (

@@ -13,14 +13,14 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  margin: 0;
+  margin: 3px 0;
 
   ${AnkerStyle};
 
   ${style({
-    S: `width: 95%`,
-    M: `width: 90%`,
-    L: `width: 90%`,
+    S: `width: 95vw`,
+    M: `width: 90vw`,
+    L: `width: 90vw`,
     XL: `width: 800px`
   })};
 `;
@@ -120,14 +120,24 @@ export default class TrendItem extends Component {
               ),
               S: (
                 <>
-                  <Text level="M" margin="0" css={titleStyle}>
+                  <Text
+                    level="M"
+                    margin="0"
+                    css={titleStyle}
+                    width="calc(95vw - 130px)"
+                  >
                     {this.props.entry.title}
                   </Text>
-                  <Wrapper>
+                  <Wrapper css="width: calc(95vw - 130px); overflow: hidden;">
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0 0 0.2rem">
+                    <Text
+                      level="XS"
+                      margin="0 0 0 0.2rem"
+                      width="calc(95vw - 130px - 1.2rem)"
+                      css="overflow: hidden;"
+                    >
                       Bookmarks
                     </Text>
                   </Wrapper>
