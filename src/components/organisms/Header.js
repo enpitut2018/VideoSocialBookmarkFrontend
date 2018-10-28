@@ -29,8 +29,11 @@ const StyledLink = styled(Link)`
 
 const StyledCard = styled(Card)`
   display: flex;
-  padding-right: 18px;
+  padding-right: 6px;
   background-color: ${palette[colors.organisms.Header.Background]};
+  z-index: 100;
+  position: relative;
+  margin-bottom: 1rem;
 `;
 
 const StyledTextLink = styled(StyledLink)`
@@ -71,7 +74,8 @@ class Header extends React.Component {
           <Wrapper type="right">
             <DropdownMenu
               renderHeader={() => <StyledUserIcon url={this.props.url} />}
-              top="73px"
+              top="63px"
+              right="5px"
             >
               <DropdownMenuItem>
                 <StyledTextLink to="/mypage">
@@ -90,10 +94,10 @@ class Header extends React.Component {
         ) : (
           <RightContentsWrapper type="right">
             <StyledTextLink to="/login">
-              <Text margin="auto 20px">Login</Text>
+              <Text margin="auto 26px auto 0">Login</Text>
             </StyledTextLink>
             <StyledTextLink to="/registration">
-              <Text margin="auto 20px">登録</Text>
+              <Text margin="auto 3px">登録</Text>
             </StyledTextLink>
           </RightContentsWrapper>
         )}

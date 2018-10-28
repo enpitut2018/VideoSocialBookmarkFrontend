@@ -9,6 +9,7 @@ import palette from "../../theme/palette.json";
 const StyledWrapper = styled(Card)`
   position: absolute;
   ${props => props.top && `top: ${props.top}`};
+  ${props => props.right && `right: ${props.right}`};
 
   background-color: ${palette[colors.organisms.DropdownMenu.Background]};
 
@@ -55,7 +56,12 @@ export default class DropdownMenu extends Component {
         {this.props.renderHeader()}
 
         {this.state.isExpanded && (
-          <StyledWrapper top={this.props.top} dir="column" elevation={4}>
+          <StyledWrapper
+            top={this.props.top}
+            right={this.props.right}
+            dir="column"
+            elevation={4}
+          >
             {this.props.children}
           </StyledWrapper>
         )}

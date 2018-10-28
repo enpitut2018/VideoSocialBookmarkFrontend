@@ -24,7 +24,9 @@ class Trend extends Component {
     return (
       <StyledTrend>
         <Wrapper dir="column">
-          <Text level="XL">Trend</Text>
+          <Text level="L" margin="10px 0 13px 0">
+            Trend
+          </Text>
           <Wrapper dir="column">
             {this.props.error ? (
               <Text>トレンドの取得に失敗しました</Text>

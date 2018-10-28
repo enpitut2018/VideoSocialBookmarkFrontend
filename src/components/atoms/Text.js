@@ -8,7 +8,7 @@ const fontSizes = {
   S: "0.9rem",
   M: "1.1rem",
   L: "1.4rem",
-  XL: "1.8rem"
+  XL: "1.7rem"
 };
 const fontOpacities = {
   XS: 0.75,
@@ -21,8 +21,8 @@ const fontMargins = {
   XS: "2px 4px",
   S: "3px 7px",
   M: "5px 13px",
-  L: "10px 15px",
-  XL: "30px 20px"
+  L: "12px 16px",
+  XL: "15px 20px"
 };
 const fontWeights = {
   XS: "300",
@@ -36,7 +36,7 @@ const fontLineHeights = {
   S: "1.3rem",
   M: "1.8rem",
   L: "2.0rem",
-  XL: "2.6rem"
+  XL: "2.5rem"
 };
 
 const fontSize = level =>
