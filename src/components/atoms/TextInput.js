@@ -11,12 +11,15 @@ const StyledInput = styled.input`
   margin: 10px 0;
   border-radius: 23px;
 
-  ${style({
-    XL: `width: 800px`,
-    L: `width: calc(90vw - 52px)`,
-    M: `width: calc(90vw - 52px)`,
-    S: `width: calc(95vw - 52px)`
-  })};
+  ${props =>
+    props.width
+      ? `width: ${props.width}`
+      : style({
+          XL: `width: 400px`,
+          L: `width: calc(45vw - 52px)`,
+          M: `width: calc(60vw - 52px)`,
+          S: `width: calc(80vw - 52px)`
+        })};
 
   background-color: ${palette[colors.atoms.TextInput.Background]};
 

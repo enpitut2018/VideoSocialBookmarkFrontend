@@ -12,14 +12,19 @@ import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import DropdownMenu from "./DropdownMenu";
 import DropdownMenuItem from "../molecules/DropdownMenuItem";
+import Dropdown from "./Dropdown";
+import DropdownItem from "../molecules/DropdownItem";
+import URLSubmitForm from "../organisms/URLSubmitForm";
 
 import { getUserIcon } from "../../actions/UserActions";
 
-import personIcon from "../../assets/images/material-icon/baseline-person-24px.svg";
-import exitIcon from "../../assets/images/material-icon/baseline-exit_to_app-24px.svg";
+import PersonIcon from "../../assets/images/material-icon/baseline-person-24px.svg";
+import ExitIcon from "../../assets/images/material-icon/baseline-exit_to_app-24px.svg";
+import UploadIcon from "../../assets/images/material-icon/baseline-cloud_upload-24px.svg";
 
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
+import { style } from "../mediaQuery";
 
 const StyledLink = styled(Link)`
   padding: 0;
@@ -45,17 +50,20 @@ const StyledTextLink = styled(StyledLink)`
 `;
 
 const RightContentsWrapper = styled(Wrapper)`
-  margin-right: 15px;
+  ${style({
+    XL: `margin-right: 18px`,
+    L: `margin-right: 17px`,
+    M: `margin-right: 16px`,
+    S: `margin-right: 10px`
+  })}};
 `;
 
 const StyledUserIcon = styled(UserIcon)`
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;
 
-const StyledIcon = styled.img`
-  margin: 2px 25px;
+const IconWrapper = styled.div`
+  margin: 2px 22px;
 `;
 
 class Header extends React.Component {
@@ -71,26 +79,73 @@ class Header extends React.Component {
         </StyledLink>
 
         {this.props.isSignedIn ? (
-          <Wrapper type="right">
-            <DropdownMenu
-              renderHeader={() => <StyledUserIcon url={this.props.url} />}
-              top="63px"
-              right="5px"
-            >
-              <DropdownMenuItem>
-                <StyledTextLink to="/mypage">
-                  <StyledIcon src={personIcon} alt="MyPage" />
-                  <Text margin="0">MyPage</Text>
-                </StyledTextLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <StyledTextLink to="/logout">
-                  <StyledIcon src={exitIcon} alt="Logout" />
-                  <Text margin="0">Logout</Text>
-                </StyledTextLink>
-              </DropdownMenuItem>
-            </DropdownMenu>
-          </Wrapper>
+          <>
+            <Wrapper type="right">
+              <Dropdown
+                renderHeader={onClickHandler =>
+                  UploadIcon({
+                    fill: palette[colors.organisms.Header.Icon.Fill],
+                    onClick: onClickHandler
+                  })
+                }
+                top="63px"
+                right="30px"
+                css={`
+                  ${style({
+                    XL: `margin-right: 35px;`,
+                    L: `margin-right: 25px;`,
+                    M: `margin-right: 20px;`,
+                    S: `margin-right: 15px;`
+                  })};
+                `}
+              >
+                <DropdownItem
+                  width="350px"
+                  css={`
+                    background-color: ${palette[
+                      colors.organisms.Header.URLSubmitForm.Background
+                    ]};
+                    ${style({
+                      XL: `width: 400px`,
+                      L: `width: 380pxpx`,
+                      M: `width: 350px`,
+                      S: `width: 80vw`
+                    })};
+                  `}
+                >
+                  <URLSubmitForm />
+                </DropdownItem>
+              </Dropdown>
+
+              <DropdownMenu
+                renderHeader={() => <StyledUserIcon url={this.props.url} />}
+                top="63px"
+                right="5px"
+                css="margin-right: 5px;"
+              >
+                <DropdownMenuItem>
+                  <StyledTextLink to="/mypage">
+                    <IconWrapper>
+                      {PersonIcon({
+                        fill: palette[colors.organisms.Header.Icon.Fill]
+                      })}
+                    </IconWrapper>
+                    <Text margin="0">MyPage</Text>
+                  </StyledTextLink>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <StyledTextLink to="/logout">
+                    <IconWrapper>
+                      {ExitIcon({
+                        fill: palette[colors.organisms.Header.Icon.Fill]
+                      })}
+                    </IconWrapper>
+                    <Text margin="0">Logout</Text>
+                  </StyledTextLink>
+                </DropdownMenuItem>
+              </DropdownMenu>
+            </Wrapper>
+          </>
         ) : (
           <RightContentsWrapper type="right">
             <StyledTextLink to="/login">

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+// import Wrapper from "../atoms/Wrapper";
 import Card from "../atoms/Card";
 
 import colors from "../../theme/colors.json";
@@ -10,15 +11,14 @@ const StyledWrapper = styled(Card)`
   ${props => props.top && `top: ${props.top}`};
   ${props => props.right && `right: ${props.right}`};
 
-  background-color: ${palette[colors.organisms.Header.DropdownMenu.Background]};
+  background-color: ${palette[colors.organisms.Header.Dropdown.Background]};
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const StyledDropdownMenu = styled.div`
-  cursor: pointer;
+const StyledDropdown = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -26,7 +26,11 @@ const StyledDropdownMenu = styled.div`
   ${props => props.css};
 `;
 
-export default class DropdownMenu extends Component {
+const StyledHeader = styled.div`
+  cursor: pointer;
+`;
+
+export default class Dropdown extends Component {
   constructor(props) {
     super(props);
     this.state = { isExpanded: false };
@@ -51,8 +55,8 @@ export default class DropdownMenu extends Component {
 
   render() {
     return (
-      <StyledDropdownMenu onClick={this.onClick} {...this.props}>
-        {this.props.renderHeader()}
+      <StyledDropdown {...this.props}>
+        <StyledHeader>{this.props.renderHeader(this.onClick)}</StyledHeader>
 
         {this.state.isExpanded && (
           <StyledWrapper
@@ -60,11 +64,12 @@ export default class DropdownMenu extends Component {
             right={this.props.right}
             dir="column"
             elevation={4}
+            onClick={e => e.stopPropagation()}
           >
             {this.props.children}
           </StyledWrapper>
         )}
-      </StyledDropdownMenu>
+      </StyledDropdown>
     );
   }
 }
