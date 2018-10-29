@@ -4,7 +4,7 @@ import {
   GET_USER_FAILURE,
   GET_USER_BOOKMARKS_REQUEST,
   GET_USER_BOOKMARKS_SUCCESS,
-  GET_USER_BOOKMARKS_FAILURE,
+  GET_USER_BOOKMARKS_FAILURE
 } from "../actions/UserActions";
 
 const initialState = {
@@ -28,11 +28,10 @@ export default (state = initialState, action) => {
         bookmarks: action.bookmarks
       };
     case GET_USER_BOOKMARKS_FAILURE:
-      return state;
       return {
         ...state,
-        hasBookmarkLoaded: true,
-      }
+        hasBookmarkLoaded: true
+      };
     case GET_USER_REQUEST:
       return {
         ...state,

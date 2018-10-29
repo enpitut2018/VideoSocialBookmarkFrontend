@@ -7,15 +7,18 @@ import elevate from "../../theme/shadows";
 import { style } from "../mediaQuery";
 
 const StyledInput = styled.textarea`
-  ${style({
-    XL: `width: 400px`,
-    L: `width: 400px`,
-    M: `max-width: 100%`,
-    S: `max-width: 100%`
-  })};
+  ${props =>
+    props.width
+      ? `width: ${props.width}`
+      : style({
+          XL: `width: 800px`,
+          L: `width: calc(90vw - 52px)`,
+          M: `width: calc(90vw - 52px)`,
+          S: `width: calc(95vw - 52px)`
+        })};
 
   padding: 12px 26px;
-  margin: 10px;
+  margin: 10px 0;
   border-radius: 23px;
 
   background-color: ${palette[colors.atoms.TextArea.Background]};
@@ -50,6 +53,7 @@ export default class TextArea extends React.Component {
   render() {
     return (
       <StyledInput
+        {...this.props}
         type="text"
         value={this.state.value}
         onChange={this.handleChange}

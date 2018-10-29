@@ -7,7 +7,7 @@ const StyledItem = styled.div`
   ${props => props.css};
 `;
 
-export default class DropdownMenuItem extends Component {
+export default class DropdownItem extends Component {
   render() {
     return <StyledItem {...this.props}>{this.props.children}</StyledItem>;
   }

@@ -5,9 +5,13 @@ import palette from "../../theme/palette.json";
 
 export default css`
   text-decoration: none;
-  color: ${palette[colors.molecules.TrendItem.Font]};
+  color: ${palette[colors.atoms.AnkerStyle.Font]};
+  border-radius: 0.1rem;
 
   &:hover {
-    color: ${palette[colors.molecules.TrendItem.Hover.Font]};
+    color: ${palette[colors.atoms.AnkerStyle.Hover.Font]};
+  }
+  &:focus {
+    color: ${palette[colors.atoms.AnkerStyle.Hover.Font]};
   }
 `;
