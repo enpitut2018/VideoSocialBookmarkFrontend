@@ -25,9 +25,7 @@ class CommentSubmitForm extends Component {
 
   submit = e => {
     e.preventDefault();
-    this.props.dispatch(
-      postComment(this.props.entryId, this.state.comment)
-    );
+    this.props.dispatch(postComment(this.props.entryId, this.state.comment));
     window.console.log(e.target.form);
     e.target.form.reset();
   };
@@ -42,6 +40,7 @@ class CommentSubmitForm extends Component {
               <TextArea
                 placeholder="Comment"
                 handleChange={this.handleCommentChange}
+                required
               />
               <Button mode="Primary" type="submit">
                 Submit
