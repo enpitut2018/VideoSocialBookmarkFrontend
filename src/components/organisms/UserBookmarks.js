@@ -4,7 +4,7 @@ import UserBookmarkItem from "../molecules/UserBookmarkItem";
 import { connect } from "react-redux";
 import { getUserBookmarks } from "../../actions/UserActions";
 
-export class UserBookmark extends Component {
+export class UserBookmarks extends Component {
   componentWillMount() {
     this.props.getUserBookmarks(this.props.user_id);
   }
@@ -27,9 +27,10 @@ export class UserBookmark extends Component {
   }
 }
 
-export default connect(store => ({
-  hasLoaded: store.user.hasBookmarkLoaded,
-  bookmarks: store.user.bookmarks
+export default connect(
+  store => ({
+    hasLoaded: store.user.hasBookmarkLoaded,
+    bookmarks: store.user.bookmarks
   }),
   { getUserBookmarks }
-)(UserBookmark);
+)(UserBookmarks);

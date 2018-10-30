@@ -71,10 +71,10 @@
         "Fill": "Black02"
       },
       "DropdownMenu": {
-        "Background": "White01"
+        "Background": "White00"
       },
       "Dropdown": {
-        "Background": "White01"
+        "Background": "White00"
       },
       "URLSubmitForm": {
         "Background": "White00"

@@ -64,6 +64,10 @@ const StyledUserIcon = styled(UserIcon)`
 `;
 
 const StyledUploadIconWrapper = styled.div`
+  height: 30px;
+  width: 30px;
+  margin: auto;
+
   ${elevate(2)};
 
   &:hover {
@@ -98,7 +102,9 @@ class Header extends React.Component {
                   <StyledUploadIconWrapper>
                     {UploadIcon({
                       fill: palette[colors.organisms.Header.Icon.Fill],
-                      onClick: onClickHandler
+                      onClick: onClickHandler,
+                      width: "30px",
+                      height: "30px"
                     })}
                   </StyledUploadIconWrapper>
                 )}
