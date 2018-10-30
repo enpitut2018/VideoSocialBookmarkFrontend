@@ -10,18 +10,28 @@ import Thumbnail from "../atoms/Thumbnail";
 const StyledLink = styled(Link)`
   display: flex;
 
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
-  width: 100%;
-  height: 90px;
-  margin: 10px 0;
+  margin: 3px 0;
 
   ${AnkerStyle};
+
+  ${style({
+    S: `width: 95vw`,
+    M: `width: 90vw`,
+    L: `width: 90vw`,
+    XL: `width: 800px`
+  })};
 `;
 
 const StyledThumbnail = styled.div`
-  margin: 10px 20px 10px 0px;
+  ${style({
+    S: `margin-right: 10px`,
+    M: `margin-right: 13px`,
+    L: `margin-right: 17px`,
+    XL: `margin-right: 20px`
+  })};
 `;
 
 const StyledWrapper = styled.div`
@@ -30,13 +40,23 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   height: 90px;
+`;
 
-  ${style({
-    S: `max-width: 300px`,
-    M: `max-width: 400px`,
-    L: `max-width: 500px`,
-    XL: `max-width: 800px`
-  })};
+const titleStyle = `
+  overflow: hidden;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -ms-box-orient: vertical;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -o-box;
+  display: -ms-box;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  -o-line-clamp: 2;
+  -ms-line-clamp: 2;
 `;
 
 const StyledComment = styled(Text)`
@@ -54,45 +74,86 @@ export default class UserBookmarkItem extends Component {
               <Thumbnail
                 src={this.props.bookmark.entry.thumbnail_url}
                 alt={this.props.bookmark.entry.title}
+                height="90px"
               />
             </StyledThumbnail>
             <StyledWrapper type="right" dir="column">
               {component({
                 XL: (
                   <>
-                    <Text level="L" margin="0">
+                    <Text level="L" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
+                    <Wrapper>
+                      <Text level="S" margin="0">
+                        {this.props.bookmark.entry.num_of_bookmarked}
+                      </Text>
+                      <Text level="XS" margin="0 0 0 0.2rem">
+                        Bookmarks
+                      </Text>
+                    </Wrapper>
                   </>
                 ),
                 L: (
                   <>
-                    <Text level="M" margin="0" fontSize="14pt">
+                    <Text level="M" margin="0" fontSize="14pt" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
+                    <Wrapper>
+                      <Text level="S" margin="0">
+                        {this.props.bookmark.entry.num_of_bookmarked}
+                      </Text>
+                      <Text level="XS" margin="0 0 0 0.2rem">
+                        Bookmarks
+                      </Text>
+                    </Wrapper>
                   </>
                 ),
                 M: (
                   <>
-                    <Text level="M" margin="0">
+                    <Text level="M" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
+                    <Wrapper>
+                      <Text level="S" margin="0">
+                        {this.props.bookmark.entry.num_of_bookmarked}
+                      </Text>
+                      <Text level="XS" margin="0 0 0 0.2rem">
+                        Bookmarks
+                      </Text>
+                    </Wrapper>
                   </>
                 ),
                 S: (
                   <>
-                    <Text level="M" margin="0">
+                    <Text level="M" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
+                    <Wrapper css="width: calc(95vw - 130px); overflow: hidden;">
+                      <Text level="S" margin="0">
+                        {this.props.bookmark.entry.num_of_bookmarked}
+                      </Text>
+                      <Text
+                        level="XS"
+                        margin="0 0 0 0.2rem"
+                        width="calc(95vw - 130px - 1.2rem)"
+                        css="overflow: hidden;"
+                      >
+                        Bookmarks
+                      </Text>
+                    </Wrapper>
                   </>
                 )
               })}
             </StyledWrapper>
           </Wrapper>
         </StyledLink>
-        <StyledWrapper>
-          <StyledComment>{this.props.bookmark.comment}</StyledComment>
-        </StyledWrapper>
+
+        {this.props.bookmark.comment && (
+          <StyledWrapper>
+            <StyledComment>{this.props.bookmark.comment}</StyledComment>
+          </StyledWrapper>
+        )}
       </>
     );
   }

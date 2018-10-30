@@ -32,7 +32,7 @@ export const getUser = () => dispatch => {
   setAuthKeys();
 
   return axios
-    .get(`${config.backend_api_url}/user`)
+    .get(`${config.backend_api_url}/current_user`)
     .then(res => {
       dispatch({ type: GET_USER_SUCCESS, user: res.data });
     })

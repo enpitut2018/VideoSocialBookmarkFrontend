@@ -3,8 +3,9 @@ import Wrapper from "../atoms/Wrapper";
 import Header from "../organisms/Header";
 import Footer from "../organisms/Footer";
 
-import MyPageItem from "../molecules/MyPageItem";
+// import MyPageItem from "../molecules/MyPageItem";
 import Text from "../atoms/Text";
+import UserBookmarks from "../organisms/UserBookmarks";
 
 export default class MyPageTemplate extends Component {
   render() {
@@ -12,15 +13,10 @@ export default class MyPageTemplate extends Component {
       <>
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">My Bookmarks</Text>
-          <Wrapper dir="column">
-            {this.props.hasLoaded &&
-              this.props.user &&
-              this.props.user.entries &&
-              this.props.user.entries.map(entry => (
-                <MyPageItem key={entry.id} entry={entry} />
-              ))}
-          </Wrapper>
+          <Text level="L">My Bookmarks</Text>
+          {this.props.hasLoaded && (
+            <UserBookmarks user_id={this.props.user.id} />
+          )}
         </Wrapper>
         <Footer />
       </>
