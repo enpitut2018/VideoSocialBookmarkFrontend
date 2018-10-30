@@ -13,7 +13,7 @@ export default class MyPageTemplate extends Component {
       <>
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">My Bookmarks</Text>
+          <Text level="L">My Bookmarks</Text>
           <UserBookmarks user_id={this.props.user.id} />
         </Wrapper>
         <Footer />
