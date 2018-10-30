@@ -58,13 +58,19 @@ export default class TextInput extends React.Component {
         onChange={this.handleChange}
         placeholder={this.props.placeholder}
         onKeyDown={e => {
+          window.console.log("input--------------");
+          window.console.log(String(e.keyCode));
+          window.console.log(String(e.ctrlKey));
+          window.console.log(e.target.form);
           if (
             e.keyCode === 13 &&
             e.ctrlKey &&
             e.target.form &&
-            e.target.form.reportValidity()
+            e.target.form.reportValidity() &&
+            this.props.submit
           ) {
-            e.target.form.submit();
+            // e.target.form.click();
+            this.props.submit();
           }
         }}
       />

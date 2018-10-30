@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Wrapper from "../atoms/Wrapper";
 import Text from "../atoms/Text";
 import styled from "styled-components";
 import { style } from "../mediaQuery";
+import AnkerStyle from "../atoms/AnkerStyle";
 
 const StyledWrapper = styled(Wrapper)`
   display: flex;
@@ -28,6 +30,7 @@ const StyledWrapper = styled(Wrapper)`
 const StyledInnerWrapper = styled(Wrapper)`
   align-items: flex-start;
   width: 100px;
+  ${AnkerStyle};
 `;
 
 const StyledComment = styled(Text)`
@@ -46,10 +49,12 @@ export default class EntryItem extends Component {
     return (
       <StyledWrapper>
         <StyledInnerWrapper dir="column">
-          <Text margin="0">{this.props.comment.user.name || "NoName"}</Text>
-          <Text margin="0" level="XS">
-            {this.props.comment.user.id}
-          </Text>
+          <Link to={`/users/${this.props.comment.user.id}`}>
+            <Text margin="0">{this.props.comment.user.name || "NoName"}</Text>
+            <Text margin="0" level="XS">
+              {this.props.comment.user.id}
+            </Text>
+          </Link>
         </StyledInnerWrapper>
 
         <StyledComment>{this.props.comment.content}</StyledComment>

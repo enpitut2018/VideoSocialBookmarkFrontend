@@ -3,6 +3,7 @@ import Wrapper from "../atoms/Wrapper";
 import UserBookmarkItem from "../molecules/UserBookmarkItem";
 import { connect } from "react-redux";
 import { getUserBookmarks } from "../../actions/UserActions";
+import LoadingIcon from "../atoms/LoadingIcon";
 
 export class UserBookmarks extends Component {
   componentWillMount() {
@@ -12,7 +13,7 @@ export class UserBookmarks extends Component {
   render() {
     return (
       <>
-        {this.props.hasLoaded && (
+        {this.props.hasLoaded ? (
           <>
             <Wrapper dir="column" css="padding-bottom: 20px;">
               {this.props.bookmarks &&
@@ -21,6 +22,8 @@ export class UserBookmarks extends Component {
                 ))}
             </Wrapper>
           </>
+        ) : (
+          <LoadingIcon />
         )}
       </>
     );

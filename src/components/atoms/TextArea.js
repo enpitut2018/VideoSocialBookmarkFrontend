@@ -54,20 +54,25 @@ export default class TextArea extends React.Component {
     return (
       <StyledInput
         {...this.props}
-        type="text"
         value={this.state.value}
         onChange={this.handleChange}
         placeholder={this.props.placeholder}
         title={`送信: Ctrl+Enter
 改行: Enter`}
         onKeyDown={e => {
+          window.console.log("area--------------");
+          window.console.log(String(e.keyCode));
+          window.console.log(String(e.ctrlKey));
+          window.console.log(e.target.form);
           if (
             e.keyCode === 13 &&
             e.ctrlKey &&
             e.target.form &&
-            e.target.form.reportValidity()
+            e.target.form.reportValidity() &&
+            this.props.submit
           ) {
-            e.target.form.submit();
+            // e.target.form.click();
+            this.props.submit();
           }
         }}
       />
