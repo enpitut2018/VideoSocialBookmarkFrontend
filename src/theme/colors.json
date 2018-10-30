@@ -1,7 +1,10 @@
 {
   "Background": "White00",
   "Font": "Black00",
-  "Shadow": "Black01",
+  "Shadow": {
+    "BaseAlpha": 0.09,
+    "BaseColor": "0, 0, 0, "
+  },
   "Border": "Black01",
   "atoms": {
     "AnkerStyle": {
@@ -75,6 +78,11 @@
       },
       "URLSubmitForm": {
         "Background": "White00"
+      }
+    },
+    "Footer": {
+      "Border": {
+        "Shadow": "Black01"
       }
     },
     "URLSubmitForm": {},

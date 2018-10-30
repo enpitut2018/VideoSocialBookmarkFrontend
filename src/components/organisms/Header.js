@@ -10,6 +10,7 @@ import UserIcon from "../atoms/UserIcon";
 import Text from "../atoms/Text";
 import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
+import elevate from "../../theme/shadows";
 import DropdownMenu from "./DropdownMenu";
 import DropdownMenuItem from "../molecules/DropdownMenuItem";
 import Dropdown from "./Dropdown";
@@ -62,6 +63,17 @@ const StyledUserIcon = styled(UserIcon)`
   cursor: pointer;
 `;
 
+const StyledUploadIconWrapper = styled.div`
+  ${elevate(2)};
+
+  &:hover {
+    ${elevate(6)};
+  }
+  &:active {
+    ${elevate(0)};
+  }
+`;
+
 const IconWrapper = styled.div`
   margin: 2px 22px;
 `;
@@ -82,12 +94,14 @@ class Header extends React.Component {
           <>
             <Wrapper type="right">
               <Dropdown
-                renderHeader={onClickHandler =>
-                  UploadIcon({
-                    fill: palette[colors.organisms.Header.Icon.Fill],
-                    onClick: onClickHandler
-                  })
-                }
+                renderHeader={onClickHandler => (
+                  <StyledUploadIconWrapper>
+                    {UploadIcon({
+                      fill: palette[colors.organisms.Header.Icon.Fill],
+                      onClick: onClickHandler
+                    })}
+                  </StyledUploadIconWrapper>
+                )}
                 top="63px"
                 right="30px"
                 css={`

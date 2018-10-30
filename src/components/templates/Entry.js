@@ -17,9 +17,12 @@ export default class Entry extends Component {
             <EntryTop {...this.props} />
             <Wrapper dir="column">
               {this.props.entry.comments &&
-                this.props.entry.comments.map(comment => (
-                  <EntryItem comment={comment} key={comment.id} />
-                ))}
+                this.props.entry.comments.map(
+                  comment =>
+                    comment.content && (
+                      <EntryItem comment={comment} key={comment.id} />
+                    )
+                )}
             </Wrapper>
             {this.props.isSignedIn && (
               <CommentSubmitForm entryId={this.props.entry.id} />
