@@ -4,7 +4,7 @@ import styled from "styled-components";
 import elevate from "../../theme/shadows";
 
 const StyledUserIcon = styled.img`
-  height: 46px;
+  height: 44px;
   margin: 2px;
   border-radius: 50%;
   border-width: 0;
