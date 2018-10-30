@@ -150,7 +150,7 @@ class Header extends React.Component {
                         fill: palette[colors.organisms.Header.Icon.Fill]
                       })}
                     </IconWrapper>
-                    <Text margin="0">MyPage</Text>
+                    <Text margin="0">マイページ</Text>
                   </StyledTextLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
@@ -160,7 +160,7 @@ class Header extends React.Component {
                         fill: palette[colors.organisms.Header.Icon.Fill]
                       })}
                     </IconWrapper>
-                    <Text margin="0">Logout</Text>
+                    <Text margin="0">ログアウト</Text>
                   </StyledTextLink>
                 </DropdownMenuItem>
               </DropdownMenu>
@@ -169,7 +169,7 @@ class Header extends React.Component {
         ) : (
           <RightContentsWrapper type="right">
             <StyledTextLink to="/login">
-              <Text margin="auto 26px auto 0">Login</Text>
+              <Text margin="auto 26px auto 0">ログイン</Text>
             </StyledTextLink>
             <StyledTextLink to="/registration">
               <Text margin="auto 3px">登録</Text>

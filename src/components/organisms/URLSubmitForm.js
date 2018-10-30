@@ -25,8 +25,15 @@ class URLSubmitForm extends Component {
     super(props);
     this.state = {
       url: "",
-      comment: ""
+      comment: "",
+      hasSubmitted: false
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.state === "posting" && nextProps.state === "success") {
+      this.setState({ hasSubmitted: false });
+    }
   }
 
   handleUrlChange = url => {
@@ -38,16 +45,21 @@ class URLSubmitForm extends Component {
   };
 
   submit = e => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
+    if (this.state.hasSubmitted) {
+      return false;
+    }
     this.props.dispatch(postEntry(this.state.url, this.state.comment));
-    e.target.form.reset();
+    this.setState({ hasSubmitted: true });
   };
 
   render() {
     return (
       <StyledWrapper dir="column">
         <Text level="L" margin="10px 0">
-          Bookmark Video
+          動画をブックマーク
         </Text>
         <Form
           onSubmit={this.submit}
@@ -58,15 +70,17 @@ class URLSubmitForm extends Component {
                 placeholder="URL"
                 handleChange={this.handleUrlChange}
                 width="calc(85% - 52px)"
+                submit={this.submit}
                 required
               />
               <TextArea
-                placeholder="Comment"
+                placeholder="コメント"
                 handleChange={this.handleCommentChange}
                 width="calc(85% - 52px)"
+                submit={this.submit}
               />
               <Button mode="Primary" type="submit">
-                Submit
+                ブックマーク
               </Button>
             </>
           )}
@@ -77,5 +91,5 @@ class URLSubmitForm extends Component {
 }
 
 export default connect(store => ({
-  isLoading: store.comments.isLoading
+  state: store.entries.state
 }))(URLSubmitForm);

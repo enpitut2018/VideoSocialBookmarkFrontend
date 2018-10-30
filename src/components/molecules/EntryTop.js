@@ -13,10 +13,10 @@ const StyledA = styled.a`
   flex-direction: column;
 
   ${style({
-    S: `width: 95%`,
-    M: `width: 90%`,
-    L: `width: 90%`,
-    XL: `width: 800px`
+    XL: `width: 852px`,
+    L: `width: 90vw`,
+    M: `width: 90vw`,
+    S: `width: 95vw`
   })};
   ${AnkerStyle};
 `;
