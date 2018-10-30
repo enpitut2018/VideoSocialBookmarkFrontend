@@ -14,7 +14,7 @@ export class UserBookmarks extends Component {
       <>
         {this.props.hasLoaded && (
           <>
-            <Wrapper dir="column">
+            <Wrapper dir="column" css="padding-bottom: 20px;">
               {this.props.bookmarks &&
                 this.props.bookmarks.map(bookmark => (
                   <UserBookmarkItem bookmark={bookmark} key={bookmark.id} />

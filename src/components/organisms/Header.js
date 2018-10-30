@@ -113,9 +113,9 @@ class Header extends React.Component {
                 css={`
                   ${style({
                     XL: `margin-right: 35px;`,
-                    L: `margin-right: 25px;`,
-                    M: `margin-right: 20px;`,
-                    S: `margin-right: 15px;`
+                    L: `margin-right: 28px;`,
+                    M: `margin-right: 25px;`,
+                    S: `margin-right: 20px;`
                   })};
                 `}
               >
