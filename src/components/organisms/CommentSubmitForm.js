@@ -3,6 +3,7 @@ import Form from "../molecules/Form";
 import Button from "../atoms/Button";
 import TextArea from "../atoms/TextArea";
 import Wrapper from "../atoms/Wrapper";
+import Text from "../atoms/Text";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { postComment } from "../../actions/CommentActions";
@@ -50,7 +51,7 @@ class CommentSubmitForm extends Component {
           render={props => (
             <>
               <TextArea
-                placeholder="コメント"
+                placeholder="コメント（任意）"
                 handleChange={this.handleCommentChange}
                 submit={this.submit}
                 hasSubmitted={this.state.hasSubmitted}
@@ -58,7 +59,7 @@ class CommentSubmitForm extends Component {
                 required
               />
               <Button mode="Primary" type="submit">
-                送信
+                ブックマーク
               </Button>
             </>
           )}

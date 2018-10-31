@@ -2,7 +2,7 @@
   "Background": "White00",
   "Font": "Black00",
   "Shadow": {
-    "BaseAlpha": 0.09,
+    "BaseAlpha": 0.08,
     "BaseColor": "0, 0, 0, "
   },
   "Border": "Black01",

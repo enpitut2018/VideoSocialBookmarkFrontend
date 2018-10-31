@@ -6,6 +6,7 @@ import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
 import Text from "../atoms/Text";
 import { style, component } from "../mediaQuery";
+import BookmarkButton from "./BookmarkButton";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -85,6 +86,7 @@ export default class TrendItem extends Component {
                     <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
+                    <BookmarkButton entryId={this.props.entry.id} />
                   </Wrapper>
                 </>
               ),
@@ -100,6 +102,7 @@ export default class TrendItem extends Component {
                     <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
+                    <BookmarkButton entryId={this.props.entry.id} />
                   </Wrapper>
                 </>
               ),
@@ -115,6 +118,7 @@ export default class TrendItem extends Component {
                     <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
+                    <BookmarkButton entryId={this.props.entry.id} />
                   </Wrapper>
                 </>
               ),
@@ -140,6 +144,7 @@ export default class TrendItem extends Component {
                     >
                       Bookmarks
                     </Text>
+                    <BookmarkButton entryId={this.props.entry.id} />
                   </Wrapper>
                 </>
               )
