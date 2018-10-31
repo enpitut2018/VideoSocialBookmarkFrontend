@@ -25,29 +25,42 @@ class URLSubmitForm extends Component {
     super(props);
     this.state = {
       url: "",
-      comment: ""
+      comment: "",
+      hasSubmitted: false
     };
   }
 
-  handleUrlChange = url => {
-    this.setState({ url });
+  componentWillReceiveProps(nextProps) {
+    if (this.props.state === "posting" && nextProps.state === "success") {
+      this.setState({ url: "", comment: "", hasSubmitted: false });
+    }
+  }
+
+  handleUrlChange = e => {
+    this.setState({ url: e.target.value });
   };
 
-  handleCommentChange = comment => {
-    this.setState({ comment });
+  handleCommentChange = e => {
+    this.setState({ comment: e.target.value });
   };
 
   submit = e => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+      e.target.reset();
+    }
+    if (this.state.hasSubmitted) {
+      return false;
+    }
     this.props.dispatch(postEntry(this.state.url, this.state.comment));
-    e.target.form.reset();
+    this.setState({ hasSubmitted: true });
   };
 
   render() {
     return (
       <StyledWrapper dir="column">
         <Text level="L" margin="10px 0">
-          Bookmark Video
+          動画をブックマーク
         </Text>
         <Form
           onSubmit={this.submit}
@@ -58,15 +71,19 @@ class URLSubmitForm extends Component {
                 placeholder="URL"
                 handleChange={this.handleUrlChange}
                 width="calc(85% - 52px)"
+                submit={this.submit}
+                value={this.state.url}
                 required
               />
               <TextArea
-                placeholder="Comment"
+                placeholder="コメント"
                 handleChange={this.handleCommentChange}
                 width="calc(85% - 52px)"
+                submit={this.submit}
+                value={this.state.comment}
               />
               <Button mode="Primary" type="submit">
-                Submit
+                ブックマーク
               </Button>
             </>
           )}
@@ -77,5 +94,5 @@ class URLSubmitForm extends Component {
 }
 
 export default connect(store => ({
-  isLoading: store.comments.isLoading
+  state: store.entries.state
 }))(URLSubmitForm);

@@ -54,17 +54,18 @@ export default class TextInput extends React.Component {
     return (
       <StyledInput
         {...this.props}
-        value={this.state.value}
-        onChange={this.handleChange}
+        value={this.props.value}
+        onChange={this.props.handleChange}
         placeholder={this.props.placeholder}
         onKeyDown={e => {
           if (
             e.keyCode === 13 &&
             e.ctrlKey &&
             e.target.form &&
-            e.target.form.reportValidity()
+            e.target.form.reportValidity() &&
+            this.props.submit
           ) {
-            e.target.form.submit();
+            this.props.submit();
           }
         }}
       />

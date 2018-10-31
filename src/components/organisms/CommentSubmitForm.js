@@ -15,19 +15,31 @@ class CommentSubmitForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: ""
+      comment: "",
+      hasSubmitted: false
     };
   }
 
-  handleCommentChange = comment => {
-    this.setState({ comment });
+  componentWillReceiveProps(nextProps) {
+    if (this.props.state === "posting" && nextProps.state === "success") {
+      this.setState({ comment: "", hasSubmitted: false });
+    }
+  }
+
+  handleCommentChange = e => {
+    this.setState({ comment: e.target.value });
   };
 
   submit = e => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+      e.target.reset();
+    }
+    if (this.state.hasSubmitted) {
+      return false;
+    }
     this.props.dispatch(postComment(this.props.entryId, this.state.comment));
-    window.console.log(e.target.form);
-    e.target.form.reset();
+    this.setState({ hasSubmitted: true });
   };
 
   render() {
@@ -38,12 +50,15 @@ class CommentSubmitForm extends Component {
           render={props => (
             <>
               <TextArea
-                placeholder="Comment"
+                placeholder="コメント"
                 handleChange={this.handleCommentChange}
+                submit={this.submit}
+                hasSubmitted={this.state.hasSubmitted}
+                value={this.state.comment}
                 required
               />
               <Button mode="Primary" type="submit">
-                Submit
+                送信
               </Button>
             </>
           )}
@@ -54,5 +69,6 @@ class CommentSubmitForm extends Component {
 }
 
 export default connect(store => ({
-  isLoading: store.comments.isLoading
+  isLoading: store.comments.isLoading,
+  state: store.comments.state
 }))(CommentSubmitForm);

@@ -37,6 +37,9 @@
     },
     "Icon": {
       "Opacity": "Opacity00"
+    },
+    "LoadingIcon": {
+      "Stroke": "Red01"
     }
   },
   "molecules": {

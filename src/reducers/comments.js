@@ -5,7 +5,7 @@ import {
 } from "../actions/CommentActions";
 
 const initialState = {
-  isLoading: false
+  state: ""
 };
 
 export default (state = initialState, action) => {
@@ -13,17 +13,17 @@ export default (state = initialState, action) => {
     case POST_COMMENT_REQUEST:
       return {
         ...state,
-        isLoading: true
+        state: "posting"
       };
     case POST_COMMENT_SUCCESS:
       return {
         ...state,
-        isLoading: false
+        state: "success"
       };
     case POST_COMMENT_FAILURE:
       return {
         ...state,
-        isLoading: false
+        state: "failed"
       };
 
     default:

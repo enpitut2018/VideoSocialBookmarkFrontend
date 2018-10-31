@@ -13,7 +13,7 @@ export default class MyPageTemplate extends Component {
       <>
         <Header />
         <Wrapper dir="column">
-          <Text level="L">My Bookmarks</Text>
+          <Text level="L">マイブックマーク</Text>
           {this.props.hasLoaded && (
             <UserBookmarks user_id={this.props.user.id} />
           )}

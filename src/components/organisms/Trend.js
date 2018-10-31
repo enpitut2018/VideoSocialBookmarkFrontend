@@ -7,6 +7,7 @@ import Wrapper from "../atoms/Wrapper";
 import TrendItem from "../molecules/TrendItem";
 import { getTrend } from "../../actions/TrendActions";
 import { preloadTrend } from "../../actions/EntryActions";
+import LoadingIcon from "../atoms/LoadingIcon";
 
 const StyledTrend = styled.div`
   padding: 0 0 20px 0;
@@ -25,18 +26,18 @@ class Trend extends Component {
       <StyledTrend>
         <Wrapper dir="column">
           <Text level="L" margin="10px 0 13px 0">
-            Trend
+            急上昇
           </Text>
           <Wrapper dir="column">
             {this.props.error ? (
-              <Text>トレンドの取得に失敗しました</Text>
+              <Text>データの取得に失敗しました</Text>
             ) : this.props.hasLoaded ? (
               this.props.trend &&
               this.props.trend.map(item => (
                 <TrendItem entry={item} key={item.id} />
               ))
             ) : (
-              <Text>Loading</Text>
+              <LoadingIcon />
             )}
           </Wrapper>
         </Wrapper>
