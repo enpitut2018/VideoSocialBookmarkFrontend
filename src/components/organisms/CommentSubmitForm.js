@@ -22,17 +22,18 @@ class CommentSubmitForm extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.state === "posting" && nextProps.state === "success") {
-      this.setState({ hasSubmitted: false });
+      this.setState({ comment: "", hasSubmitted: false });
     }
   }
 
-  handleCommentChange = comment => {
-    this.setState({ comment });
+  handleCommentChange = e => {
+    this.setState({ comment: e.target.value });
   };
 
   submit = e => {
     if (e) {
       e.preventDefault();
+      e.target.reset();
     }
     if (this.state.hasSubmitted) {
       return false;
@@ -52,6 +53,8 @@ class CommentSubmitForm extends Component {
                 placeholder="コメント"
                 handleChange={this.handleCommentChange}
                 submit={this.submit}
+                hasSubmitted={this.state.hasSubmitted}
+                value={this.state.comment}
                 required
               />
               <Button mode="Primary" type="submit">

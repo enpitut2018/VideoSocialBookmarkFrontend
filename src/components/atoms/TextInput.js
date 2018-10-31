@@ -54,14 +54,10 @@ export default class TextInput extends React.Component {
     return (
       <StyledInput
         {...this.props}
-        value={this.state.value}
-        onChange={this.handleChange}
+        value={this.props.value}
+        onChange={this.props.handleChange}
         placeholder={this.props.placeholder}
         onKeyDown={e => {
-          window.console.log("input--------------");
-          window.console.log(String(e.keyCode));
-          window.console.log(String(e.ctrlKey));
-          window.console.log(e.target.form);
           if (
             e.keyCode === 13 &&
             e.ctrlKey &&
@@ -69,7 +65,6 @@ export default class TextInput extends React.Component {
             e.target.form.reportValidity() &&
             this.props.submit
           ) {
-            // e.target.form.click();
             this.props.submit();
           }
         }}

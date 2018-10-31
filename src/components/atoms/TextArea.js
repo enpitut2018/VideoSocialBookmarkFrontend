@@ -31,39 +31,16 @@ const StyledInput = styled.textarea`
 `;
 
 export default class TextArea extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ""
-    };
-  }
-
-  handleChange = e => {
-    this.setState({
-      value: e.target.value
-    });
-    if (this.props.handleChange) {
-      this.props.handleChange(e.target.value);
-    }
-    if (this.props.onChange) {
-      this.props.onChange(e.target.value);
-    }
-  };
-
   render() {
     return (
       <StyledInput
         {...this.props}
-        value={this.state.value}
-        onChange={this.handleChange}
+        value={this.props.value}
+        onChange={this.props.handleChange}
         placeholder={this.props.placeholder}
         title={`送信: Ctrl+Enter
 改行: Enter`}
         onKeyDown={e => {
-          window.console.log("area--------------");
-          window.console.log(String(e.keyCode));
-          window.console.log(String(e.ctrlKey));
-          window.console.log(e.target.form);
           if (
             e.keyCode === 13 &&
             e.ctrlKey &&
@@ -71,7 +48,6 @@ export default class TextArea extends React.Component {
             e.target.form.reportValidity() &&
             this.props.submit
           ) {
-            // e.target.form.click();
             this.props.submit();
           }
         }}
