@@ -32,21 +32,22 @@ class URLSubmitForm extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.state === "posting" && nextProps.state === "success") {
-      this.setState({ hasSubmitted: false });
+      this.setState({ url: "", comment: "", hasSubmitted: false });
     }
   }
 
-  handleUrlChange = url => {
-    this.setState({ url });
+  handleUrlChange = e => {
+    this.setState({ url: e.target.value });
   };
 
-  handleCommentChange = comment => {
-    this.setState({ comment });
+  handleCommentChange = e => {
+    this.setState({ comment: e.target.value });
   };
 
   submit = e => {
     if (e) {
       e.preventDefault();
+      e.target.reset();
     }
     if (this.state.hasSubmitted) {
       return false;
@@ -71,6 +72,7 @@ class URLSubmitForm extends Component {
                 handleChange={this.handleUrlChange}
                 width="calc(85% - 52px)"
                 submit={this.submit}
+                value={this.state.url}
                 required
               />
               <TextArea
@@ -78,6 +80,7 @@ class URLSubmitForm extends Component {
                 handleChange={this.handleCommentChange}
                 width="calc(85% - 52px)"
                 submit={this.submit}
+                value={this.state.comment}
               />
               <Button mode="Primary" type="submit">
                 ブックマーク
