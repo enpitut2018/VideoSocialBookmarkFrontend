@@ -18,16 +18,16 @@ class Registration extends Component {
     this.state = { email: "", password: "", passwordConfirmation: "" };
   }
 
-  handleEmailChange = email => {
-    this.setState({ email });
+  handleEmailChange = e => {
+    this.setState({ email: e.target.value });
   };
 
-  handlePasswordChange = password => {
-    this.setState({ password });
+  handlePasswordChange = e => {
+    this.setState({ password: e.target.value });
   };
 
-  handlePasswordConfirmationChange = passwordConfirmation => {
-    this.setState({ passwordConfirmation });
+  handlePasswordConfirmationChange = e => {
+    this.setState({ passwordConfirmation: e.target.value });
   };
 
   render() {
@@ -50,18 +50,21 @@ class Registration extends Component {
                 <TextInput
                   placeholder="email"
                   handleChange={this.handleEmailChange}
+                  value={this.state.email}
                   required
                 />
                 <TextInput
                   type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
+                  value={this.state.password}
                   required
                 />
                 <TextInput
                   type="password"
                   placeholder="password confirmation"
                   handleChange={this.handlePasswordConfirmationChange}
+                  value={this.state.passwordConfirmation}
                   required
                 />
                 <Button mode="Primary" type="submit">

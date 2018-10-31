@@ -18,12 +18,12 @@ class Login extends Component {
     this.state = { email: "", password: "" };
   }
 
-  handleEmailChange = email => {
-    this.setState({ email });
+  handleEmailChange = e => {
+    this.setState({ email: e.target.value });
   };
 
-  handlePasswordChange = password => {
-    this.setState({ password });
+  handlePasswordChange = e => {
+    this.setState({ password: e.target.value });
   };
 
   render() {
@@ -46,12 +46,14 @@ class Login extends Component {
                 <TextInput
                   placeholder="email"
                   handleChange={this.handleEmailChange}
+                  value={this.state.email}
                   required
                 />
                 <TextInput
                   type="password"
                   placeholder="password"
                   handleChange={this.handlePasswordChange}
+                  value={this.state.password}
                   required
                 />
                 <Button mode="Primary" type="submit">
