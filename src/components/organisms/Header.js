@@ -112,25 +112,25 @@ class Header extends React.Component {
                 right="30px"
                 css={`
                   ${style({
-                    XL: `margin-right: 35px;`,
-                    L: `margin-right: 28px;`,
-                    M: `margin-right: 25px;`,
-                    S: `margin-right: 20px;`
-                  })};
+                  XL: `margin-right: 35px;`,
+                  L: `margin-right: 28px;`,
+                  M: `margin-right: 25px;`,
+                  S: `margin-right: 20px;`
+                })};
                 `}
               >
                 <DropdownItem
                   width="350px"
                   css={`
                     background-color: ${palette[
-                      colors.organisms.Header.URLSubmitForm.Background
-                    ]};
+                    colors.organisms.Header.URLSubmitForm.Background
+                  ]};
                     ${style({
-                      XL: `width: 400px`,
-                      L: `width: 380pxpx`,
-                      M: `width: 350px`,
-                      S: `width: 80vw`
-                    })};
+                    XL: `width: 400px`,
+                    L: `width: 380pxpx`,
+                    M: `width: 350px`,
+                    S: `width: 80vw`
+                  })};
                   `}
                 >
                   <URLSubmitForm />

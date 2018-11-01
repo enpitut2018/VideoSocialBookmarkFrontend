@@ -15,11 +15,11 @@ const StyledInput = styled.input`
     props.width
       ? `width: ${props.width}`
       : style({
-          XL: `width: 400px`,
-          L: `width: calc(45vw - 52px)`,
-          M: `width: calc(60vw - 52px)`,
-          S: `width: calc(80vw - 52px)`
-        })};
+        XL: `width: 400px`,
+        L: `width: calc(45vw - 52px)`,
+        M: `width: calc(60vw - 52px)`,
+        S: `width: calc(80vw - 52px)`
+      })};
 
   background-color: ${palette[colors.atoms.TextInput.Background]};
 

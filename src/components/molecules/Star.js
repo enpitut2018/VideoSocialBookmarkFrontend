@@ -70,17 +70,17 @@ class Star extends Component {
       >
         {this.isEnabled()
           ? StarIcon({
-              fill: palette[colors.molecules.Star.Enable.Fill],
-              width,
-              height
-            })
+            fill: palette[colors.molecules.Star.Enable.Fill],
+            width,
+            height
+          })
           : StarBorderIcon({
-              fill: this.state.hover
-                ? palette[colors.molecules.Star.Enable.Fill]
-                : palette[colors.molecules.Star.Disable.Fill],
-              width,
-              height
-            })}
+            fill: this.state.hover
+              ? palette[colors.molecules.Star.Enable.Fill]
+              : palette[colors.molecules.Star.Disable.Fill],
+            width,
+            height
+          })}
       </StyledWrapper>
     );
   }

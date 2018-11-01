@@ -34,48 +34,48 @@ const getNewState = (state, entryId, enabled) => {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_STAR_REQUEST:
-      return {
-        ...state,
-        isLoading: true
-      };
-    case GET_STAR_SUCCESS:
-      return getNewState(state, action.entryId, action.enabled);
+  case GET_STAR_REQUEST:
+    return {
+      ...state,
+      isLoading: true
+    };
+  case GET_STAR_SUCCESS:
+    return getNewState(state, action.entryId, action.enabled);
 
-    case GET_STAR_FAILURE:
-      return {
-        ...state,
-        isLoading: false
-      };
+  case GET_STAR_FAILURE:
+    return {
+      ...state,
+      isLoading: false
+    };
 
-    case POST_STAR_REQUEST:
-      return {
-        ...state,
-        isLoading: true
-      };
-    case POST_STAR_SUCCESS:
-      return getNewState(state, action.entryId, true);
+  case POST_STAR_REQUEST:
+    return {
+      ...state,
+      isLoading: true
+    };
+  case POST_STAR_SUCCESS:
+    return getNewState(state, action.entryId, true);
 
-    case POST_STAR_FAILURE:
-      return {
-        ...state,
-        isLoading: false
-      };
-    case DELETE_STAR_REQUEST:
-      return {
-        ...state,
-        isLoading: true
-      };
-    case DELETE_STAR_SUCCESS:
-      return getNewState(state, action.entryId, false);
+  case POST_STAR_FAILURE:
+    return {
+      ...state,
+      isLoading: false
+    };
+  case DELETE_STAR_REQUEST:
+    return {
+      ...state,
+      isLoading: true
+    };
+  case DELETE_STAR_SUCCESS:
+    return getNewState(state, action.entryId, false);
 
-    case DELETE_STAR_FAILURE:
-      return {
-        ...state,
-        isLoading: false
-      };
+  case DELETE_STAR_FAILURE:
+    return {
+      ...state,
+      isLoading: false
+    };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
