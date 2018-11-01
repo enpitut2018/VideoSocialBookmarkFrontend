@@ -45,7 +45,7 @@ class Star extends Component {
     return entry !== undefined && entry.enabled;
   };
 
-  onClickHandler = e => {
+  onClickHandler = _e => {
     if (this.isEnabled()) {
       this.props.dispatch(deleteStar(this.props.entryId));
     } else {
@@ -53,11 +53,11 @@ class Star extends Component {
     }
   };
 
-  onMouseEnterHandler = e => {
+  onMouseEnterHandler = _e => {
     this.setState({ hover: true });
   };
 
-  onMouseLeaveHandler = e => {
+  onMouseLeaveHandler = _e => {
     this.setState({ hover: false });
   };
 

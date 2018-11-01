@@ -17,7 +17,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-  case GET_ENTRY_REQUEST:
+  case GET_ENTRY_REQUEST:{
     const entryPreloaded =
         state.entries && action.id in state.entries ? true : false;
     return {
@@ -25,6 +25,7 @@ export default (state = initialState, action) => {
       hasLoaded: entryPreloaded,
       entry: entryPreloaded ? state.entries[action.id] : null
     };
+  }
   case GET_ENTRY_SUCCESS:
     return {
       ...state,
@@ -34,7 +35,7 @@ export default (state = initialState, action) => {
     };
   case GET_ENTRY_FAILURE:
     return state;
-  case PRELOAD_ENTRIES:
+  case PRELOAD_ENTRIES:{
     const ObjectToDictById = array => {
       let x = {};
       array.forEach(val => {
@@ -46,6 +47,7 @@ export default (state = initialState, action) => {
       ...state,
       entries: Object.assign(state.entries, ObjectToDictById(action.entries))
     };
+  }
   case POST_ENTRY_REQUEST:
     return {
       ...state,
