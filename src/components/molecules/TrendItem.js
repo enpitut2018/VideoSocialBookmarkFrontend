@@ -7,6 +7,8 @@ import Thumbnail from "../atoms/Thumbnail";
 import Text from "../atoms/Text";
 import { style, component } from "../mediaQuery";
 import BookmarkButton from "./BookmarkButton";
+import { connect } from "react-redux";
+import { postBookmark } from "../../actions/BookmarkActions";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -60,7 +62,7 @@ const titleStyle = `
   -ms-line-clamp: 2;
 `;
 
-export default class TrendItem extends Component {
+class TrendItem extends Component {
   render() {
     return (
       <StyledLink to={"/entries/" + this.props.entry.id}>
@@ -86,7 +88,12 @@ export default class TrendItem extends Component {
                     <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
-                    <BookmarkButton entryId={this.props.entry.id} />
+                    <BookmarkButton
+                      bookmarked={this.props.entry["bookmarked?"]}
+                      handleClick={() =>
+                        this.props.dispatch(postBookmark(this.props.entry.id))
+                      }
+                    />
                   </Wrapper>
                 </>
               ),
@@ -102,7 +109,12 @@ export default class TrendItem extends Component {
                     <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
-                    <BookmarkButton entryId={this.props.entry.id} />
+                    <BookmarkButton
+                      bookmarked={this.props.entry["bookmarked?"]}
+                      handleClick={() =>
+                        this.props.dispatch(postBookmark(this.props.entry.id))
+                      }
+                    />
                   </Wrapper>
                 </>
               ),
@@ -118,7 +130,12 @@ export default class TrendItem extends Component {
                     <Text level="XS" margin="0 0 0 0.2rem">
                       Bookmarks
                     </Text>
-                    <BookmarkButton entryId={this.props.entry.id} />
+                    <BookmarkButton
+                      bookmarked={this.props.entry["bookmarked?"]}
+                      handleClick={() =>
+                        this.props.dispatch(postBookmark(this.props.entry.id))
+                      }
+                    />
                   </Wrapper>
                 </>
               ),
@@ -144,7 +161,12 @@ export default class TrendItem extends Component {
                     >
                       Bookmarks
                     </Text>
-                    <BookmarkButton entryId={this.props.entry.id} />
+                    <BookmarkButton
+                      bookmarked={this.props.entry["bookmarked?"]}
+                      handleClick={() =>
+                        this.props.dispatch(postBookmark(this.props.entry.id))
+                      }
+                    />
                   </Wrapper>
                 </>
               )
@@ -155,3 +177,5 @@ export default class TrendItem extends Component {
     );
   }
 }
+
+export default connect()(TrendItem);

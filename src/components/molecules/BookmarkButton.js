@@ -1,43 +1,35 @@
 import React, { Component } from "react";
 import Button from "../atoms/Button";
 import Text from "../atoms/Text";
-import { postComment } from "../../actions/CommentActions";
-import { connect } from "react-redux";
 import palette from "../../theme/palette";
 
-class BookmarkButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bookmarked: false
-    };
-  }
+export default class BookmarkButton extends Component {
   render() {
     return (
       <Button
-        mode={this.state.bookmarked ? "Primary" : "Default"}
+        mode={this.props.bookmarked ? "Primary" : "Default"}
         size="S"
         padding="0"
         onClick={e => {
           e.stopPropagation();
           e.preventDefault();
-          this.props.dispatch(postComment(this.props.entryId, ""));
-          this.setState({ bookmarked: true });
+
+          if (this.props.handleClick) {
+            this.props.handleClick();
+          }
         }}
       >
         <Text
           level="XS"
-          fontWeight={this.state.bookmarked ? "bold" : "300"}
+          fontWeight={this.props.bookmarked ? "bold" : "300"}
           color={
-            this.state.bookmarked ? palette["White00"] : palette["Black00"]
+            this.props.bookmarked ? palette["White00"] : palette["Black00"]
           }
         >
           ブックマーク
-          {this.state.bookmarked ? "中" : "する"}
+          {this.props.bookmarked ? "中" : "する"}
         </Text>
       </Button>
     );
   }
 }
-
-export default connect(store => ({}))(BookmarkButton);

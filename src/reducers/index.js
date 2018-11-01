@@ -1,3 +1,4 @@
+import bookmarks from "./bookmarks";
 import comments from "./comments";
 import entries from "./entries";
 import stars from "./stars";
@@ -8,6 +9,7 @@ import { combineReducers } from "redux";
 import { reduxTokenAuthReducer } from "redux-token-auth";
 
 const app = combineReducers({
+  bookmarks,
   comments,
   entries,
   stars,
