@@ -5,7 +5,7 @@ import UserBookmarks from "../organisms/UserBookmarks";
 import Text from "../atoms/Text";
 import Wrapper from "../atoms/Wrapper";
 
-export default class Entry extends Component {
+export default class UserTemplate extends Component {
   render() {
     return (
       <>
