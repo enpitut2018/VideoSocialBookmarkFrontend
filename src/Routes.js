@@ -10,6 +10,7 @@ import Logout from "./components/pages/Logout";
 import NotFound_404 from "./components/pages/NotFound_404";
 import About from "./components/pages/About";
 import Terms from "./components/pages/Terms";
+import Privacy from "./components/pages/Privacy";
 import Help from "./components/pages/Help";
 import User from "./components/pages/User";
 import { generateRequireSignInWrapper } from "redux-token-auth";
@@ -33,6 +34,7 @@ class Routes extends React.Component {
           />
           <Route exact={true} path="/about" component={About} />
           <Route exact={true} path="/terms" component={Terms} />
+          <Route exact={true} path="/privacy" component={Privacy} />
           <Route exact={true} path="/login" component={Login} />
           <Route exact={true} path="/logout" component={Logout} />
           <Route exact={true} path="/registration" component={Registration} />
