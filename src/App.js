@@ -6,12 +6,12 @@ import palette from "./theme/palette";
 
 import { Provider } from "react-redux";
 import Routes from "./Routes";
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import reducers from "./reducers";
 import thunk from "redux-thunk";
 import { verifyCredentials } from "./redux-token-auth-config";
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 300;
@@ -54,9 +54,12 @@ verifyCredentials(store);
 class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        <Routes />
-      </Provider>
+      <>
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+        <GlobalStyle />
+      </>
     );
   }
 }
