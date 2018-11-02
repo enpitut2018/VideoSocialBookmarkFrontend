@@ -65,10 +65,7 @@ export default {
     {
       Header: "第９条（お問い合わせ窓口）",
       Body: `本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。
-                住所：
-                社名：VideoSocialBookmark
-            担当部署：カスタマーサービス
-     Eメールアドレス：`
+     Eメールアドレス：videosocialbookmark@gmail.com`
     }
   ]
 };
