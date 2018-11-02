@@ -67,7 +67,7 @@ const StyledButton = styled.button`
     ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
   }
   &:active {
-    ${_props => elevate(0)};
+    ${elevate(0)};
   }
 `;
 

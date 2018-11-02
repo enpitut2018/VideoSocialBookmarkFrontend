@@ -65,7 +65,7 @@ class URLSubmitForm extends Component {
         <Form
           onSubmit={this.submit}
           css="width: 100%;"
-          render={_props => (
+          render={() => (
             <>
               <TextInput
                 placeholder="URL"

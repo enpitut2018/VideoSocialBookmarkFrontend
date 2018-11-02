@@ -10,10 +10,10 @@ const StyledUserIcon = styled.img`
   border-width: 0;
 
   &:hover {
-    ${_props => elevate(4)};
+    ${elevate(4)};
   }
   &:active {
-    ${_props => elevate(0)};
+    ${elevate(0)};
   }
 `;
 
