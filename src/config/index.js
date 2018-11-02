@@ -1,1 +1,1 @@
-export default require(`./${process.env.NODE_ENV}_config`);
+export default require(`./${process.env.NODE_ENV}_config`).default;
