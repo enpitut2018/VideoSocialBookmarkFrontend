@@ -6,16 +6,45 @@ import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import styled from "styled-components";
 
+const paddings = {
+  S: "2px 4px",
+  M: "10px 20px",
+  L: "13px 26px",
+  XL: "16px 32px"
+};
+const margins = {
+  S: "6px",
+  M: "10px",
+  L: "13px",
+  XL: "16px"
+};
+const borderRadii = {
+  S: "12px",
+  M: "23px",
+  L: "23px",
+  XL: "23px"
+};
+const heights = {
+  S: "calc(1.1rem + 4px)",
+  M: "calc(1.5rem + 20px)",
+  L: "calc(1.9rem + 26px)",
+  XL: "calc(2.0rem + 32px)"
+};
+
 const StyledButton = styled.button`
+  overflow: hidden;
   display: inline-flex;
 
   cursor: pointer;
   user-select: none;
   outline: none;
+  height: ${props => (props.size in heights ? heights[props.size] : heights.M)};
 
-  padding: 12px 26px;
-  margin: 10px;
-  border-radius: 23px;
+  padding: ${props =>
+    props.size in paddings ? paddings[props.size] : paddings.M};
+  margin: ${props => (props.size in margins ? margins[props.size] : margins.M)};
+  border-radius: ${props =>
+    props.size in borderRadii ? borderRadii[props.size] : borderRadii.M};
   border-width: 0;
 
   background-color: ${props =>
@@ -38,7 +67,7 @@ const StyledButton = styled.button`
     ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
   }
   &:active {
-    ${props => elevate(0)};
+    ${elevate(0)};
   }
 `;
 

@@ -34,7 +34,7 @@ export const postStar = entryId => dispatch => {
 
   return axios
     .post(`${config.backend_api_url}/stars/entries/${entryId}`, {})
-    .then(res => {
+    .then(_ => {
       dispatch({ type: POST_STAR_SUCCESS, entryId });
     })
     .catch(_ => {
@@ -48,7 +48,7 @@ export const deleteStar = entryId => dispatch => {
 
   return axios
     .delete(`${config.backend_api_url}/stars/entries/${entryId}`)
-    .then(res => {
+    .then(_ => {
       dispatch({ type: DELETE_STAR_SUCCESS, entryId });
     })
     .catch(_ => {

@@ -11,11 +11,11 @@ const StyledInput = styled.textarea`
     props.width
       ? `width: ${props.width}`
       : style({
-          XL: `width: 800px`,
-          L: `width: calc(90vw - 52px)`,
-          M: `width: calc(90vw - 52px)`,
-          S: `width: calc(95vw - 52px)`
-        })};
+        XL: `width: 800px`,
+        L: `width: calc(90vw - 52px)`,
+        M: `width: calc(90vw - 52px)`,
+        S: `width: calc(95vw - 52px)`
+      })};
 
   padding: 12px 26px;
   margin: 10px 0;

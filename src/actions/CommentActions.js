@@ -17,7 +17,7 @@ export const postComment = (entryId, comment) => dispatch => {
         content: comment
       }
     })
-    .then(res => {
+    .then(_ => {
       dispatch({ type: POST_COMMENT_SUCCESS });
       dispatch(getEntry(entryId));
     })

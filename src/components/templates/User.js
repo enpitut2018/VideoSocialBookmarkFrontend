@@ -5,7 +5,7 @@ import UserBookmarks from "../organisms/UserBookmarks";
 import Text from "../atoms/Text";
 import Wrapper from "../atoms/Wrapper";
 
-export default class Entry extends Component {
+export default class UserTemplate extends Component {
   render() {
     return (
       <>
@@ -15,7 +15,7 @@ export default class Entry extends Component {
             User {this.props.user_id}
             のブックマーク
           </Text>
-          <UserBookmarks user_id={this.props.user_id} />
+          <UserBookmarks userId={this.props.user_id} />
         </Wrapper>
         <Footer />
       </>

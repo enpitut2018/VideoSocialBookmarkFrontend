@@ -65,7 +65,7 @@ class URLSubmitForm extends Component {
         <Form
           onSubmit={this.submit}
           css="width: 100%;"
-          render={props => (
+          render={() => (
             <>
               <TextInput
                 placeholder="URL"
@@ -76,7 +76,7 @@ class URLSubmitForm extends Component {
                 required
               />
               <TextArea
-                placeholder="コメント"
+                placeholder="コメント（任意）"
                 handleChange={this.handleCommentChange}
                 width="calc(85% - 52px)"
                 submit={this.submit}

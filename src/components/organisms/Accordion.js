@@ -35,6 +35,7 @@ export default class Accordion extends React.Component {
       <StyledAccordion>
         {this.props.items.map((item, i) => (
           <AccordionItem
+            key={i}
             header={item.Header}
             body={item.Body}
             isOpen={i === this.state.openedItemIndex}
