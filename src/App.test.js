@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import axios from "axios";
-import config from "./config";
+// import axios from "axios";
+// import config from "./config";
 
 it("renders without crashing", () => {
   window.matchMedia = () => ({

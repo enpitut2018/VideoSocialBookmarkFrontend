@@ -5,6 +5,8 @@ export const GET_TREND_REQUEST = "GET_TREND_REQUEST";
 export const GET_TREND_SUCCESS = "GET_TREND_SUCCESS";
 export const GET_TREND_FAILURE = "GET_TREND_FAILURE";
 
+export const SET_TREND_BOOKMARKED = "SET_TREND_BOOKMARKED";
+
 export const getTrend = () => dispatch => {
   const page = 1;
   dispatch({ type: GET_TREND_REQUEST });
@@ -13,7 +15,10 @@ export const getTrend = () => dispatch => {
     .then(res => {
       dispatch({ type: GET_TREND_SUCCESS, trend: res.data });
     })
-    .catch(e => {
-      dispatch({ type: GET_TREND_FAILURE, error: e });
+    .catch(error => {
+      dispatch({ type: GET_TREND_FAILURE, error });
     });
 };
+
+export const setTrendBookmarked = (entryId, bookmarked) => dispatch =>
+  dispatch({ type: SET_TREND_BOOKMARKED, entryId, bookmarked });
