@@ -8,7 +8,7 @@ import Text from "../atoms/Text";
 import { style, component } from "../mediaQuery";
 import BookmarkButton from "./BookmarkButton";
 import { connect } from "react-redux";
-import { postBookmark } from "../../actions/BookmarkActions";
+import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -16,12 +16,12 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  margin: 3px 0;
+  margin: 2px 0;
 
   ${AnkerStyle};
 
   ${style({
-    S: `width: 95vw`,
+    S: `width: 98vw`,
     M: `width: 90vw`,
     L: `width: 90vw`,
     XL: `width: 800px`
@@ -30,8 +30,8 @@ const StyledLink = styled(Link)`
 
 const StyledThumbnail = styled.div`
   ${style({
-    S: `margin-right: 10px`,
-    M: `margin-right: 13px`,
+    S: `margin-right: 8px`,
+    M: `margin-right: 12px`,
     L: `margin-right: 17px`,
     XL: `margin-right: 20px`
   })};
@@ -63,6 +63,20 @@ const titleStyle = `
 `;
 
 class TrendItem extends Component {
+  bookmarkButton = () =>
+    this.props.isSignedIn && (
+      <BookmarkButton
+        bookmarked={this.props.entry["bookmarked?"]}
+        handleClick={() =>
+          this.props.dispatch(
+            this.props.entry["bookmarked?"]
+              ? deleteBookmark(this.props.entry.id)
+              : postBookmark(this.props.entry.id)
+          )
+        }
+      />
+    );
+
   render() {
     return (
       <StyledLink to={"/entries/" + this.props.entry.id}>
@@ -85,36 +99,26 @@ class TrendItem extends Component {
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0 0 0.2rem">
-                      Bookmarks
+                    <Text level="XS" margin="0 0.2rem">
+                      ブックマーク
                     </Text>
-                    <BookmarkButton
-                      bookmarked={this.props.entry["bookmarked?"]}
-                      handleClick={() =>
-                        this.props.dispatch(postBookmark(this.props.entry.id))
-                      }
-                    />
+                    {this.bookmarkButton()}
                   </Wrapper>
                 </>
               ),
               L: (
                 <>
-                  <Text level="M" margin="0" fontSize="14pt" css={titleStyle}>
+                  <Text level="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0 0 0.2rem">
-                      Bookmarks
+                    <Text level="XS" margin="0 0.2rem">
+                      ブックマーク
                     </Text>
-                    <BookmarkButton
-                      bookmarked={this.props.entry["bookmarked?"]}
-                      handleClick={() =>
-                        this.props.dispatch(postBookmark(this.props.entry.id))
-                      }
-                    />
+                    {this.bookmarkButton()}
                   </Wrapper>
                 </>
               ),
@@ -127,46 +131,26 @@ class TrendItem extends Component {
                     <Text level="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0 0 0.2rem">
-                      Bookmarks
+                    <Text level="XS" margin="0 0.1rem">
+                      ブックマーク
                     </Text>
-                    <BookmarkButton
-                      bookmarked={this.props.entry["bookmarked?"]}
-                      handleClick={() =>
-                        this.props.dispatch(postBookmark(this.props.entry.id))
-                      }
-                    />
+                    {this.bookmarkButton()}
                   </Wrapper>
                 </>
               ),
               S: (
                 <>
-                  <Text
-                    level="M"
-                    margin="0"
-                    css={titleStyle}
-                    width="calc(95vw - 130px)"
-                  >
+                  <Text level="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
-                  <Wrapper css="width: calc(95vw - 130px); overflow: hidden;">
-                    <Text level="S" margin="0">
+                  <Wrapper>
+                    <Text level="XS" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text
-                      level="XS"
-                      margin="0 0 0 0.2rem"
-                      width="calc(95vw - 130px - 1.2rem)"
-                      css="overflow: hidden;"
-                    >
-                      Bookmarks
+                    <Text level="XS" margin="0">
+                      ブックマーク
                     </Text>
-                    <BookmarkButton
-                      bookmarked={this.props.entry["bookmarked?"]}
-                      handleClick={() =>
-                        this.props.dispatch(postBookmark(this.props.entry.id))
-                      }
-                    />
+                    {this.bookmarkButton()}
                   </Wrapper>
                 </>
               )
@@ -178,4 +162,6 @@ class TrendItem extends Component {
   }
 }
 
-export default connect()(TrendItem);
+export default connect(store => ({
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+}))(TrendItem);
