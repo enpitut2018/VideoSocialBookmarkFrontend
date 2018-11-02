@@ -74,8 +74,8 @@ export const textStyle = props => {
     margin: ${props.margin ? props.margin : fontMargin(props.level)};
     opacity: ${props.opacity ? props.opacity : fontOpacity(props.level)};
     font-weight: ${props.fontWeight
-      ? props.fontWeight
-      : fontWeight(props.level)};
+    ? props.fontWeight
+    : fontWeight(props.level)};
     ${props.height && `height: ${props.height}`};
     ${props.width && `width: ${props.width}`};
     ${props.userSelect && `user-select: ${props.userSelect};`};
@@ -104,10 +104,10 @@ export default class Text extends Component {
       <StyledText {...this.props}>
         {typeof children === "string" || children instanceof String
           ? children.split("\n").map((line, i) => (
-              <StyledLine key={i} level={level} lineHeight={lineHeight}>
-                {line}
-              </StyledLine>
-            ))
+            <StyledLine key={i} level={level} lineHeight={lineHeight}>
+              {line}
+            </StyledLine>
+          ))
           : children}
       </StyledText>
     );

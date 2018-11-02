@@ -47,7 +47,7 @@ class CommentSubmitForm extends Component {
       <StyledWrapper dir="column">
         <Form
           onSubmit={this.submit}
-          render={props => (
+          render={() => (
             <>
               <TextArea
                 placeholder="コメントを追加"

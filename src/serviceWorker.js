@@ -1,3 +1,5 @@
+/* eslint no-console: 0, no-undef: 0, max-len: 0, quotes: 0 */
+
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives

@@ -48,32 +48,28 @@ const StyledCircle = styled.circle`
   animation: ${dash} ${animationDuration} ease-in-out infinite;
 `;
 
-class Circular extends Component {
+const StyledWrapper = styled.div``;
+
+export default class Circular extends Component {
   render() {
     return (
-      <StyledSVG
-        width={this.props.width ? this.props.width : "36px"}
-        height={this.props.height ? this.props.height : "36px"}
-        viewBox="0 0 36 36"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <StyledCircle
-          fill="none"
-          strokeWidth="3"
-          strokeLinecap="round"
-          cx="18"
-          cy="18"
-          r="16"
-        />
-      </StyledSVG>
+      <StyledWrapper>
+        <StyledSVG
+          width={this.props.width ? this.props.width : "36px"}
+          height={this.props.height ? this.props.height : "36px"}
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <StyledCircle
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            cx="18"
+            cy="18"
+            r="16"
+          />
+        </StyledSVG>
+      </StyledWrapper>
     );
   }
 }
-
-const StyledWrapper = styled.div``;
-
-export default () => (
-  <StyledWrapper>
-    <Circular />
-  </StyledWrapper>
-);

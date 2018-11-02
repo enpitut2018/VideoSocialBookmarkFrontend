@@ -8,10 +8,12 @@ const StyledImg = styled.img`
   ${props => props.height && `height: ` + props.height};
 `;
 
-export default props => (
-  <StyledImg
-    {...props}
-    src={props.src ? props.src : Placeholder}
-    alt={props.alt}
-  />
-);
+export default function Thumbnail(props){
+  return(
+    <StyledImg
+      {...props}
+      src={props.src ? props.src : Placeholder}
+      alt={props.alt}
+    />
+  );
+};
