@@ -1,8 +1,10 @@
 import {
   GET_TREND_REQUEST,
   GET_TREND_SUCCESS,
-  GET_TREND_FAILURE
+  GET_TREND_FAILURE,
+  SET_TREND_BOOKMARKED
 } from "../actions/TrendActions";
+import update from "immutability-helper";
 
 const initialState = {
   hasLoaded: false,
@@ -30,6 +32,16 @@ export default (state = initialState, action) => {
       hasLoaded: false,
       error: action.error
     };
+  case SET_TREND_BOOKMARKED: {
+    const index = state.trend.findIndex(entry => entry.id === action.entryId);
+    return update(state, {
+      trend: {
+        [index]: {
+          "bookmarked?": { $set: action.bookmarked }
+        }
+      }
+    });
+  }
   default:
     return state;
   }

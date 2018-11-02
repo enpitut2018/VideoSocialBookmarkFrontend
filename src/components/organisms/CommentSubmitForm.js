@@ -50,7 +50,7 @@ class CommentSubmitForm extends Component {
           render={_props => (
             <>
               <TextArea
-                placeholder="コメント"
+                placeholder="コメントを追加"
                 handleChange={this.handleCommentChange}
                 submit={this.submit}
                 hasSubmitted={this.state.hasSubmitted}
@@ -58,7 +58,7 @@ class CommentSubmitForm extends Component {
                 required
               />
               <Button mode="Primary" type="submit">
-                送信
+                コメント
               </Button>
             </>
           )}

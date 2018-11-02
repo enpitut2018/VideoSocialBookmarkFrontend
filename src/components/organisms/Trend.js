@@ -15,10 +15,8 @@ const StyledTrend = styled.div`
 
 class Trend extends Component {
   componentWillMount() {
-    if (!this.props.hasLoaded) {
-      this.props.getTrend();
-      this.props.preloadTrend();
-    }
+    this.props.getTrend();
+    this.props.preloadTrend();
   }
 
   render() {

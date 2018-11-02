@@ -4,11 +4,11 @@ import styled, { css } from "styled-components";
 import React, { Component } from "react";
 
 const fontSizes = {
-  XS: "0.8rem",
+  XS: "0.7rem",
   S: "0.9rem",
   M: "1.1rem",
-  L: "1.4rem",
-  XL: "1.7rem"
+  L: "1.3rem",
+  XL: "1.5rem"
 };
 const fontOpacities = {
   XS: 0.75,
@@ -18,8 +18,8 @@ const fontOpacities = {
   XL: 1.0
 };
 const fontMargins = {
-  XS: "2px 4px",
-  S: "3px 7px",
+  XS: "1px 2px",
+  S: "4px 7px",
   M: "5px 13px",
   L: "12px 16px",
   XL: "15px 20px"
@@ -32,11 +32,11 @@ const fontWeights = {
   XL: "300"
 };
 const fontLineHeights = {
-  XS: "1.2rem",
-  S: "1.3rem",
-  M: "1.8rem",
-  L: "2.0rem",
-  XL: "2.5rem"
+  XS: "1.1rem",
+  S: "1.2rem",
+  M: "1.5rem",
+  L: "1.9rem",
+  XL: "2.0rem"
 };
 
 const fontSize = level =>
@@ -68,6 +68,7 @@ const fontLineHeight = level =>
 
 export const textStyle = props => {
   return css`
+    overflow: hidden;
     font-size: ${props.fontSize ? props.fontSize : fontSize(props.level)};
     color: ${props.color ? props.color : palette[colors.atoms.Text.Font]};
     margin: ${props.margin ? props.margin : fontMargin(props.level)};
