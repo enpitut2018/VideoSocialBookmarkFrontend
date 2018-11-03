@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 import Header from "../organisms/Header";
 import Wrapper from "../atoms/Wrapper";
@@ -11,10 +12,27 @@ import { connect } from "react-redux";
 import { registerUser } from "../../redux-token-auth-config";
 import { Redirect } from "react-router";
 
+const StyledLabel = styled.label`
+  opacity: ${props => (props.value ? 1.0 : 0.0)};
+  transition: opacity 0.2s ease-in-out;
+`;
+
+class LabeledInput extends Component {
+  render() {
+    return (
+      <Wrapper dir="column" css="align-items: flex-start;">
+        <StyledLabel htmlFor={this.props.name} value={this.props.value}>
+          {this.props.label()}
+        </StyledLabel>
+        {this.props.input()}
+      </Wrapper>
+    );
+  }
+}
+
 class Registration extends Component {
   constructor(props) {
     super(props);
-
     this.state = { email: "", password: "", passwordConfirmation: "" };
   }
 
@@ -42,33 +60,70 @@ class Registration extends Component {
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">Registration</Text>
+          <Text level="XL">アカウントの作成</Text>
           <Form
             onSubmit={submit}
             render={() => (
               <>
-                <TextInput
-                  placeholder="email"
-                  handleChange={this.handleEmailChange}
+                <LabeledInput
+                  name="email"
+                  label={() => (
+                    <Text level="S" margin="1rem 0 0 26px">
+                      メールアドレス
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      placeholder="メールアドレス"
+                      handleChange={this.handleEmailChange}
+                      name="email"
+                      value={this.state.email}
+                      required
+                    />
+                  )}
                   value={this.state.email}
-                  required
                 />
-                <TextInput
-                  type="password"
-                  placeholder="password"
-                  handleChange={this.handlePasswordChange}
+                <LabeledInput
+                  name="password"
+                  label={() => (
+                    <Text level="S" margin="1rem 0 0 26px">
+                      パスワード
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      type="password"
+                      placeholder="パスワード"
+                      handleChange={this.handlePasswordChange}
+                      name="password"
+                      value={this.state.password}
+                      required
+                    />
+                  )}
                   value={this.state.password}
-                  required
                 />
-                <TextInput
-                  type="password"
-                  placeholder="password confirmation"
-                  handleChange={this.handlePasswordConfirmationChange}
+                <LabeledInput
+                  name="passwordConfirmation"
+                  label={() => (
+                    <Text level="S" margin="1rem 0 0 26px">
+                      パスワードの確認
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      type="password"
+                      placeholder="パスワードの確認"
+                      handleChange={this.handlePasswordConfirmationChange}
+                      name="passwordConfirmation"
+                      value={this.state.passwordConfirmation}
+                      required
+                    />
+                  )}
                   value={this.state.passwordConfirmation}
-                  required
                 />
+
                 <Button mode="Primary" type="submit">
-                  Submit
+                  送信
                 </Button>
               </>
             )}

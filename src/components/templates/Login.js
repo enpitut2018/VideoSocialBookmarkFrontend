@@ -38,26 +38,26 @@ class Login extends Component {
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">Login</Text>
+          <Text level="XL">ログイン</Text>
           <Form
             onSubmit={submit}
             render={() => (
               <>
                 <TextInput
-                  placeholder="email"
+                  placeholder="メールアドレス"
                   handleChange={this.handleEmailChange}
                   value={this.state.email}
                   required
                 />
                 <TextInput
                   type="password"
-                  placeholder="password"
+                  placeholder="パスワード"
                   handleChange={this.handlePasswordChange}
                   value={this.state.password}
                   required
                 />
                 <Button mode="Primary" type="submit">
-                  Submit
+                  送信
                 </Button>
               </>
             )}

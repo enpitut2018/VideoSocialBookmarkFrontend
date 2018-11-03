@@ -66,7 +66,7 @@ class Header extends React.Component {
           <>
             <Wrapper type="right">
               <DropdownUploadForm />
-              <DropdownMyMenu />
+              <DropdownMyMenu url={this.props.url} />
             </Wrapper>
           </>
         ) : (
