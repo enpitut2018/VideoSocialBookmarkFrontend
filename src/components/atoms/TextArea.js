@@ -27,6 +27,10 @@ const StyledInput = styled.textarea`
   border-width: 0px;
   outline: none;
 
+  ::placeholder {
+    color: ${palette[colors.atoms.TextArea.Placeholder.Font]};
+  }
+
   ${props => elevate(props.elevation ? props.elevation : 2)};
 `;
 

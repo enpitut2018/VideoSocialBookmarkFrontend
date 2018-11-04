@@ -1,34 +1,16 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 
-import Header from "../organisms/Header";
 import Wrapper from "../atoms/Wrapper";
-import Form from "../molecules/Form";
 import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button";
 import Text from "../atoms/Text";
+import Form from "../molecules/Form";
+import LabeledInput from "../molecules/LabeledInput";
+import Header from "../organisms/Header";
 
 import { connect } from "react-redux";
 import { registerUser } from "../../redux-token-auth-config";
 import { Redirect } from "react-router";
-
-const StyledLabel = styled.label`
-  opacity: ${props => (props.value ? 1.0 : 0.0)};
-  transition: opacity 0.2s ease-in-out;
-`;
-
-class LabeledInput extends Component {
-  render() {
-    return (
-      <Wrapper dir="column" css="align-items: flex-start;">
-        <StyledLabel htmlFor={this.props.name} value={this.props.value}>
-          {this.props.label()}
-        </StyledLabel>
-        {this.props.input()}
-      </Wrapper>
-    );
-  }
-}
 
 class Registration extends Component {
   constructor(props) {
@@ -60,7 +42,9 @@ class Registration extends Component {
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">アカウントの作成</Text>
+          <Text level="XL" css="margin-bottom: 8px;">
+            アカウントの作成
+          </Text>
           <Form
             onSubmit={submit}
             render={() => (
@@ -68,7 +52,7 @@ class Registration extends Component {
                 <LabeledInput
                   name="email"
                   label={() => (
-                    <Text level="S" margin="1rem 0 0 26px">
+                    <Text level="S" margin="0.5rem 0 0 26px">
                       メールアドレス
                     </Text>
                   )}
@@ -86,7 +70,7 @@ class Registration extends Component {
                 <LabeledInput
                   name="password"
                   label={() => (
-                    <Text level="S" margin="1rem 0 0 26px">
+                    <Text level="S" margin="0.5rem 0 0 26px">
                       パスワード
                     </Text>
                   )}
@@ -105,7 +89,7 @@ class Registration extends Component {
                 <LabeledInput
                   name="passwordConfirmation"
                   label={() => (
-                    <Text level="S" margin="1rem 0 0 26px">
+                    <Text level="S" margin="0.5rem 0 0 26px">
                       パスワードの確認
                     </Text>
                   )}
