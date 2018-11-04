@@ -34,9 +34,7 @@ export default class DropdownMyMenu extends Component {
         <DropdownMenuItem>
           <StyledTextLink to="/mypage">
             <IconWrapper>
-              {PersonIcon({
-                fill: palette[colors.organisms.Header.Icon.Fill]
-              })}
+              <PersonIcon fill={palette[colors.organisms.Header.Icon.Fill]} />
             </IconWrapper>
             <Text margin="0">マイページ</Text>
           </StyledTextLink>
@@ -44,9 +42,7 @@ export default class DropdownMyMenu extends Component {
         <DropdownMenuItem>
           <StyledTextLink to="/logout">
             <IconWrapper>
-              {ExitIcon({
-                fill: palette[colors.organisms.Header.Icon.Fill]
-              })}
+              <ExitIcon fill={palette[colors.organisms.Header.Icon.Fill]} />
             </IconWrapper>
             <Text margin="0">ログアウト</Text>
           </StyledTextLink>

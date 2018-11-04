@@ -45,8 +45,8 @@ export const postEntry = (url, comment) => dispatch => {
         content: comment
       }
     })
-    .then(_ => {
-      dispatch({ type: POST_ENTRY_SUCCESS });
+    .then(res => {
+      dispatch({ type: POST_ENTRY_SUCCESS, url, res });
       dispatch(getTrend());
     })
     .catch(_ => {

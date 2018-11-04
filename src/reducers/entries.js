@@ -12,7 +12,9 @@ const initialState = {
   hasLoaded: false,
   state: "",
   entries: {},
-  entry: null
+  entry: null,
+  url: "",
+  res: null
 };
 
 export default (state = initialState, action) => {
@@ -56,7 +58,9 @@ export default (state = initialState, action) => {
   case POST_ENTRY_SUCCESS:
     return {
       ...state,
-      state: "success"
+      state: "success",
+      url: action.url,
+      res: action.res
     };
   case POST_ENTRY_FAILURE:
     return {

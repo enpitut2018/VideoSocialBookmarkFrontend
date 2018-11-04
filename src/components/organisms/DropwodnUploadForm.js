@@ -29,12 +29,12 @@ export default class DropdownUploadForm extends Component {
       <Dropdown
         renderHeader={onClickHandler => (
           <StyledUploadIconWrapper>
-            {UploadIcon({
-              fill: palette[colors.organisms.Header.Icon.Fill],
-              onClick: onClickHandler,
-              width: "30px",
-              height: "30px"
-            })}
+            <UploadIcon
+              fill={palette[colors.organisms.Header.Icon.Fill]}
+              onClick={onClickHandler}
+              width="30px"
+              height="30px"
+            />
           </StyledUploadIconWrapper>
         )}
         top="63px"

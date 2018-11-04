@@ -10,7 +10,13 @@ const StyledLabel = styled.label`
 export default class LabeledInput extends Component {
   render() {
     return (
-      <Wrapper dir="column" css="align-items: flex-start;">
+      <Wrapper
+        dir="column"
+        css={`
+          align-items: flex-start;
+          ${this.props.css && this.props.css};
+        `}
+      >
         <StyledLabel htmlFor={this.props.name} value={this.props.value}>
           {this.props.label()}
         </StyledLabel>
