@@ -16,6 +16,7 @@ import {
 import ArrowBackIcon from "../../assets/images/material-icon/baseline-arrow_back-24px.svg";
 import AnkerStyle from "../atoms/AnkerStyle";
 import Thumbnail from "../atoms/Thumbnail";
+import config from "../../config";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 10px auto;
@@ -45,7 +46,7 @@ const ArrowBackIconWrapper = styled.div`
 
 export default class SNSShareForm extends Component {
   render() {
-    const entryUrl = `${"https://video-social-bookmark.herokuapp.com"}/entries/${
+    const entryUrl = `${config.frontend_base_url}/entries/${
       this.props.entry.id
     }`;
     return (
@@ -91,9 +92,9 @@ export default class SNSShareForm extends Component {
 
         <Wrapper
           css={`
-            margin: 1.2rem 1rem 0.8rem 1rem;
+            margin: 1.4rem 1rem 1rem 1rem;
             width: 80%;
-            justify-content: space-evenly;
+            justify-content: space-around;
           `}
         >
           <TwitterShareButton
@@ -101,21 +102,21 @@ export default class SNSShareForm extends Component {
             title={this.props.entry.title}
             style={{ cursor: "pointer" }}
           >
-            <TwitterIcon size={42} round />
+            <TwitterIcon size={48} round />
           </TwitterShareButton>
           <FacebookShareButton
             url={entryUrl}
             title={this.props.entry.title}
             style={{ cursor: "pointer" }}
           >
-            <FacebookIcon size={42} round />
+            <FacebookIcon size={48} round />
           </FacebookShareButton>
           <RedditShareButton
             url={entryUrl}
             title={this.props.entry.title}
             style={{ cursor: "pointer" }}
           >
-            <RedditIcon size={42} round />
+            <RedditIcon size={48} round />
           </RedditShareButton>
         </Wrapper>
       </StyledWrapper>

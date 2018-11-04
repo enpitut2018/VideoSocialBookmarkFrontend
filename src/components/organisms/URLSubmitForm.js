@@ -98,14 +98,14 @@ SNSでシェアしますか？`}
                     placeholder="URL"
                     handleChange={this.handleUrlChange}
                     name="url"
-                    width="85%"
+                    width="calc(100% - 52px)"
                     submit={this.submit}
                     value={this.state.url}
                     required
                   />
                 )}
                 value={this.state.url}
-                css="width: calc(85% - 52px);"
+                css="width: 85%;"
               />
               <LabeledInput
                 name="comment"
@@ -119,13 +119,13 @@ SNSでシェアしますか？`}
                     placeholder="コメント（任意）"
                     handleChange={this.handleCommentChange}
                     name="comment"
-                    width="85%"
+                    width="calc(100% - 52px)"
                     submit={this.submit}
                     value={this.state.comment}
                   />
                 )}
                 value={this.state.comment}
-                css="width: calc(85% - 52px);"
+                css="width: 85%;"
               />
               <Button mode="Primary" type="submit">
                 ブックマーク
