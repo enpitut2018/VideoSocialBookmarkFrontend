@@ -89,7 +89,7 @@ export default class UserBookmarkItem extends Component {
                         {this.props.bookmark.entry.num_of_bookmarked}
                       </Text>
                       <Text level="XS" margin="0 0 0 0.2rem">
-                        Bookmarks
+                        ブックマーク
                       </Text>
                     </Wrapper>
                   </>
@@ -104,7 +104,7 @@ export default class UserBookmarkItem extends Component {
                         {this.props.bookmark.entry.num_of_bookmarked}
                       </Text>
                       <Text level="XS" margin="0 0 0 0.2rem">
-                        Bookmarks
+                        ブックマーク
                       </Text>
                     </Wrapper>
                   </>
@@ -119,7 +119,7 @@ export default class UserBookmarkItem extends Component {
                         {this.props.bookmark.entry.num_of_bookmarked}
                       </Text>
                       <Text level="XS" margin="0 0 0 0.2rem">
-                        Bookmarks
+                        ブックマーク
                       </Text>
                     </Wrapper>
                   </>
@@ -139,7 +139,7 @@ export default class UserBookmarkItem extends Component {
                         width="calc(95vw - 130px - 1.2rem)"
                         css="overflow: hidden;"
                       >
-                        Bookmarks
+                        ブックマーク
                       </Text>
                     </Wrapper>
                   </>
