@@ -106,7 +106,7 @@ export default class SNSShareForm extends Component {
           </TwitterShareButton>
           <FacebookShareButton
             url={entryUrl}
-            title={this.props.entry.title}
+            quote={this.props.entry.title}
             style={{ cursor: "pointer" }}
           >
             <FacebookIcon size={48} round />

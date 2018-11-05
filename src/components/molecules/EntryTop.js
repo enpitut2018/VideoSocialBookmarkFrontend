@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
@@ -8,6 +9,7 @@ import { component } from "../mediaQuery";
 import { style } from "../mediaQuery";
 import Star from "./Star";
 import config from "../../config";
+import BookmarkButton from "./BookmarkButton";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -16,17 +18,13 @@ import {
   RedditShareButton,
   RedditIcon
 } from "react-share";
+import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
+import { setEntryBookmarked } from "../../actions/EntryActions";
 
 const StyledA = styled.a`
   display: flex;
   flex-direction: column;
-
-  ${style({
-    XL: `width: 852px`,
-    L: `width: 90vw`,
-    M: `width: 90vw`,
-    S: `width: 95vw`
-  })};
+  width: 100%;
   ${AnkerStyle};
 `;
 
@@ -35,13 +33,41 @@ const StyledThumbnail = styled.div`
   width: 100%;
 `;
 
-export default class EntryTop extends Component {
+class EntryTop extends Component {
+  bookmarkButton = () =>
+    this.props.isSignedIn && (
+      <BookmarkButton
+        bookmarked={this.props.entry["bookmarked?"]}
+        handleClick={() => {
+          this.props.dispatch(
+            this.props.entry["bookmarked?"]
+              ? deleteBookmark(this.props.id)
+              : postBookmark(this.props.id)
+          );
+          this.props.dispatch(
+            setEntryBookmarked(!this.props.entry["bookmarked?"])
+          );
+        }}
+        size="M"
+        level="M"
+      />
+    );
+
   render() {
-    const entryUrl = `${config.frontend_base_url}/entries/${
-      this.props.entry.id
-    }`;
+    const entryUrl = `${config.frontend_base_url}/entries/${this.props.id}`;
     return (
-      <Wrapper dir="column">
+      <Wrapper
+        dir="column"
+        css={`
+          ${style({
+        XL: `width: 852px`,
+        L: `width: 90vw`,
+        M: `width: 90vw`,
+        S: `width: 95vw`
+      })};
+          margin: auto;
+        `}
+      >
         <StyledA
           target="_blank"
           rel="noopener noreferrer"
@@ -83,12 +109,7 @@ export default class EntryTop extends Component {
         <Wrapper
           css={`
             margin: 2.1rem 1rem;
-            ${style({
-        XL: `width: 852px`,
-        L: `width: 90vw`,
-        M: `width: 90vw`,
-        S: `width: 95vw`
-      })};
+            width: 100%;
             justify-content: space-around;
           `}
         >
@@ -101,7 +122,7 @@ export default class EntryTop extends Component {
           </TwitterShareButton>
           <FacebookShareButton
             url={entryUrl}
-            title={this.props.entry.title}
+            quote={this.props.entry.title}
             style={{ cursor: "pointer" }}
           >
             <FacebookIcon size={48} round />
@@ -116,11 +137,26 @@ export default class EntryTop extends Component {
           {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
         </Wrapper>
 
-        <Text level="L" margin="15px auto 15px auto">
-          {this.props.entry.num_of_bookmarked + " "}
-          Bookmarks
-        </Text>
+        <Wrapper
+          css={`
+            margin: 2.1rem 1rem;
+            width: 100%;
+            justify-content: space-around;
+          `}
+        >
+          <Text level="L" margin="1rem">
+            {this.props.entry.num_of_bookmarked + " "}
+            Bookmarks
+          </Text>
+          {this.bookmarkButton()}
+        </Wrapper>
       </Wrapper>
     );
   }
 }
+
+export default connect(store => ({
+  hasLoaded: store.entries.hasLoaded,
+  entry: store.entries.entry,
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+}))(EntryTop);

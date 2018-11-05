@@ -72,6 +72,7 @@ export const textStyle = props => {
     font-size: ${props.fontSize ? props.fontSize : fontSize(props.level)};
     color: ${props.color ? props.color : palette[colors.atoms.Text.Font]};
     margin: ${props.margin ? props.margin : fontMargin(props.level)};
+    padding: ${props.padding && props.padding};
     opacity: ${props.opacity ? props.opacity : fontOpacity(props.level)};
     font-weight: ${props.fontWeight
     ? props.fontWeight

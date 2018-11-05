@@ -13,7 +13,7 @@ export default class Entry extends Component {
         <Header />
         {this.props.hasLoaded && (
           <>
-            <EntryTop {...this.props} />
+            <EntryTop id={this.props.entry.id} />
             <Wrapper dir="column">
               {this.props.entry.comments &&
                 this.props.entry.comments.map(
