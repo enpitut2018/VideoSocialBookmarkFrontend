@@ -1,6 +1,6 @@
 import React from "react";
 
-export default props => (
+const PersonIcon = props => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -12,3 +12,5 @@ export default props => (
     <path d="M0 0h24v24H0z" fill="none" />
   </svg>
 );
+
+export default PersonIcon;

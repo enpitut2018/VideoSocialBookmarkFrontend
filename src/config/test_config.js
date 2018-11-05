@@ -1,3 +1,4 @@
 export default {
-  backend_api_url: "http://localhost:3001"
+  backend_api_url: "http://localhost:3001",
+  frontend_base_url: "http://localhost:3001"
 };

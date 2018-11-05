@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
-import Header from "../organisms/Header";
 import Wrapper from "../atoms/Wrapper";
-import Form from "../molecules/Form";
 import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button";
 import Text from "../atoms/Text";
+import Form from "../molecules/Form";
+import LabeledInput from "../molecules/LabeledInput";
+import Header from "../organisms/Header";
 
 import { connect } from "react-redux";
 import { signInUser } from "../../redux-token-auth-config";
@@ -38,26 +39,52 @@ class Login extends Component {
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">Login</Text>
+          <Text level="XL" css="margin-bottom: 8px;">
+            ログイン
+          </Text>
           <Form
             onSubmit={submit}
             render={() => (
               <>
-                <TextInput
-                  placeholder="email"
-                  handleChange={this.handleEmailChange}
+                <LabeledInput
+                  name="email"
+                  label={() => (
+                    <Text level="S" margin="0.5rem 0 0 26px">
+                      メールアドレス
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      placeholder="メールアドレス"
+                      handleChange={this.handleEmailChange}
+                      name="email"
+                      value={this.state.email}
+                      required
+                    />
+                  )}
                   value={this.state.email}
-                  required
                 />
-                <TextInput
-                  type="password"
-                  placeholder="password"
-                  handleChange={this.handlePasswordChange}
+                <LabeledInput
+                  name="password"
+                  label={() => (
+                    <Text level="S" margin="0.5rem 0 0 26px">
+                      パスワード
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      type="password"
+                      placeholder="パスワード"
+                      handleChange={this.handlePasswordChange}
+                      name="password"
+                      value={this.state.password}
+                      required
+                    />
+                  )}
                   value={this.state.password}
-                  required
                 />
                 <Button mode="Primary" type="submit">
-                  Submit
+                  送信
                 </Button>
               </>
             )}
