@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MyPageTemplate from "../templates/MyPage";
 import { connect } from "react-redux";
-
+import { Helmet } from "react-helmet";
 import { getUser } from "../../actions/UserActions";
 
 class MyPage extends Component {
@@ -11,7 +11,15 @@ class MyPage extends Component {
 
   render() {
     return (
-      <MyPageTemplate hasLoaded={this.props.hasLoaded} user={this.props.user} />
+      <>
+        <Helmet>
+          <title>Video Social Bookmark | マイページ</title>
+        </Helmet>
+        <MyPageTemplate
+          hasLoaded={this.props.hasLoaded}
+          user={this.props.user}
+        />
+      </>
     );
   }
 }

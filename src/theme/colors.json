@@ -29,11 +29,17 @@
     },
     "TextInput": {
       "Background": "White01",
-      "Font": "Black00"
+      "Font": "Black00",
+      "Placeholder": {
+        "Font": "Black05"
+      }
     },
     "TextArea": {
       "Background": "White01",
-      "Font": "Black00"
+      "Font": "Black00",
+      "Placeholder": {
+        "Font": "Black05"
+      }
     },
     "Icon": {
       "Opacity": "Opacity00"

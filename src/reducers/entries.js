@@ -5,14 +5,17 @@ import {
   POST_ENTRY_REQUEST,
   POST_ENTRY_SUCCESS,
   POST_ENTRY_FAILURE,
-  PRELOAD_ENTRIES
+  PRELOAD_ENTRIES,
+  SET_ENTRY_BOOKMARKED
 } from "../actions/EntryActions";
 
 const initialState = {
   hasLoaded: false,
   state: "",
   entries: {},
-  entry: null
+  entry: null,
+  url: "",
+  res: null
 };
 
 export default (state = initialState, action) => {
@@ -56,12 +59,22 @@ export default (state = initialState, action) => {
   case POST_ENTRY_SUCCESS:
     return {
       ...state,
-      state: "success"
+      state: "success",
+      url: action.url,
+      res: action.res
     };
   case POST_ENTRY_FAILURE:
     return {
       ...state,
       state: "failure"
+    };
+  case SET_ENTRY_BOOKMARKED:
+    return {
+      ...state,
+      entry: {
+        ...state.entry,
+        "bookmarked?": action.bookmarked
+      }
     };
   default:
     return state;
