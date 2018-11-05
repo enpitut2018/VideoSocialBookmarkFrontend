@@ -6,9 +6,11 @@ import TextArea from "../atoms/TextArea";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import Text from "../atoms/Text";
+import LabeledInput from "../molecules/LabeledInput";
 import { connect } from "react-redux";
 import { postEntry } from "../../actions/EntryActions";
 import { style } from "../mediaQuery";
+import SNSShareForm from "./SNSShareForm";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 10px auto;
@@ -26,13 +28,19 @@ class URLSubmitForm extends Component {
     this.state = {
       url: "",
       comment: "",
-      hasSubmitted: false
+      hasSubmitted: false,
+      SNSShareEnabled: false
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.state === "posting" && nextProps.state === "success") {
-      this.setState({ url: "", comment: "", hasSubmitted: false });
+      this.setState({
+        url: "",
+        comment: "",
+        hasSubmitted: false,
+        SNSShareEnabled: true
+      });
     }
   }
 
@@ -42,6 +50,10 @@ class URLSubmitForm extends Component {
 
   handleCommentChange = e => {
     this.setState({ comment: e.target.value });
+  };
+
+  handleBack = () => {
+    this.setState({ SNSShareEnabled: false });
   };
 
   submit = e => {
@@ -57,7 +69,14 @@ class URLSubmitForm extends Component {
   };
 
   render() {
-    return (
+    return this.props.state === "success" && this.state.SNSShareEnabled ? (
+      <SNSShareForm
+        headerTitle={`動画をブックマークしました！
+SNSでシェアしますか？`}
+        entry={this.props.res.data.entry}
+        handleBack={this.handleBack}
+      />
+    ) : (
       <StyledWrapper dir="column">
         <Text level="L" margin="10px 0">
           動画をブックマーク
@@ -67,20 +86,46 @@ class URLSubmitForm extends Component {
           css="width: 100%;"
           render={() => (
             <>
-              <TextInput
-                placeholder="URL"
-                handleChange={this.handleUrlChange}
-                width="calc(85% - 52px)"
-                submit={this.submit}
+              <LabeledInput
+                name="url"
+                label={() => (
+                  <Text level="S" margin="0.5rem 0 0 26px">
+                    URL
+                  </Text>
+                )}
+                input={() => (
+                  <TextInput
+                    placeholder="URL"
+                    handleChange={this.handleUrlChange}
+                    name="url"
+                    width="calc(100% - 52px)"
+                    submit={this.submit}
+                    value={this.state.url}
+                    required
+                  />
+                )}
                 value={this.state.url}
-                required
+                css="width: 85%;"
               />
-              <TextArea
-                placeholder="コメント（任意）"
-                handleChange={this.handleCommentChange}
-                width="calc(85% - 52px)"
-                submit={this.submit}
+              <LabeledInput
+                name="comment"
+                label={() => (
+                  <Text level="S" margin="0.5rem 0 0 26px">
+                    コメント（任意）
+                  </Text>
+                )}
+                input={() => (
+                  <TextArea
+                    placeholder="コメント（任意）"
+                    handleChange={this.handleCommentChange}
+                    name="comment"
+                    width="calc(100% - 52px)"
+                    submit={this.submit}
+                    value={this.state.comment}
+                  />
+                )}
                 value={this.state.comment}
+                css="width: 85%;"
               />
               <Button mode="Primary" type="submit">
                 ブックマーク
@@ -94,5 +139,7 @@ class URLSubmitForm extends Component {
 }
 
 export default connect(store => ({
-  state: store.entries.state
+  state: store.entries.state,
+  url: store.entries.url,
+  res: store.entries.res
 }))(URLSubmitForm);

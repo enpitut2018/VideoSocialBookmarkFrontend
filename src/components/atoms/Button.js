@@ -7,10 +7,10 @@ import palette from "../../theme/palette";
 import styled from "styled-components";
 
 const paddings = {
-  S: "2px 4px",
-  M: "10px 20px",
-  L: "13px 26px",
-  XL: "16px 32px"
+  S: "0 6px",
+  M: "0 24px",
+  L: "0 28px",
+  XL: "0 34px"
 };
 const margins = {
   S: "6px",
@@ -19,16 +19,16 @@ const margins = {
   XL: "16px"
 };
 const borderRadii = {
-  S: "12px",
-  M: "23px",
-  L: "23px",
-  XL: "23px"
+  S: "calc((1.1rem + 2px) * 0.5)",
+  M: "calc((1.5rem + 20px) * 0.5)",
+  L: "calc((1.9rem + 24px) * 0.5)",
+  XL: "calc((2.0rem + 28px) * 0.5)"
 };
 const heights = {
-  S: "calc(1.1rem + 4px)",
+  S: "calc(1.1rem + 2px)",
   M: "calc(1.5rem + 20px)",
-  L: "calc(1.9rem + 26px)",
-  XL: "calc(2.0rem + 32px)"
+  L: "calc(1.9rem + 24px)",
+  XL: "calc(2.0rem + 28px)"
 };
 
 const StyledButton = styled.button`
@@ -62,6 +62,7 @@ const StyledButton = styled.button`
 
   ${props => props.dir && "flex-direction: " + props.dir};
   ${props => (props.elevation ? elevate(props.elevation) : elevate(2))};
+  ${props => props.css && props.css};
 
   &:hover {
     ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
@@ -75,10 +76,10 @@ export default class Button extends React.Component {
   render() {
     return (
       <StyledButton
-        {...this.props}
         mode={this.props.mode}
         elevation={this.props.elevation ? this.props.elevation : 2}
         onClick={this.props.onClick}
+        {...this.props}
       >
         {this.props.children}
       </StyledButton>

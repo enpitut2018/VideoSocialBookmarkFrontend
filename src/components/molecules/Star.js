@@ -17,6 +17,8 @@ const StyledWrapper = styled.div`
   height: ${height}px;
   user-select: none;
 
+  margin: 1rem;
+
   ${elevate(2)};
   &:hover {
     ${elevate(4)};

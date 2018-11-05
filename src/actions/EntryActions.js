@@ -10,6 +10,7 @@ export const POST_ENTRY_REQUEST = "POST_ENTRY_REQUEST";
 export const POST_ENTRY_SUCCESS = "POST_ENTRY_SUCCESS";
 export const POST_ENTRY_FAILURE = "POST_ENTRY_FAILURE";
 export const PRELOAD_ENTRIES = "PRELOAD_ENTRIES";
+export const SET_ENTRY_BOOKMARKED = "SET_ENTRY_BOOKMARKED";
 
 export const preloadTrend = () => dispatch => {
   const page = 1;
@@ -22,6 +23,7 @@ export const preloadTrend = () => dispatch => {
 
 export const getEntry = id => dispatch => {
   dispatch({ type: GET_ENTRY_REQUEST, id });
+  setAuthKeys();
   return axios
     .get(`${config.backend_api_url}/entries/${id}`)
     .then(res => {
@@ -45,11 +47,14 @@ export const postEntry = (url, comment) => dispatch => {
         content: comment
       }
     })
-    .then(_ => {
-      dispatch({ type: POST_ENTRY_SUCCESS });
+    .then(res => {
+      dispatch({ type: POST_ENTRY_SUCCESS, url, res });
       dispatch(getTrend());
     })
     .catch(_ => {
       dispatch({ type: POST_ENTRY_FAILURE, error: "" });
     });
 };
+
+export const setEntryBookmarked = bookmarked => dispatch =>
+  dispatch({ type: SET_ENTRY_BOOKMARKED, bookmarked });

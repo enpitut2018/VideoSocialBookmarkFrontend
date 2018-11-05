@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
-import Header from "../organisms/Header";
 import Wrapper from "../atoms/Wrapper";
-import Form from "../molecules/Form";
 import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button";
 import Text from "../atoms/Text";
+import Form from "../molecules/Form";
+import LabeledInput from "../molecules/LabeledInput";
+import Header from "../organisms/Header";
 
 import { connect } from "react-redux";
 import { registerUser } from "../../redux-token-auth-config";
@@ -14,7 +15,6 @@ import { Redirect } from "react-router";
 class Registration extends Component {
   constructor(props) {
     super(props);
-
     this.state = { email: "", password: "", passwordConfirmation: "" };
   }
 
@@ -42,33 +42,72 @@ class Registration extends Component {
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">Registration</Text>
+          <Text level="XL" css="margin-bottom: 8px;">
+            アカウントの作成
+          </Text>
           <Form
             onSubmit={submit}
             render={() => (
               <>
-                <TextInput
-                  placeholder="email"
-                  handleChange={this.handleEmailChange}
+                <LabeledInput
+                  name="email"
+                  label={() => (
+                    <Text level="S" margin="0.5rem 0 0 26px">
+                      メールアドレス
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      placeholder="メールアドレス"
+                      handleChange={this.handleEmailChange}
+                      name="email"
+                      value={this.state.email}
+                      required
+                    />
+                  )}
                   value={this.state.email}
-                  required
                 />
-                <TextInput
-                  type="password"
-                  placeholder="password"
-                  handleChange={this.handlePasswordChange}
+                <LabeledInput
+                  name="password"
+                  label={() => (
+                    <Text level="S" margin="0.5rem 0 0 26px">
+                      パスワード
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      type="password"
+                      placeholder="パスワード"
+                      handleChange={this.handlePasswordChange}
+                      name="password"
+                      value={this.state.password}
+                      required
+                    />
+                  )}
                   value={this.state.password}
-                  required
                 />
-                <TextInput
-                  type="password"
-                  placeholder="password confirmation"
-                  handleChange={this.handlePasswordConfirmationChange}
+                <LabeledInput
+                  name="passwordConfirmation"
+                  label={() => (
+                    <Text level="S" margin="0.5rem 0 0 26px">
+                      パスワードの確認
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      type="password"
+                      placeholder="パスワードの確認"
+                      handleChange={this.handlePasswordConfirmationChange}
+                      name="passwordConfirmation"
+                      value={this.state.passwordConfirmation}
+                      required
+                    />
+                  )}
                   value={this.state.passwordConfirmation}
-                  required
                 />
+
                 <Button mode="Primary" type="submit">
-                  Submit
+                  送信
                 </Button>
               </>
             )}

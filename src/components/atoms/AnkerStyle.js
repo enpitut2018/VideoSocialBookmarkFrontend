@@ -7,6 +7,7 @@ export default css`
   text-decoration: none;
   color: ${palette[colors.atoms.AnkerStyle.Font]};
   border-radius: 0.1rem;
+  cursor: pointer;
 
   &:hover {
     color: ${palette[colors.atoms.AnkerStyle.Hover.Font]};

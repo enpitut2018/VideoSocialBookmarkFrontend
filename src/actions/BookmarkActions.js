@@ -33,7 +33,11 @@ export const deleteBookmark = entryId => dispatch => {
   setAuthKeys();
 
   return axios
-    .delete(`${config.backend_api_url}/bookmarks/${entryId}`)
+    .delete(`${config.backend_api_url}/bookmarks`, {
+      data: {
+        bookmark: { entry_id: entryId }
+      }
+    })
     .then(_ => {
       dispatch({ type: DELETE_BOOKMARK_SUCCESS });
       dispatch({ type: SET_TREND_BOOKMARKED, entryId, bookmarked: false });

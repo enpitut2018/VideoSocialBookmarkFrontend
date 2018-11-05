@@ -8,8 +8,7 @@ export default class BookmarkButton extends Component {
     return (
       <Button
         mode={this.props.bookmarked ? "Primary" : "Default"}
-        size="S"
-        padding="0"
+        size={this.props.size ? this.props.size : "S"}
         onClick={e => {
           e.stopPropagation();
           e.preventDefault();
@@ -18,13 +17,16 @@ export default class BookmarkButton extends Component {
             this.props.handleClick();
           }
         }}
+        {...this.props}
       >
         <Text
-          level="XS"
+          level={this.props.level ? this.props.level : "XS"}
           fontWeight={this.props.bookmarked ? "bold" : "300"}
           color={
             this.props.bookmarked ? palette["White00"] : palette["Black00"]
           }
+          padding="0"
+          margin="0"
         >
           ブックマーク
           {this.props.bookmarked ? "中" : "する"}

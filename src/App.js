@@ -15,6 +15,8 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 300;
+    font-display: swap;
+
     margin: 0;
     padding: 0;
     height: 100%;
