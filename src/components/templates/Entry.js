@@ -5,6 +5,7 @@ import Footer from "../organisms/Footer";
 import EntryTop from "../molecules/EntryTop";
 import EntryItem from "../molecules/EntryItem";
 import CommentSubmitForm from "../organisms/CommentSubmitForm";
+import AddPlaylistButton from "../molecules/AddPlaylistButton";
 
 export default class Entry extends Component {
   render() {
@@ -22,10 +23,13 @@ export default class Entry extends Component {
                       <EntryItem comment={comment} key={comment.id} />
                     )
                 )}
+              {this.props.isSignedIn && (
+                <>
+                  <AddPlaylistButton />
+                  <CommentSubmitForm entryId={this.props.entry.id} />
+                </>
+              )}
             </Wrapper>
-            {this.props.isSignedIn && (
-              <CommentSubmitForm entryId={this.props.entry.id} />
-            )}
           </>
         )}
         <Footer />

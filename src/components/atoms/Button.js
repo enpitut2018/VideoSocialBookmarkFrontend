@@ -8,9 +8,9 @@ import styled from "styled-components";
 
 const paddings = {
   S: "0 6px",
-  M: "0 24px",
-  L: "0 28px",
-  XL: "0 34px"
+  M: "0 18px",
+  L: "0 22px",
+  XL: "0 26px"
 };
 const margins = {
   S: "6px",
@@ -20,15 +20,15 @@ const margins = {
 };
 const borderRadii = {
   S: "calc((1.1rem + 2px) * 0.5)",
-  M: "calc((1.5rem + 20px) * 0.5)",
-  L: "calc((1.9rem + 24px) * 0.5)",
-  XL: "calc((2.0rem + 28px) * 0.5)"
+  M: "calc((1.5rem + 24px) * 0.5)",
+  L: "calc((1.9rem + 26px) * 0.5)",
+  XL: "calc((2.0rem + 30px) * 0.5)"
 };
 const heights = {
   S: "calc(1.1rem + 2px)",
-  M: "calc(1.5rem + 20px)",
-  L: "calc(1.9rem + 24px)",
-  XL: "calc(2.0rem + 28px)"
+  M: "calc(1.5rem + 24px)",
+  L: "calc(1.9rem + 26px)",
+  XL: "calc(2.0rem + 30px)"
 };
 
 const StyledButton = styled.button`
