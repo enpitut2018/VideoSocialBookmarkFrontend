@@ -42,7 +42,7 @@ class Registration extends Component {
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL" css="margin-bottom: 8px;">
+          <Text size="XL" css="margin-bottom: 8px;">
             アカウントの作成
           </Text>
           <Form
@@ -52,7 +52,7 @@ class Registration extends Component {
                 <LabeledInput
                   name="email"
                   label={() => (
-                    <Text level="S" margin="0.5rem 0 0 26px">
+                    <Text size="S" margin="0.5rem 0 0 26px">
                       メールアドレス
                     </Text>
                   )}
@@ -70,7 +70,7 @@ class Registration extends Component {
                 <LabeledInput
                   name="password"
                   label={() => (
-                    <Text level="S" margin="0.5rem 0 0 26px">
+                    <Text size="S" margin="0.5rem 0 0 26px">
                       パスワード
                     </Text>
                   )}
@@ -89,7 +89,7 @@ class Registration extends Component {
                 <LabeledInput
                   name="passwordConfirmation"
                   label={() => (
-                    <Text level="S" margin="0.5rem 0 0 26px">
+                    <Text size="S" margin="0.5rem 0 0 26px">
                       パスワードの確認
                     </Text>
                   )}

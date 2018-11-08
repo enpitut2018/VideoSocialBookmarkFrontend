@@ -5,8 +5,8 @@ import Text from "../atoms/Text";
 export default class AddPlaylistButton extends Component {
   render() {
     return (
-      <Button>
-        <Text>プレイリストに追加</Text>
+      <Button size={this.props.size}>
+        <Text size={this.props.size}>プレイリストに追加</Text>
       </Button>
     );
   }

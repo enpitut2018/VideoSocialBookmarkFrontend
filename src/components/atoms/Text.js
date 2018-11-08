@@ -39,44 +39,44 @@ const fontLineHeights = {
   XL: "2.0rem"
 };
 
-const fontSize = level =>
-  level ? (level in fontSizes ? fontSizes[level] : fontSizes.M) : fontSizes.M;
-const fontOpacity = level =>
-  level
-    ? level in fontOpacities
-      ? fontOpacities[level]
+const fontSize = size =>
+  size ? (size in fontSizes ? fontSizes[size] : fontSizes.M) : fontSizes.M;
+const fontOpacity = size =>
+  size
+    ? size in fontOpacities
+      ? fontOpacities[size]
       : fontOpacities.M
     : fontOpacities.M;
-const fontMargin = level =>
-  level
-    ? level in fontMargins
-      ? fontMargins[level]
+const fontMargin = size =>
+  size
+    ? size in fontMargins
+      ? fontMargins[size]
       : fontMargins.M
     : fontMargins.M;
-const fontWeight = level =>
-  level
-    ? level in fontWeights
-      ? fontWeights[level]
+const fontWeight = size =>
+  size
+    ? size in fontWeights
+      ? fontWeights[size]
       : fontWeights.M
     : fontWeights.M;
-const fontLineHeight = level =>
-  level
-    ? level in fontLineHeights
-      ? fontLineHeights[level]
+const fontLineHeight = size =>
+  size
+    ? size in fontLineHeights
+      ? fontLineHeights[size]
       : fontLineHeights.M
     : fontLineHeights.M;
 
 export const textStyle = props => {
   return css`
     overflow: hidden;
-    font-size: ${props.fontSize ? props.fontSize : fontSize(props.level)};
+    font-size: ${props.fontSize ? props.fontSize : fontSize(props.size)};
     color: ${props.color ? props.color : palette[colors.atoms.Text.Font]};
-    margin: ${props.margin ? props.margin : fontMargin(props.level)};
+    margin: ${props.margin ? props.margin : fontMargin(props.size)};
     padding: ${props.padding && props.padding};
-    opacity: ${props.opacity ? props.opacity : fontOpacity(props.level)};
+    opacity: ${props.opacity ? props.opacity : fontOpacity(props.size)};
     font-weight: ${props.fontWeight
     ? props.fontWeight
-    : fontWeight(props.level)};
+    : fontWeight(props.size)};
     ${props.height && `height: ${props.height}`};
     ${props.width && `width: ${props.width}`};
     ${props.userSelect && `user-select: ${props.userSelect};`};
@@ -87,7 +87,7 @@ export const textStyle = props => {
 
 const StyledLine = styled.p`
   line-height: ${props =>
-    props.lineHeight ? props.lineHeight : fontLineHeight(props.level)};
+    props.lineHeight ? props.lineHeight : fontLineHeight(props.size)};
   margin: 0;
 `;
 
@@ -99,13 +99,13 @@ const StyledText = styled.div`
 export default class Text extends Component {
   render() {
     const children = this.props.children;
-    let { level, lineHeight } = this.props;
-    level = level ? level : "M";
+    let { size, lineHeight } = this.props;
+    size = size ? size : "M";
     return (
       <StyledText {...this.props}>
         {typeof children === "string" || children instanceof String
           ? children.split("\n").map((line, i) => (
-            <StyledLine key={i} level={level} lineHeight={lineHeight}>
+            <StyledLine key={i} size={size} lineHeight={lineHeight}>
               {line}
             </StyledLine>
           ))

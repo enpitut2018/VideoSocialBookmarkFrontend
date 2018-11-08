@@ -81,14 +81,14 @@ export default class UserBookmarkItem extends Component {
               {component({
                 XL: (
                   <>
-                    <Text level="L" margin="0" css={titleStyle}>
+                    <Text size="L" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
                     <Wrapper>
-                      <Text level="S" margin="0">
+                      <Text size="S" margin="0">
                         {this.props.bookmark.entry.num_of_bookmarked}
                       </Text>
-                      <Text level="XS" margin="0 0 0 0.2rem">
+                      <Text size="XS" margin="0 0 0 0.2rem">
                         ブックマーク
                       </Text>
                     </Wrapper>
@@ -96,14 +96,14 @@ export default class UserBookmarkItem extends Component {
                 ),
                 L: (
                   <>
-                    <Text level="M" margin="0" fontSize="14pt" css={titleStyle}>
+                    <Text size="M" margin="0" fontSize="14pt" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
                     <Wrapper>
-                      <Text level="S" margin="0">
+                      <Text size="S" margin="0">
                         {this.props.bookmark.entry.num_of_bookmarked}
                       </Text>
-                      <Text level="XS" margin="0 0 0 0.2rem">
+                      <Text size="XS" margin="0 0 0 0.2rem">
                         ブックマーク
                       </Text>
                     </Wrapper>
@@ -111,14 +111,14 @@ export default class UserBookmarkItem extends Component {
                 ),
                 M: (
                   <>
-                    <Text level="M" margin="0" css={titleStyle}>
+                    <Text size="M" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
                     <Wrapper>
-                      <Text level="S" margin="0">
+                      <Text size="S" margin="0">
                         {this.props.bookmark.entry.num_of_bookmarked}
                       </Text>
-                      <Text level="XS" margin="0 0 0 0.2rem">
+                      <Text size="XS" margin="0 0 0 0.2rem">
                         ブックマーク
                       </Text>
                     </Wrapper>
@@ -126,11 +126,11 @@ export default class UserBookmarkItem extends Component {
                 ),
                 S: (
                   <>
-                    <Text level="M" margin="0" css={titleStyle}>
+                    <Text size="M" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
                     <Wrapper css="width: calc(95vw - 130px); overflow: hidden;">
-                      <Text level="S" margin="0">
+                      <Text size="S" margin="0">
                         {this.props.bookmark.entry.num_of_bookmarked}
                       </Text>
                       <Text

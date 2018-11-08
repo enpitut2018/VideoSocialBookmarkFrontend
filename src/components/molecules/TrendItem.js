@@ -92,14 +92,14 @@ class TrendItem extends Component {
             {component({
               XL: (
                 <>
-                  <Text level="L" margin="0" css={titleStyle}>
+                  <Text size="L" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="S" margin="0">
+                    <Text size="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0.2rem">
+                    <Text size="XS" margin="0 0.2rem">
                       ブックマーク
                     </Text>
                     {this.bookmarkButton()}
@@ -108,14 +108,14 @@ class TrendItem extends Component {
               ),
               L: (
                 <>
-                  <Text level="M" margin="0" css={titleStyle}>
+                  <Text size="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="S" margin="0">
+                    <Text size="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0.2rem">
+                    <Text size="XS" margin="0 0.2rem">
                       ブックマーク
                     </Text>
                     {this.bookmarkButton()}
@@ -124,14 +124,14 @@ class TrendItem extends Component {
               ),
               M: (
                 <>
-                  <Text level="M" margin="0" css={titleStyle}>
+                  <Text size="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="S" margin="0">
+                    <Text size="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0.1rem">
+                    <Text size="XS" margin="0 0.1rem">
                       ブックマーク
                     </Text>
                     {this.bookmarkButton()}
@@ -140,14 +140,14 @@ class TrendItem extends Component {
               ),
               S: (
                 <>
-                  <Text level="M" margin="0" css={titleStyle}>
+                  <Text size="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="XS" margin="0">
+                    <Text size="XS" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0">
+                    <Text size="XS" margin="0">
                       ブックマーク
                     </Text>
                     {this.bookmarkButton()}

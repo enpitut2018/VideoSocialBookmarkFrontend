@@ -10,7 +10,7 @@ export default class About extends React.Component {
       <>
         <Header />
         <Wrapper>
-          <Text level="XL">VSBとは</Text>
+          <Text size="XL">VSBとは</Text>
         </Wrapper>
         <Footer />
       </>

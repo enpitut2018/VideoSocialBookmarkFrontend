@@ -62,7 +62,7 @@ export default class SNSShareForm extends Component {
           <ArrowBackIconWrapper onClick={this.props.handleBack}>
             <ArrowBackIcon />
           </ArrowBackIconWrapper>
-          <Text level="L" margin="10px 0">
+          <Text size="L" margin="10px 0">
             {this.props.headerTitle}
           </Text>
         </Wrapper>

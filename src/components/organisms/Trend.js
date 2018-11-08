@@ -23,7 +23,7 @@ class Trend extends Component {
     return (
       <StyledTrend>
         <Wrapper dir="column">
-          <Text level="L" margin="10px 0 13px 0">
+          <Text size="L" margin="10px 0 13px 0">
             急上昇
           </Text>
           <Wrapper dir="column">

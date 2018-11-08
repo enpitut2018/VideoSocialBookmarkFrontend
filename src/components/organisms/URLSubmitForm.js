@@ -78,7 +78,7 @@ SNSでシェアしますか？`}
       />
     ) : (
       <StyledWrapper dir="column">
-        <Text level="L" margin="10px 0">
+        <Text size="L" margin="10px 0">
           動画をブックマーク
         </Text>
         <Form
@@ -89,7 +89,7 @@ SNSでシェアしますか？`}
               <LabeledInput
                 name="url"
                 label={() => (
-                  <Text level="S" margin="0.5rem 0 0 26px">
+                  <Text size="S" margin="0.5rem 0 0 26px">
                     URL
                   </Text>
                 )}
@@ -110,7 +110,7 @@ SNSでシェアしますか？`}
               <LabeledInput
                 name="comment"
                 label={() => (
-                  <Text level="S" margin="0.5rem 0 0 26px">
+                  <Text size="S" margin="0.5rem 0 0 26px">
                     コメント（任意）
                   </Text>
                 )}

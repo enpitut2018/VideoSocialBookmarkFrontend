@@ -10,6 +10,7 @@ import { style } from "../mediaQuery";
 import Star from "./Star";
 import config from "../../config";
 import BookmarkButton from "./BookmarkButton";
+import AddPlaylistButton from "../molecules/AddPlaylistButton";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -53,6 +54,66 @@ class EntryTop extends Component {
       />
     );
 
+  title = () =>
+    component({
+      XL: (
+        <Text size="XL" margin="41px 0 15px 0">
+          {this.props.entry.title}
+        </Text>
+      ),
+      L: (
+        <Text size="XL" margin="38px 0 15px 0">
+          {this.props.entry.title}
+        </Text>
+      ),
+      M: (
+        <Text size="L" margin="35px 0 13px 0">
+          {this.props.entry.title}
+        </Text>
+      ),
+      S: (
+        <Text size="L" margin="30px 0 10px 0">
+          {this.props.entry.title}
+        </Text>
+      )
+    });
+
+  bookmarkLabel = () =>
+    component({
+      XL: (
+        <Text size="L" margin="1rem">
+          {this.props.entry.num_of_bookmarked + " "}
+          ブックマーク
+        </Text>
+      ),
+      L: (
+        <Text size="L" margin="1rem">
+          {this.props.entry.num_of_bookmarked + " "}
+          ブックマーク
+        </Text>
+      ),
+      M: (
+        <Text size="M" margin="1rem">
+          {this.props.entry.num_of_bookmarked + " "}
+          ブックマーク
+        </Text>
+      ),
+      S: (
+        <Text size="S" margin="0.5rem">
+          {this.props.entry.num_of_bookmarked + " "}
+          ブックマーク
+        </Text>
+      )
+    });
+
+  addPlayListButton = () =>
+    component({
+      XL: <AddPlaylistButton />,
+      L: <AddPlaylistButton />,
+      M: <AddPlaylistButton />,
+      S: <AddPlaylistButton />
+    });
+
   render() {
     const entryUrl = `${config.frontend_base_url}/entries/${this.props.id}`;
     return (
@@ -74,28 +135,7 @@ class EntryTop extends Component {
           href={this.props.entry.url}
         >
           <Wrapper dir="column">
-            {component({
-              XL: (
-                <Text level="XL" margin="41px 0 15px 0">
-                  {this.props.entry.title}
-                </Text>
-              ),
-              L: (
-                <Text level="XL" margin="38px 0 15px 0">
-                  {this.props.entry.title}
-                </Text>
-              ),
-              M: (
-                <Text level="L" margin="35px 0 13px 0">
-                  {this.props.entry.title}
-                </Text>
-              ),
-              S: (
-                <Text level="L" margin="30px 0 10px 0">
-                  {this.props.entry.title}
-                </Text>
-              )
-            })}
+            <this.title />
             <StyledThumbnail>
               <Thumbnail
                 src={this.props.entry.thumbnail_url}
@@ -144,11 +184,9 @@ class EntryTop extends Component {
             justify-content: space-around;
           `}
         >
-          <Text level="L" margin="1rem">
-            {this.props.entry.num_of_bookmarked + " "}
-            Bookmarks
-          </Text>
-          {this.bookmarkButton()}
+          <this.bookmarkLabel />
+          <this.bookmarkButton />
+          <this.addBookmarkButton />
         </Wrapper>
       </Wrapper>
     );

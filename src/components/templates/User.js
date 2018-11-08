@@ -11,7 +11,7 @@ export default class UserTemplate extends Component {
       <>
         <Header />
         <Wrapper dir="column">
-          <Text level="L">
+          <Text size="L">
             User {this.props.user_id}
             のブックマーク
           </Text>

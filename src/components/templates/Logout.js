@@ -20,7 +20,7 @@ class Logout extends Component {
         {!this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">ログアウト中…</Text>
+          <Text size="XL">ログアウト中…</Text>
           <LoadingIcon />
         </Wrapper>
       </>

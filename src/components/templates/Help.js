@@ -10,7 +10,7 @@ export default class Help extends React.Component {
       <>
         <Header />
         <Wrapper>
-          <Text level="XL">Help</Text>
+          <Text size="XL">Help</Text>
         </Wrapper>
         <Footer />
       </>
