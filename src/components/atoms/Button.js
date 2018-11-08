@@ -7,28 +7,22 @@ import palette from "../../theme/palette";
 import styled from "styled-components";
 
 const paddings = {
-  S: "0 6px",
-  M: "0 18px",
-  L: "0 22px",
-  XL: "0 26px"
+  S: "1px 2px",
+  M: "8px 16px",
+  L: "12px 22px",
+  XL: "18px 26px"
 };
 const margins = {
-  S: "6px",
+  S: "1px",
   M: "10px",
   L: "13px",
   XL: "16px"
 };
 const borderRadii = {
-  S: "calc((1.1rem + 2px) * 0.5)",
-  M: "calc((1.5rem + 24px) * 0.5)",
-  L: "calc((1.9rem + 26px) * 0.5)",
-  XL: "calc((2.0rem + 30px) * 0.5)"
-};
-const heights = {
-  S: "calc(1.1rem + 2px)",
-  M: "calc(1.5rem + 24px)",
-  L: "calc(1.9rem + 26px)",
-  XL: "calc(2.0rem + 30px)"
+  S: "99999px",
+  M: "99999px",
+  L: "99999px",
+  XL: "99999px"
 };
 
 const StyledButton = styled.button`
@@ -38,7 +32,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   user-select: none;
   outline: none;
-  height: ${props => (props.size in heights ? heights[props.size] : heights.M)};
+
+  ${props => props.height && `height: ${props.height}`};
 
   padding: ${props =>
     props.size in paddings ? paddings[props.size] : paddings.M};

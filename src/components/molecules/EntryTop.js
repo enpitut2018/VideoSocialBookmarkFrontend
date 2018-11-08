@@ -50,7 +50,6 @@ class EntryTop extends Component {
           );
         }}
         size="M"
-        level="M"
       />
     );
 
@@ -81,13 +80,13 @@ class EntryTop extends Component {
   bookmarkLabel = () =>
     component({
       XL: (
-        <Text size="L" margin="1rem">
+        <Text size="M" margin="1rem">
           {this.props.entry.num_of_bookmarked + " "}
           ブックマーク
         </Text>
       ),
       L: (
-        <Text size="L" margin="1rem">
+        <Text size="M" margin="1rem">
           {this.props.entry.num_of_bookmarked + " "}
           ブックマーク
         </Text>
@@ -106,12 +105,13 @@ class EntryTop extends Component {
       )
     });
 
-  addPlayListButton = () =>
+  addPlaylistButton = () =>
+    // this.props.isSignedIn &&
     component({
-      XL: <AddPlaylistButton />,
-      L: <AddPlaylistButton />,
-      M: <AddPlaylistButton />,
-      S: <AddPlaylistButton />
+      XL: <AddPlaylistButton size="M" />,
+      L: <AddPlaylistButton size="M" />,
+      M: <AddPlaylistButton size="S" />,
+      S: <AddPlaylistButton size="S" />
     });
 
   render() {
@@ -186,7 +186,7 @@ class EntryTop extends Component {
         >
           <this.bookmarkLabel />
           <this.bookmarkButton />
-          <this.addBookmarkButton />
+          <this.addPlaylistButton />
         </Wrapper>
       </Wrapper>
     );

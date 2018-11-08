@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { postEntry } from "../../actions/EntryActions";
 import { style } from "../mediaQuery";
 import SNSShareForm from "./SNSShareForm";
+import palette from "../../theme/palette";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 10px auto;
@@ -128,7 +129,9 @@ SNSでシェアしますか？`}
                 css="width: 85%;"
               />
               <Button mode="Primary" type="submit">
-                ブックマーク
+                <Text fontWeight={"bold"} color={palette["White00"]}>
+                  ブックマーク
+                </Text>
               </Button>
             </>
           )}

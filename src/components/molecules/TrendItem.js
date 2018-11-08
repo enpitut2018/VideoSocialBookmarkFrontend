@@ -102,7 +102,7 @@ class TrendItem extends Component {
                     <Text size="XS" margin="0 0.2rem">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               ),
@@ -118,7 +118,7 @@ class TrendItem extends Component {
                     <Text size="XS" margin="0 0.2rem">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               ),
@@ -134,7 +134,7 @@ class TrendItem extends Component {
                     <Text size="XS" margin="0 0.1rem">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               ),
@@ -150,7 +150,7 @@ class TrendItem extends Component {
                     <Text size="XS" margin="0">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               )

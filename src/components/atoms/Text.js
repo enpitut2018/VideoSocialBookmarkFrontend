@@ -5,8 +5,8 @@ import React, { Component } from "react";
 
 const fontSizes = {
   XS: "0.7rem",
-  S: "0.9rem",
-  M: "1.1rem",
+  S: "0.7rem",
+  M: "1.0rem",
   L: "1.3rem",
   XL: "1.5rem"
 };
@@ -19,10 +19,10 @@ const fontOpacities = {
 };
 const fontMargins = {
   XS: "1px 2px",
-  S: "4px 7px",
-  M: "5px 13px",
-  L: "12px 16px",
-  XL: "15px 20px"
+  S: "1px 4px",
+  M: "4px 8px",
+  L: "8px 16px",
+  XL: "10px 20px"
 };
 const fontWeights = {
   XS: "300",
