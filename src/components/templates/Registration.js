@@ -7,6 +7,7 @@ import Text from "../atoms/Text";
 import Form from "../molecules/Form";
 import LabeledInput from "../molecules/LabeledInput";
 import Header from "../organisms/Header";
+import palette from "../../theme/palette";
 
 import { connect } from "react-redux";
 import { registerUser } from "../../redux-token-auth-config";
@@ -107,7 +108,9 @@ class Registration extends Component {
                 />
 
                 <Button mode="Primary" type="submit">
-                  送信
+                  <Text fontWeight={"bold"} color={palette["White00"]}>
+                    送信
+                  </Text>
                 </Button>
               </>
             )}
