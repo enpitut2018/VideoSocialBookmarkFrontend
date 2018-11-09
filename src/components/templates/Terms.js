@@ -25,7 +25,7 @@ export default class Terms extends React.Component {
       <>
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">利用規約</Text>
+          <Text size="XL">利用規約</Text>
           <StyledHeader>{terms.Header}</StyledHeader>
           <Accordion items={terms.Body} />
         </Wrapper>

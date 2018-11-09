@@ -6,9 +6,10 @@ import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 
 const StyledWrapper = styled(Card)`
-  position: absolute;
-  ${props => props.top && `top: ${props.top}`};
   ${props => props.right && `right: ${props.right}`};
+  z-index: 20;
+  position: absolute;
+  top: calc(8px + 1rem + 4px * 2 + 10px * 2);
 
   background-color: ${palette[colors.organisms.Header.DropdownMenu.Background]};
 
@@ -18,6 +19,8 @@ const StyledWrapper = styled(Card)`
 `;
 
 const StyledDropdownMenu = styled.div`
+  position: relative;
+  z-index: 10;
   cursor: pointer;
   display: flex;
   flex-direction: column;

@@ -25,7 +25,7 @@ export default class Privacy extends React.Component {
       <>
         <Header />
         <Wrapper dir="column">
-          <Text level="XL">プライバシーポリシー</Text>
+          <Text size="XL">プライバシーポリシー</Text>
           <StyledHeader>{privacy.Header}</StyledHeader>
           <Accordion items={privacy.Body} />
         </Wrapper>

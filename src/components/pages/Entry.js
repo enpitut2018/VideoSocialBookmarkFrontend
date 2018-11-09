@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import EntryTemplate from "../templates/Entry";
 import { Helmet } from "react-helmet";
 import { getEntry } from "../../actions/EntryActions";
+import config from "../../config";
+import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 
 class Entry extends Component {
   componentWillMount() {
@@ -10,22 +12,42 @@ class Entry extends Component {
   }
 
   render() {
+    const entryUrl = `${config.frontend_base_url}/entries/${
+      this.props.match.params.id
+    }`;
     return (
       <>
         <Helmet>
           <title>
             Video Social Bookmark
-            {this.props.hasLoaded && " | " + this.props.entry.title}
+            {this.props.hasLoaded ? " | " + this.props.entry.title : ""}
           </title>
-          {this.props.hasLoaded && (
-            <>
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta property="og:url" content={this.props.entry.url} />
-              <meta property="og:title" content={this.props.title} />
-              <meta property="og:description" content={this.props.title} />
-              <meta property="og:image" content={this.props.thumbnail_url} />
-            </>
-          )}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:url" content={entryUrl} />
+          <meta
+            property="og:title"
+            content={
+              this.props.hasLoaded
+                ? this.props.entry.title
+                : "Video Social Bookmark"
+            }
+          />
+          <meta
+            property="og:description"
+            content={
+              this.props.hadLoaded
+                ? this.props.entry.title
+                : "Video Social Bookmark"
+            }
+          />
+          <meta
+            property="og:image"
+            content={
+              this.props.hasLoaded
+                ? this.props.entry.thumbnail_url
+                : Placeholder
+            }
+          />
         </Helmet>
         <EntryTemplate
           hasLoaded={this.props.hasLoaded}

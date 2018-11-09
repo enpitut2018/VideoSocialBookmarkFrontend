@@ -32,7 +32,7 @@ export default class AccordionItem extends React.Component {
           {this.props.header}
         </Text>
         {this.props.isOpen && (
-          <Text level="M" margin="20px 0 15px 0">
+          <Text size="M" margin="20px 0 15px 0">
             {this.props.body}
           </Text>
         )}

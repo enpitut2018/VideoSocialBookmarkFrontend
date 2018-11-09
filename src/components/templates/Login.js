@@ -39,7 +39,7 @@ class Login extends Component {
         {this.props.isSignedIn && <Redirect to="/" />}
         <Header />
         <Wrapper dir="column">
-          <Text level="XL" css="margin-bottom: 8px;">
+          <Text size="XL" css="margin-bottom: 8px;">
             ログイン
           </Text>
           <Form
@@ -49,7 +49,7 @@ class Login extends Component {
                 <LabeledInput
                   name="email"
                   label={() => (
-                    <Text level="S" margin="0.5rem 0 0 26px">
+                    <Text size="S" margin="0.5rem 0 0 26px">
                       メールアドレス
                     </Text>
                   )}
@@ -67,7 +67,7 @@ class Login extends Component {
                 <LabeledInput
                   name="password"
                   label={() => (
-                    <Text level="S" margin="0.5rem 0 0 26px">
+                    <Text size="S" margin="0.5rem 0 0 26px">
                       パスワード
                     </Text>
                   )}

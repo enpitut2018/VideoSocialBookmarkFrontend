@@ -7,28 +7,22 @@ import palette from "../../theme/palette";
 import styled from "styled-components";
 
 const paddings = {
-  S: "0 6px",
-  M: "0 24px",
-  L: "0 28px",
-  XL: "0 34px"
+  S: "1px 2px",
+  M: "4px 9px",
+  L: "12px 22px",
+  XL: "18px 26px"
 };
 const margins = {
-  S: "6px",
+  S: "1px",
   M: "10px",
   L: "13px",
   XL: "16px"
 };
 const borderRadii = {
-  S: "calc((1.1rem + 2px) * 0.5)",
-  M: "calc((1.5rem + 20px) * 0.5)",
-  L: "calc((1.9rem + 24px) * 0.5)",
-  XL: "calc((2.0rem + 28px) * 0.5)"
-};
-const heights = {
-  S: "calc(1.1rem + 2px)",
-  M: "calc(1.5rem + 20px)",
-  L: "calc(1.9rem + 24px)",
-  XL: "calc(2.0rem + 28px)"
+  S: "99999px",
+  M: "99999px",
+  L: "99999px",
+  XL: "99999px"
 };
 
 const StyledButton = styled.button`
@@ -38,7 +32,8 @@ const StyledButton = styled.button`
   cursor: pointer;
   user-select: none;
   outline: none;
-  height: ${props => (props.size in heights ? heights[props.size] : heights.M)};
+
+  ${props => props.height && `height: ${props.height}`};
 
   padding: ${props =>
     props.size in paddings ? paddings[props.size] : paddings.M};
@@ -61,14 +56,18 @@ const StyledButton = styled.button`
       : palette[colors.atoms.Button.Font]};
 
   ${props => props.dir && "flex-direction: " + props.dir};
-  ${props => (props.elevation ? elevate(props.elevation) : elevate(2))};
+  ${props =>
+    props.mode !== "Light" &&
+    (props.elevation ? elevate(props.elevation) : elevate(2))};
   ${props => props.css && props.css};
 
   &:hover {
-    ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
+    ${props =>
+    props.mode !== "Light" &&
+      elevate(props.elevation ? props.elevation + 2 : 4)};
   }
   &:active {
-    ${elevate(0)};
+    ${props => props.mode !== "Light" && elevate(0)};
   }
 `;
 
