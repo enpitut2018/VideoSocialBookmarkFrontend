@@ -10,7 +10,6 @@ import { style } from "../mediaQuery";
 import Star from "./Star";
 import config from "../../config";
 import BookmarkButton from "./BookmarkButton";
-import AddPlaylistButton from "../molecules/AddPlaylistButton";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -21,6 +20,7 @@ import {
 } from "react-share";
 import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
 import { setEntryBookmarked } from "../../actions/EntryActions";
+import DropdownPlaylistMenu from "../organisms/DropdownPlaylistMenu";
 
 const StyledA = styled.a`
   display: flex;
@@ -36,22 +36,73 @@ const StyledThumbnail = styled.div`
 
 class EntryTop extends Component {
   bookmarkButton = () =>
-    this.props.isSignedIn && (
-      <BookmarkButton
-        bookmarked={this.props.entry["bookmarked?"]}
-        handleClick={() => {
-          this.props.dispatch(
-            this.props.entry["bookmarked?"]
-              ? deleteBookmark(this.props.id)
-              : postBookmark(this.props.id)
-          );
-          this.props.dispatch(
-            setEntryBookmarked(!this.props.entry["bookmarked?"])
-          );
-        }}
-        size="M"
-      />
-    );
+    this.props.isSignedIn &&
+    component({
+      XL: (
+        <BookmarkButton
+          bookmarked={this.props.entry["bookmarked?"]}
+          handleClick={() => {
+            this.props.dispatch(
+              this.props.entry["bookmarked?"]
+                ? deleteBookmark(this.props.id)
+                : postBookmark(this.props.id)
+            );
+            this.props.dispatch(
+              setEntryBookmarked(!this.props.entry["bookmarked?"])
+            );
+          }}
+          size="M"
+        />
+      ),
+      L: (
+        <BookmarkButton
+          bookmarked={this.props.entry["bookmarked?"]}
+          handleClick={() => {
+            this.props.dispatch(
+              this.props.entry["bookmarked?"]
+                ? deleteBookmark(this.props.id)
+                : postBookmark(this.props.id)
+            );
+            this.props.dispatch(
+              setEntryBookmarked(!this.props.entry["bookmarked?"])
+            );
+          }}
+          size="M"
+        />
+      ),
+      M: (
+        <BookmarkButton
+          bookmarked={this.props.entry["bookmarked?"]}
+          handleClick={() => {
+            this.props.dispatch(
+              this.props.entry["bookmarked?"]
+                ? deleteBookmark(this.props.id)
+                : postBookmark(this.props.id)
+            );
+            this.props.dispatch(
+              setEntryBookmarked(!this.props.entry["bookmarked?"])
+            );
+          }}
+          size="M"
+        />
+      ),
+      S: (
+        <BookmarkButton
+          bookmarked={this.props.entry["bookmarked?"]}
+          handleClick={() => {
+            this.props.dispatch(
+              this.props.entry["bookmarked?"]
+                ? deleteBookmark(this.props.id)
+                : postBookmark(this.props.id)
+            );
+            this.props.dispatch(
+              setEntryBookmarked(!this.props.entry["bookmarked?"])
+            );
+          }}
+          size="M"
+        />
+      )
+    });
 
   title = () =>
     component({
@@ -80,7 +131,7 @@ class EntryTop extends Component {
   bookmarkLabel = () =>
     component({
       XL: (
-        <Text size="M" margin="1rem">
+        <Text size="M" margin="1rem 2rem 1rem 1rem">
           {this.props.entry.num_of_bookmarked + " "}
           ブックマーク
         </Text>
@@ -98,21 +149,14 @@ class EntryTop extends Component {
         </Text>
       ),
       S: (
-        <Text size="S" margin="0.5rem">
+        <Text size="M" margin="0.5rem">
           {this.props.entry.num_of_bookmarked + " "}
           ブックマーク
         </Text>
       )
     });
 
-  addPlaylistButton = () =>
-    // this.props.isSignedIn &&
-    component({
-      XL: <AddPlaylistButton size="M" />,
-      L: <AddPlaylistButton size="M" />,
-      M: <AddPlaylistButton size="S" />,
-      S: <AddPlaylistButton size="S" />
-    });
+  addPlaylistButton = () => this.props.isSignedIn && <DropdownPlaylistMenu />;
 
   render() {
     const entryUrl = `${config.frontend_base_url}/entries/${this.props.id}`;
@@ -150,7 +194,7 @@ class EntryTop extends Component {
           css={`
             margin: 2.1rem 1rem;
             width: 100%;
-            justify-content: space-around;
+            justify-content: space-between;
           `}
         >
           <TwitterShareButton
@@ -179,13 +223,30 @@ class EntryTop extends Component {
 
         <Wrapper
           css={`
-            margin: 2.1rem 1rem;
+            margin: 1rem;
             width: 100%;
             justify-content: space-around;
+            ${style({
+        S: `flex-direction: column`,
+        M: `flex-direction: column`,
+        L: ``,
+        XL: ``
+      })};
           `}
         >
-          <this.bookmarkLabel />
-          <this.bookmarkButton />
+          <Wrapper
+            css={`
+              ${style({
+        S: `flex-direction: column; margin-bottom: 1.6rem;`,
+        M: ` margin-bottom: 1.8rem;`,
+        L: ``,
+        XL: ``
+      })};
+            `}
+          >
+            <this.bookmarkLabel />
+            <this.bookmarkButton />
+          </Wrapper>
           <this.addPlaylistButton />
         </Wrapper>
       </Wrapper>

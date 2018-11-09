@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const paddings = {
   S: "1px 2px",
-  M: "8px 16px",
+  M: "4px 9px",
   L: "12px 22px",
   XL: "18px 26px"
 };
@@ -56,14 +56,18 @@ const StyledButton = styled.button`
       : palette[colors.atoms.Button.Font]};
 
   ${props => props.dir && "flex-direction: " + props.dir};
-  ${props => (props.elevation ? elevate(props.elevation) : elevate(2))};
+  ${props =>
+    props.mode !== "Light" &&
+    (props.elevation ? elevate(props.elevation) : elevate(2))};
   ${props => props.css && props.css};
 
   &:hover {
-    ${props => elevate(props.elevation ? props.elevation + 2 : 4)};
+    ${props =>
+    props.mode !== "Light" &&
+      elevate(props.elevation ? props.elevation + 2 : 4)};
   }
   &:active {
-    ${elevate(0)};
+    ${props => props.mode !== "Light" && elevate(0)};
   }
 `;
 

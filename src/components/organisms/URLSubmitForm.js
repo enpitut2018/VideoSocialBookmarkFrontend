@@ -14,6 +14,7 @@ import SNSShareForm from "./SNSShareForm";
 import palette from "../../theme/palette";
 
 const StyledWrapper = styled(Wrapper)`
+  width: 100%;
   margin: 20px auto 10px auto;
   ${style({
     S: `margin-top: 10px`,

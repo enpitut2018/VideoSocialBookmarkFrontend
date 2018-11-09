@@ -9,6 +9,7 @@ export default class BookmarkButton extends Component {
       <Button
         mode={this.props.bookmarked ? "Primary" : "Default"}
         size={this.props.size ? this.props.size : "S"}
+        margin="1px 0 0 3px"
         onClick={e => {
           e.stopPropagation();
           e.preventDefault();

@@ -8,14 +8,25 @@ import PersonIcon from "../../assets/images/material-icon/baseline-person-24px.s
 import ExitIcon from "../../assets/images/material-icon/baseline-exit_to_app-24px.svg";
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
-import { StyledTextLink } from "./Header";
+// import { StyledTextLink } from "./Header";
+import { Link } from "react-router-dom";
+import AnkerStyle from "../atoms/AnkerStyle";
 
 const UserIconWrapper = styled.div`
   cursor: pointer;
 `;
 
 const IconWrapper = styled.div`
+  height: 24px;
   margin: 2px 22px;
+`;
+
+const StyledLink = styled(Link)`
+  ${AnkerStyle};
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 export default class DropdownMyMenu extends Component {
@@ -32,20 +43,24 @@ export default class DropdownMyMenu extends Component {
         css="margin-right: 5px;"
       >
         <DropdownMenuItem>
-          <StyledTextLink to="/mypage">
+          <StyledLink to="/mypage">
             <IconWrapper>
-              <PersonIcon fill={palette[colors.organisms.Header.Icon.Fill]} />
+              <PersonIcon
+                fill={palette[colors.organisms.Header.Icon.Fill]}
+                height="24"
+                width="24"
+              />
             </IconWrapper>
             <Text margin="0">マイページ</Text>
-          </StyledTextLink>
+          </StyledLink>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <StyledTextLink to="/logout">
+          <StyledLink to="/logout">
             <IconWrapper>
               <ExitIcon fill={palette[colors.organisms.Header.Icon.Fill]} />
             </IconWrapper>
             <Text margin="0">ログアウト</Text>
-          </StyledTextLink>
+          </StyledLink>
         </DropdownMenuItem>
       </DropdownMenu>
     );

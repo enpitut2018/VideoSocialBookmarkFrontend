@@ -16,6 +16,12 @@
         "Background": "Black01"
       }
     },
+    "CheckBox": {
+      "Fill": "Black06",
+      "Active": {
+        "Fill": "Black02"
+      }
+    },
     "Text": {
       "Font": "Black00"
     },
@@ -70,6 +76,14 @@
           "Font": "Black03"
         }
       }
+    },
+    "AddPlaylistButton": {
+      "Font": "Black03",
+      "Fill": "Black06",
+      "Active": {
+        "Font": "Black02",
+        "Fill": "Black02"
+      }
     }
   },
   "organisms": {
@@ -77,7 +91,7 @@
       "Background": "White00",
       "Font": "Black00",
       "Icon": {
-        "Fill": "Black02"
+        "Fill": "Black03"
       },
       "DropdownMenu": {
         "Background": "White00"
