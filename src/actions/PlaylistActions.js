@@ -6,6 +6,13 @@ export const POST_ENTRY_TO_PLAYLIST_REQUEST = "POST_ENTRY_TO_PLAYLIST_REQUEST";
 export const POST_ENTRY_TO_PLAYLIST_SUCCESS = "POST_ENTRY_TO_PLAYLIST_SUCCESS";
 export const POST_ENTRY_TO_PLAYLIST_FAILURE = "POST_ENTRY_TO_PLAYLIST_FAILURE";
 
+export const REMOVE_ENTRY_FROM_PLAYLIST_REQUEST =
+  "REMOVE_ENTRY_FROM_PLAYLIST_REQUEST";
+export const REMVOE_ENTRY_FROM_PLAYLIST_SUCCESS =
+  "REMOVE_ENTRY_FROM_PLAYLIST_SUCCESS";
+export const REMOVE_ENTRY_FROM_PLAYLIST_FAILURE =
+  "REMOVE_ENTRY_FROM_PLAYLIST_FAILURE";
+
 export const GET_PLAYLIST_REQUEST = "GET_PLAYLIST_REQUEST";
 export const GET_PLAYLIST_SUCCESS = "GET_PLAYLIST_SUCCESS";
 export const GET_PLAYLIST_FAILURE = "GET_PLAYLIST_FAILURE";
@@ -32,6 +39,18 @@ export const postEntryToPlaylist = (playListId, entryId) => dispatch => {
     .catch(_ => {
       dispatch({ type: POST_PLAYLIST_FAILURE, error: "" });
     });
+};
+
+export const removeEntryFromPlaylist = (playListId, entryId) => dispatch => {
+  dispatch({ type: REMOVE_ENTRY_FROM_PLAYLIST_REQUEST });
+  setAuthKeys();
+
+  return axios
+    .delete(`${config.backend_api_url}/playlists/${playListId}`, {
+      entry: { id: entryId }
+    })
+    .then(() => dispatch({ type: REMVOE_ENTRY_FROM_PLAYLIST_SUCCESS }))
+    .catch(() => dispatch({ type: REMOVE_ENTRY_FROM_PLAYLIST_FAILURE }));
 };
 
 export const postPlaylist = (name, isPrivate) => dispatch => {

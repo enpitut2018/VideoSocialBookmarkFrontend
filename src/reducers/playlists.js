@@ -2,6 +2,9 @@ import {
   POST_ENTRY_TO_PLAYLIST_REQUEST,
   POST_ENTRY_TO_PLAYLIST_SUCCESS,
   POST_ENTRY_TO_PLAYLIST_FAILURE,
+  REMOVE_ENTRY_FROM_PLAYLIST_REQUEST,
+  REMOVE_ENTRY_FROM_PLAYLIST_SUCCESS,
+  REMOVE_ENTRY_FROM_PLAYLIST_FAILURE,
   GET_PLAYLIST_REQUEST,
   GET_PLAYLIST_SUCCESS,
   GET_PLAYLIST_FAILURE,
@@ -30,8 +33,19 @@ export default (state = initialState, action) => {
     return {
       ...state
     };
-
   case POST_ENTRY_TO_PLAYLIST_FAILURE:
+    return {
+      ...state
+    };
+  case REMOVE_ENTRY_FROM_PLAYLIST_REQUEST:
+    return {
+      ...state
+    };
+  case REMOVE_ENTRY_FROM_PLAYLIST_SUCCESS:
+    return {
+      ...state
+    };
+  case REMOVE_ENTRY_FROM_PLAYLIST_FAILURE:
     return {
       ...state
     };
