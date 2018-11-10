@@ -7,7 +7,7 @@ import Wrapper from "./components/atoms/Wrapper";
 export default props => (
   <>
     <Header />
-    {toastManager.render}
+    {toastManager.render()}
     <Wrapper dir="column">{props.children}</Wrapper>
     <Footer />
   </>
