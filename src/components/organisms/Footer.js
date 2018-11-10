@@ -101,7 +101,7 @@ export default class Footer extends React.Component {
           <StyledText>© 2018 Vimacs</StyledText>
           <StyledLink to="/about">VSBとは</StyledLink>
           <StyledLink to="/terms">利用規約</StyledLink>
-            <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
+          <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
           <StyledLink to="/help">Help</StyledLink>
         </StyledCard>
       ),
@@ -113,7 +113,7 @@ export default class Footer extends React.Component {
           <StyledText>© 2018 Vimacs</StyledText>
           <StyledLink to="/about">VSBとは</StyledLink>
           <StyledLink to="/terms">利用規約</StyledLink>
-            <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
+          <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
           <StyledLink to="/help">Help</StyledLink>
         </StyledCard>
       )
