@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
 const StyledCard = styled(Card)`
   display: flex;
   box-shadow: 0 -1px 0 0 ${palette[colors.organisms.Footer.Border.Shadow]};
-  margin: 0;
+  margin: 1.2rem 0 0 0;
   padding: 0;
 `;
 

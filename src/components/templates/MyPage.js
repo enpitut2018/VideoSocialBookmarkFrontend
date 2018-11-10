@@ -1,25 +1,16 @@
 import React, { Component } from "react";
-import Wrapper from "../atoms/Wrapper";
-import Header from "../organisms/Header";
-import Footer from "../organisms/Footer";
 
-// import MyPageItem from "../molecules/MyPageItem";
+import BasicPageWrapper from "../../BasicPageWrapper";
 import Text from "../atoms/Text";
 import UserBookmarks from "../organisms/UserBookmarks";
 
 export default class MyPageTemplate extends Component {
   render() {
     return (
-      <>
-        <Header />
-        <Wrapper dir="column">
-          <Text size="L">マイブックマーク</Text>
-          {this.props.hasLoaded && (
-            <UserBookmarks user_id={this.props.user.id} />
-          )}
-        </Wrapper>
-        <Footer />
-      </>
+      <BasicPageWrapper>
+        <Text size="L">マイブックマーク</Text>
+        {this.props.hasLoaded && <UserBookmarks user_id={this.props.user.id} />}
+      </BasicPageWrapper>
     );
   }
 }

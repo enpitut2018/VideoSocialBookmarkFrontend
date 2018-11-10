@@ -8,7 +8,7 @@ export default props => (
   <>
     <Header />
     {toastManager.render}
-    <Wrapper>{props.children}</Wrapper>
+    <Wrapper dir="column">{props.children}</Wrapper>
     <Footer />
   </>
 );

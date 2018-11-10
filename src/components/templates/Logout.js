@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 
-import Header from "../organisms/Header";
-import Wrapper from "../atoms/Wrapper";
 import Text from "../atoms/Text";
 import LoadingIcon from "../atoms/LoadingIcon";
+import BasicPageWrapper from "../../BasicPageWrapper";
 
 import { connect } from "react-redux";
 import { signOutUser } from "../../redux-token-auth-config";
@@ -16,14 +15,11 @@ class Logout extends Component {
   }
   render() {
     return (
-      <>
+      <BasicPageWrapper>
         {!this.props.isSignedIn && <Redirect to="/" />}
-        <Header />
-        <Wrapper dir="column">
-          <Text size="XL">ログアウト中…</Text>
-          <LoadingIcon />
-        </Wrapper>
-      </>
+        <Text size="XL">ログアウト中…</Text>
+        <LoadingIcon />
+      </BasicPageWrapper>
     );
   }
 }
