@@ -156,7 +156,43 @@ class EntryTop extends Component {
       )
     });
 
-  addPlaylistButton = () => this.props.isSignedIn && <DropdownPlaylistMenu />;
+  addPlaylistButton = () =>
+    this.props.isSignedIn && (
+      <DropdownPlaylistMenu
+        playlists={[
+          {
+            id: 0,
+            name: "音楽系",
+            entries: [
+              {
+                id: 1
+              },
+              {
+                id: 2
+              },
+              {
+                id: 0
+              }
+            ]
+          },
+          {
+            id: 1,
+            name: "ちょっと気になる",
+            entries: [
+              {
+                id: 1
+              },
+              {
+                id: 2
+              },
+              {
+                id: 0
+              }
+            ]
+          }
+        ]}
+      />
+    );
 
   render() {
     const entryUrl = `${config.frontend_base_url}/entries/${this.props.id}`;

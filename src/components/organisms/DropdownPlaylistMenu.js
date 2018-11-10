@@ -20,40 +20,12 @@ const IconWrapper = styled.div`
 `;
 
 export default class DropdownPlaylistMenu extends Component {
-  state = {
-    playlists: [
-      {
-        id: 0,
-        name: "音楽系",
-        entries: [
-          {
-            id: 1
-          },
-          {
-            id: 2
-          },
-          {
-            id: 0
-          }
-        ]
-      },
-      {
-        id: 1,
-        name: "ちょっと気になる",
-        entries: [
-          {
-            id: 1
-          },
-          {
-            id: 2
-          },
-          {
-            id: 0
-          }
-        ]
-      }
-    ]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      enabledList: Array(props.playlists.length).fill(false)
+    };
+  }
 
   addPlaylistButton = () =>
     component({
@@ -62,6 +34,15 @@ export default class DropdownPlaylistMenu extends Component {
       M: <AddPlaylistButton size="M" />,
       S: <AddPlaylistButton size="M" />
     });
+
+  handleClick = i => {
+    this.setState(prev => {
+      prev.enabledList[i] = !prev.enabledList[i];
+      return {
+        enabledList: prev.enabledList
+      };
+    });
+  };
 
   render() {
     return (
@@ -73,15 +54,19 @@ export default class DropdownPlaylistMenu extends Component {
         )}
         css="margin-right: 5px;"
       >
-        {this.state.playlists.map(playlist => (
-          <DropdownMenuItem width="280px" key={playlist.id}>
-            <IconWrapper>
-              <CheckBox />
-            </IconWrapper>
-            <Text margin="0">{playlist.name}</Text>
-          </DropdownMenuItem>
-        ))}
-
+        {this.props.playlists &&
+          this.props.playlists.map((playlist, i) => (
+            <DropdownMenuItem
+              width="280px"
+              key={playlist.id}
+              onClick={() => this.handleClick(i)}
+            >
+              <IconWrapper>
+                <CheckBox value={this.state.enabledList[i]} />
+              </IconWrapper>
+              <Text margin="0">{playlist.name}</Text>
+            </DropdownMenuItem>
+          ))}
         <DropdownMenuItem width="280px">
           <IconWrapper>
             <PlaylistAddIcon

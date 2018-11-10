@@ -17,18 +17,21 @@ export default class CheckBox extends Component {
     };
   }
 
-  handleClick = () =>
+  handleClick = () => {
     this.setState(prev => ({
       checked: !prev.checked
     }));
+  };
 
   render() {
     const color = this.props.fill
       ? this.props.fill
       : palette[colors.atoms.CheckBox.Fill];
+    const enabled =
+      "value" in this.props ? this.props.value : this.state.checked;
     return (
       <div onClick={this.handleClick}>
-        {this.state.checked ? (
+        {enabled ? (
           <CheckBoxIcon fill={color} />
         ) : (
           <CheckBoxOutlineBlankIcon fill={color} />
