@@ -68,7 +68,6 @@ const fontLineHeight = size =>
 
 export const textStyle = props => {
   return css`
-    overflow: hidden;
     font-size: ${props.fontSize ? props.fontSize : fontSize(props.size)};
     color: ${props.color ? props.color : palette[colors.atoms.Text.Font]};
     margin: ${props.margin ? props.margin : fontMargin(props.size)};

@@ -55,6 +55,11 @@
     }
   },
   "molecules": {
+    "Toast": {
+      "Background": "Green00",
+      "Font": "White00",
+      "Icon": { "Fill": "White00" }
+    },
     "Star": {
       "Enable": {
         "Fill": "Red00"
