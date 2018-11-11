@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { signInUser } from "../../redux-token-auth-config";
+import { Redirect } from "react-router";
 
 import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button";
@@ -7,10 +10,9 @@ import Form from "../molecules/Form";
 import LabeledInput from "../molecules/LabeledInput";
 import palette from "../../theme/palette";
 import BasicPageWrapper from "../../BasicPageWrapper";
-
-import { connect } from "react-redux";
-import { signInUser } from "../../redux-token-auth-config";
-import { Redirect } from "react-router";
+import { addToast } from "../../actions/ToastActions";
+import { LOGIN_TOAST, timeout_ms } from "../organisms/ToastManager";
+import store from "../../store";
 
 class Login extends Component {
   state = { email: "", password: "" };
@@ -30,6 +32,11 @@ class Login extends Component {
       e.preventDefault();
       signInUser({ email, password });
     };
+
+    if (this.props.isSignedIn) {
+      store.dispatch(addToast(LOGIN_TOAST, "ログインしました", timeout_ms));
+    }
+
     return (
       <BasicPageWrapper>
         {this.props.isSignedIn && <Redirect to="/" />}
@@ -95,5 +102,7 @@ export default connect(
     isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
     isLoading: store.reduxTokenAuth.currentUser.isLoading
   }),
-  { signInUser }
+  {
+    signInUser
+  }
 )(Login);

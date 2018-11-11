@@ -6,6 +6,9 @@ import styled from "styled-components";
 
 export const timeout_ms = 4500;
 export const ADD_BOOKMARKED_TOAST = "ADD_BOOKMARKED_TOAST";
+export const REGISTRATION_TOAST = "REGISTRATION_TOAST";
+export const LOGIN_TOAST = "LOGIN_TOAST";
+export const LOGOUT_TOAST = "LOGOUT_TOAST";
 
 const ToastWrapper = styled.div`
   position: fixed;

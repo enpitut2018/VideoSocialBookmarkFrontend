@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { registerUser } from "../../redux-token-auth-config";
+import { Redirect } from "react-router";
 
 import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button";
@@ -7,10 +10,9 @@ import Form from "../molecules/Form";
 import LabeledInput from "../molecules/LabeledInput";
 import palette from "../../theme/palette";
 import BasicPageWrapper from "../../BasicPageWrapper";
-
-import { connect } from "react-redux";
-import { registerUser } from "../../redux-token-auth-config";
-import { Redirect } from "react-router";
+import { addToast } from "../../actions/ToastActions";
+import { REGISTRATION_TOAST, timeout_ms } from "../organisms/ToastManager";
+import store from "../../store";
 
 class Registration extends Component {
   state = { email: "", password: "", passwordConfirmation: "" };
@@ -34,6 +36,13 @@ class Registration extends Component {
       e.preventDefault();
       registerUser({ email, password, passwordConfirmation });
     };
+
+    if (this.props.isSignedIn) {
+      store.dispatch(
+        addToast(REGISTRATION_TOAST, "アカウントを作成しました", timeout_ms)
+      );
+    }
+
     return (
       <BasicPageWrapper>
         {this.props.isSignedIn && <Redirect to="/" />}
@@ -118,5 +127,7 @@ export default connect(
   store => ({
     isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
   }),
-  { registerUser }
+  {
+    registerUser
+  }
 )(Registration);
