@@ -1,0 +1,101 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice"
+    },
+    {
+      "id": 2,
+      "name": "Camila"
+    },
+    {
+      "id": 3,
+      "name": "Daisy"
+    },
+    {
+      "id": 4,
+      "name": "Leia"
+    },
+    {
+      "id": 5,
+      "name": "Iris"
+    }
+  ],
+  "playlists": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "title": "My facorite videos",
+      "entries": [
+        {
+          "id": 1,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        },
+        {
+          "id": 2,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        },
+        {
+          "id": 3,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "title": "Gaming",
+      "entries": [
+        {
+          "id": 1,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        },
+        {
+          "id": 2,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        },
+        {
+          "id": 3,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "user_id": 2,
+      "title": "𝑳𝒐𝒗𝒆",
+      "entries": [
+        {
+          "id": 1,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        },
+        {
+          "id": 2,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        },
+        {
+          "id": 3,
+          "thumbnail_url": "https://img.youtube.com/vi/5AEbq6X33A8/default.jpg",
+          "url": "https://soundcloud.com/sadboywithalaptop/a-walk-through-arashiyama",
+          "title": "Caffe Music"
+        }
+      ]
+    }
+  ]
+}

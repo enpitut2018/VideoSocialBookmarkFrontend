@@ -10,12 +10,16 @@ import {
   POST_PLAYLIST_FAILURE,
   DELETE_PLAYLIST_REQUEST,
   DELETE_PLAYLIST_SUCCESS,
-  DELETE_PLAYLIST_FAILURE
+  DELETE_PLAYLIST_FAILURE,
+  GET_USER_PLAYLISTS_REQUEST,
+  GET_USER_PLAYLISTS_SUCCESS,
+  GET_USER_PLAYLISTS_FAILURE,
 } from "../actions/PlaylistActions";
 
 const initialState = {
   hasLoaded: false,
-  trend: [],
+  playlists: {},
+  playlist: [],
   url: "",
   error: ""
 };
@@ -35,13 +39,30 @@ export default (state = initialState, action) => {
     return {
       ...state
     };
-  case GET_PLAYLIST_REQUEST:
+  case GET_USER_PLAYLISTS_REQUEST:
+    return {
+      ...state,
+      hasLoaded: false
+    };
+  case GET_USER_PLAYLISTS_SUCCESS:
+    return {
+      ...state,
+      hasLoaded: true,
+      playlists: action.playlists
+    };
+  case GET_USER_PLAYLISTS_FAILURE:
     return {
       ...state
     };
+  case GET_PLAYLIST_REQUEST:
+    return {
+      ...state,
+      hasLoaded: false
+    };
   case GET_PLAYLIST_SUCCESS:
     return {
-      ...state
+      hasLoaded: true,
+      playlist: action.playlist
     };
   case GET_PLAYLIST_FAILURE:
     return {
@@ -71,5 +92,7 @@ export default (state = initialState, action) => {
     return {
       ...state
     };
+  default:
+    return state;
   }
 };
