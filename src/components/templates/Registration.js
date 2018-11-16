@@ -15,8 +15,11 @@ import { Redirect } from "react-router";
 class Registration extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: "", passwordConfirmation: "" };
+    this.state = { name: "",email: "", password: "", passwordConfirmation: "" };
   }
+  handleNameChange =e =>{
+    this.setState({name: e.target.value});
+  };
 
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
@@ -32,10 +35,10 @@ class Registration extends Component {
 
   render() {
     const { registerUser } = this.props;
-    const { email, password, passwordConfirmation } = this.state;
+    const { name, email, password, passwordConfirmation } = this.state;
     const submit = e => {
       e.preventDefault();
-      registerUser({ email, password, passwordConfirmation });
+      registerUser({name, email, password, passwordConfirmation });
     };
     return (
       <>
@@ -49,6 +52,24 @@ class Registration extends Component {
             onSubmit={submit}
             render={() => (
               <>
+                <LabeledInput
+                  name="name"
+                  label={() => (
+                    <Text level="S" margin="0.5rem 0 0 26px">
+                      ユーザー名
+                    </Text>
+                  )}
+                  input={() => (
+                    <TextInput
+                      placeholder="ユーザー名"
+                      handleChange={this.handleNameChange}
+                      name="name"
+                      value={this.state.name}
+                      required
+                    />
+                  )}
+                  value={this.state.name}
+                />
                 <LabeledInput
                   name="email"
                   label={() => (
