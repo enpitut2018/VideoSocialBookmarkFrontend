@@ -16,7 +16,7 @@
     "react-share": "^2.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "redux-token-auth": "^0.19.0",
+    "redux-token-auth": "amgad-naiem/redux-token-auth#master",
     "serve": "^10.0.2",
     "styled-components": "^4.0.3"
   },
