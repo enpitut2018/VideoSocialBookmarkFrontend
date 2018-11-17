@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
-import Thumbnail from "../atoms/Thumbnail";
+import Embed from "../atoms/Embed";
 import Text from "../atoms/Text";
 import { component } from "../mediaQuery";
 import { style } from "../mediaQuery";
@@ -29,7 +29,7 @@ const StyledA = styled.a`
   ${AnkerStyle};
 `;
 
-const StyledThumbnail = styled.div`
+const StyledEmbed = styled.div`
   margin: 10px 0;
   width: 100%;
 `;
@@ -180,13 +180,15 @@ class EntryTop extends Component {
         >
           <Wrapper dir="column">
             <this.title />
-            <StyledThumbnail>
-              <Thumbnail
-                src={this.props.entry.thumbnail_url}
+            <StyledEmbed>
+              <Embed
+                provider={this.props.entry.provider}
+                video_id={this.props.entry.video_id}
+                thumbnail_url={this.props.entry.thumbnail_url}
                 alt={this.props.entry.title}
                 width="100%"
               />
-            </StyledThumbnail>
+            </StyledEmbed>
           </Wrapper>
         </StyledA>
 
