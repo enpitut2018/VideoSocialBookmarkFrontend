@@ -10,10 +10,12 @@ install:
 before_script:
 # - yarn mock &
 # - sleep 5 # for wait run mock server
-  - rm -rf backend # because jest watch backend directory...
+  - mv backend .. # because jest watch backend directory...
 script:
 - yarn test
 - yarn lint
+after_script:
+  - mv ../backend . # because jest watch backend directory...
 after_success:
 - '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && bash
   ./scripts/update-submodule.sh || echo ""'
