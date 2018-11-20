@@ -29,7 +29,8 @@
     "eject": "react-scripts eject",
     "format": "yarn eslint --fix src/actions src/components src/config src/reducers src/*.js",
     "style-lint": "yarn stylelint src/components",
-    "lint": "yarn format && yarn style-lint"
+    "lint": "yarn format && yarn style-lint",
+    "mock": "yarn json-server api.json"
   },
   "eslintConfig": {
     "extends": "react-app"
