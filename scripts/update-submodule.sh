@@ -23,4 +23,6 @@ cd ..
 git add frontend
 git commit -m "[dev] update frontend"
 git push origin-travis pre-release
+
+rm -rf frontend
 cd ..
