@@ -1,24 +1,19 @@
 language: node_js
-
 node_js:
-  - "stable"
-
+- stable
 cache:
   yarn: true
   directories:
-    - node_modules
-
+  - node_modules
 install:
-  - yarn
-
+- yarn
 before_script:
-  - yarn mock &
-#  - "sleep 5" # Wait for the mock server to start
-  - '[ "$TRAVIS_BRANCH" == "develop" ] || echo "this is not develop"'
-  - '[ "$TRAVIS_PULL_REQUEST" != "false" ] || echo "this is not pull-request"'
-  - bash ./scripts/update-submodule.sh || echo "error in script"
-  - '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ] && bash ./scripts/update-submodule.sh'
-
+- yarn mock &
+- '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && bash
+  ./scripts/update-submodule.sh || echo ""'
 script:
-  - yarn test
-  - yarn lint
+- yarn test
+- yarn lint
+env:
+  global:
+    secure: 4Cy/P7sNng/VCT/phQdszPVjeqRDvK02/etEeMrBX4IpWXgFMgtGPmOtq7GLrIp3RZyAQOfhAEzLu8aS6pdz1NLcWJkffhiC8UnmqCaP3EjLBUMAAs2YIB/zLo1l+h9aQfX7I2YJmi1cat4Ikd1c6u46nlUNugCOxNdHAX7rXOpoUfY93iURIXLag2605z1kzO0PMAEi32dUmyAZ/sx2agtkCmFjYwzoX7KtdMRl8QzDYEhtLzOJvo/1GeK1ug1rB+Tjgydj7LkuBKTTbTXOp1t9OM+3wkiNcLwVHM545PH28iciudxVdtDl2++dEt+ZlFbeh0EYAyq2YnoWAf9X6u4hba1+krTxYjAHGFoOW/Nl7lt/aZZ7Xx5URoBnWDGDKNI67oxtUndgM1CEf1S/QwmLGgm0C2sYhvfM6P4B2yySrKp0FFnUFRph0ynWri3fX1xiqjsyWlMSm+xtWAU8pSvpJlD6RuvuspqH7x09R8/Aqh8f6ZrS6+4cKpz4XDW7XWdJ0+gc5Ah4vWr7MQXe1Qohh/XNwUv2Efkla7j4DeoCet9c1I70WycukV0YJOPZPpxBTHs6N/CTy4ZgZ46JAP3jy2iC6kpTOoWDlb0oqap0K2sLCzw3bpJGiykShroGOkmnfsTRwMqx/EkvWfHuez/52KmHVigRLaAGJEEm54A=
