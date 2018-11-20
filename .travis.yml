@@ -8,12 +8,14 @@ cache:
 install:
 - yarn
 before_script:
-- yarn mock &
-- '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && bash
-  ./scripts/update-submodule.sh || echo ""'
+# - yarn mock &
+# - sleep 5 # for wait run mock server
 script:
 - yarn test
 - yarn lint
+after_success:
+- '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && bash
+  ./scripts/update-submodule.sh || echo ""'
 env:
   global:
   - secure: fHEkN6KCb4lb3NzKhOW7ERp13PhQhJzdCuPiUctEQW9vecwyclp+z7696dLuIeqGQDC0X0/0du2EqVS2ISO6+0FMcU1+MQ3t/wDeQoZl7PPKJBLwuFMuH47wmLNK4xrLjWX70hpKvtoKYWb1HF2FIsDdpHJdB35JGEWOIaST1P5wR/J/zUlEdr7impayB5pBPKnmNU8valdpnk7DVI/FE4ETj+LEkTdIIQgG12Myq4ILRDKizx3TucY0oQq5c1UUgoX4nNw70CsnKQBrJOOR1r/d/lFUlNWHPrarBT7MvfZH6zD9oG5AxITyc9S5MFtVSSsvGHyKwaXtmALnRF8rTii9+6Nuy2xHLFX8BUuGWvXOO4FwFRTIIH+Dbq0AhUxQHCGWzH+yQRB0E0/qM7TuH+b2S/0lDu/StOu9xOMqOpEZXA5mGf5AYDoBaYaj2q7DN7V1PsUQy9NGV0XVqLFMPlqEXWB/EdV2Y2KgxbzxJdf7qE5Q+wNZYKasjZtmhMp0HQwiKn5C5YeljzH2T04ZmvRPQTfR9CVDz1wJrPFaXgeBla7zmAwbpYktduyXnrXOYuifoObYRjH/uKcdmO22cn4+eouwnUjRIZiG+o+IAavQ8fcxplQG3pkz6TOERA7XKJ2FgOmONTHCxmAg4vEQzR1gwOCQva3QQ+vuJazxBNU=
