@@ -11,12 +11,12 @@ import palette from "../../theme/palette";
 import { style, component } from "../mediaQuery";
 
 const StyledText = styled.span`
-  ${textStyle({ level: "XS", margin: "10px 15px" })};
+  ${textStyle({ size: "S", margin: "10px 15px" })};
 `;
 
 const StyledLink = styled(Link)`
   ${AnkerStyle};
-  ${textStyle({ level: "XS", margin: "10px 15px" })};
+  ${textStyle({ size: "S", margin: "10px 15px" })};
   ${props => props.height && `height: ${props.height}`};
 `;
 

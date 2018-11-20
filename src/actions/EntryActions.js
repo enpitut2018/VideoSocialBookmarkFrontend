@@ -2,6 +2,11 @@ import axios from "axios";
 import config from "../config";
 import { setAuthKeys } from "../auth";
 import { getTrend } from "./TrendActions";
+import {
+  ADD_BOOKMARKED_TOAST,
+  timeout_ms
+} from "../components/organisms/ToastManager";
+import { addToast } from "./ToastActions";
 
 export const GET_ENTRY_REQUEST = "GET_ENTRY_REQUEST";
 export const GET_ENTRY_SUCCESS = "GET_ENTRY_SUCCESS";
@@ -49,6 +54,9 @@ export const postEntry = (url, comment) => dispatch => {
     })
     .then(res => {
       dispatch({ type: POST_ENTRY_SUCCESS, url, res });
+      dispatch(
+        addToast(ADD_BOOKMARKED_TOAST, "ブックマークしました", timeout_ms)
+      );
       dispatch(getTrend());
     })
     .catch(_ => {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import Dropdown from "./Dropdown";
 import DropdownMenuItem from "../molecules/DropdownMenuItem";
 import Text from "../atoms/Text";
@@ -9,6 +10,12 @@ import AddPlaylistButton from "../molecules/AddPlaylistButton";
 import { component } from "../mediaQuery";
 import PlaylistAddIcon from "../../assets/images/material-icon/baseline-playlist_add-24px.svg";
 import CheckBox from "../atoms/CheckBox";
+import {
+  getCurrentUserPlaylists,
+  postEntryToPlaylist,
+  removeEntryFromPlaylist,
+  postPlaylist
+} from "../../actions/PlaylistActions";
 
 const ButtonWrapper = styled.div`
   cursor: pointer;
@@ -19,12 +26,25 @@ const IconWrapper = styled.div`
   margin: 2px 22px;
 `;
 
-export default class DropdownPlaylistMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      enabledList: Array(props.playlists.length).fill(false)
-    };
+class DropdownPlaylistMenu extends Component {
+  state = {
+    enabledList: []
+  };
+
+  componentWillMount() {
+    this.props.dispatch(getCurrentUserPlaylists());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.state === "loaded" && "playlists" in nextProps) {
+      this.setState({
+        enabledList: nextProps.playlists.map(playlist =>
+          playlist.playlist_items.some(
+            playlistItem => playlistItem.entry_id === this.props.entryId
+          )
+        )
+      });
+    }
   }
 
   addPlaylistButton = () =>
@@ -36,6 +56,23 @@ export default class DropdownPlaylistMenu extends Component {
     });
 
   handleClick = i => {
+    if (this.state.enabledList[i]) {
+      this.props.dispatch(
+        removeEntryFromPlaylist(this.props.playlists[i].id, this.props.entryId)
+      );
+    } else {
+      const lastItem = this.props.playlists[i].playlist_items.find(
+        item => item.next_id === null
+      );
+      this.props.dispatch(
+        postEntryToPlaylist(
+          this.props.playlists[i].id,
+          this.props.entryId,
+          null,
+          lastItem ? lastItem.id : null
+        )
+      );
+    }
     this.setState(prev => {
       prev.enabledList[i] = !prev.enabledList[i];
       return {
@@ -54,7 +91,8 @@ export default class DropdownPlaylistMenu extends Component {
         )}
         css="margin-right: 5px;"
       >
-        {this.props.playlists &&
+        {this.props.state === "loaded" &&
+          this.props.playlists &&
           this.props.playlists.map((playlist, i) => (
             <DropdownMenuItem
               width="280px"
@@ -67,7 +105,12 @@ export default class DropdownPlaylistMenu extends Component {
               <Text margin="0">{playlist.name}</Text>
             </DropdownMenuItem>
           ))}
-        <DropdownMenuItem width="280px">
+        <DropdownMenuItem
+          width="280px"
+          onClick={() => {
+            this.props.dispatch(postPlaylist("プレイリスト", false));
+          }}
+        >
           <IconWrapper>
             <PlaylistAddIcon
               fill={palette[colors.organisms.Header.Icon.Fill]}
@@ -79,3 +122,8 @@ export default class DropdownPlaylistMenu extends Component {
     );
   }
 }
+
+export default connect(store => ({
+  state: store.playlists.state,
+  playlists: store.playlists.playlists
+}))(DropdownPlaylistMenu);

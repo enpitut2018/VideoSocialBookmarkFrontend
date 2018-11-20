@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
-import EntryTop from "../molecules/EntryTop";
+import EntryTop from "../organisms/EntryTop";
 import EntryItem from "../molecules/EntryItem";
 import CommentSubmitForm from "../organisms/CommentSubmitForm";
 import BasicPageWrapper from "../../BasicPageWrapper";
