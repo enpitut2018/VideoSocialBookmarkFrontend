@@ -8,6 +8,7 @@ cache:
 install:
 - yarn
 before_script:
+- echo $GH_TOKEN
 - yarn mock &
 - '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && bash
   ./scripts/update-submodule.sh || echo ""'
@@ -16,4 +17,4 @@ script:
 - yarn lint
 env:
   global:
-    secure: WAC2MZ9tBI6NiBAqg/+OW25HTBqITC+E6t2qRJrbsTwttAVjUjEMb4S73TFHN7bUVQ02n2ap2Nx4yW6FNhtdK507Rh67vZWo1MuJBh6ZgPJxjpU0bkIsKmP8/b7BMilRJnbwMRsf+d1E0nWz6vgnGbsZLArOSGrvCX5ccl+AiPiCfTWbOBolaAUeZcDuDu+2sn2PO5zrbo9l2+DfH0BnysVZrnD8v/AUcPQ+28K4ehJ4pU99yIMMKKrkm8dqcIFllmFOJsXKl6g+y8nupoPFZMT1BTxm3vjfgCcpdyTfhO+os/MO6TJTmTZ00nQzc8lNWGXG8AhcaRzbzDz6C73xx97fQ5AqPt53BErzZsUwGQR62nSGyMXyE9VytntkXJJ7vxxCLq5BWg53awaVNWPdfuOAe4gGzeQfsWrMv8pm9nBxkTiCOWP2IEj147uxJrGiVfSUR/P8UWMkf3bsT6Bc1b/nUk8lABLjhtdFzqFBYG/r4sNbQeQhbTCucd6TuuyRX+BsKw/DLLOztduqlhPySvpLNQzVMOWFDM76hvFaLzVhjMcZejYUJz49lPNMLAAJId+xV+kD4jkDz8OwgsdGF/lrRcqik0ZaPAnblO2NCMvQipRpF5ftLbVpotNVPyp74Ao1boRfmBzumjhwkHTu9CG+YEWs77hzpBYflaZREJM=
+  - secure: Ti5bJCuDVyV5RRMU6FEppVPzQvp7YwDHxISBpla7ZUpugszSYoiWJbbNUoqay44k0rzBpyJCYzki0asIH2/D2EDj2q138M4Zq3OtfiAyMkxeD3INub32ZROGk0Ob44fKyMCF2eDgIVObku8orvujV8/MDwFTCdPTEv3ZHMlZ9W9b/exk646eHUnDq20BOv5scV3yThCvcfRMOVOr2masNb7fW9tB64IBMR9B+h5vZRL4fMdB28xxNFXilbK9FPIIgvorICaWvxtJ/dZI8e8UA2YH1bDmcXEJz0lWwyyRgMOHqJIw1j2P4h3pc+WN/MUqHjItKnlHj/cKQXwl4lfV8RrGF0jLsUY+b8/MCB/1n2DVIgaiWymI+6dgIyj1LZDhmGNLhKdlYgPi3gOUKgbvYVYhk/Etp+jg9BmtSeZAbiWO9pAA55jfpBFus6weu3CtQjvqk0BcPG62q3A5uMx+6LaKUd8u0EYANQv8xJW9YtnIIPju3V7Q5zr7K8A+kEeRVDn3ZapYl+tTNihJVouYmxNCQAxkB8wzfvtJ0bPRaAlAmICsxron/Zi9oBv84l7Dg87lJbLCuPNlZiaZhqKji0g5o6cAYIBCEd1hZcq9m8+ugC6x9SvGyxJu3Ixd6e2zINxGsfI7HAeuGDKZXsgofAwNz6TIHOLyZ6KKD+UJ95o=
