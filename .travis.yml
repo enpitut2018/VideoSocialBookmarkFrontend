@@ -10,6 +10,7 @@ install:
 before_script:
 # - yarn mock &
 # - sleep 5 # for wait run mock server
+  - rm -rf backend # because jest watch backend directory...
 script:
 - yarn test
 - yarn lint
