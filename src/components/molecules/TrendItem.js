@@ -29,6 +29,11 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledThumbnail = styled.div`
+  width: 160px;
+  background-color: black;
+  height: 90px;
+  display: flex;
+  justify-content: center;
   ${style({
     S: `margin-right: 8px`,
     M: `margin-right: 12px`,
@@ -43,6 +48,7 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   height: 90px;
+  width: 640px;
 `;
 
 const titleStyle = `
