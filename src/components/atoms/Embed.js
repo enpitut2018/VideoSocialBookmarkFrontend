@@ -32,7 +32,7 @@ export default class Embed extends Component {
         <IframeWrapper>
           <StyledIframe
             title={title}
-            src={`http://www.youtube.com/embed/${id}?autoplay=0&origin=https://video-social-bookmark.herokuapp.com`}
+            src={`https://www.youtube.com/embed/${id}?autoplay=0&origin=https://video-social-bookmark.herokuapp.com`}
             allowFullScreen
             frameBorder="0"
           />
