@@ -4,7 +4,7 @@ echo $GH_TOKEN
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
-git submodule update
+git submodule update --init --recursive
 cd backend
 git remote add origin-travis https://${GH_TOKEN}@github.com/enpitut2018/VideoSocialBookmark.git
 
