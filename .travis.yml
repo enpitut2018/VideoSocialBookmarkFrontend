@@ -13,8 +13,8 @@ install:
 
 before_script:
   - yarn mock &
-  - "sleep 5" # Wait for the mock server to start
-  - '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ] && ./scripts/update-submodule.sh'
+#  - "sleep 5" # Wait for the mock server to start
+  - '[ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ] && bash ./scripts/update-submodule.sh'
 
 script:
   - yarn test
