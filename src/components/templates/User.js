@@ -15,7 +15,7 @@ export default class UserTemplate extends Component {
             User {this.props.user_id}
             のブックマーク
           </Text>
-          <UserBookmarks userId={this.props.user_id} />
+          <UserBookmarks user_id={this.props.user_id} />
         </Wrapper>
         <Footer />
       </>
