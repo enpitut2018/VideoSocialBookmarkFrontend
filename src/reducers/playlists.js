@@ -23,8 +23,11 @@ import {
 } from "../actions/PlaylistActions";
 
 const initialState = {
-  playlists: null,
-  state: ""
+  state: "",
+  playlists: [],
+  playlist: [],
+  url: "",
+  error: ""
 };
 
 export default (state = initialState, action) => {
@@ -70,11 +73,13 @@ export default (state = initialState, action) => {
     };
   case GET_PLAYLIST_REQUEST:
     return {
-      ...state
+      ...state,
+      state: ""
     };
   case GET_PLAYLIST_SUCCESS:
     return {
-      ...state
+      state: "loaded",
+      playlist: action.playlist
     };
   case GET_PLAYLIST_FAILURE:
     return {

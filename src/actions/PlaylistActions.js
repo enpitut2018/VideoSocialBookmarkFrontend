@@ -30,6 +30,10 @@ export const GET_PLAYLIST_REQUEST = "GET_PLAYLIST_REQUEST";
 export const GET_PLAYLIST_SUCCESS = "GET_PLAYLIST_SUCCESS";
 export const GET_PLAYLIST_FAILURE = "GET_PLAYLIST_FAILURE";
 
+export const GET_USER_PLAYLISTS_REQUEST = "GET_USER_PLAYLISTS_REQUEST";
+export const GET_USER_PLAYLISTS_SUCCESS = "GET_USER_PLAYLISTS_SUCCESS";
+export const GET_USER_PLAYLISTS_FAILURE = "GET_USER_PLAYLISTS_FAILURE";
+
 export const POST_PLAYLIST_REQUEST = "POST_PLAYLIST_REQUEST";
 export const POST_PLAYLIST_SUCCESS = "POST_PLAYLIST_SUCCESS";
 export const POST_PLAYLIST_FAILURE = "POST_PLAYLIST_FAILURE";
@@ -166,6 +170,7 @@ export const deletePlaylist = id => dispatch => {
     });
 };
 
+// eslint-disable-next-line no-unused-vars
 export const getPlaylist = id => dispatch => {
   dispatch({ type: GET_PLAYLIST_REQUEST });
   return axios
