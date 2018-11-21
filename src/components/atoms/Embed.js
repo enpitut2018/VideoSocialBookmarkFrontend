@@ -82,6 +82,7 @@ export default class Embed extends Component {
         Embed
       ) : (
         <Thumbnail
+          provider={this.props.provider}
           width={this.props.width}
           src={this.props.thumbnail_url}
           title={this.props.title}

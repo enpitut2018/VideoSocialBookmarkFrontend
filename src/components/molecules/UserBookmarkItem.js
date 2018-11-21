@@ -72,6 +72,7 @@ export default class UserBookmarkItem extends Component {
           <Wrapper>
             <StyledThumbnail>
               <Thumbnail
+                provider={this.props.bookmark.entry.provider}
                 src={this.props.bookmark.entry.thumbnail_url}
                 alt={this.props.bookmark.entry.title}
                 height="90px"
