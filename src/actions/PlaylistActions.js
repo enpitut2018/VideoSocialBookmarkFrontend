@@ -125,7 +125,12 @@ export const postPlaylist = (name, isPrivate) => dispatch => {
     });
 };
 
-export const putPlaylist = (playlistId, name, isPrivate) => dispatch => {
+export const putPlaylist = (
+  playlistId,
+  name,
+  isPrivate,
+  refresh
+) => dispatch => {
   dispatch({ type: PUT_PLAYLIST_REQUEST });
   setAuthKeys();
 
@@ -138,7 +143,9 @@ export const putPlaylist = (playlistId, name, isPrivate) => dispatch => {
     })
     .then(() => {
       dispatch({ type: PUT_PLAYLIST_SUCCESS });
-      dispatch(getCurrentUserPlaylists());
+      if (refresh) {
+        dispatch(getCurrentUserPlaylists());
+      }
     })
     .catch(() => {
       dispatch({ type: PUT_PLAYLIST_FAILURE });

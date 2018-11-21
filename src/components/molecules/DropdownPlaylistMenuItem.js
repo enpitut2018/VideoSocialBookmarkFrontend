@@ -11,7 +11,10 @@ import Text from "../atoms/Text";
 import TextInput from "../atoms/TextInput";
 import Form from "./Form";
 import store from "../../store";
-import { putPlaylist } from "../../actions/PlaylistActions";
+import {
+  putPlaylist,
+  getCurrentUserPlaylists
+} from "../../actions/PlaylistActions";
 import elevate from "../../theme/shadows";
 
 const IconWrapper = styled.div`
@@ -61,12 +64,16 @@ export default class DropdownPlaylistMenuItem extends Component {
       name: this.props.playlist.name,
       isPrivate: this.props.playlist.is_private
     }));
+    if (this.state.editing) {
+      store.dispatch(getCurrentUserPlaylists());
+    }
   };
 
   handleClickWhenEditing = e => {
     if (this.state.editing) {
       e.stopPropagation();
       this.setState({ editing: false });
+      store.dispatch(getCurrentUserPlaylists());
     }
   };
 
@@ -78,7 +85,12 @@ export default class DropdownPlaylistMenuItem extends Component {
       return false;
     }
     store.dispatch(
-      putPlaylist(this.props.playlist.id, this.state.name, this.state.isPrivate)
+      putPlaylist(
+        this.props.playlist.id,
+        this.state.name,
+        this.state.isPrivate,
+        true
+      )
     );
     this.setState({ editing: false, hasSubmitted: true });
   };
@@ -93,6 +105,14 @@ export default class DropdownPlaylistMenuItem extends Component {
     window.console.log(this.state.isPrivate);
     if (this.state.isPrivate !== undefined) {
       this.setState(prev => ({ isPrivate: !prev.isPrivate }));
+      store.dispatch(
+        putPlaylist(
+          this.props.playlist.id,
+          this.state.isPrivate,
+          undefined,
+          false
+        )
+      );
     }
   };
 
