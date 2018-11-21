@@ -22,7 +22,7 @@ const StyledIframe = styled.iframe`
 `;
 
 export default class Embed extends Component {
-  video = () => {
+  genEmbed = () => {
     const provider = this.props.provider;
     const id = this.props.video_id;
     const title = this.props.title;
@@ -71,14 +71,15 @@ export default class Embed extends Component {
         </IframeWrapper>
       );
     default:
-      break;
+      return null;
     }
   };
   render(){
+    const Embed = this.genEmbed();
     return (
     <>
-      {this.props.provider !== null && this.props.provider !== "unknown" ? (
-        <this.video />
+      {Embed !== null ? (
+        Embed
       ) : (
         <Thumbnail
           width={this.props.width}
