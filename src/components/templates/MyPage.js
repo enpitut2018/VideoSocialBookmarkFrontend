@@ -14,13 +14,13 @@ export default class MyPageTemplate extends Component {
         <Wrapper dir="column">
           <Text level="XL">マイプレイリスト</Text>
           {this.props.hasLoaded && (
-            <Playlists userId={this.props.user.id} />
+            <Playlists user_id={this.props.user.id} />
           )}
         </Wrapper>
         <Wrapper dir="column">
           <Text level="XL">マイブックマーク</Text>
           {this.props.hasLoaded && (
-            <UserBookmarks userId={this.props.user.id} />
+            <UserBookmarks user_id={this.props.user.id} />
           )}
         </Wrapper>
         <Footer />
