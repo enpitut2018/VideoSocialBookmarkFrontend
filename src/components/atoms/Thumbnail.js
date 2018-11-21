@@ -15,6 +15,13 @@ export default function Thumbnail(props) {
       {...props}
       src={props.src ? props.src : Placeholder}
       alt={props.alt}
+      onError={(e)=>{
+        if (props.provider === "nicovideo"){
+          const fixedSrc=props.src.replace(".L","");
+          e.target.onerror=null;
+          e.target.src=fixedSrc;
+        }
+      }}
     />
   );
 }
