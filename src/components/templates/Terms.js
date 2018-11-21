@@ -1,12 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
-import Header from "../organisms/Header";
-import Footer from "../organisms/Footer";
-import Wrapper from "../atoms/Wrapper";
 import Text from "../atoms/Text";
 import Accordion from "../organisms/Accordion";
 import { style } from "../mediaQuery";
-
+import BasicPageWrapper from "../../BasicPageWrapper";
 import terms from "../../terms";
 
 const StyledHeader = styled(Text)`
@@ -22,15 +19,11 @@ const StyledHeader = styled(Text)`
 export default class Terms extends React.Component {
   render() {
     return (
-      <>
-        <Header />
-        <Wrapper dir="column">
-          <Text size="XL">利用規約</Text>
-          <StyledHeader>{terms.Header}</StyledHeader>
-          <Accordion items={terms.Body} />
-        </Wrapper>
-        <Footer />
-      </>
+      <BasicPageWrapper>
+        <Text size="XL">利用規約</Text>
+        <StyledHeader>{terms.Header}</StyledHeader>
+        <Accordion items={terms.Body} />
+      </BasicPageWrapper>
     );
   }
 }

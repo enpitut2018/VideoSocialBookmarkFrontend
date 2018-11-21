@@ -10,8 +10,12 @@ import palette from "../../theme/palette.json";
 import { style } from "../mediaQuery";
 
 const StyledUploadIconWrapper = styled.div`
-  height: 30px;
-  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 53px;
+  width: 48px;
   margin: auto;
 
   ${elevate(2)};
@@ -37,8 +41,6 @@ export default class DropdownUploadForm extends Component {
             />
           </StyledUploadIconWrapper>
         )}
-        top="63px"
-        right="30px"
         css={`
           ${style({
         XL: `margin-right: 35px;`,

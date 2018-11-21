@@ -8,7 +8,6 @@ import PersonIcon from "../../assets/images/material-icon/baseline-person-24px.s
 import ExitIcon from "../../assets/images/material-icon/baseline-exit_to_app-24px.svg";
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
-// import { StyledTextLink } from "./Header";
 import { Link } from "react-router-dom";
 import AnkerStyle from "../atoms/AnkerStyle";
 
@@ -38,8 +37,6 @@ export default class DropdownMyMenu extends Component {
             <UserIcon url={this.props.url} />
           </UserIconWrapper>
         )}
-        top="63px"
-        right="5px"
         css="margin-right: 5px;"
       >
         <DropdownMenuItem>

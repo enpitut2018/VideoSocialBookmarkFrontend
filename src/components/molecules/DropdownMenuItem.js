@@ -9,8 +9,8 @@ const StyledItem = styled.div`
   user-select: none;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: ${props => (props.width ? props.width : "200px")};
+  justify-content: space-between;
+  width: ${props => (props.width ? props.width : "240px")};
   padding: 0.8rem 0;
   background-color: ${palette[colors.organisms.Header.Dropdown.Background]};
   ${props => props.css};

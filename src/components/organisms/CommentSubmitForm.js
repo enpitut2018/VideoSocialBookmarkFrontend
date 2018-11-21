@@ -14,13 +14,10 @@ const StyledWrapper = styled(Wrapper)`
 `;
 
 class CommentSubmitForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comment: "",
-      hasSubmitted: false
-    };
-  }
+  state = {
+    comment: "",
+    hasSubmitted: false
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.state === "posting" && nextProps.state === "success") {

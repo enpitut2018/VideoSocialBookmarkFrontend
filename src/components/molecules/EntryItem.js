@@ -51,9 +51,6 @@ export default class EntryItem extends Component {
         <StyledInnerWrapper dir="column">
           <Link to={`/users/${this.props.comment.user.id}`}>
             <Text margin="0">{this.props.comment.user.name || "NoName"}</Text>
-            <Text margin="0" level="XS">
-              {this.props.comment.user.id}
-            </Text>
           </Link>
         </StyledInnerWrapper>
 

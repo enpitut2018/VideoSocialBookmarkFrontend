@@ -1,24 +1,18 @@
 import React, { Component } from "react";
-import Header from "../organisms/Header";
-import Footer from "../organisms/Footer";
 import UserBookmarks from "../organisms/UserBookmarks";
 import Text from "../atoms/Text";
-import Wrapper from "../atoms/Wrapper";
+import BasicPageWrapper from "../../BasicPageWrapper";
 
 export default class UserTemplate extends Component {
   render() {
     return (
-      <>
-        <Header />
-        <Wrapper dir="column">
-          <Text size="L">
-            User {this.props.user_id}
-            のブックマーク
-          </Text>
-          <UserBookmarks user_id={this.props.user_id} />
-        </Wrapper>
-        <Footer />
-      </>
+      <BasicPageWrapper>
+        <Text size="L">
+          User {this.props.user_id}
+          のブックマーク
+        </Text>
+        <UserBookmarks userId={this.props.user_id} />
+      </BasicPageWrapper>
     );
   }
 }

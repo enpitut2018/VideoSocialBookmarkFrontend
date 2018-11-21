@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
-import Header from "../organisms/Header";
-import Footer from "../organisms/Footer";
-import EntryTop from "../molecules/EntryTop";
+import EntryTop from "../organisms/EntryTop";
 import EntryItem from "../molecules/EntryItem";
 import CommentSubmitForm from "../organisms/CommentSubmitForm";
+import BasicPageWrapper from "../../BasicPageWrapper";
 
 export default class Entry extends Component {
   render() {
     return (
-      <>
-        <Header />
+      <BasicPageWrapper>
         {this.props.hasLoaded && (
           <>
             <EntryTop id={this.props.entry.id} />
@@ -28,8 +26,7 @@ export default class Entry extends Component {
             </Wrapper>
           </>
         )}
-        <Footer />
-      </>
+      </BasicPageWrapper>
     );
   }
 }

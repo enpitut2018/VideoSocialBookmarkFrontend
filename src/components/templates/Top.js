@@ -1,6 +1,5 @@
 import * as React from "react";
-import Header from "../organisms/Header";
-import Footer from "../organisms/Footer";
+import BasicPageWrapper from "../../BasicPageWrapper";
 
 import Trend from "../organisms/Trend";
 import { connect } from "react-redux";
@@ -8,11 +7,9 @@ import { connect } from "react-redux";
 class Top extends React.Component {
   render() {
     return (
-      <>
-        <Header />
+      <BasicPageWrapper>
         <Trend />
-        <Footer />
-      </>
+      </BasicPageWrapper>
     );
   }
 }

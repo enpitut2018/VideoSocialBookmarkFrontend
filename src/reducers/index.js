@@ -5,6 +5,8 @@ import stars from "./stars";
 import trend from "./trend";
 import user from "./user";
 import userIcon from "./userIcon";
+import toasts from "./toasts";
+import playlists from "./playlists";
 import { combineReducers } from "redux";
 import { reduxTokenAuthReducer } from "redux-token-auth";
 
@@ -16,6 +18,8 @@ const app = combineReducers({
   trend,
   user,
   userIcon,
+  toasts,
+  playlists,
   reduxTokenAuth: reduxTokenAuthReducer
 });
 

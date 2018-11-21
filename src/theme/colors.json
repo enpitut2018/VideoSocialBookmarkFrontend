@@ -2,7 +2,7 @@
   "Background": "White00",
   "Font": "Black00",
   "Shadow": {
-    "BaseAlpha": 0.08,
+    "BaseAlpha": 0.15,
     "BaseColor": "0, 0, 0, "
   },
   "Border": "Black01",
@@ -55,6 +55,11 @@
     }
   },
   "molecules": {
+    "Toast": {
+      "Background": "Green00",
+      "Font": "White00",
+      "Icon": { "Fill": "White00" }
+    },
     "Star": {
       "Enable": {
         "Fill": "Red00"
@@ -107,6 +112,9 @@
       "Border": {
         "Shadow": "Black01"
       }
+    },
+    "DropdownPlaylistMenu": {
+      "Fill": "Black03"
     },
     "URLSubmitForm": {},
     "Trend": {}
