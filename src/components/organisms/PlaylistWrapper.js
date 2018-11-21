@@ -21,7 +21,7 @@ class PlaylistWrapper extends React.Component {
   render() {
     return (
       <>
-      {this.props.state === "loaded" ? (
+      {this.props.playlist !== undefined && this.props.playlist.length !== 0 ? (
         <Wrapper dir="column">
           <Text level="L" margin="10px 0 13px 0">
             { this.props.playlist.title }

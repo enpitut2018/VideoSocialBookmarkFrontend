@@ -24,7 +24,7 @@ import {
 
 const initialState = {
   state: "",
-  playlists: {},
+  playlists: [],
   playlist: [],
   url: "",
   error: ""
