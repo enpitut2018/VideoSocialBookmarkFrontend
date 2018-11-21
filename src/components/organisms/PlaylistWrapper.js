@@ -21,14 +21,14 @@ class PlaylistWrapper extends React.Component {
   render() {
     return (
       <>
-      {this.props.hasLoaded ? (
+      {this.props.state === "loaded" ? (
         <Wrapper dir="column">
           <Text level="L" margin="10px 0 13px 0">
             { this.props.playlist.title }
           </Text>
           <StyledPlaylistWrapper>
-            {this.props.playlist.entries.map(item => (
-              <PlaylistItem entry={item} key={item.id} />
+            {this.props.playlist.playlist_items.map(item => (
+              <PlaylistItem entry={item.entry} key={item.id} />
             ))}
           </StyledPlaylistWrapper>
         </Wrapper>
@@ -42,7 +42,7 @@ class PlaylistWrapper extends React.Component {
 
 export default connect(
   store => ({
-    hasLoaded: store.playlists.hasLoaded,
+    state: store.playlists.state,
     playlist: store.playlists.playlist,
     error: store.playlists.error
   }),

@@ -72,7 +72,7 @@ export const deletePlaylist = id => dispatch => {
 export const getPlaylist = id => dispatch => {
   dispatch({ type: GET_PLAYLIST_REQUEST });
   return axios
-    .get(`${config.mockup_api_url}/playlists/${id}`)
+    .get(`${config.backend_api_url}/playlists/${id}`)
     .then(res => {
       dispatch({ type: GET_PLAYLIST_SUCCESS, playlist: res.data });
     })

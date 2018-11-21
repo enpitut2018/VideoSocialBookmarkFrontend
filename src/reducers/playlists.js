@@ -17,7 +17,7 @@ import {
 } from "../actions/PlaylistActions";
 
 const initialState = {
-  hasLoaded: false,
+  state: "",
   playlists: {},
   playlist: [],
   url: "",
@@ -57,11 +57,11 @@ export default (state = initialState, action) => {
   case GET_PLAYLIST_REQUEST:
     return {
       ...state,
-      hasLoaded: false
+      state: ""
     };
   case GET_PLAYLIST_SUCCESS:
     return {
-      hasLoaded: true,
+      state: "loaded",
       playlist: action.playlist
     };
   case GET_PLAYLIST_FAILURE:
