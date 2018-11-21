@@ -31,6 +31,8 @@ const StyledInput = styled.input`
     color: ${palette[colors.atoms.TextInput.Placeholder.Font]};
   }
   ${props => elevate(props.elevation ? props.elevation : 2)};
+
+  ${props => props.css}
 `;
 
 export default class TextInput extends React.Component {

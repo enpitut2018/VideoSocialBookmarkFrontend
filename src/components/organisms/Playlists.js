@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import { connect } from "react-redux";
-import { getUserPlaylists } from "../../actions/PlaylistActions";
+import { getCurrentUserPlaylists } from "../../actions/PlaylistActions";
 import LoadingIcon from "../atoms/LoadingIcon";
 import PlaylistOverview from "./PlaylistOverview";
 
 class Playlists extends Component {
   componentWillMount() {
-    this.props.getUserPlaylists(this.props.userId);
+    this.props.getCurrentUserPlaylists();
   }
 
   render() {
     return (
       <>
-      {this.props.hasLoaded ? (
+      {this.props.state === "loaded" ? (
           <>
             <Wrapper dir="column" css="padding-bottom: 20px;">
               {this.props.playlists.map((playlist) => (
@@ -31,8 +31,8 @@ class Playlists extends Component {
 
 export default connect(
   store => ({
-    hasLoaded: store.playlists.hasLoaded,
+    state: store.playlists.state,
     playlists: store.playlists.playlists
   }),
-  { getUserPlaylists }
+  { getCurrentUserPlaylists }
 )(Playlists);

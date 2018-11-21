@@ -25,15 +25,12 @@ const StyledWrapper = styled(Wrapper)`
 `;
 
 class URLSubmitForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      url: "",
-      comment: "",
-      hasSubmitted: false,
-      SNSShareEnabled: false
-    };
-  }
+  state = {
+    url: "",
+    comment: "",
+    hasSubmitted: false,
+    SNSShareEnabled: false
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.state === "posting" && nextProps.state === "success") {

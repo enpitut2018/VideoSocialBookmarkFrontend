@@ -7,9 +7,9 @@ import Embed from "../atoms/Embed";
 import Text from "../atoms/Text";
 import { component } from "../mediaQuery";
 import { style } from "../mediaQuery";
-import Star from "./Star";
+import Star from "../molecules/Star";
 import config from "../../config";
-import BookmarkButton from "./BookmarkButton";
+import BookmarkButton from "../molecules/BookmarkButton";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -20,7 +20,7 @@ import {
 } from "react-share";
 import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
 import { setEntryBookmarked } from "../../actions/EntryActions";
-import DropdownPlaylistMenu from "../organisms/DropdownPlaylistMenu";
+import DropdownPlaylistMenu from "./DropdownPlaylistMenu";
 
 const StyledA = styled.a`
   display: flex;
@@ -156,7 +156,44 @@ class EntryTop extends Component {
       )
     });
 
-  addPlaylistButton = () => this.props.isSignedIn && <DropdownPlaylistMenu />;
+  addPlaylistButton = () =>
+    this.props.isSignedIn && (
+      <DropdownPlaylistMenu
+        playlists={[
+          {
+            id: 0,
+            name: "音楽系",
+            entries: [
+              {
+                id: 1
+              },
+              {
+                id: 2
+              },
+              {
+                id: 0
+              }
+            ]
+          },
+          {
+            id: 1,
+            name: "ちょっと気になる",
+            entries: [
+              {
+                id: 1
+              },
+              {
+                id: 2
+              },
+              {
+                id: 0
+              }
+            ]
+          }
+        ]}
+        entryId={this.props.entry.id}
+      />
+    );
 
   render() {
     const entryUrl = `${config.frontend_base_url}/entries/${this.props.id}`;

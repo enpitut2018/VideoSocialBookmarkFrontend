@@ -35,14 +35,14 @@ export default class PlaylistOverview extends React.Component {
           <RootWrapper dir="row">
             <TitleWrapper>
               <Text level="L" margin="10px 0 13px 0">
-                { this.props.playlist.title }
+                { this.props.playlist.name }
               </Text>
             </TitleWrapper>
             <PlaylistWrapper dir="row">
-              {this.props.playlist.entries.map(entry => (
+              {this.props.playlist.playlist_items.map(item => (
                 <PlaylistOverviewItem
-                  entry={entry}
-                  key={entry.id}
+                  entry={item.entry}
+                  key={item.id}
                 />
               ))}
             </PlaylistWrapper>
