@@ -9,7 +9,7 @@ export default class MyPageTemplate extends Component {
     return (
       <BasicPageWrapper>
         <Text size="L">マイブックマーク</Text>
-        {this.props.hasLoaded && <UserBookmarks user_id={this.props.user.id} />}
+        {this.props.hasLoaded && <UserBookmarks userId={this.props.user.id} />}
       </BasicPageWrapper>
     );
   }

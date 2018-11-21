@@ -102,7 +102,6 @@ class DropdownPlaylistMenu extends Component {
             />
           ))}
         <DropdownMenuItem
-          width="300px"
           onClick={() => {
             this.props.dispatch(postPlaylist("プレイリスト", false));
           }}
