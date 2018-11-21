@@ -26,6 +26,5 @@ class MyPage extends Component {
 
 export default connect(store => ({
   hasLoaded: store.user.hasLoaded,
-  user: store.user.user,
-  bookmarks: store.user.bookmarks
+  user: store.user.user
 }))(MyPage);
