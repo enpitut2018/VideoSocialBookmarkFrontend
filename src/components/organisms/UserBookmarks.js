@@ -7,7 +7,7 @@ import LoadingIcon from "../atoms/LoadingIcon";
 
 export class UserBookmarks extends Component {
   componentWillMount() {
-    this.props.getUserBookmarks(this.props.userId);
+    this.props.getUserBookmarks(this.props.user_id);
   }
 
   render() {

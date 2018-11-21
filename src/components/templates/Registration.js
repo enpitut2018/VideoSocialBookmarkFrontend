@@ -15,7 +15,11 @@ import { REGISTRATION_TOAST, timeout_ms } from "../organisms/ToastManager";
 import store from "../../store";
 
 class Registration extends Component {
-  state = { email: "", password: "", passwordConfirmation: "" };
+  state = { name: "", email: "", password: "", passwordConfirmation: "" };
+
+  handleNameChange = e => {
+    this.setState({ name: e.target.value });
+  };
 
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
@@ -31,10 +35,10 @@ class Registration extends Component {
 
   render() {
     const { registerUser } = this.props;
-    const { email, password, passwordConfirmation } = this.state;
+    const { name, email, password, passwordConfirmation } = this.state;
     const submit = e => {
       e.preventDefault();
-      registerUser({ email, password, passwordConfirmation });
+      registerUser({ name, email, password, passwordConfirmation });
     };
 
     if (this.props.isSignedIn) {
@@ -66,6 +70,24 @@ class Registration extends Component {
                     handleChange={this.handleEmailChange}
                     name="email"
                     value={this.state.email}
+                    required
+                  />
+                )}
+                value={this.state.email}
+              />
+              <LabeledInput
+                name="name"
+                label={() => (
+                  <Text size="S" margin="0.5rem 0 0 26px">
+                    名前
+                  </Text>
+                )}
+                input={() => (
+                  <TextInput
+                    placeholder="名前"
+                    handleChange={this.handleNameChange}
+                    name="name"
+                    value={this.state.name}
                     required
                   />
                 )}

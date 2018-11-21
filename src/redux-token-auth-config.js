@@ -4,7 +4,7 @@ import config from "./config";
 const reduxTokenAuthconfig = {
   authUrl: config.backend_api_url + "/auth",
   userAttributes: {},
-  userRegistrationAttributes: {}
+  userRegistrationAttributes: { name: "name" }
 };
 
 const {
