@@ -113,6 +113,9 @@
         "Shadow": "Black01"
       }
     },
+    "DropdownPlaylistMenu": {
+      "Fill": "Black03"
+    },
     "URLSubmitForm": {},
     "Trend": {}
   }

@@ -14,6 +14,9 @@ import {
   POST_PLAYLIST_REQUEST,
   POST_PLAYLIST_SUCCESS,
   POST_PLAYLIST_FAILURE,
+  PUT_PLAYLIST_REQUEST,
+  PUT_PLAYLIST_SUCCESS,
+  PUT_PLAYLIST_FAILURE,
   DELETE_PLAYLIST_REQUEST,
   DELETE_PLAYLIST_SUCCESS,
   DELETE_PLAYLIST_FAILURE
@@ -86,6 +89,18 @@ export default (state = initialState, action) => {
       ...state
     };
   case POST_PLAYLIST_FAILURE:
+    return {
+      ...state
+    };
+  case PUT_PLAYLIST_REQUEST:
+    return {
+      ...state
+    };
+  case PUT_PLAYLIST_SUCCESS:
+    return {
+      ...state
+    };
+  case PUT_PLAYLIST_FAILURE:
     return {
       ...state
     };

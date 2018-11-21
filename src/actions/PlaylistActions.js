@@ -34,6 +34,10 @@ export const POST_PLAYLIST_REQUEST = "POST_PLAYLIST_REQUEST";
 export const POST_PLAYLIST_SUCCESS = "POST_PLAYLIST_SUCCESS";
 export const POST_PLAYLIST_FAILURE = "POST_PLAYLIST_FAILURE";
 
+export const PUT_PLAYLIST_REQUEST = "PUT_PLAYLIST_REQUEST";
+export const PUT_PLAYLIST_SUCCESS = "PUT_PLAYLIST_SUCCESS";
+export const PUT_PLAYLIST_FAILURE = "PUT_PLAYLIST_FAILURE";
+
 export const DELETE_PLAYLIST_REQUEST = "DELETE_PLAYLIST_REQUEST";
 export const DELETE_PLAYLIST_SUCCESS = "DELETE_PLAYLIST_SUCCESS";
 export const DELETE_PLAYLIST_FAILURE = "DELETE_PLAYLIST_FAILURE";
@@ -66,8 +70,8 @@ export const postEntryToPlaylist = (
     .post(`${config.backend_api_url}/playlists/${playlistId}/`, {
       playlist_item: {
         entry_id: entryId,
-        ...(prevId && { prev_id: prevId }),
-        ...(nextId && { next_id: nextId })
+        ...(prevId !== undefined && { prev_id: prevId }),
+        ...(nextId !== undefined && { next_id: nextId })
       }
     })
     .then(_ => {
@@ -118,6 +122,26 @@ export const postPlaylist = (name, isPrivate) => dispatch => {
     })
     .catch(_ => {
       dispatch({ type: POST_PLAYLIST_FAILURE, error: "" });
+    });
+};
+
+export const putPlaylist = (playlistId, name, isPrivate) => dispatch => {
+  dispatch({ type: PUT_PLAYLIST_REQUEST });
+  setAuthKeys();
+
+  return axios
+    .put(`${config.backend_api_url}/playlists/${playlistId}`, {
+      playlist: {
+        ...(name !== undefined && { name }),
+        ...(isPrivate !== undefined && { is_private: isPrivate })
+      }
+    })
+    .then(() => {
+      dispatch({ type: PUT_PLAYLIST_SUCCESS });
+      dispatch(getCurrentUserPlaylists());
+    })
+    .catch(() => {
+      dispatch({ type: PUT_PLAYLIST_FAILURE });
     });
 };
 

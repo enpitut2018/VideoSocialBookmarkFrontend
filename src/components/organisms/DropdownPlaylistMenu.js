@@ -9,7 +9,7 @@ import palette from "../../theme/palette.json";
 import AddPlaylistButton from "../molecules/AddPlaylistButton";
 import { component } from "../mediaQuery";
 import PlaylistAddIcon from "../../assets/images/material-icon/baseline-playlist_add-24px.svg";
-import CheckBox from "../atoms/CheckBox";
+import DropdownPlaylistMenuItem from "../molecules/DropdownPlaylistMenuItem";
 import {
   getCurrentUserPlaylists,
   postEntryToPlaylist,
@@ -23,7 +23,7 @@ const ButtonWrapper = styled.div`
 
 const IconWrapper = styled.div`
   height: 24px;
-  margin: 2px 22px;
+  margin: 2px 18px;
 `;
 
 class DropdownPlaylistMenu extends Component {
@@ -94,19 +94,15 @@ class DropdownPlaylistMenu extends Component {
         {this.props.state === "loaded" &&
           this.props.playlists &&
           this.props.playlists.map((playlist, i) => (
-            <DropdownMenuItem
-              width="280px"
+            <DropdownPlaylistMenuItem
               key={playlist.id}
-              onClick={() => this.handleClick(i)}
-            >
-              <IconWrapper>
-                <CheckBox value={this.state.enabledList[i]} />
-              </IconWrapper>
-              <Text margin="0">{playlist.name}</Text>
-            </DropdownMenuItem>
+              playlist={playlist}
+              handleClick={() => this.handleClick(i)}
+              enabled={this.state.enabledList[i]}
+            />
           ))}
         <DropdownMenuItem
-          width="280px"
+          width="300px"
           onClick={() => {
             this.props.dispatch(postPlaylist("プレイリスト", false));
           }}
