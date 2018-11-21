@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import AnkerStyle from "../atoms/AnkerStyle";
 import palette from "../../theme/palette.json";
 import colors from "../../theme/colors.json";
 
 const StyledItem = styled.div`
-  width: ${props => (props.width ? props.width : "200px")};
-  padding: 1px;
+  ${AnkerStyle};
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: ${props => (props.width ? props.width : "240px")};
+  padding: 0.8rem 0;
   background-color: ${palette[colors.organisms.Header.Dropdown.Background]};
   ${props => props.css};
 `;

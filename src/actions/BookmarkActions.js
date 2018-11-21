@@ -2,6 +2,11 @@ import axios from "axios";
 import config from "../config";
 import { setAuthKeys } from "../auth";
 import { SET_TREND_BOOKMARKED } from "./TrendActions";
+import {
+  ADD_BOOKMARKED_TOAST,
+  timeout_ms
+} from "../components/organisms/ToastManager";
+import { addToast } from "./ToastActions";
 
 export const POST_BOOKMARK_REQUEST = "POST_BOOKMARK_REQUEST";
 export const POST_BOOKMARK_SUCCESS = "POST_BOOKMARK_SUCCESS";
@@ -22,6 +27,9 @@ export const postBookmark = entryId => dispatch => {
     .then(_ => {
       dispatch({ type: POST_BOOKMARK_SUCCESS });
       dispatch({ type: SET_TREND_BOOKMARKED, entryId, bookmarked: true });
+      dispatch(
+        addToast(ADD_BOOKMARKED_TOAST, "ブックマークしました", timeout_ms)
+      );
     })
     .catch(_ => {
       dispatch({ type: POST_BOOKMARK_FAILURE, error: "" });

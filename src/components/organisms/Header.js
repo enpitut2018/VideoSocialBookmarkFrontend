@@ -47,7 +47,7 @@ const RightContentsWrapper = styled(Wrapper)`
     L: `margin-right: 17px`,
     M: `margin-right: 16px`,
     S: `margin-right: 10px`
-  })}};
+  })};
 `;
 
 class Header extends React.Component {

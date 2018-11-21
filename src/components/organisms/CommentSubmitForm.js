@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import Form from "../molecules/Form";
 import Button from "../atoms/Button";
+import Text from "../atoms/Text";
 import TextArea from "../atoms/TextArea";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { postComment } from "../../actions/CommentActions";
+import palette from "../../theme/palette";
 
 const StyledWrapper = styled(Wrapper)`
   margin: 20px auto 60px auto;
 `;
 
 class CommentSubmitForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comment: "",
-      hasSubmitted: false
-    };
-  }
+  state = {
+    comment: "",
+    hasSubmitted: false
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.state === "posting" && nextProps.state === "success") {
@@ -58,7 +57,9 @@ class CommentSubmitForm extends Component {
                 required
               />
               <Button mode="Primary" type="submit">
-                コメント
+                <Text fontWeight={"bold"} color={palette["White00"]}>
+                  コメント
+                </Text>
               </Button>
             </>
           )}

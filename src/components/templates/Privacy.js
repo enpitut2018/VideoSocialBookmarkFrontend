@@ -1,11 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
-import Header from "../organisms/Header";
-import Footer from "../organisms/Footer";
-import Wrapper from "../atoms/Wrapper";
 import Text from "../atoms/Text";
 import Accordion from "../organisms/Accordion";
 import { style } from "../mediaQuery";
+import BasicPageWrapper from "../../BasicPageWrapper";
 
 import privacy from "../../privacy";
 
@@ -22,15 +20,11 @@ const StyledHeader = styled(Text)`
 export default class Privacy extends React.Component {
   render() {
     return (
-      <>
-        <Header />
-        <Wrapper dir="column">
-          <Text level="XL">プライバシーポリシー</Text>
-          <StyledHeader>{privacy.Header}</StyledHeader>
-          <Accordion items={privacy.Body} />
-        </Wrapper>
-        <Footer />
-      </>
+      <BasicPageWrapper>
+        <Text size="XL">プライバシーポリシー</Text>
+        <StyledHeader>{privacy.Header}</StyledHeader>
+        <Accordion items={privacy.Body} />
+      </BasicPageWrapper>
     );
   }
 }

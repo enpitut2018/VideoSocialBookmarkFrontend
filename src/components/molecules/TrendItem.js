@@ -29,6 +29,11 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledThumbnail = styled.div`
+  width: 160px;
+  background-color: black;
+  height: 90px;
+  display: flex;
+  justify-content: center;
   ${style({
     S: `margin-right: 8px`,
     M: `margin-right: 12px`,
@@ -43,6 +48,7 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   height: 90px;
+  width: 640px;
 `;
 
 const titleStyle = `
@@ -92,65 +98,65 @@ class TrendItem extends Component {
             {component({
               XL: (
                 <>
-                  <Text level="L" margin="0" css={titleStyle}>
+                  <Text size="L" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="S" margin="0">
+                    <Text size="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0.2rem">
+                    <Text size="XS" margin="0 0.2rem">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               ),
               L: (
                 <>
-                  <Text level="M" margin="0" css={titleStyle}>
+                  <Text size="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="S" margin="0">
+                    <Text size="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0.2rem">
+                    <Text size="XS" margin="0 0.2rem">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               ),
               M: (
                 <>
-                  <Text level="M" margin="0" css={titleStyle}>
+                  <Text size="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="S" margin="0">
+                    <Text size="S" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0 0.1rem">
+                    <Text size="XS" margin="0 0.1rem">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               ),
               S: (
                 <>
-                  <Text level="M" margin="0" css={titleStyle}>
+                  <Text size="M" margin="0" css={titleStyle}>
                     {this.props.entry.title}
                   </Text>
                   <Wrapper>
-                    <Text level="XS" margin="0">
+                    <Text size="XS" margin="0">
                       {this.props.entry.num_of_bookmarked}
                     </Text>
-                    <Text level="XS" margin="0">
+                    <Text size="XS" margin="0">
                       ブックマーク
                     </Text>
-                    {this.bookmarkButton()}
+                    <this.bookmarkButton />
                   </Wrapper>
                 </>
               )

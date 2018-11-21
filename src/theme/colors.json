@@ -2,7 +2,7 @@
   "Background": "White00",
   "Font": "Black00",
   "Shadow": {
-    "BaseAlpha": 0.08,
+    "BaseAlpha": 0.15,
     "BaseColor": "0, 0, 0, "
   },
   "Border": "Black01",
@@ -14,6 +14,12 @@
       },
       "Active": {
         "Background": "Black01"
+      }
+    },
+    "CheckBox": {
+      "Fill": "Black06",
+      "Active": {
+        "Fill": "Black02"
       }
     },
     "Text": {
@@ -49,6 +55,11 @@
     }
   },
   "molecules": {
+    "Toast": {
+      "Background": "Green00",
+      "Font": "White00",
+      "Icon": { "Fill": "White00" }
+    },
     "Star": {
       "Enable": {
         "Fill": "Red00"
@@ -70,6 +81,14 @@
           "Font": "Black03"
         }
       }
+    },
+    "AddPlaylistButton": {
+      "Font": "Black03",
+      "Fill": "Black06",
+      "Active": {
+        "Font": "Black02",
+        "Fill": "Black02"
+      }
     }
   },
   "organisms": {
@@ -77,7 +96,7 @@
       "Background": "White00",
       "Font": "Black00",
       "Icon": {
-        "Fill": "Black02"
+        "Fill": "Black03"
       },
       "DropdownMenu": {
         "Background": "White00"
@@ -93,6 +112,9 @@
       "Border": {
         "Shadow": "Black01"
       }
+    },
+    "DropdownPlaylistMenu": {
+      "Fill": "Black03"
     },
     "URLSubmitForm": {},
     "Trend": {}

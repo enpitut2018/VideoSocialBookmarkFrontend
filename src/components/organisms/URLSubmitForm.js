@@ -11,8 +11,10 @@ import { connect } from "react-redux";
 import { postEntry } from "../../actions/EntryActions";
 import { style } from "../mediaQuery";
 import SNSShareForm from "./SNSShareForm";
+import palette from "../../theme/palette";
 
 const StyledWrapper = styled(Wrapper)`
+  width: 100%;
   margin: 20px auto 10px auto;
   ${style({
     S: `margin-top: 10px`,
@@ -23,15 +25,12 @@ const StyledWrapper = styled(Wrapper)`
 `;
 
 class URLSubmitForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      url: "",
-      comment: "",
-      hasSubmitted: false,
-      SNSShareEnabled: false
-    };
-  }
+  state = {
+    url: "",
+    comment: "",
+    hasSubmitted: false,
+    SNSShareEnabled: false
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.state === "posting" && nextProps.state === "success") {
@@ -78,7 +77,7 @@ SNSでシェアしますか？`}
       />
     ) : (
       <StyledWrapper dir="column">
-        <Text level="L" margin="10px 0">
+        <Text size="L" margin="10px 0">
           動画をブックマーク
         </Text>
         <Form
@@ -89,7 +88,7 @@ SNSでシェアしますか？`}
               <LabeledInput
                 name="url"
                 label={() => (
-                  <Text level="S" margin="0.5rem 0 0 26px">
+                  <Text size="S" margin="0.5rem 0 0 26px">
                     URL
                   </Text>
                 )}
@@ -110,7 +109,7 @@ SNSでシェアしますか？`}
               <LabeledInput
                 name="comment"
                 label={() => (
-                  <Text level="S" margin="0.5rem 0 0 26px">
+                  <Text size="S" margin="0.5rem 0 0 26px">
                     コメント（任意）
                   </Text>
                 )}
@@ -128,7 +127,9 @@ SNSでシェアしますか？`}
                 css="width: 85%;"
               />
               <Button mode="Primary" type="submit">
-                ブックマーク
+                <Text fontWeight={"bold"} color={palette["White00"]}>
+                  ブックマーク
+                </Text>
               </Button>
             </>
           )}

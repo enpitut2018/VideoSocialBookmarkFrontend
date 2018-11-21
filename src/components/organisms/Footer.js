@@ -11,19 +11,19 @@ import palette from "../../theme/palette";
 import { style, component } from "../mediaQuery";
 
 const StyledText = styled.span`
-  ${textStyle({ level: "XS", margin: "10px 15px" })};
+  ${textStyle({ size: "S", margin: "10px 15px" })};
 `;
 
 const StyledLink = styled(Link)`
   ${AnkerStyle};
-  ${textStyle({ level: "XS", margin: "10px 15px" })};
+  ${textStyle({ size: "S", margin: "10px 15px" })};
   ${props => props.height && `height: ${props.height}`};
 `;
 
 const StyledCard = styled(Card)`
   display: flex;
   box-shadow: 0 -1px 0 0 ${palette[colors.organisms.Footer.Border.Shadow]};
-  margin: 0;
+  margin: 1.2rem 0 0 0;
   padding: 0;
 `;
 
@@ -101,7 +101,7 @@ export default class Footer extends React.Component {
           <StyledText>© 2018 Vimacs</StyledText>
           <StyledLink to="/about">VSBとは</StyledLink>
           <StyledLink to="/terms">利用規約</StyledLink>
-            <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
+          <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
           <StyledLink to="/help">Help</StyledLink>
         </StyledCard>
       ),
@@ -113,7 +113,7 @@ export default class Footer extends React.Component {
           <StyledText>© 2018 Vimacs</StyledText>
           <StyledLink to="/about">VSBとは</StyledLink>
           <StyledLink to="/terms">利用規約</StyledLink>
-            <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
+          <StyledLink to="/privacy">プライバシーポリシー</StyledLink>
           <StyledLink to="/help">Help</StyledLink>
         </StyledCard>
       )
