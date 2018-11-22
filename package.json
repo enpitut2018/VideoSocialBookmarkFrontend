@@ -29,7 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "yarn eslint --fix src/actions src/components src/config src/reducers src/*.js",
-    "style-lint": "yarn stylelint src/components",
+    "style-lint": "yarn stylelint src/components/**/*.js",
     "lint": "yarn format && yarn style-lint",
     "mock": "yarn json-server api.json"
   },
