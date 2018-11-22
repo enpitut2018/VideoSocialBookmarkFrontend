@@ -11,9 +11,6 @@ import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import DropdownUploadForm from "./DropwodnUploadForm";
 import DropdownMyMenu from "./DropdownMyMenu";
-
-import { getUserIcon } from "../../actions/UserActions";
-
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import { style } from "../mediaQuery";
@@ -51,10 +48,6 @@ const RightContentsWrapper = styled(Wrapper)`
 `;
 
 class Header extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(getUserIcon());
-  }
-
   render() {
     return (
       <StyledCard type="between" elevation={0}>
@@ -85,7 +78,5 @@ class Header extends React.Component {
 }
 
 export default connect(store => ({
-  hasLoaded: store.userIcon.hasLoaded,
-  url: store.userIcon.url,
   isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
 }))(Header);
