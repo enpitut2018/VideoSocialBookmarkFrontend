@@ -17,12 +17,11 @@ export const POST_ENTRY_FAILURE = "POST_ENTRY_FAILURE";
 export const PRELOAD_ENTRIES = "PRELOAD_ENTRIES";
 export const SET_ENTRY_BOOKMARKED = "SET_ENTRY_BOOKMARKED";
 
-export const preloadTrend = () => dispatch => {
-  const page = 1;
+export const preloadTrend = (page=1) => dispatch => {
   return axios
-    .get(`${config.backend_api_url}/trend/${String(page)}/preload`)
+    .get(`${config.backend_api_url}/trend/preload?page=${String(page)}`)
     .then(res => {
-      dispatch({ type: PRELOAD_ENTRIES, entries: res.data });
+      dispatch({ type: PRELOAD_ENTRIES, trend: res.data });
     });
 };
 

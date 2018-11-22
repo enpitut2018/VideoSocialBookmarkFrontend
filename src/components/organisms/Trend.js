@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Text from "../atoms/Text";
 import styled from "styled-components";
-
 import Wrapper from "../atoms/Wrapper";
 import TrendItem from "../molecules/TrendItem";
 import { getTrend } from "../../actions/TrendActions";
 import { preloadTrend } from "../../actions/EntryActions";
 import LoadingIcon from "../atoms/LoadingIcon";
+import Pagination from "./Pagination";
 
 const StyledTrend = styled.div`
   padding: 0 0 20px 0;
@@ -18,6 +18,11 @@ class Trend extends Component {
     this.props.getTrend();
     this.props.preloadTrend();
   }
+
+  handlePageChange = (page) => {
+    this.props.getTrend(page);
+    this.props.preloadTrend(page);
+  };
 
   render() {
     return (
@@ -30,13 +35,18 @@ class Trend extends Component {
             {this.props.error ? (
               <Text>データの取得に失敗しました</Text>
             ) : this.props.hasLoaded ? (
-              this.props.trend &&
-              this.props.trend.map(item => (
+              this.props.trend.data.map(item => (
                 <TrendItem entry={item} key={item.id} />
               ))
             ) : (
               <LoadingIcon />
             )}
+            {this.props.trend &&
+              <Pagination
+                pageCount={this.props.trend.page_count}
+                onPageChange={this.handlePageChange}
+              />
+            }
           </Wrapper>
         </Wrapper>
       </StyledTrend>
