@@ -4,14 +4,8 @@ import { getPlaylist } from "../../actions/PlaylistActions";
 import Wrapper from "../atoms/Wrapper";
 import Text from "../atoms/Text";
 import LoadingIcon from "../atoms/LoadingIcon";
-import PlaylistItem from "../molecules/PlaylistItem";
-import styled from "styled-components";
-
-const StyledPlaylistWrapper = styled(Wrapper)`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-`;
+import Coverflow from "react-coverflow";
+import Embed from "../atoms/Embed";
 
 class PlaylistWrapper extends React.Component {
   componentWillMount() {
@@ -26,11 +20,26 @@ class PlaylistWrapper extends React.Component {
           <Text level="L" margin="10px 0 13px 0">
             { this.props.playlist.title }
           </Text>
-          <StyledPlaylistWrapper>
+          <Coverflow
+            width="1100"
+            height="500"
+            displayQuantityOfSide={2}
+            navigation={false}
+            enableScroll={true}
+            clickable={true}
+          >
             {this.props.playlist.playlist_items.map(item => (
-              <PlaylistItem entry={item.entry} key={item.id} />
+              <div key={item.id} style={{width:"400px"}}>
+                <Embed
+                  provider={item.entry.provider}
+                  video_id={item.entry.video_id}
+                  thumbnail_url={item.entry.thumbnail_url}
+                  alt={item.entry.title}
+                  width="300px"
+                />
+              </div>
             ))}
-          </StyledPlaylistWrapper>
+          </Coverflow>
         </Wrapper>
       ) : (
         <LoadingIcon />
