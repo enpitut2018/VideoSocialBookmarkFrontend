@@ -1,5 +1,6 @@
 echo "start update-submodule"
-echo $GH_TOKEN
+
+head_commit_message=`git log -1 --pretty=%B`
 
 git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
@@ -16,16 +17,8 @@ cd frontend
 git checkout develop
 cd ..
 git add frontend
-git commit -m "[dev] update frontend"
+git commit -m "update frontend: "$head_commit_message
 git push origin-travis develop
-git checkout pre-release
-git pull
-cd frontend
-git checkout develop
-cd ..
-git add frontend
-git commit -m "[dev] update frontend"
-git push origin-travis pre-release
 
 rm -rf frontend
 cd ..
