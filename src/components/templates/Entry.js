@@ -11,7 +11,7 @@ export default class Entry extends Component {
       <BasicPageWrapper>
         {this.props.hasLoaded && (
           <>
-            <EntryTop id={this.props.entry.id} />
+            <EntryTop entry={this.props.entry} />
             <Wrapper dir="column">
               {this.props.isSignedIn && (
                 <CommentSubmitForm entryId={this.props.entry.id} />

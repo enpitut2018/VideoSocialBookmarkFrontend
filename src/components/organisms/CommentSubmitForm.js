@@ -70,6 +70,5 @@ class CommentSubmitForm extends Component {
 }
 
 export default connect(store => ({
-  isLoading: store.comments.isLoading,
   state: store.comments.state
 }))(CommentSubmitForm);

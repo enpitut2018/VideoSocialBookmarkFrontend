@@ -88,7 +88,5 @@ class Star extends Component {
   }
 }
 
-export default connect(store => ({
-  entries: store.stars.entries,
-  isLoading: store.stars.isLoading
+export default connect(_ => ({
 }))(Star);
