@@ -37,21 +37,18 @@ class Star extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(getStar(this.props.entryId));
+    this.props.dispatch(getStar(this.props.entry.id));
   }
 
   isEnabled = () => {
-    const entry = this.props.entries.find(
-      e => e.entryId === this.props.entryId
-    );
-    return entry !== undefined && entry.enabled;
+    return this.props.entry !== undefined && this.props.entry.enabled;
   };
 
   onClickHandler = _e => {
     if (this.isEnabled()) {
-      this.props.dispatch(deleteStar(this.props.entryId));
+      this.props.dispatch(deleteStar(this.props.entry.id));
     } else {
-      this.props.dispatch(postStar(this.props.entryId));
+      this.props.dispatch(postStar(this.props.entry.id));
     }
   };
 
