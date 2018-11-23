@@ -224,7 +224,7 @@ class EntryTop extends Component {
           >
             <RedditIcon size={48} round />
           </RedditShareButton>
-          {this.props.isSignedIn && <Star entry={this.props.entry} />}
+          {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
         </Wrapper>
 
         <Wrapper
