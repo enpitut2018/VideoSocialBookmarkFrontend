@@ -11,27 +11,28 @@ export default class Entry extends Component {
     return (
       <BasicPageWrapper>
         {this.props.hasLoaded && (
-          <EntryTop id={this.props.entry.id} />
+          <>
+            <EntryTop entry={this.props.entry} />
+            <Wrapper dir="column">
+              {this.props.isSignedIn && (
+                <CommentSubmitForm entryId={this.props.entry.id} />
+              )}
+              {this.props.entry && (
+                <Pagination
+                  pageCount={this.props.entry.comments_page_count}
+                  onPageChange={this.props.handlePageChange}
+                />
+              )}
+              {this.props.entry.comments &&
+                this.props.entry.comments.map(
+                  comment =>
+                    comment.content && (
+                      <EntryItem comment={comment} key={comment.id} />
+                    )
+                )}
+            </Wrapper>
+          </>
         )}
-        <Wrapper dir="column">
-          {this.props.hasLoaded && this.props.isSignedIn && (
-            <CommentSubmitForm entryId={this.props.entry.id} />
-          )}
-          {this.props.entry &&
-            <Pagination
-              pageCount={this.props.entry.comments_page_count}
-              onPageChange={this.props.handlePageChange}
-            />
-          }
-          {this.props.hasLoaded && this.props.entry.comments &&
-            this.props.entry.comments.map(
-              comment =>
-                comment.content && (
-                  <EntryItem comment={comment} key={comment.id} />
-                )
-            )
-          }
-        </Wrapper>
       </BasicPageWrapper>
     );
   }
