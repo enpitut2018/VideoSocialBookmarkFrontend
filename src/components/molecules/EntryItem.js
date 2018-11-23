@@ -5,6 +5,7 @@ import Text from "../atoms/Text";
 import styled from "styled-components";
 import { style } from "../mediaQuery";
 import AnkerStyle from "../atoms/AnkerStyle";
+import UserIcon from "../atoms/UserIcon";
 
 const StyledWrapper = styled(Wrapper)`
   display: flex;
@@ -30,6 +31,7 @@ const StyledWrapper = styled(Wrapper)`
 const StyledInnerWrapper = styled(Wrapper)`
   align-items: flex-start;
   width: 100px;
+  margin-left: 10px;
   ${AnkerStyle};
 `;
 
@@ -44,14 +46,23 @@ const StyledComment = styled(Text)`
   })};
 `;
 
+const UserIconWrapper = styled.div`
+  cursor: pointer;
+`;
+
 export default class EntryItem extends Component {
   render() {
     return (
       <StyledWrapper>
+        <Link to={`/users/${this.props.comment.user.id}`}>
+          <UserIconWrapper>
+            <UserIcon url={this.props.comment.user.avatar} />
+          </UserIconWrapper>
+        </Link>
         <StyledInnerWrapper dir="column">
-          <Link to={`/users/${this.props.comment.user.id}`}>
-            <Text margin="0">{this.props.comment.user.name || "NoName"}</Text>
-          </Link>
+          <Text margin="0">
+            {this.props.comment.user.name || "NoName"}
+          </Text>
         </StyledInnerWrapper>
 
         <StyledComment>{this.props.comment.content}</StyledComment>

@@ -12,10 +12,10 @@ export const GET_USER_BOOKMARKS_REQUEST = "GET_USER_BOOKMARKS_REQUEST";
 export const GET_USER_BOOKMARKS_SUCCESS = "GET_USER_BOOKMARKS_SUCCESS";
 export const GET_USER_BOOKMARKS_FAILURE = "GET_USER_BOOKMARKS_FAILURE";
 
-export const getUserBookmarks = id => dispatch => {
+export const getUserBookmarks = (id, page=1) => dispatch => {
   dispatch({ type: GET_USER_BOOKMARKS_REQUEST });
   return axios
-    .get(`${config.backend_api_url}/users/${id}/bookmarks`)
+    .get(`${config.backend_api_url}/users/${id}/bookmarks?page=${page}`)
     .then(res => {
       dispatch({
         type: GET_USER_BOOKMARKS_SUCCESS,
