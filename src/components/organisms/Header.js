@@ -10,15 +10,13 @@ import Wrapper from "../atoms/Wrapper";
 import AnkerStyle from "../atoms/AnkerStyle";
 import DropdownUploadForm from "./DropwodnUploadForm";
 import DropdownMyMenu from "./DropdownMyMenu";
-
-import { getUserIcon } from "../../actions/UserActions";
-
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import { style } from "../mediaQuery";
 import Form from "../molecules/Form";
 import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button";
+import { getUserIcon } from "../../actions/UserActions";
 
 const StyledLink = styled(Link)`
   padding: 0;
@@ -58,7 +56,7 @@ const RightContentsWrapper = styled(Wrapper)`
 `;
 
 class Header extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       query: ""
@@ -101,10 +99,10 @@ class Header extends React.Component {
                 handleChange={this.handleQueryChange}
                 onClick={e => e.stopPropagation()}
                 css={`
-                    margin: 0;
-                    padding: 0.5rem;
-                    border-radius: 3px;
-                  `}
+                  margin: 0;
+                  padding: 0.5rem;
+                  border-radius: 3px;
+                `}
                 required
               />
               <SearchButton mode="Primary" type="submit">
@@ -138,8 +136,10 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(connect(store => ({
-  hasLoaded: store.userIcon.hasLoaded,
-  url: store.userIcon.url,
-  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
-}))(Header));
+export default withRouter(
+  connect(store => ({
+    hasLoaded: store.userIcon.hasLoaded,
+    url: store.userIcon.url,
+    isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+  }))(Header)
+);
