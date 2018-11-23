@@ -4,28 +4,38 @@ import UserBookmarkItem from "../molecules/UserBookmarkItem";
 import { connect } from "react-redux";
 import { getUserBookmarks } from "../../actions/UserActions";
 import LoadingIcon from "../atoms/LoadingIcon";
+import Pagination from "./Pagination";
 
 export class UserBookmarks extends Component {
   componentWillMount() {
     this.props.getUserBookmarks(this.props.user_id);
   }
 
+  handlePageChange = (page) => {
+    this.props.getUserBookmarks(this.props.user_id, page);
+  };
+
   render() {
     return (
-      <>
+      <Wrapper dir="column" css="padding-bottom: 20px;">
         {this.props.hasLoaded ? (
           <>
-            <Wrapper dir="column" css="padding-bottom: 20px;">
-              {this.props.bookmarks &&
-                this.props.bookmarks.map(bookmark => (
-                  <UserBookmarkItem bookmark={bookmark} key={bookmark.id} />
-                ))}
-            </Wrapper>
+            {this.props.bookmarks &&
+              this.props.bookmarks.data.map(bookmark => (
+                <UserBookmarkItem bookmark={bookmark} key={bookmark.id} />
+              ))
+            }
           </>
         ) : (
           <LoadingIcon />
         )}
-      </>
+        {this.props.bookmarks &&
+          <Pagination
+            pageCount={this.props.bookmarks.page_count}
+            onPageChange={this.handlePageChange}
+          />
+        }
+      </Wrapper>
     );
   }
 }

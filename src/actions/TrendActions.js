@@ -7,11 +7,10 @@ export const GET_TREND_FAILURE = "GET_TREND_FAILURE";
 
 export const SET_TREND_BOOKMARKED = "SET_TREND_BOOKMARKED";
 
-export const getTrend = () => dispatch => {
-  const page = 1;
+export const getTrend = (page=1) => dispatch => {
   dispatch({ type: GET_TREND_REQUEST });
   return axios
-    .get(`${config.backend_api_url}/trend/${page}`)
+    .get(`${config.backend_api_url}/trend?page=${page}`)
     .then(res => {
       dispatch({ type: GET_TREND_SUCCESS, trend: res.data });
     })

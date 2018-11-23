@@ -9,6 +9,12 @@ import {
   SET_ENTRY_BOOKMARKED
 } from "../actions/EntryActions";
 
+import {
+  GET_COMMENTS_REQUEST,
+  GET_COMMENTS_SUCCESS,
+  GET_COMMENTS_FAILURE
+} from "../actions/CommentActions";
+
 const initialState = {
   hasLoaded: false,
   state: "",
@@ -48,7 +54,7 @@ export default (state = initialState, action) => {
     };
     return {
       ...state,
-      entries: Object.assign(state.entries, ObjectToDictById(action.entries))
+      entries: Object.assign(state.entries, ObjectToDictById(action.trend.data))
     };
   }
   case POST_ENTRY_REQUEST:
@@ -75,6 +81,22 @@ export default (state = initialState, action) => {
         ...state.entry,
         "bookmarked?": action.bookmarked
       }
+    };
+  case GET_COMMENTS_REQUEST:
+    return {
+      ...state
+    };
+  case GET_COMMENTS_SUCCESS:
+    return {
+      ...state,
+      entry: {
+        ...state.entry,
+        comments: action.comments.data
+      }
+    };
+  case GET_COMMENTS_FAILURE:
+    return {
+      ...state
     };
   default:
     return state;
