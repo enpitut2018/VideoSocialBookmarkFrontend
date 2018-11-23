@@ -102,6 +102,7 @@ class DropdownPlaylistMenu extends Component {
             />
           ))}
         <DropdownMenuItem
+          css={{padding: "0.8rem 0"}}
           onClick={() => {
             this.props.dispatch(postPlaylist("プレイリスト", false));
           }}
