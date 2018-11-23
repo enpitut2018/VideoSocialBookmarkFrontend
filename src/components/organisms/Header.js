@@ -59,7 +59,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ""
+      query: this.props.query ? this.props.query : ""
     };
   }
   componentWillMount() {

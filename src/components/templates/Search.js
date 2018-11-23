@@ -4,7 +4,9 @@ import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import TrendItem from "../molecules/TrendItem";
 import LoadingIcon from "../atoms/LoadingIcon";
-import BasicPageWrapper from "../../BasicPageWrapper";
+import Header from "../organisms/Header";
+import ToastManager from "../organisms/ToastManager";
+import Footer from "../organisms/Footer";
 
 const StyledSearch = styled.div`
   padding: 0 0 20px 0;
@@ -13,27 +15,32 @@ const StyledSearch = styled.div`
 export default class SearchTemplate extends Component {
   render() {
     return (
-      <BasicPageWrapper>
-        <StyledSearch>
-          <Wrapper dir="column">
-            <Text size="L" margin="10px 0 13px 0">
-              {this.props.keyword} の検索結果
-            </Text>
+      <>
+        <Header query={this.props.keyword} />
+        <ToastManager />
+        <Wrapper dir="column">
+          <StyledSearch>
             <Wrapper dir="column">
-              {this.props.error ? (
-                <Text>データの取得に失敗しました</Text>
-              ) : this.props.hasLoaded ? (
-                this.props.entries &&
+              <Text size="L" margin="10px 0 13px 0">
+                {this.props.keyword} の検索結果
+              </Text>
+              <Wrapper dir="column">
+                {this.props.error ? (
+                  <Text>データの取得に失敗しました</Text>
+                ) : this.props.hasLoaded ? (
+                  this.props.entries &&
               this.props.entries.map(item => (
                 <TrendItem entry={item} key={item.id} />
               ))
-              ) : (
-                <LoadingIcon />
-              )}
+                ) : (
+                  <LoadingIcon />
+                )}
+              </Wrapper>
             </Wrapper>
-          </Wrapper>
-        </StyledSearch>
-      </BasicPageWrapper>
+          </StyledSearch>
+        </Wrapper>
+        <Footer />
+      </>
     );
   }
 }
