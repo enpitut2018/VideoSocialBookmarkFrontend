@@ -5,9 +5,11 @@ import elevate from "../../theme/shadows";
 
 const StyledUserIcon = styled.img`
   height: 44px;
+  width: 44px;
   margin: 2px;
   border-radius: 50%;
   border-width: 0;
+  display: block;
 
   &:hover {
     ${elevate(4)};
