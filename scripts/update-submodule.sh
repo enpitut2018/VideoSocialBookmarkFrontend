@@ -17,7 +17,7 @@ cd frontend
 git checkout develop
 cd ..
 git add frontend
-git commit -m "update frontend: "$head_commit_message
+git commit -m "update frontend: $head_commit_message"
 git push origin-travis develop
 
 rm -rf frontend
