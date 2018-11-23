@@ -8,7 +8,7 @@ import update from "immutability-helper";
 
 const initialState = {
   hasLoaded: false,
-  trend: [],
+  trend: null,
   url: "",
   error: ""
 };

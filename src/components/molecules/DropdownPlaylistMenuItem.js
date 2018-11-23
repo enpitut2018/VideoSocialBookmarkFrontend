@@ -119,7 +119,11 @@ export default class DropdownPlaylistMenuItem extends Component {
   render() {
     const color = palette[colors.organisms.DropdownPlaylistMenu.Fill];
     return (
-      <DropdownMenuItem width="400px" onClick={this.props.handleClick}>
+      <DropdownMenuItem
+        css={{padding: "0.8rem 0"}}
+        width="400px"
+        onClick={this.props.handleClick}
+      >
         <IconWrapper>
           <CheckBox value={this.props.enabled} />
         </IconWrapper>
