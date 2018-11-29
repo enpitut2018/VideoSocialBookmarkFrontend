@@ -10,23 +10,28 @@ export default class Pagination extends Component {
 
   render() {
     return (
-      <ReactPaginate
-        pageCount={this.props.pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        previousLabel={"<"}
-        nextLabel={">"}
-        breakLabel={"..."}
-        onPageChange={this.handlePageChange}
-        containerClassName={"pagination-ul"}
-        pageClassName={"pagination-li"}
-        previousClassName={"pagination-li"}
-        nextClassName={"pagination-li"}
-        pageLinkClassName={"pagination-a"}
-        previousLinkClassName={"pagination-a"}
-        nextLinkClassName={"pagination-a"}
-        activeLinkClassName={"pagination-a active"}
-      />
+      <>
+        {this.props.pageCount > 1 &&
+          <ReactPaginate
+            pageCount={this.props.pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            previousLabel={"<"}
+            nextLabel={">"}
+            breakLabel={"..."}
+            onPageChange={this.handlePageChange}
+            containerClassName={"pagination-ul"}
+            pageClassName={"pagination-li"}
+            previousClassName={"pagination-li"}
+            nextClassName={"pagination-li"}
+            breakClassName={"pagination-break"}
+            pageLinkClassName={"pagination-a"}
+            previousLinkClassName={"pagination-a"}
+            nextLinkClassName={"pagination-a"}
+            activeLinkClassName={"pagination-a active"}
+          />
+        }
+      </>
     );
   }
 }

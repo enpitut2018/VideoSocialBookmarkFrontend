@@ -4,6 +4,21 @@
     display: inline;
 }
 
+.pagination-break {
+    display: block;
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #00abff;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    outline: none;
+}
+
 .pagination-a {
     position: relative;
     float: left;
