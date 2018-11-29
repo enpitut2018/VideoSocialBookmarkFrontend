@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   hasLoaded: false,
-  entries: []
+  entries: null
 };
 
 export default (state = initialState, action) => {

@@ -5,10 +5,10 @@ export const SEARCH_ENTRY_REQUEST = "SEARCH_ENTRY_REQUEST";
 export const SEARCH_ENTRY_SUCCESS = "SEARCH_ENTRY_SUCCESS";
 export const SEARCH_ENTRY_FAILURE = "SEARCH_ENTRY_FAILURE";
 
-export const searchEntry = (query) => dispatch => {
+export const searchEntry = (query, page=1) => dispatch => {
   dispatch({ type: SEARCH_ENTRY_REQUEST });
   return axios
-    .get(`${config.backend_api_url}/search/entry/?title=${query}`)
+    .get(`${config.backend_api_url}/search/entry/?title=${query}&page=${page}`)
     .then(res => {
       dispatch({ type: SEARCH_ENTRY_SUCCESS, result: res.data });
     })
