@@ -2,6 +2,9 @@ import {
   GET_CURRENT_USER_PLAYLISTS_REQUEST,
   GET_CURRENT_USER_PLAYLISTS_SUCCESS,
   GET_CURRENT_USER_PLAYLISTS_FAILURE,
+  GET_USER_PLAYLISTS_REQUEST,
+  GET_USER_PLAYLISTS_SUCCESS,
+  GET_USER_PLAYLISTS_FAILURE,
   POST_ENTRY_TO_PLAYLIST_REQUEST,
   POST_ENTRY_TO_PLAYLIST_SUCCESS,
   POST_ENTRY_TO_PLAYLIST_FAILURE,
@@ -44,6 +47,21 @@ export default (state = initialState, action) => {
       playlists: action.playlists
     };
   case GET_CURRENT_USER_PLAYLISTS_FAILURE:
+    return {
+      ...state
+    };
+  case GET_USER_PLAYLISTS_REQUEST:
+    return {
+      ...state,
+      state: ""
+    };
+  case GET_USER_PLAYLISTS_SUCCESS:
+    return {
+      ...state,
+      state: "loaded",
+      playlists: action.playlists
+    };
+  case GET_USER_PLAYLISTS_FAILURE:
     return {
       ...state
     };

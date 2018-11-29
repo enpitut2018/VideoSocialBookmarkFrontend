@@ -61,6 +61,21 @@ export const getCurrentUserPlaylists = () => dispatch => {
     .catch(() => dispatch({ type: GET_CURRENT_USER_PLAYLISTS_FAILURE }));
 };
 
+export const getUserPlaylists = id => dispatch => {
+  dispatch({ type: GET_USER_PLAYLISTS_REQUEST });
+  setAuthKeys();
+
+  return axios
+    .get(`${config.backend_api_url}/users/${id}/playlists`)
+    .then(res => {
+      dispatch({
+        type: GET_USER_PLAYLISTS_SUCCESS,
+        playlists: res.data
+      });
+    })
+    .catch(() => dispatch({ type: GET_USER_PLAYLISTS_FAILURE }));
+};
+
 export const postEntryToPlaylist = (
   playlistId,
   entryId,
