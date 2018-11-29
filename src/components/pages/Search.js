@@ -15,6 +15,10 @@ class Search extends Component {
     }
   }
 
+  handlePageChange = (page) => {
+    this.props.searchEntry(this.props.match.params.query, page);
+  };
+
   render() {
     return (
       <>
@@ -26,6 +30,7 @@ class Search extends Component {
           error={this.props.error}
           hasLoaded={this.props.hasLoaded}
           entries={this.props.entries}
+          handlePageChange={this.handlePageChange}
         />
       </>
     );

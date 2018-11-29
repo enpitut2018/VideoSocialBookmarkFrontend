@@ -7,6 +7,7 @@ import LoadingIcon from "../atoms/LoadingIcon";
 import Header from "../organisms/Header";
 import ToastManager from "../organisms/ToastManager";
 import Footer from "../organisms/Footer";
+import Pagination from "../organisms/Pagination";
 
 const StyledSearch = styled.div`
   padding: 0 0 20px 0;
@@ -28,13 +29,18 @@ export default class SearchTemplate extends Component {
                 {this.props.error ? (
                   <Text>データの取得に失敗しました</Text>
                 ) : this.props.hasLoaded ? (
-                  this.props.entries &&
-              this.props.entries.map(item => (
-                <TrendItem entry={item} key={item.id} />
-              ))
+                  this.props.entries.data.map(item => (
+                    <TrendItem entry={item} key={item.id} />
+                  ))
                 ) : (
                   <LoadingIcon />
                 )}
+                {this.props.hasLoaded &&
+                  <Pagination
+                    pageCount={this.props.entries.page_count}
+                    onPageChange={this.props.handlePageChange}
+                  />
+                }
               </Wrapper>
             </Wrapper>
           </StyledSearch>
