@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Wrapper from "../atoms/Wrapper";
 import { connect } from "react-redux";
-import { getCurrentUserPlaylists } from "../../actions/PlaylistActions";
+import { getUserPlaylists } from "../../actions/PlaylistActions";
 import LoadingIcon from "../atoms/LoadingIcon";
 import PlaylistOverview from "./PlaylistOverview";
 
 class Playlists extends Component {
   componentWillMount() {
-    this.props.getCurrentUserPlaylists();
+    this.props.getUserPlaylists(this.props.user_id);
   }
 
   render() {
@@ -35,5 +35,5 @@ export default connect(
     state: store.playlists.state,
     playlists: store.playlists.playlists
   }),
-  { getCurrentUserPlaylists }
+  { getUserPlaylists }
 )(Playlists);
