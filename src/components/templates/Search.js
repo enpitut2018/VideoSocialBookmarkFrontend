@@ -37,6 +37,7 @@ export default class SearchTemplate extends Component {
                 )}
                 {this.props.hasLoaded &&
                   <Pagination
+                    forcePage={this.props.entries.page}
                     pageCount={this.props.entries.page_count}
                     onPageChange={this.props.handlePageChange}
                   />
