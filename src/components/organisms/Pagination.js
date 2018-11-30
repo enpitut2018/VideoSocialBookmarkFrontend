@@ -13,6 +13,7 @@ export default class Pagination extends Component {
       <>
         {this.props.pageCount > 1 &&
           <ReactPaginate
+            forcePage={(this.props.forcePage - 1) || null}
             pageCount={this.props.pageCount}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
