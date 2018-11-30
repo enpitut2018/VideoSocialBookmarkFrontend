@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
-import Embed from "../atoms/Embed";
 import Text from "../atoms/Text";
 import { component } from "../mediaQuery";
 import { style } from "../mediaQuery";
@@ -19,6 +18,7 @@ import {
   RedditIcon
 } from "react-share";
 import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
+import { setPopupMode } from "../../actions/PopupActions";
 import { setEntryBookmarked } from "../../actions/EntryActions";
 import DropdownPlaylistMenu from "./DropdownPlaylistMenu";
 
@@ -29,9 +29,11 @@ const StyledA = styled.a`
   ${AnkerStyle};
 `;
 
-const StyledEmbed = styled.div`
-  margin: 10px 0;
+const VideoContainer = styled(Wrapper)`
+  position: relative;
   width: 100%;
+  height: 100%;
+  padding: 56.25% 0 0;
 `;
 
 class EntryTop extends Component {
@@ -161,6 +163,17 @@ class EntryTop extends Component {
       <DropdownPlaylistMenu entryId={this.props.entry.id} />
     );
 
+  componentDidMount = () => {
+    this.props.dispatch(setPopupMode("onEntry"));
+  }
+  componentDidUpdate = () => {
+    this.props.dispatch(setPopupMode("onEntry"));
+  }
+
+  componentWillUnmount = () => {
+    this.props.dispatch(setPopupMode("popup"));
+  }
+
   render() {
     const entryUrl =
       `${config.frontend_base_url}/entries/${this.props.entry.id}`;
@@ -184,15 +197,7 @@ class EntryTop extends Component {
         >
           <Wrapper dir="column">
             <this.title />
-            <StyledEmbed>
-              <Embed
-                provider={this.props.entry.provider}
-                video_id={this.props.entry.video_id}
-                thumbnail_url={this.props.entry.thumbnail_url}
-                alt={this.props.entry.title}
-                width="100%"
-              />
-            </StyledEmbed>
+            <VideoContainer id="popup-container" />
           </Wrapper>
         </StyledA>
 

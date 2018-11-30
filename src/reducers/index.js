@@ -8,6 +8,7 @@ import search from "./search";
 import playlists from "./playlists";
 import userIcon from "./userIcon";
 import toasts from "./toasts";
+import popup from "./popup";
 import { combineReducers } from "redux";
 import { reduxTokenAuthReducer } from "redux-token-auth";
 
@@ -22,6 +23,7 @@ const app = combineReducers({
   userIcon,
   toasts,
   search,
+  popup,
   reduxTokenAuth: reduxTokenAuthReducer
 });
 
