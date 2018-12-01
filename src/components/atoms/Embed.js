@@ -43,7 +43,7 @@ export default class Embed extends Component {
         <IframeWrapper>
           <StyledIframe
             title={title}
-            src={`https://embed.nicovideo.jp/watch/${id}`}
+            src={`https://embed.nicovideo.jp/watch/${id}?jsapi=1`}
             allowFullScreen
             frameBorder="0"
           />

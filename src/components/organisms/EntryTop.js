@@ -18,7 +18,10 @@ import {
   RedditIcon
 } from "react-share";
 import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
-import { setPopupMode } from "../../actions/PopupActions";
+import {
+  setPageEntry,
+  setPopupEntry
+} from "../../actions/PopupActions";
 import { setEntryBookmarked } from "../../actions/EntryActions";
 import DropdownPlaylistMenu from "./DropdownPlaylistMenu";
 
@@ -164,14 +167,16 @@ class EntryTop extends Component {
     );
 
   componentDidMount = () => {
-    this.props.dispatch(setPopupMode("onEntry"));
+    this.props.dispatch(setPageEntry(this.props.entry));
   }
   componentDidUpdate = () => {
-    this.props.dispatch(setPopupMode("onEntry"));
+    this.props.dispatch(setPageEntry(this.props.entry));
   }
 
   componentWillUnmount = () => {
-    this.props.dispatch(setPopupMode("popup"));
+    this.props.dispatch(setPageEntry(null));
+    if(this.props.videoStatus == "playing")
+      this.props.dispatch(setPopupEntry(this.props.entry));
   }
 
   render() {
@@ -266,5 +271,6 @@ class EntryTop extends Component {
 }
 
 export default connect(store => ({
-  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
+  videoStatus: store.popup.videoStatus
 }))(EntryTop);

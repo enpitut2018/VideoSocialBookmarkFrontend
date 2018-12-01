@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import EntryTemplate from "../templates/Entry";
-import { Helmet } from "react-helmet";
 import { getEntry } from "../../actions/EntryActions";
 import { getComments } from "../../actions/CommentActions";
-import config from "../../config";
-import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 
 class Entry extends Component {
   componentWillMount() {
@@ -17,45 +14,11 @@ class Entry extends Component {
   };
 
   render() {
-    const entryUrl = `${config.frontend_base_url}/entries/${
-      this.props.match.params.id
-    }`;
     return (
       <>
-        <Helmet>
-          <title>
-            Video Social Bookmark
-            {this.props.hasLoaded ? " | " + this.props.entry.title : ""}
-          </title>
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta property="og:url" content={entryUrl} />
-          <meta
-            property="og:title"
-            content={
-              this.props.hasLoaded
-                ? this.props.entry.title
-                : "Video Social Bookmark"
-            }
-          />
-          <meta
-            property="og:description"
-            content={
-              this.props.hadLoaded
-                ? this.props.entry.title
-                : "Video Social Bookmark"
-            }
-          />
-          <meta
-            property="og:image"
-            content={
-              this.props.hasLoaded
-                ? this.props.entry.thumbnail_url
-                : Placeholder
-            }
-          />
-        </Helmet>
         <EntryTemplate
-          hasLoaded={this.props.hasLoaded}
+          id={this.props.match.params.id}
+          hasLoaded={this.props.hasLoaded && this.props.entry !== undefined}
           entry={this.props.entry}
           isSignedIn={this.props.isSignedIn}
           handlePageChange={this.handlePageChange}
@@ -65,8 +28,8 @@ class Entry extends Component {
   }
 }
 
-export default connect(store => ({
+export default connect((store, props) => ({
   hasLoaded: store.entries.hasLoaded,
-  entry: store.entries.entry,
+  entry: store.entries.entries[props.match.params.id],
   isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
 }))(Entry);
