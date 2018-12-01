@@ -25,7 +25,8 @@ export default class PlaylistOverViewItem extends Component {
             src={this.props.entry.thumbnail_url}
             alt={this.props.entry.title}
             provider={this.props.entry.provider}
-            height="100px"
+            height="90px"
+            style={{borderRadius:"2px"}}
           />
         </StyledThumbnail>
       </PlaylistItemWrapper>

@@ -35,7 +35,9 @@ const StyledCard = styled(Card)`
 
 const SearchButton = styled(Button)`
   display: block;
-  width: 80px;
+  filter: none;
+  height: 40px;
+  width: 70px;
 `;
 
 export const StyledTextLink = styled(StyledLink)`
@@ -102,11 +104,17 @@ class Header extends React.Component {
                   margin: 0;
                   padding: 0.5rem;
                   border-radius: 3px;
+                  font-family: system-ui;
+                  filter: none;
+                  height: 22px;
+                  width: 310px;
+                  margin: 0px 10px;
+                  background-color: #ffffff;
                 `}
                 required
               />
               <SearchButton mode="Primary" type="submit">
-                <Text fontWeight={"bold"} color={palette["White00"]}>
+                <Text fontWeight={"normal"} color={palette["White00"]}>
                   検索
                 </Text>
               </SearchButton>

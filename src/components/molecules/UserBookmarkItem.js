@@ -87,7 +87,7 @@ export default class UserBookmarkItem extends Component {
               {component({
                 XL: (
                   <>
-                    <Text size="L" margin="0" css={titleStyle}>
+                    <Text level="L" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
                   </>

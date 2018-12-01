@@ -13,8 +13,6 @@
     line-height: 1.42857143;
     color: #00abff;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
     cursor: pointer;
     outline: none;
 }
@@ -27,13 +25,12 @@
     line-height: 1.42857143;
     color: #00abff;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    border-radius: 3px;
     cursor: pointer;
     outline: none;
 }
 
 .pagination-a.active {
-    background-color: #00abff;
+    background-color: #00abff8c;
     color: white;
 }
