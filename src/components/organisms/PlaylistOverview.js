@@ -7,25 +7,21 @@ import { Link } from "react-router-dom";
 import AnkerStyle from "../atoms/AnkerStyle";
 
 const RootWrapper = styled(Wrapper)`
-margin: 5px;
-/*padding-top: 5px;*/
-width: 90vw;
-/*box-shadow: 0px 1px 1px 0px hsla(0,0%,0%,0.2);*/
-/*margin-bottom: 20px;*/
-/*background-color: white;*/
-/*padding: 5px;*/
-/*border-radius: 2px;*/
+  width: 90vw;
+  border-radius: 2px;
+  box-shadow: 0px 1px 1px 1px hsla(0,0%,0%,0.2);
+  margin-bottom: 20px;
   justify-content: left;
 `;
 
 const PlaylistWrapper = styled(Wrapper)`
-overflow-x: scroll;
-justify-content: left;
-max-width: 800px;
+  overflow-x: scroll;
+  justify-content: left;
+  width: calc(81vw);
 `;
 
 const TitleWrapper = styled(Wrapper)`
-width: calc(20vw);
+  width: calc(19vw);
 `;
 
 const StyledLink = styled(Link)`
