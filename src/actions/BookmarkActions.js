@@ -32,7 +32,6 @@ export const postBookmark = entryId => dispatch => {
       );
     })
     .catch(_ => {
-      window.console.log(_);
       dispatch({ type: POST_BOOKMARK_FAILURE, error: "" });
     });
 };
