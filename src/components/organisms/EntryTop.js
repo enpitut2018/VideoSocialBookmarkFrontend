@@ -44,8 +44,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -60,8 +60,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -76,8 +76,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -92,8 +92,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -158,45 +158,12 @@ class EntryTop extends Component {
 
   addPlaylistButton = () =>
     this.props.isSignedIn && (
-      <DropdownPlaylistMenu
-        playlists={[
-          {
-            id: 0,
-            name: "音楽系",
-            entries: [
-              {
-                id: 1
-              },
-              {
-                id: 2
-              },
-              {
-                id: 0
-              }
-            ]
-          },
-          {
-            id: 1,
-            name: "ちょっと気になる",
-            entries: [
-              {
-                id: 1
-              },
-              {
-                id: 2
-              },
-              {
-                id: 0
-              }
-            ]
-          }
-        ]}
-        entryId={this.props.entry.id}
-      />
+      <DropdownPlaylistMenu entryId={this.props.entry.id} />
     );
 
   render() {
-    const entryUrl = `${config.frontend_base_url}/entries/${this.props.id}`;
+    const entryUrl =
+      `${config.frontend_base_url}/entries/${this.props.entry.id}`;
     return (
       <Wrapper
         dir="column"
@@ -294,7 +261,5 @@ class EntryTop extends Component {
 }
 
 export default connect(store => ({
-  hasLoaded: store.entries.hasLoaded,
-  entry: store.entries.entry,
   isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
 }))(EntryTop);

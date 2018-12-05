@@ -13,12 +13,12 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  margin: 3px 0;
+  margin: 2px 0;
 
   ${AnkerStyle};
 
   ${style({
-    S: `width: 95vw`,
+    S: `width: 98vw`,
     M: `width: 90vw`,
     L: `width: 90vw`,
     XL: `width: 800px`
@@ -26,9 +26,14 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledThumbnail = styled.div`
+  width: 160px;
+  background-color: black;
+  height: 90px;
+  display: flex;
+  justify-content: center;
   ${style({
-    S: `margin-right: 10px`,
-    M: `margin-right: 13px`,
+    S: `margin-right: 8px`,
+    M: `margin-right: 12px`,
     L: `margin-right: 17px`,
     XL: `margin-right: 20px`
   })};
@@ -40,6 +45,7 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   height: 90px;
+  width: 640px;
 `;
 
 const titleStyle = `
@@ -60,8 +66,7 @@ const titleStyle = `
 `;
 
 const StyledComment = styled(Text)`
-  width: 100%;
-  margin-left: 24px;
+  color: gray;
 `;
 
 export default class UserBookmarkItem extends Component {
@@ -72,6 +77,7 @@ export default class UserBookmarkItem extends Component {
           <Wrapper>
             <StyledThumbnail>
               <Thumbnail
+                provider={this.props.bookmark.entry.provider}
                 src={this.props.bookmark.entry.thumbnail_url}
                 alt={this.props.bookmark.entry.title}
                 height="90px"
@@ -81,17 +87,9 @@ export default class UserBookmarkItem extends Component {
               {component({
                 XL: (
                   <>
-                    <Text size="L" margin="0" css={titleStyle}>
+                    <Text level="L" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
-                    <Wrapper>
-                      <Text size="S" margin="0">
-                        {this.props.bookmark.entry.num_of_bookmarked}
-                      </Text>
-                      <Text size="XS" margin="0 0 0 0.2rem">
-                        ブックマーク
-                      </Text>
-                    </Wrapper>
                   </>
                 ),
                 L: (
@@ -99,14 +97,6 @@ export default class UserBookmarkItem extends Component {
                     <Text size="M" margin="0" fontSize="14pt" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
-                    <Wrapper>
-                      <Text size="S" margin="0">
-                        {this.props.bookmark.entry.num_of_bookmarked}
-                      </Text>
-                      <Text size="XS" margin="0 0 0 0.2rem">
-                        ブックマーク
-                      </Text>
-                    </Wrapper>
                   </>
                 ),
                 M: (
@@ -114,14 +104,6 @@ export default class UserBookmarkItem extends Component {
                     <Text size="M" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
-                    <Wrapper>
-                      <Text size="S" margin="0">
-                        {this.props.bookmark.entry.num_of_bookmarked}
-                      </Text>
-                      <Text size="XS" margin="0 0 0 0.2rem">
-                        ブックマーク
-                      </Text>
-                    </Wrapper>
                   </>
                 ),
                 S: (
@@ -129,31 +111,17 @@ export default class UserBookmarkItem extends Component {
                     <Text size="M" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
-                    <Wrapper css="width: calc(95vw - 130px); overflow: hidden;">
-                      <Text size="S" margin="0">
-                        {this.props.bookmark.entry.num_of_bookmarked}
-                      </Text>
-                      <Text
-                        level="XS"
-                        margin="0 0 0 0.2rem"
-                        width="calc(95vw - 130px - 1.2rem)"
-                        css="overflow: hidden;"
-                      >
-                        ブックマーク
-                      </Text>
-                    </Wrapper>
                   </>
                 )
               })}
+              {this.props.bookmark.users_comment && (
+                <StyledComment>
+                  {this.props.bookmark.users_comment.content}
+                </StyledComment>
+              )}
             </StyledWrapper>
           </Wrapper>
         </StyledLink>
-
-        {this.props.bookmark.comment && (
-          <StyledWrapper>
-            <StyledComment>{this.props.bookmark.comment}</StyledComment>
-          </StyledWrapper>
-        )}
       </>
     );
   }

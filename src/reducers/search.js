@@ -1,32 +1,32 @@
 import {
-  GET_USER_ICON_REQUEST,
-  GET_USER_ICON_SUCCESS,
-  GET_USER_ICON_FAILURE
-} from "../actions/UserActions";
+  SEARCH_ENTRY_REQUEST,
+  SEARCH_ENTRY_SUCCESS,
+  SEARCH_ENTRY_FAILURE
+} from "../actions/SearchActions";
 
 const initialState = {
   hasLoaded: false,
-  userIcon: ""
+  entries: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-  case GET_USER_ICON_REQUEST:
+  case SEARCH_ENTRY_REQUEST:
     return {
       ...state,
       hasLoaded: false
     };
-  case GET_USER_ICON_SUCCESS:
+  case SEARCH_ENTRY_SUCCESS:
     return {
       ...state,
       hasLoaded: true,
-      url: action.userIcon.url || null
+      entries: action.result
     };
-  case GET_USER_ICON_FAILURE:
+  case SEARCH_ENTRY_FAILURE:
     return {
       ...state,
-      hasLoaded: true,
-      url: null
+      hasLoaded: false,
+      error: action.error
     };
   default:
     return state;

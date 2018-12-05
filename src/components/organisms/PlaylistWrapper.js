@@ -1,7 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { /*getPlaylist*/ } from "../../actions/PlaylistActions";
-import { getTrend } from "../../actions/TrendActions";
+import { getPlaylist } from "../../actions/PlaylistActions";
 import Wrapper from "../atoms/Wrapper";
 import Text from "../atoms/Text";
 import LoadingIcon from "../atoms/LoadingIcon";
@@ -16,30 +15,26 @@ flex-wrap: wrap;
 
 class PlaylistWrapper extends React.Component {
   componentWillMount() {
-    /*this.props.getPlaylist(this.props.playlist_id);*/
-    this.props.getTrend();
+    this.props.getPlaylist(this.props.playlist_id);
   }
 
   render() {
     return (
       <>
+      {this.props.playlist !== undefined && this.props.playlist.length !== 0 ? (
         <Wrapper dir="column">
           <Text level="L" margin="10px 0 13px 0">
-            { this.props.title }
+            { this.props.playlist.title }
           </Text>
           <StyledPlaylistWrapper>
-            {this.props.error ? (
-              <Text>データの取得に失敗しました</Text>
-            ) : this.props.hasLoaded ? (
-              this.props.playlist &&
-              this.props.playlist.map(item => (
-                <PlaylistItem entry={item} key={item.id} />
-              ))
-            ) : (
-              <LoadingIcon />
-            )}
+            {this.props.playlist.playlist_items.map(item => (
+              <PlaylistItem entry={item.entry} key={item.id} />
+            ))}
           </StyledPlaylistWrapper>
         </Wrapper>
+      ) : (
+        <LoadingIcon />
+      )}
       </>
     );
   }
@@ -47,22 +42,9 @@ class PlaylistWrapper extends React.Component {
 
 export default connect(
   store => ({
-    hasLoaded: store.trend.hasLoaded,
-    playlist: store.trend.trend,
-    title: "PLAY_LIST_TITLE",
-    error: store.trend.error
-  }),
-  { getTrend }
-)(PlaylistWrapper);
-
-/*
-export default connect(
-  store => ({
-    hasLoaded: store.playlist.hasLoaded,
-    playlist: store.playlist.playlist,
-    title: store.playlist.title,
-    error: store.playlist.error
+    state: store.playlists.state,
+    playlist: store.playlists.playlist,
+    error: store.playlists.error
   }),
   { getPlaylist }
 )(PlaylistWrapper);
-*/

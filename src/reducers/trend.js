@@ -8,7 +8,7 @@ import update from "immutability-helper";
 
 const initialState = {
   hasLoaded: false,
-  trend: [],
+  trend: null,
   url: "",
   error: ""
 };
@@ -33,11 +33,15 @@ export default (state = initialState, action) => {
       error: action.error
     };
   case SET_TREND_BOOKMARKED: {
-    const index = state.trend.findIndex(entry => entry.id === action.entryId);
+    const index = state.trend.data.findIndex(
+      entry => entry.id === action.entryId
+    );
     return update(state, {
       trend: {
-        [index]: {
-          "bookmarked?": { $set: action.bookmarked }
+        data: {
+          [index]: {
+            "bookmarked?": { $set: action.bookmarked }
+          }
         }
       }
     });

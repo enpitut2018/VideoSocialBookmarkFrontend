@@ -1,7 +1,7 @@
 import {
   POST_COMMENT_REQUEST,
   POST_COMMENT_SUCCESS,
-  POST_COMMENT_FAILURE
+  POST_COMMENT_FAILURE,
 } from "../actions/CommentActions";
 
 const initialState = {

@@ -35,15 +35,16 @@ export default class PlaylistItem extends Component {
   render() {
     return (
       <PlaylistItemWrapper>
-        <StyledLink to={"/entries/" + this.props.entry.id}>
-          <StyledThumbnail>
+        <StyledThumbnail>
+          <StyledLink to={"/entries/" + this.props.entry.id}>
             <Thumbnail
+              provider={this.props.entry.provider}
               src={this.props.entry.thumbnail_url}
               alt={this.props.entry.title}
               height="270px"
             />
-          </StyledThumbnail>
-        </StyledLink>
+          </StyledLink>
+        </StyledThumbnail>
       </PlaylistItemWrapper>
     );
   }
