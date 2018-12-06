@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const StyledPlaylistWrapper = styled(Wrapper)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
 `;
 
@@ -25,13 +25,22 @@ class PlaylistWrapper extends React.Component {
           <LoadingIcon />
         ) : (
           this.props.playlist !== null && (
-            <Wrapper dir="column">
+            <Wrapper dir="column" css="margin-left: 2rem;">
               <Text level="L" margin="10px 0 13px 0">
                 {this.props.playlist.name}
               </Text>
               <StyledPlaylistWrapper>
-                {this.props.playlist.playlist_items.map(item => (
-                  <PlaylistItem entry={item.entry} key={item.id} />
+                {this.props.playlist.playlist_items.map((item, index) => (
+                  <PlaylistItem
+                    entry={item.entry}
+                    playlistId={this.props.playlist.id}
+                    order={
+                      item.entry.id === this.props.entryId
+                        ? undefined
+                        : index + 1
+                    }
+                    key={item.id}
+                  />
                 ))}
               </StyledPlaylistWrapper>
             </Wrapper>

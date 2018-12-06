@@ -9,7 +9,7 @@ import AnkerStyle from "../atoms/AnkerStyle";
 const RootWrapper = styled(Wrapper)`
   width: 90vw;
   border-radius: 2px;
-  box-shadow: 0px 1px 1px 1px hsla(0,0%,0%,0.2);
+  box-shadow: 0px 1px 1px 1px hsla(0, 0%, 0%, 0.2);
   margin-bottom: 20px;
   justify-content: left;
 `;
@@ -31,25 +31,28 @@ const StyledLink = styled(Link)`
 export default class PlaylistOverview extends React.Component {
   render() {
     return (
-      <>
-        <StyledLink to={"/playlist/" + this.props.playlist.id}>
-          <RootWrapper dir="row">
-            <TitleWrapper>
-              <Text level="L" margin="10px 0 13px 0">
-                { this.props.playlist.name }
-              </Text>
-            </TitleWrapper>
-            <PlaylistWrapper dir="row">
-              {this.props.playlist.playlist_items.map(item => (
-                <PlaylistOverviewItem
-                  entry={item.entry}
-                  key={item.id}
-                />
-              ))}
-            </PlaylistWrapper>
-          </RootWrapper>
-        </StyledLink>
-      </>
+      this.props.playlist.playlist_items.length > 0 && (
+        <>
+          <StyledLink
+            to={`/entries/${
+              this.props.playlist.playlist_items[0].entry.id
+            }?list=${this.props.playlist.id}`}
+          >
+            <RootWrapper dir="row">
+              <TitleWrapper>
+                <Text level="L" margin="10px 0 13px 0">
+                  {this.props.playlist.name}
+                </Text>
+              </TitleWrapper>
+              <PlaylistWrapper dir="row">
+                {this.props.playlist.playlist_items.map(item => (
+                  <PlaylistOverviewItem entry={item.entry} key={item.id} />
+                ))}
+              </PlaylistWrapper>
+            </RootWrapper>
+          </StyledLink>
+        </>
+      )
     );
   }
 }

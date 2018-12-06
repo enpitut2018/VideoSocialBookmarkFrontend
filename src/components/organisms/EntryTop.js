@@ -21,7 +21,6 @@ import {
 import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
 import { setEntryBookmarked } from "../../actions/EntryActions";
 import DropdownPlaylistMenu from "./DropdownPlaylistMenu";
-import PlaylistWrapper from "./PlaylistWrapper";
 
 const StyledA = styled.a`
   display: flex;
@@ -259,7 +258,6 @@ class EntryTop extends Component {
             <this.addPlaylistButton />
           </Wrapper>
         </Wrapper>
-        <PlaylistWrapper playlistId={this.props.playlistId} />
       </Wrapper>
     );
   }

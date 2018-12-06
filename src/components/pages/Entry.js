@@ -13,6 +13,12 @@ class Entry extends Component {
     this.props.dispatch(getEntry(this.props.match.params.id));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+      this.props.dispatch(getEntry(nextProps.match.params.id));
+    }
+  }
+
   handlePageChange = page => {
     this.props.dispatch(getComments(this.props.match.params.id, page));
   };
