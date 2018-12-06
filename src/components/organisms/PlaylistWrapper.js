@@ -8,33 +8,35 @@ import PlaylistItem from "../molecules/PlaylistItem";
 import styled from "styled-components";
 
 const StyledPlaylistWrapper = styled(Wrapper)`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 class PlaylistWrapper extends React.Component {
   componentWillMount() {
-    this.props.getPlaylist(this.props.playlist_id);
+    this.props.getPlaylist(this.props.playlistId);
   }
 
   render() {
     return (
       <>
-      {this.props.playlist !== undefined && this.props.playlist.length !== 0 ? (
-        <Wrapper dir="column">
-          <Text level="L" margin="10px 0 13px 0">
-            { this.props.playlist.title }
-          </Text>
-          <StyledPlaylistWrapper>
-            {this.props.playlist.playlist_items.map(item => (
-              <PlaylistItem entry={item.entry} key={item.id} />
-            ))}
-          </StyledPlaylistWrapper>
-        </Wrapper>
-      ) : (
-        <LoadingIcon />
-      )}
+        {this.props.playlist === undefined ? (
+          <LoadingIcon />
+        ) : (
+          this.props.playlist !== null && (
+            <Wrapper dir="column">
+              <Text level="L" margin="10px 0 13px 0">
+                {this.props.playlist.name}
+              </Text>
+              <StyledPlaylistWrapper>
+                {this.props.playlist.playlist_items.map(item => (
+                  <PlaylistItem entry={item.entry} key={item.id} />
+                ))}
+              </StyledPlaylistWrapper>
+            </Wrapper>
+          )
+        )}
       </>
     );
   }

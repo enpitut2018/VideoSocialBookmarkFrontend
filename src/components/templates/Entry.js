@@ -12,7 +12,10 @@ export default class Entry extends Component {
       <BasicPageWrapper>
         {this.props.hasLoaded && (
           <>
-            <EntryTop entry={this.props.entry} />
+            <EntryTop
+              entry={this.props.entry}
+              playlistId={this.props.playlistId}
+            />
             <Wrapper dir="column">
               {this.props.isSignedIn && (
                 <CommentSubmitForm entryId={this.props.entry.id} />
