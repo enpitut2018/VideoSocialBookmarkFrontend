@@ -116,6 +116,7 @@
     "DropdownPlaylistMenu": {
       "Fill": "Black03"
     },
+    "PlaylistWrapper": { "Background": "White00" },
     "URLSubmitForm": {},
     "Trend": {}
   }
