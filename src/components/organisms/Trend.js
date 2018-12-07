@@ -4,7 +4,7 @@ import Text from "../atoms/Text";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import TrendItem from "../molecules/TrendItem";
-import { getTrend } from "../../actions/TrendActions";
+import { getTrend, TREND_PAGE } from "../../actions/TrendActions";
 import { preloadTrend } from "../../actions/EntryActions";
 import LoadingIcon from "../atoms/LoadingIcon";
 import Pagination from "./Pagination";
@@ -14,9 +14,17 @@ const StyledTrend = styled.div`
 `;
 
 class Trend extends Component {
+  constructor(props) {
+    super(props);
+    const initialPage = Number(sessionStorage.getItem(TREND_PAGE)) || 1;
+    this.state = {
+      initialPage: initialPage
+    };
+  }
+
   componentWillMount() {
-    this.props.getTrend();
-    this.props.preloadTrend();
+    this.props.getTrend(this.state.initialPage);
+    this.props.preloadTrend(this.state.initialPage);
   }
 
   handlePageChange = (page) => {
@@ -43,6 +51,7 @@ class Trend extends Component {
             )}
             {this.props.trend &&
               <Pagination
+                initialPage={this.state.initialPage}
                 pageCount={this.props.trend.page_count}
                 onPageChange={this.handlePageChange}
               />
