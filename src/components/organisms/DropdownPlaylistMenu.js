@@ -68,8 +68,8 @@ class DropdownPlaylistMenu extends Component {
         postEntryToPlaylist(
           this.props.playlists[i].id,
           this.props.entryId,
-          null,
-          lastItem ? lastItem.id : null
+          lastItem ? lastItem.id : null,
+          null
         )
       );
     }
