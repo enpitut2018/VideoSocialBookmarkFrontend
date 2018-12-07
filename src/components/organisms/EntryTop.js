@@ -54,13 +54,17 @@ class EntryTop extends Component {
       const currentPlaylistItem = nextProps.playlist.playlist_items.find(
         item => item.entry.id === nextProps.entry.id
       );
-      const nextPlaylistItem = nextProps.playlist.playlist_items.find(
-        item => item.id === currentPlaylistItem.next_id
-      );
+      const nextPlaylistItem =
+        currentPlaylistItem !== undefined &&
+        nextProps.playlist.playlist_items.find(
+          item => item.id === currentPlaylistItem.next_id
+        );
       this.setState({
-        shouldRedirectNextUrl: `/entries/${nextPlaylistItem.entry_id}?list=${
-          nextPlaylistItem.playlist_id
-        }`
+        shouldRedirectNextUrl:
+          nextPlaylistItem !== undefined &&
+          `/entries/${nextPlaylistItem.entry_id}?list=${
+            nextPlaylistItem.playlist_id
+          }`
       });
     }
   }
