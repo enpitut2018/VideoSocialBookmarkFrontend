@@ -1,10 +1,11 @@
 /* eslint max-len: 0, no-irregular-whitespace: 0 */
+import React from "react";
 export default {
   Header: `ヘルプ、お問い合わせ`,
   Body: [
     {
       Header: "chrome extensionでVideoSocialBookmarkをより便利に",
-      Body: `https://github.com/enpitut2018/VideoSocialBookmarkChromeExtension を使うことによって、動画投稿サイトから直接動画をブックマークすることができます。`
+      Body: (<><a href="https://github.com/enpitut2018/VideoSocialBookmarkChromeExtension">{`VideoSocialBookmarkChromeExtension`}</a>を使うことによって、動画投稿サイトから直接動画をブックマークすることができます。</>)
     },
     {
       Header: "コメントの仕方",
