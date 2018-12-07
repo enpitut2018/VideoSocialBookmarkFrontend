@@ -29,6 +29,23 @@ class PlaylistWrapper extends React.Component {
       this.props.playlist.playlist_items.findIndex(
         item => item.entry.id === this.props.entryId
       );
+    let shouldRedirectNextUrl = undefined;
+    if (
+      this.props.playlist !== undefined &&
+      this.props.playlist !== null &&
+      currentIndex !== -1
+    ) {
+      const currentPlaylistItem = this.props.playlist.playlist_items.find(
+        item => item.entry.id === this.props.entryId
+      );
+      const nextPlaylistItem = this.props.playlist.playlist_items.find(
+        item => item.id === currentPlaylistItem.next_id
+      );
+      shouldRedirectNextUrl = `/entries/${nextPlaylistItem.entry_id}?list=${
+        nextPlaylistItem.playlist_id
+      }`;
+    }
+    window.console.log(shouldRedirectNextUrl);
     return (
       <>
         {this.props.playlist === undefined ? (
