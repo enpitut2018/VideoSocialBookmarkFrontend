@@ -7,6 +7,7 @@ export default class Help extends React.Component {
     return (
       <BasicPageWrapper>
         <Text size="XL">Help</Text>
+        
       </BasicPageWrapper>
     );
   }
