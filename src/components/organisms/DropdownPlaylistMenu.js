@@ -36,7 +36,7 @@ class DropdownPlaylistMenu extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.state === "loaded" && "playlists" in nextProps) {
+    if (nextProps.playlists !== undefined && nextProps.playlists !== null) {
       this.setState({
         enabledList: nextProps.playlists.map(playlist =>
           playlist.playlist_items.some(
@@ -102,6 +102,7 @@ class DropdownPlaylistMenu extends Component {
             />
           ))}
         <DropdownMenuItem
+          css={{ padding: "0.8rem 0" }}
           onClick={() => {
             this.props.dispatch(postPlaylist("プレイリスト", false));
           }}

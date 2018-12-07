@@ -8,6 +8,9 @@ const PlaylistItemWrapper = styled.div`
 `;
 
 const StyledThumbnail = styled.div`
+  justify-content: center;
+  display: flex;
+  margin: 5px 20px 5px 0px;
   ${style({
     S: `margin-right: 8px`,
     M: `margin-right: 12px`,
@@ -24,6 +27,7 @@ export default class PlaylistOverViewItem extends Component {
           <Thumbnail
             src={this.props.entry.thumbnail_url}
             alt={this.props.entry.title}
+            provider={this.props.entry.provider}
             height="100px"
           />
         </StyledThumbnail>

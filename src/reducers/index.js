@@ -4,6 +4,7 @@ import entries from "./entries";
 import stars from "./stars";
 import trend from "./trend";
 import user from "./user";
+import search from "./search";
 import playlists from "./playlists";
 import userIcon from "./userIcon";
 import toasts from "./toasts";
@@ -20,6 +21,7 @@ const app = combineReducers({
   playlists,
   userIcon,
   toasts,
+  search,
   reduxTokenAuth: reduxTokenAuthReducer
 });
 

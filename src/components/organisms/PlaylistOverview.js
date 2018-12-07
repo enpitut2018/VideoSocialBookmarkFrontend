@@ -7,20 +7,21 @@ import { Link } from "react-router-dom";
 import AnkerStyle from "../atoms/AnkerStyle";
 
 const RootWrapper = styled(Wrapper)`
-box-shadow: 0px 1px 1px 1px grey;
-margin: 5px;
-padding-top: 5px;
-width: 90vw;
+  width: 90vw;
+  border-radius: 2px;
+  box-shadow: 0px 1px 1px 1px hsla(0, 0%, 0%, 0.2);
+  margin-bottom: 20px;
+  justify-content: left;
 `;
 
 const PlaylistWrapper = styled(Wrapper)`
-overflow-x: scroll;
-width: calc(90vw - 52px);
-justify-content: left;
+  overflow-x: scroll;
+  justify-content: left;
+  width: calc(81vw);
 `;
 
 const TitleWrapper = styled(Wrapper)`
-width: calc(20vw);
+  width: calc(19vw);
 `;
 
 const StyledLink = styled(Link)`
@@ -30,25 +31,28 @@ const StyledLink = styled(Link)`
 export default class PlaylistOverview extends React.Component {
   render() {
     return (
-      <>
-        <StyledLink to={"/playlist/" + this.props.playlist.id}>
-          <RootWrapper dir="row">
-            <TitleWrapper>
-              <Text level="L" margin="10px 0 13px 0">
-                { this.props.playlist.name }
-              </Text>
-            </TitleWrapper>
-            <PlaylistWrapper dir="row">
-              {this.props.playlist.playlist_items.map(item => (
-                <PlaylistOverviewItem
-                  entry={item.entry}
-                  key={item.id}
-                />
-              ))}
-            </PlaylistWrapper>
-          </RootWrapper>
-        </StyledLink>
-      </>
+      this.props.playlist.playlist_items.length > 0 && (
+        <>
+          <StyledLink
+            to={`/entries/${
+              this.props.playlist.playlist_items[0].entry.id
+            }?list=${this.props.playlist.id}`}
+          >
+            <RootWrapper dir="row">
+              <TitleWrapper>
+                <Text level="L" margin="10px 0 13px 0">
+                  {this.props.playlist.name}
+                </Text>
+              </TitleWrapper>
+              <PlaylistWrapper dir="row">
+                {this.props.playlist.playlist_items.map(item => (
+                  <PlaylistOverviewItem entry={item.entry} key={item.id} />
+                ))}
+              </PlaylistWrapper>
+            </RootWrapper>
+          </StyledLink>
+        </>
+      )
     );
   }
 }

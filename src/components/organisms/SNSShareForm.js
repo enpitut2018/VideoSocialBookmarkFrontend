@@ -83,6 +83,7 @@ export default class SNSShareForm extends Component {
             </Text>
 
             <Thumbnail
+              provider={this.props.entry.provider}
               src={this.props.entry.thumbnail_url}
               alt={this.props.entry.title}
               width="100%"

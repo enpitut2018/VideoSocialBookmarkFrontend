@@ -14,6 +14,8 @@ export const REMOVE_PLAYLIST_TOAST = "REMOVE_PLAYLIST_TOAST";
 
 const ToastWrapper = styled.div`
   position: fixed;
+  z-index: 9999;
+  top: 66px;
 `;
 
 class ToastManager extends Component {

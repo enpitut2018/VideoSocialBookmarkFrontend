@@ -102,7 +102,6 @@ export default class DropdownPlaylistMenuItem extends Component {
   handlePrivateChange = e => {
     e.preventDefault();
     e.stopPropagation();
-    window.console.log(this.state.isPrivate);
     if (this.state.isPrivate !== undefined) {
       this.setState(prev => ({ isPrivate: !prev.isPrivate }));
       store.dispatch(
@@ -119,7 +118,11 @@ export default class DropdownPlaylistMenuItem extends Component {
   render() {
     const color = palette[colors.organisms.DropdownPlaylistMenu.Fill];
     return (
-      <DropdownMenuItem width="400px" onClick={this.props.handleClick}>
+      <DropdownMenuItem
+        css={{ padding: "0.8rem 0" }}
+        width="400px"
+        onClick={this.props.handleClick}
+      >
         <IconWrapper>
           <CheckBox value={this.props.enabled} />
         </IconWrapper>

@@ -41,7 +41,7 @@ class Star extends Component {
   }
 
   isEnabled = () => {
-    const entry = this.props.entries.find(
+    const entry = this.props.stars.entries.find(
       e => e.entryId === this.props.entryId
     );
     return entry !== undefined && entry.enabled;
@@ -89,6 +89,5 @@ class Star extends Component {
 }
 
 export default connect(store => ({
-  entries: store.stars.entries,
-  isLoading: store.stars.isLoading
+  stars: store.stars
 }))(Star);

@@ -11,7 +11,6 @@ const StyledItem = styled.div`
   align-items: center;
   justify-content: space-between;
   width: ${props => (props.width ? props.width : "240px")};
-  padding: 0.8rem 0;
   background-color: ${palette[colors.organisms.Header.Dropdown.Background]};
   ${props => props.css};
 `;

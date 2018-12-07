@@ -35,6 +35,40 @@ const StyledEmbed = styled.div`
 `;
 
 class EntryTop extends Component {
+  state = {
+    shouldRedirectNextUrl: undefined
+  };
+
+  componentWillReceiveProps(nextProps) {
+    const currentIndex =
+      nextProps.playlist !== undefined &&
+      nextProps.playlist !== null &&
+      nextProps.playlist.playlist_items.findIndex(
+        item => item.entry.id === nextProps.entry.id
+      );
+    if (
+      nextProps.playlist !== undefined &&
+      nextProps.playlist !== null &&
+      currentIndex !== -1
+    ) {
+      const currentPlaylistItem = nextProps.playlist.playlist_items.find(
+        item => item.entry.id === nextProps.entry.id
+      );
+      const nextPlaylistItem =
+        currentPlaylistItem !== undefined &&
+        nextProps.playlist.playlist_items.find(
+          item => item.id === currentPlaylistItem.next_id
+        );
+      this.setState({
+        shouldRedirectNextUrl:
+          nextPlaylistItem !== undefined &&
+          `/entries/${nextPlaylistItem.entry_id}?list=${
+            nextPlaylistItem.playlist_id
+          }`
+      });
+    }
+  }
+
   bookmarkButton = () =>
     this.props.isSignedIn &&
     component({
@@ -44,8 +78,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -60,8 +94,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -76,8 +110,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -92,8 +126,8 @@ class EntryTop extends Component {
           handleClick={() => {
             this.props.dispatch(
               this.props.entry["bookmarked?"]
-                ? deleteBookmark(this.props.id)
-                : postBookmark(this.props.id)
+                ? deleteBookmark(this.props.entry.id)
+                : postBookmark(this.props.entry.id)
             );
             this.props.dispatch(
               setEntryBookmarked(!this.props.entry["bookmarked?"])
@@ -158,135 +192,107 @@ class EntryTop extends Component {
 
   addPlaylistButton = () =>
     this.props.isSignedIn && (
-      <DropdownPlaylistMenu
-        playlists={[
-          {
-            id: 0,
-            name: "音楽系",
-            entries: [
-              {
-                id: 1
-              },
-              {
-                id: 2
-              },
-              {
-                id: 0
-              }
-            ]
-          },
-          {
-            id: 1,
-            name: "ちょっと気になる",
-            entries: [
-              {
-                id: 1
-              },
-              {
-                id: 2
-              },
-              {
-                id: 0
-              }
-            ]
-          }
-        ]}
-        entryId={this.props.entry.id}
-      />
+      <DropdownPlaylistMenu entryId={this.props.entry.id} />
     );
 
   render() {
-    const entryUrl = `${config.frontend_base_url}/entries/${this.props.id}`;
+    const entryUrl = `${config.frontend_base_url}/entries/${
+      this.props.entry.id
+    }`;
+
     return (
-      <Wrapper
-        dir="column"
-        css={`
-          ${style({
+      <Wrapper>
+        <Wrapper
+          dir="column"
+          css={`
+            ${style({
         XL: `width: 852px`,
         L: `width: 90vw`,
         M: `width: 90vw`,
         S: `width: 95vw`
       })};
-          margin: auto;
-        `}
-      >
-        <StyledA
-          target="_blank"
-          rel="noopener noreferrer"
-          href={this.props.entry.url}
-        >
-          <Wrapper dir="column">
-            <this.title />
-            <StyledEmbed>
-              <Embed
-                provider={this.props.entry.provider}
-                video_id={this.props.entry.video_id}
-                thumbnail_url={this.props.entry.thumbnail_url}
-                alt={this.props.entry.title}
-                width="100%"
-              />
-            </StyledEmbed>
-          </Wrapper>
-        </StyledA>
-
-        <Wrapper
-          css={`
-            margin: 2.1rem 1rem;
-            width: 100%;
-            justify-content: space-between;
+            margin: auto;
           `}
         >
-          <TwitterShareButton
-            url={entryUrl}
-            title={this.props.entry.title}
-            style={{ cursor: "pointer" }}
+          <StyledA
+            target="_blank"
+            rel="noopener noreferrer"
+            href={this.props.entry.url}
           >
-            <TwitterIcon size={48} round />
-          </TwitterShareButton>
-          <FacebookShareButton
-            url={entryUrl}
-            quote={this.props.entry.title}
-            style={{ cursor: "pointer" }}
-          >
-            <FacebookIcon size={48} round />
-          </FacebookShareButton>
-          <RedditShareButton
-            url={entryUrl}
-            title={this.props.entry.title}
-            style={{ cursor: "pointer" }}
-          >
-            <RedditIcon size={48} round />
-          </RedditShareButton>
-          {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
-        </Wrapper>
+            <Wrapper dir="column">
+              <this.title />
+              <StyledEmbed>
+                <Embed
+                  provider={this.props.entry.provider}
+                  video_id={this.props.entry.video_id}
+                  thumbnail_url={this.props.entry.thumbnail_url}
+                  alt={this.props.entry.title}
+                  width="100%"
+                  shouldRedirectNextUrl={this.state.shouldRedirectNextUrl}
+                />
+              </StyledEmbed>
+            </Wrapper>
+          </StyledA>
 
-        <Wrapper
-          css={`
-            margin: 1rem;
-            width: 100%;
-            justify-content: space-around;
-            ${style({
+          <Wrapper
+            css={`
+              margin: 2.1rem 1rem;
+              width: 100%;
+              justify-content: space-between;
+            `}
+          >
+            <TwitterShareButton
+              url={entryUrl}
+              title={this.props.entry.title}
+              style={{ cursor: "pointer" }}
+            >
+              <TwitterIcon size={48} round />
+            </TwitterShareButton>
+            <FacebookShareButton
+              url={entryUrl}
+              quote={this.props.entry.title}
+              style={{ cursor: "pointer" }}
+            >
+              <FacebookIcon size={48} round />
+            </FacebookShareButton>
+            <RedditShareButton
+              url={entryUrl}
+              title={this.props.entry.title}
+              style={{ cursor: "pointer" }}
+            >
+              <RedditIcon size={48} round />
+            </RedditShareButton>
+            {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
+          </Wrapper>
+
+          <Wrapper
+            css={`
+              margin: 1rem;
+              width: 100%;
+              justify-content: space-around;
+              ${style({
         S: `flex-direction: column`,
         M: `flex-direction: column`,
         L: ``,
         XL: ``
       })};
-          `}
-        >
-          <Wrapper
-            css={`
-              ${style({
+            `}
+          >
+            <Wrapper
+              css={`
+                ${style({
         S: `flex-direction: column; margin-bottom: 1.6rem;`,
         M: ` margin-bottom: 1.8rem;`,
         L: ``,
         XL: ``
       })};
-            `}
-          >
-            <this.bookmarkLabel />
-            <this.bookmarkButton />
+              `}
+            >
+              <this.bookmarkLabel />
+              <this.bookmarkButton />
+            </Wrapper>
+            <this.addPlaylistButton />
           </Wrapper>
-          <this.addPlaylistButton />
         </Wrapper>
       </Wrapper>
     );
@@ -294,7 +300,6 @@ class EntryTop extends Component {
 }
 
 export default connect(store => ({
-  hasLoaded: store.entries.hasLoaded,
-  entry: store.entries.entry,
-  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
+  playlist: store.playlists.playlist
 }))(EntryTop);

@@ -3,18 +3,31 @@ import { connect } from "react-redux";
 import EntryTemplate from "../templates/Entry";
 import { Helmet } from "react-helmet";
 import { getEntry } from "../../actions/EntryActions";
+import { getComments } from "../../actions/CommentActions";
 import config from "../../config";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
+import { parse } from "query-string";
 
 class Entry extends Component {
   componentWillMount() {
     this.props.dispatch(getEntry(this.props.match.params.id));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+      this.props.dispatch(getEntry(nextProps.match.params.id));
+    }
+  }
+
+  handlePageChange = page => {
+    this.props.dispatch(getComments(this.props.match.params.id, page));
+  };
+
   render() {
     const entryUrl = `${config.frontend_base_url}/entries/${
       this.props.match.params.id
     }`;
+    const { list } = parse(this.props.location.search);
     return (
       <>
         <Helmet>
@@ -53,6 +66,8 @@ class Entry extends Component {
           hasLoaded={this.props.hasLoaded}
           entry={this.props.entry}
           isSignedIn={this.props.isSignedIn}
+          handlePageChange={this.handlePageChange}
+          playlistId={list}
         />
       </>
     );

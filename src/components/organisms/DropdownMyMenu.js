@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import DropdownMenu from "./DropdownMenu";
 import DropdownMenuItem from "../molecules/DropdownMenuItem";
@@ -10,6 +10,8 @@ import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import { Link } from "react-router-dom";
 import AnkerStyle from "../atoms/AnkerStyle";
+import { connect } from "react-redux";
+import { getUserIcon } from "../../actions/UserActions";
 
 const UserIconWrapper = styled.div`
   cursor: pointer;
@@ -26,15 +28,23 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding: 0.8rem 0;
 `;
 
-export default class DropdownMyMenu extends Component {
+class DropdownMyMenu extends React.Component {
+  componentWillMount() {
+    if(!this.props.userIconHasLoaded){
+      this.props.dispatch(getUserIcon());
+    }
+  }
   render() {
     return (
       <DropdownMenu
         renderHeader={() => (
           <UserIconWrapper>
-            <UserIcon url={this.props.url} />
+            {this.props.userIconHasLoaded &&
+              <UserIcon url={this.props.url} />
+            }
           </UserIconWrapper>
         )}
         css="margin-right: 5px;"
@@ -63,3 +73,8 @@ export default class DropdownMyMenu extends Component {
     );
   }
 }
+
+export default connect(store => ({
+  userIconHasLoaded: store.userIcon.hasLoaded,
+  url: store.userIcon.url,
+}))(DropdownMyMenu);

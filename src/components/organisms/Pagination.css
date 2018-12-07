@@ -1,0 +1,36 @@
+.pagination-ul {}
+
+.pagination-li {
+    display: inline;
+}
+
+.pagination-break {
+    display: block;
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #00abff;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.pagination-a {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #00abff;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+}
+
+.pagination-a.active {
+    background-color: #00abff8c;
+    color: white;
+}
