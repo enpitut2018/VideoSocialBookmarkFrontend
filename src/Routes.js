@@ -15,7 +15,6 @@ import Help from "./components/pages/Help";
 import User from "./components/pages/User";
 import { generateRequireSignInWrapper } from "redux-token-auth";
 import Registration from "./components/pages/Registration";
-import Playlist from "./components/pages/Playlist";
 import Search from "./components/pages/Search";
 
 const requireSignIn = generateRequireSignInWrapper({
@@ -28,7 +27,6 @@ class Routes extends React.Component {
         <Switch>
           <Route exact={true} path="/" component={Top} />
           <Route exact={true} path="/entries/:id" component={Entry} />
-          <Route exact={true} path="/playlist/:id" component={Playlist} />
           <Route exact={true} path="/users/:id" component={User} />
           <Route
             exact={true}

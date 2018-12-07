@@ -5,15 +5,16 @@ import EntryItem from "../molecules/EntryItem";
 import CommentSubmitForm from "../organisms/CommentSubmitForm";
 import BasicPageWrapper from "../../BasicPageWrapper";
 import Pagination from "../organisms/Pagination";
+import PlaylistWrapper from "../organisms/PlaylistWrapper";
 
 export default class Entry extends Component {
   render() {
     return (
       <BasicPageWrapper>
         {this.props.hasLoaded && (
-          <>
-            <EntryTop entry={this.props.entry} />
+          <Wrapper css="align-items: baseline;">
             <Wrapper dir="column">
+              <EntryTop entry={this.props.entry} />
               {this.props.isSignedIn && (
                 <CommentSubmitForm entryId={this.props.entry.id} />
               )}
@@ -31,7 +32,11 @@ export default class Entry extends Component {
                     )
                 )}
             </Wrapper>
-          </>
+            <PlaylistWrapper
+              playlistId={this.props.playlistId}
+              entryId={this.props.entry.id}
+            />
+          </Wrapper>
         )}
       </BasicPageWrapper>
     );
