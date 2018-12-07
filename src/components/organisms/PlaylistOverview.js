@@ -30,13 +30,14 @@ const StyledLink = styled(Link)`
 
 export default class PlaylistOverview extends React.Component {
   render() {
+    const firstItem = this.props.playlist.playlist_items.find(
+      item => item.prev_id === null
+    );
     return (
       this.props.playlist.playlist_items.length > 0 && (
         <>
           <StyledLink
-            to={`/entries/${
-              this.props.playlist.playlist_items[0].entry.id
-            }?list=${this.props.playlist.id}`}
+            to={`/entries/${firstItem.entry.id}?list=${this.props.playlist.id}`}
           >
             <RootWrapper dir="row">
               <TitleWrapper>

@@ -22,6 +22,19 @@ class PlaylistWrapper extends React.Component {
     this.props.getPlaylist(this.props.playlistId);
   }
 
+  linkSort = arr => {
+    if (arr === undefined || arr === null || arr.length === 0) {
+      return;
+    }
+    let res = [];
+    let item = arr[0];
+    while (item !== undefined && item.next_id !== undefined) {
+      res.push(item);
+      item = arr.find(i => i.id === item.next_id);
+    }
+    return res;
+  };
+
   render() {
     const currentIndex =
       this.props.playlist !== undefined &&
@@ -70,18 +83,20 @@ class PlaylistWrapper extends React.Component {
                 </Text>
               </Wrapper>
               <StyledPlaylistWrapper>
-                {this.props.playlist.playlist_items.map((item, index) => (
-                  <PlaylistItem
-                    entry={item.entry}
-                    playlistId={this.props.playlist.id}
-                    order={
-                      item.entry.id === this.props.entryId
-                        ? undefined
-                        : index + 1
-                    }
-                    key={item.id}
-                  />
-                ))}
+                {this.linkSort(this.props.playlist.playlist_items).map(
+                  (item, index) => (
+                    <PlaylistItem
+                      entry={item.entry}
+                      playlistId={this.props.playlist.id}
+                      order={
+                        item.entry.id === this.props.entryId
+                          ? undefined
+                          : index + 1
+                      }
+                      key={item.id}
+                    />
+                  )
+                )}
               </StyledPlaylistWrapper>
             </Wrapper>
           )
