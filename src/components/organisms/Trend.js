@@ -14,13 +14,17 @@ const StyledTrend = styled.div`
 `;
 
 class Trend extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     const initialPage = Number(sessionStorage.getItem(TREND_PAGE)) || 1;
-    this.props.getTrend(initialPage);
-    this.props.preloadTrend(initialPage);
     this.state = {
       initialPage: initialPage
     };
+  }
+
+  componentWillMount() {
+    this.props.getTrend(this.state.initialPage);
+    this.props.preloadTrend(this.state.initialPage);
   }
 
   handlePageChange = (page) => {
