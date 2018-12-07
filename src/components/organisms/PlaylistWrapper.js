@@ -14,6 +14,7 @@ const StyledPlaylistWrapper = styled(Wrapper)`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding: 1.2rem 1.2rem 0.2rem 1rem;
 `;
 
 class PlaylistWrapper extends React.Component {
@@ -38,23 +39,36 @@ class PlaylistWrapper extends React.Component {
               dir="column"
               css={`
                 margin-left: 2rem;
-                padding: 0.2rem 1.2rem 0.2rem 1rem;
+                border-radius: 3px;
+                border-top: 4px solid
+                  ${palette[colors.organisms.PlaylistWrapper.Border]};
                 background-color: ${palette[
                 colors.organisms.PlaylistWrapper.Background
               ]};
                 ${elevate(2)};
               `}
             >
-              <Text size="M" margin="10px 0 3px 0">
-                プレイリスト
-              </Text>
-              <Text size="L" margin="3px 0 3px 0">
-                {this.props.playlist.name}
-              </Text>
-              <Text size="M" margin="0 0 18px 0">
-                {currentIndex + 1 + " "}/
-                {" " + this.props.playlist.playlist_items.length}
-              </Text>
+              <Wrapper
+                dir="column"
+                css={`
+                  width: 100%;
+                  border-radius: 3px 3px 0 0;
+                  background-color: ${palette[
+                  colors.organisms.PlaylistWrapper.Top.Background
+                ]};
+                `}
+              >
+                <Text size="M" margin="10px 0 3px 0">
+                  プレイリスト
+                </Text>
+                <Text size="L" margin="3px 0 3px 0">
+                  {this.props.playlist.name}
+                </Text>
+                <Text size="M" margin="0 0 14px 0">
+                  {currentIndex + 1 + " "}/
+                  {" " + this.props.playlist.playlist_items.length}
+                </Text>
+              </Wrapper>
               <StyledPlaylistWrapper>
                 {this.props.playlist.playlist_items.map((item, index) => (
                   <PlaylistItem
