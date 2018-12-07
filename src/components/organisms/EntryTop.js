@@ -35,6 +35,40 @@ const StyledEmbed = styled.div`
 `;
 
 class EntryTop extends Component {
+  state = {
+    shouldRedirectNextUrl: undefined
+  };
+
+  componentWillReceiveProps(nextProps) {
+    const currentIndex =
+      nextProps.playlist !== undefined &&
+      nextProps.playlist !== null &&
+      nextProps.playlist.playlist_items.findIndex(
+        item => item.entry.id === nextProps.entry.id
+      );
+    if (
+      nextProps.playlist !== undefined &&
+      nextProps.playlist !== null &&
+      currentIndex !== -1
+    ) {
+      const currentPlaylistItem = nextProps.playlist.playlist_items.find(
+        item => item.entry.id === nextProps.entry.id
+      );
+      const nextPlaylistItem =
+        currentPlaylistItem !== undefined &&
+        nextProps.playlist.playlist_items.find(
+          item => item.id === currentPlaylistItem.next_id
+        );
+      this.setState({
+        shouldRedirectNextUrl:
+          nextPlaylistItem !== undefined &&
+          `/entries/${nextPlaylistItem.entry_id}?list=${
+            nextPlaylistItem.playlist_id
+          }`
+      });
+    }
+  }
+
   bookmarkButton = () =>
     this.props.isSignedIn &&
     component({
@@ -165,6 +199,7 @@ class EntryTop extends Component {
     const entryUrl = `${config.frontend_base_url}/entries/${
       this.props.entry.id
     }`;
+
     return (
       <Wrapper>
         <Wrapper
@@ -193,6 +228,7 @@ class EntryTop extends Component {
                   thumbnail_url={this.props.entry.thumbnail_url}
                   alt={this.props.entry.title}
                   width="100%"
+                  shouldRedirectNextUrl={this.state.shouldRedirectNextUrl}
                 />
               </StyledEmbed>
             </Wrapper>
@@ -264,5 +300,6 @@ class EntryTop extends Component {
 }
 
 export default connect(store => ({
-  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
+  playlist: store.playlists.playlist
 }))(EntryTop);
