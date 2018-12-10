@@ -13,8 +13,7 @@ class Playlists extends Component {
   render() {
     return (
       <>
-        {this.props.playlists !== undefined &&
-        this.props.playlists.length !== 0 ? (
+        {this.props.playlists !== undefined ? (
           <>
             <Wrapper dir="column" css="padding-bottom: 20px;">
               {this.props.playlists.map(playlist => (
@@ -24,9 +23,9 @@ class Playlists extends Component {
               ))}
             </Wrapper>
           </>
-          ) : (
-            <LoadingIcon />
-          )}
+        ) : (
+          <LoadingIcon />
+        )}
       </>
     );
   }
