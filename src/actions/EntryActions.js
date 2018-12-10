@@ -17,7 +17,7 @@ export const POST_ENTRY_FAILURE = "POST_ENTRY_FAILURE";
 export const PRELOAD_ENTRIES = "PRELOAD_ENTRIES";
 export const SET_ENTRY_BOOKMARKED = "SET_ENTRY_BOOKMARKED";
 
-export const preloadTrend = (page=1) => dispatch => {
+export const preloadTrend = (page = 1) => dispatch => {
   return axios
     .get(`${config.backend_api_url}/trend/preload?page=${String(page)}`)
     .then(res => {

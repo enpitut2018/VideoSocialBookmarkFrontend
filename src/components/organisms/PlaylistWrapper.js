@@ -9,11 +9,22 @@ import styled from "styled-components";
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
 import PlaylistPlayIcon from "../../assets/images/material-icon/baseline-playlist_play-24px.svg";
+import SkipNextIcon from "../../assets/images/material-icon/baseline-skip_next-24px.svg";
+import SkipPreviousIcon from "../../assets/images/material-icon/baseline-skip_previous-24px.svg";
+import elevate from "../../theme/shadows";
+import { withRouter } from "react-router-dom";
 
 const StyledPlaylistWrapper = styled.div`
   padding: 1.2rem 1.2rem 0.2rem 1rem;
   max-height: 600px;
   overflow-y: auto;
+`;
+
+const StyledIconWrapper = styled.div`
+  &:hover {
+    cursor: pointer;
+    ${elevate(4)};
+  }
 `;
 
 class PlaylistWrapper extends React.Component {
@@ -42,6 +53,28 @@ class PlaylistWrapper extends React.Component {
       this.props.playlist.playlist_items.findIndex(
         item => item.entry.id === this.props.entryId
       );
+    const currentItem =
+      this.props.playlist !== undefined &&
+      this.props.playlist !== null &&
+      currentIndex !== -1 &&
+      this.props.playlist.playlist_items[currentIndex];
+    const nextItem =
+      currentItem &&
+      currentItem.next_id &&
+      this.props.playlist.playlist_items.find(
+        item => item.id === currentItem.next_id
+      );
+    const prevItem =
+      currentItem &&
+      currentItem.prev_id &&
+      this.props.playlist.playlist_items.find(
+        item => item.id === currentItem.prev_id
+      );
+    const linkSorted =
+      this.props.playlist && this.linkSort(this.props.playlist.playlist_items);
+    const currentOrder = linkSorted && linkSorted.findIndex(
+      item => item.entry.id === this.props.entryId
+    );
     return (
       <>
         {this.props.playlist === undefined ? (
@@ -79,26 +112,66 @@ class PlaylistWrapper extends React.Component {
                     {this.props.playlist.name}
                   </Text>
                 </Wrapper>
-                <Text size="M" margin="0 0 14px 0">
-                  {currentIndex + 1 + " "}/
-                  {" " + this.props.playlist.playlist_items.length}
-                </Text>
+                <Wrapper
+                  css={`
+                    margin: 0 0 14px 0;
+                    justify-content: space-evenly;
+                    width: 100%;
+                  `}
+                >
+                  {prevItem && (
+                    <StyledIconWrapper
+                      onClick={() => {
+                        this.props.history.push(
+                          `/entries/${prevItem.entry_id}?list=${
+                            this.props.playlist.id
+                          }`
+                        );
+                      }}
+                    >
+                      <SkipPreviousIcon
+                        fill={palette[colors.organisms.Header.Icon.Fill]}
+                        width="28px"
+                        height="28px"
+                      />
+                    </StyledIconWrapper>
+                  )}
+                  <Text size="M" margin="0 0 3px 0">
+                    {currentOrder + 1 + " "}/
+                    {" " + this.props.playlist.playlist_items.length}
+                  </Text>
+                  {nextItem && (
+                    <StyledIconWrapper
+                      onClick={() => {
+                        this.props.history.push(
+                          `/entries/${nextItem.entry_id}?list=${
+                            this.props.playlist.id
+                          }`
+                        );
+                      }}
+                    >
+                      <SkipNextIcon
+                        fill={palette[colors.organisms.Header.Icon.Fill]}
+                        width="28px"
+                        height="28px"
+                      />
+                    </StyledIconWrapper>
+                  )}
+                </Wrapper>
               </Wrapper>
               <StyledPlaylistWrapper>
-                {this.linkSort(this.props.playlist.playlist_items).map(
-                  (item, index) => (
-                    <PlaylistItem
-                      entry={item.entry}
-                      playlistId={this.props.playlist.id}
-                      order={
-                        item.entry.id === this.props.entryId
-                          ? undefined
-                          : index + 1
-                      }
-                      key={item.id}
-                    />
-                  )
-                )}
+                {linkSorted.map((item, index) => (
+                  <PlaylistItem
+                    entry={item.entry}
+                    playlistId={this.props.playlist.id}
+                    order={
+                      item.entry.id === this.props.entryId
+                        ? undefined
+                        : index + 1
+                    }
+                    key={item.id}
+                  />
+                ))}
               </StyledPlaylistWrapper>
             </Wrapper>
           )
@@ -108,11 +181,13 @@ class PlaylistWrapper extends React.Component {
   }
 }
 
-export default connect(
-  store => ({
-    state: store.playlists.state,
-    playlist: store.playlists.playlist,
-    error: store.playlists.error
-  }),
-  { getPlaylist }
-)(PlaylistWrapper);
+export default withRouter(
+  connect(
+    store => ({
+      state: store.playlists.state,
+      playlist: store.playlists.playlist,
+      error: store.playlists.error
+    }),
+    { getPlaylist }
+  )(PlaylistWrapper)
+);

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Thumbnail from "./Thumbnail";
+import Thumbnail from "../atoms/Thumbnail";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
-import { Redirect } from "react-router";
+import { withRouter } from "react-router-dom";
 
 const IframeWrapper = styled(Wrapper)`
   position: relative;
@@ -22,52 +22,66 @@ const StyledIframe = styled.iframe`
   height: 100%;
 `;
 
-export default class Embed extends Component {
-  state = {
-    shouldRedirectToNext: false
+class Embed extends Component {
+  skipNext = () => {
+    if (this.props.playlist === undefined || this.props.playlist === null) {
+      return;
+    }
+    const currentItem = this.props.playlist.playlist_items.find(
+      item => item.entry.id === this.props.entry.id
+    );
+    if (currentItem === undefined) {
+      return;
+    }
+    const nextItem = this.props.playlist.playlist_items.find(
+      item => item.id === currentItem.next_id
+    );
+    if (nextItem === undefined) {
+      return;
+    }
+    this.props.history.push(
+      `/entries/${nextItem.entry_id}?list=${this.props.playlist.id}`
+    );
   };
   componentDidUpdate() {
-    const isPlaylistItem = this.props.shouldRedirectNextUrl !== undefined;
-    if (isPlaylistItem) {
-      const provider = this.props.provider;
-      switch (provider) {
-      case "nicovideo": {
-        // Listen player stopped message
-        window.addEventListener("message", e => {
-          if (e.origin === "https://embed.nicovideo.jp") {
-            const playerStopped =
-                e.data.eventName === "playerStatusChange" &&
-                e.data.data.playerStatus === 4;
-            const playerLoaded = e.data.eventName === "loadComplete";
-            if (playerLoaded) {
-              // Set autoplay
-              const player = document.getElementById("embed");
-              const origin = "https://embed.nicovideo.jp";
-              const playMessage = {
-                sourceConnectorType: 1,
-                playerId: "player", // String. not Integer.
-                eventName: "play"
-              };
-              player.contentWindow.postMessage(playMessage, origin);
-            }
-            if (playerStopped) {
-              this.setState({ shouldRedirectToNext: true });
-            }
+    const provider = this.props.provider;
+    switch (provider) {
+    case "nicovideo": {
+      // Listen player stopped message
+      window.addEventListener("message", e => {
+        if (e.origin === "https://embed.nicovideo.jp") {
+          const playerStopped =
+              e.data.eventName === "playerStatusChange" &&
+              e.data.data.playerStatus === 4;
+          const playerLoaded = e.data.eventName === "loadComplete";
+          if (playerLoaded) {
+            // Set autoplay
+            const player = document.getElementById("embed");
+            const origin = "https://embed.nicovideo.jp";
+            const playMessage = {
+              sourceConnectorType: 1,
+              playerId: "player", // String. not Integer.
+              eventName: "play"
+            };
+            player.contentWindow.postMessage(playMessage, origin);
           }
-        });
-        break;
-      }
-      default: {
-        break;
-      }
-      }
+          if (playerStopped) {
+            this.skipNext();
+          }
+        }
+      });
+      break;
+    }
+    default: {
+      break;
+    }
     }
   }
   genEmbed = () => {
     const provider = this.props.provider;
     const id = this.props.video_id;
     const title = this.props.title;
-    const autoplay = this.state.isPlaylistItem;
+    const autoplay = this.props.playlist !== undefined;
     switch (provider) {
     case "youtube":
       return (
@@ -122,23 +136,22 @@ export default class Embed extends Component {
     }
   };
   render() {
-    const Embed = this.genEmbed();
+    const embed = this.genEmbed();
     return (
       <>
-        {this.state.shouldRedirectToNext && (
-          <Redirect to={this.props.shouldRedirectNextUrl} />
-        )}
-        {Embed !== null ? (
-          Embed
-        ) : (
+        {embed === null ? (
           <Thumbnail
             provider={this.props.provider}
             width={this.props.width}
             src={this.props.thumbnail_url}
             title={this.props.title}
           />
+        ) : (
+          embed
         )}
       </>
     );
   }
 }
+
+export default withRouter(Embed);
