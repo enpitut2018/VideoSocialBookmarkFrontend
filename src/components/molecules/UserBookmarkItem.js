@@ -13,7 +13,7 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  margin: 2px 0;
+  margin: 4px 0;
 
   ${AnkerStyle};
 
@@ -87,7 +87,7 @@ export default class UserBookmarkItem extends Component {
               {component({
                 XL: (
                   <>
-                    <Text level="L" margin="0" css={titleStyle}>
+                    <Text size="L" margin="0" css={titleStyle}>
                       {this.props.bookmark.entry.title}
                     </Text>
                   </>

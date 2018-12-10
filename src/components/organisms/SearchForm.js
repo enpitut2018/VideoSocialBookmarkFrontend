@@ -14,7 +14,6 @@ const SearchButton = styled(Button)`
   align-items: center;
   filter: none;
   height: 40px;
-  width: 70px;
 `;
 
 const IconWrapper = styled.div`

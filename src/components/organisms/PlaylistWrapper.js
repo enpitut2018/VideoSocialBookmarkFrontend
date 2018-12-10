@@ -8,13 +8,12 @@ import PlaylistItem from "../molecules/PlaylistItem";
 import styled from "styled-components";
 import colors from "../../theme/colors";
 import palette from "../../theme/palette";
-import elevate from "../../theme/shadows";
+import PlaylistPlayIcon from "../../assets/images/material-icon/baseline-playlist_play-24px.svg";
 
-const StyledPlaylistWrapper = styled(Wrapper)`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+const StyledPlaylistWrapper = styled.div`
   padding: 1.2rem 1.2rem 0.2rem 1rem;
+  max-height: 600px;
+  overflow-y: auto;
 `;
 
 class PlaylistWrapper extends React.Component {
@@ -54,12 +53,9 @@ class PlaylistWrapper extends React.Component {
               css={`
                 margin-left: 2rem;
                 border-radius: 3px;
-                border-top: 4px solid
-                  ${palette[colors.organisms.PlaylistWrapper.Border]};
                 background-color: ${palette[
                 colors.organisms.PlaylistWrapper.Background
               ]};
-                ${elevate(2)};
               `}
             >
               <Wrapper
@@ -70,14 +66,19 @@ class PlaylistWrapper extends React.Component {
                   background-color: ${palette[
                   colors.organisms.PlaylistWrapper.Top.Background
                 ]};
+                  padding-top: 0.2rem;
                 `}
               >
-                <Text size="M" margin="10px 0 3px 0">
-                  プレイリスト
-                </Text>
-                <Text size="L" margin="3px 0 3px 0">
-                  {this.props.playlist.name}
-                </Text>
+                <Wrapper>
+                  <PlaylistPlayIcon
+                    fill={palette[colors.organisms.Header.Icon.Fill]}
+                    width="28px"
+                    height="28px"
+                  />
+                  <Text size="L" margin="10px 0 13px 0">
+                    {this.props.playlist.name}
+                  </Text>
+                </Wrapper>
                 <Text size="M" margin="0 0 14px 0">
                   {currentIndex + 1 + " "}/
                   {" " + this.props.playlist.playlist_items.length}

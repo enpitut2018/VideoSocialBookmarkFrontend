@@ -117,8 +117,8 @@
       "Fill": "Black03"
     },
     "PlaylistWrapper": {
-      "Background": "Black07",
-      "Top": { "Background": "White00" },
+      "Background": "Black09",
+      "Top": { "Background": "Black07" },
       "Border": "Blue00"
     },
     "URLSubmitForm": {},

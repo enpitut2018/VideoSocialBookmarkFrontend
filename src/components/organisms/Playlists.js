@@ -15,7 +15,12 @@ class Playlists extends Component {
       <>
         {this.props.playlists !== undefined ? (
           <>
-            <Wrapper dir="column" css="padding-bottom: 20px;">
+            <Wrapper
+              dir="column"
+              css={`
+                padding-bottom: 20px;
+              `}
+            >
               {this.props.playlists.map(playlist => (
                 <>
                   <PlaylistOverview playlist={playlist} key={playlist.id} />

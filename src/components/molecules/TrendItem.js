@@ -16,7 +16,7 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  margin: 2px 0;
+  margin: 4px 0;
 
   ${AnkerStyle};
 
