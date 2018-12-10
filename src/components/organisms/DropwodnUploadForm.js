@@ -36,8 +36,8 @@ export default class DropdownUploadForm extends Component {
             <UploadIcon
               fill={palette[colors.organisms.Header.Icon.Fill]}
               onClick={onClickHandler}
-              width="30px"
-              height="30px"
+              width="28px"
+              height="28px"
             />
           </StyledUploadIconWrapper>
         )}
