@@ -8,7 +8,7 @@ const IframeWrapper = styled(Wrapper)`
   position: relative;
   width: 100%;
   &:before {
-    content:"";
+    content: "";
     display: block;
     padding-top: 56.25%;
   }
@@ -24,21 +24,22 @@ const StyledIframe = styled.iframe`
 
 export default class Embed extends Component {
   state = {
-    shouldRedirectToNext: false,
-  }
-  componentDidUpdate(){
+    shouldRedirectToNext: false
+  };
+  componentDidUpdate() {
     const isPlaylistItem = this.props.shouldRedirectNextUrl !== undefined;
-    if(isPlaylistItem){
+    if (isPlaylistItem) {
       const provider = this.props.provider;
       switch (provider) {
-      case "nicovideo":{
+      case "nicovideo": {
         // Listen player stopped message
-        window.addEventListener("message", (e) => {
+        window.addEventListener("message", e => {
           if (e.origin === "https://embed.nicovideo.jp") {
-            const playerStopped = e.data.eventName === "playerStatusChange" &&
-                                  e.data.data.playerStatus == 4;
+            const playerStopped =
+                e.data.eventName === "playerStatusChange" &&
+                e.data.data.playerStatus === 4;
             const playerLoaded = e.data.eventName === "loadComplete";
-            if(playerLoaded){
+            if (playerLoaded) {
               // Set autoplay
               const player = document.getElementById("embed");
               const origin = "https://embed.nicovideo.jp";
@@ -49,11 +50,15 @@ export default class Embed extends Component {
               };
               player.contentWindow.postMessage(playMessage, origin);
             }
-            if(playerStopped){
-              this.setState({shouldRedirectToNext: true});
+            if (playerStopped) {
+              this.setState({ shouldRedirectToNext: true });
             }
           }
         });
+        break;
+      }
+      default: {
+        break;
       }
       }
     }
@@ -65,11 +70,13 @@ export default class Embed extends Component {
     const autoplay = this.state.isPlaylistItem;
     switch (provider) {
     case "youtube":
-      return(
+      return (
         <IframeWrapper>
           <StyledIframe
             title={title}
-            src={`https://www.youtube.com/embed/${id}?autoplay=${autoplay ? 1 : 0}&origin=https://video-social-bookmark.herokuapp.com`}
+            src={`https://www.youtube.com/embed/${id}?autoplay=${
+              autoplay ? 1 : 0
+            }&origin=https://video-social-bookmark.herokuapp.com`}
             allowFullScreen
             allow="autoplay"
             frameBorder="0"
@@ -77,7 +84,7 @@ export default class Embed extends Component {
         </IframeWrapper>
       );
     case "nicovideo":
-      return(
+      return (
         <IframeWrapper>
           <StyledIframe
             title={title}
@@ -90,7 +97,7 @@ export default class Embed extends Component {
         </IframeWrapper>
       );
     case "dailymotion":
-      return(
+      return (
         <IframeWrapper>
           <StyledIframe
             title={title}
@@ -101,7 +108,7 @@ export default class Embed extends Component {
         </IframeWrapper>
       );
     case "soundcloud":
-      return(
+      return (
         <IframeWrapper>
           <StyledIframe
             title={title}
@@ -114,23 +121,24 @@ export default class Embed extends Component {
       return null;
     }
   };
-  render(){
+  render() {
     const Embed = this.genEmbed();
     return (
-    <>
-      {this.state.shouldRedirectToNext &&
-        <Redirect to={this.props.shouldRedirectNextUrl} />}
-      {Embed !== null ? (
-        Embed
-      ) : (
-        <Thumbnail
-          provider={this.props.provider}
-          width={this.props.width}
-          src={this.props.thumbnail_url}
-          title={this.props.title}
-        />
-      )}
-    </>
+      <>
+        {this.state.shouldRedirectToNext && (
+          <Redirect to={this.props.shouldRedirectNextUrl} />
+        )}
+        {Embed !== null ? (
+          Embed
+        ) : (
+          <Thumbnail
+            provider={this.props.provider}
+            width={this.props.width}
+            src={this.props.thumbnail_url}
+            title={this.props.title}
+          />
+        )}
+      </>
     );
   }
 }
