@@ -72,12 +72,20 @@ export default class PlaylistItem extends Component {
                 this.props.playlistId
               }`}
             >
-              <Thumbnail
-                provider={this.props.entry.provider}
-                src={this.props.entry.thumbnail_url}
-                alt={this.props.entry.title}
-                height="80px"
-              />
+              <Wrapper
+                css={`
+                  width: 120px;
+                  height: 80px;
+                  background: #000;
+                `}
+              >
+                <Thumbnail
+                  provider={this.props.entry.provider}
+                  src={this.props.entry.thumbnail_url}
+                  alt={this.props.entry.title}
+                  width="120px"
+                />
+              </Wrapper>
               <Text css={titleStyle}>{this.props.entry.title}</Text>
             </StyledLink>
           </Wrapper>

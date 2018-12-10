@@ -30,6 +30,7 @@ const PlaylistWrapper = styled(Wrapper)`
 
 const TitleWrapper = styled(Wrapper)`
   margin: auto 1.5rem auto 0.8rem;
+  min-width: 120px;
 `;
 
 const StyledLink = styled(Link)`
@@ -65,7 +66,8 @@ export default class PlaylistOverview extends React.Component {
                   </Text>
                 </Wrapper>
               </TitleWrapper>
-              <PlaylistWrapper dir="row">
+
+              <PlaylistWrapper>
                 {this.props.playlist.playlist_items.map(item => (
                   <PlaylistOverviewItem entry={item.entry} key={item.id} />
                 ))}

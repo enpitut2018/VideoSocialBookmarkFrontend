@@ -92,7 +92,7 @@ class TrendItem extends Component {
               provider={this.props.entry.provider}
               src={this.props.entry.thumbnail_url}
               alt={this.props.entry.title}
-              height="90px"
+              width="160px"
             />
           </StyledThumbnail>
           <StyledWrapper type="right" dir="column">
