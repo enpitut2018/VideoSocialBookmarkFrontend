@@ -6,6 +6,7 @@ import Wrapper from "../atoms/Wrapper";
 import TextInput from "../atoms/TextInput";
 import palette from "../../theme/palette";
 import SearchIcon from "../../assets/images/material-icon/baseline-search-24px.svg";
+import elevate from "../../theme/shadows";
 
 const SearchButton = styled(Button)`
   display: flex;
@@ -13,8 +14,21 @@ const SearchButton = styled(Button)`
   align-items: center;
   filter: none;
   height: 40px;
-  width: 70px;
-  margin: 12px 0 8px 0;
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${elevate(2)};
+
+  &:hover {
+    ${elevate(6)};
+  }
+  &:active {
+    ${elevate(0)};
+  }
 `;
 
 export default class SearchForm extends Component {
@@ -26,6 +40,7 @@ export default class SearchForm extends Component {
         onSubmit={this.props.submit}
         css={`
           height: 58px;
+          background: ${palette["White00"]};
 
           &:hover {
             border-bottom: 2px solid ${palette["Blue00"]};
@@ -47,18 +62,24 @@ export default class SearchForm extends Component {
               onFocus={() => this.setState({ onFocus: true })}
               onBlur={() => this.setState({ onFocus: false })}
               css={`
-                padding: 0.8rem 0.5rem 0.5rem;
+                padding: 0.5rem;
                 border-radius: 3px;
                 filter: none;
-                height: 100%;
-                line-height: 100%;
+                background: ${palette["White00"]};
                 width: 310px;
-                margin: 0px 10px;
               `}
               required
             />
-            <SearchButton type="submit">
-              <SearchIcon fill={palette["Black06"]} />
+            <SearchButton
+              type="submit"
+              mode="Light"
+              css={`
+                background: ${palette["White00"]};
+              `}
+            >
+              <IconWrapper>
+                <SearchIcon fill={palette["Black06"]} />
+              </IconWrapper>
             </SearchButton>
           </Wrapper>
         )}

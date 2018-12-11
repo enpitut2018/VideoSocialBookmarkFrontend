@@ -27,7 +27,7 @@ class Trend extends Component {
     this.props.preloadTrend(this.state.initialPage);
   }
 
-  handlePageChange = (page) => {
+  handlePageChange = page => {
     this.props.getTrend(page);
     this.props.preloadTrend(page);
   };
@@ -36,7 +36,7 @@ class Trend extends Component {
     return (
       <StyledTrend>
         <Wrapper dir="column">
-          <Text size="L" margin="10px 0 13px 0">
+          <Text size="L" margin="10px 0 15px 0">
             急上昇
           </Text>
           <Wrapper dir="column">
@@ -49,13 +49,13 @@ class Trend extends Component {
             ) : (
               <LoadingIcon />
             )}
-            {this.props.trend &&
+            {this.props.trend && (
               <Pagination
                 initialPage={this.state.initialPage}
                 pageCount={this.props.trend.page_count}
                 onPageChange={this.handlePageChange}
               />
-            }
+            )}
           </Wrapper>
         </Wrapper>
       </StyledTrend>

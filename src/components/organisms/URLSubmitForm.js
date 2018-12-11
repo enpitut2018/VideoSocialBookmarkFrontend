@@ -77,7 +77,7 @@ SNSでシェアしますか？`}
       />
     ) : (
       <StyledWrapper dir="column">
-        <Text size="L" margin="10px 0">
+        <Text size="L" margin="5px">
           動画をブックマーク
         </Text>
         <Form
@@ -87,19 +87,25 @@ SNSでシェアしますか？`}
             <>
               <LabeledInput
                 name="url"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.2rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     URL
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextInput
-                    placeholder="URL"
                     handleChange={this.handleUrlChange}
                     name="url"
                     width="calc(100% - 52px)"
                     submit={this.submit}
                     value={this.state.url}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     required
                   />
                 )}
@@ -108,19 +114,25 @@ SNSでシェアしますか？`}
               />
               <LabeledInput
                 name="comment"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.2rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     コメント（任意）
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextArea
-                    placeholder="コメント（任意）"
                     handleChange={this.handleCommentChange}
                     name="comment"
                     width="calc(100% - 52px)"
                     submit={this.submit}
                     value={this.state.comment}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                   />
                 )}
                 value={this.state.comment}

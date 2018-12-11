@@ -85,12 +85,10 @@ class Header extends React.Component {
         />
 
         {this.props.isSignedIn ? (
-          <>
-            <Wrapper type="right">
-              <DropdownUploadForm />
-              <DropdownMyMenu url={this.props.url} />
-            </Wrapper>
-          </>
+          <RightContentsWrapper type="right">
+            <DropdownUploadForm />
+            <DropdownMyMenu url={this.props.url} />
+          </RightContentsWrapper>
         ) : (
           <RightContentsWrapper type="right">
             <StyledTextLink to="/login">

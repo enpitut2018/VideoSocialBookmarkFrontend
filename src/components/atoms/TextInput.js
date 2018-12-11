@@ -61,6 +61,8 @@ export default class TextInput extends React.Component {
         {...this.props}
         value={this.props.value}
         onChange={this.props.handleChange}
+        onFocus={this.props.handleFocus}
+        onBlur={this.props.handleBlur}
         placeholder={this.props.placeholder}
         onKeyDown={e => {
           if (
