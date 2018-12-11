@@ -72,9 +72,9 @@ class PlaylistWrapper extends React.Component {
       );
     const linkSorted =
       this.props.playlist && this.linkSort(this.props.playlist.playlist_items);
-    const currentOrder = linkSorted && linkSorted.findIndex(
-      item => item.entry.id === this.props.entryId
-    );
+    const currentOrder =
+      linkSorted &&
+      linkSorted.findIndex(item => item.entry.id === this.props.entryId);
     return (
       <>
         {this.props.playlist === undefined ? (
@@ -119,44 +119,44 @@ class PlaylistWrapper extends React.Component {
                     width: 100%;
                   `}
                 >
-                  {prevItem && (
-                    <StyledIconWrapper
-                      onClick={() => {
-                        this.props.history.push(
-                          `/entries/${prevItem.entry_id}?list=${
-                            this.props.playlist.id
-                          }`
-                        );
-                      }}
-                    >
+                  <StyledIconWrapper
+                    onClick={() => {
+                      this.props.history.push(
+                        `/entries/${prevItem.entry_id}?list=${
+                          this.props.playlist.id
+                        }`
+                      );
+                    }}
+                  >
+                    {prevItem && (
                       <SkipPreviousIcon
                         fill={palette[colors.organisms.Header.Icon.Fill]}
                         width="28px"
                         height="28px"
                       />
-                    </StyledIconWrapper>
-                  )}
+                    )}
+                  </StyledIconWrapper>
                   <Text size="M" margin="0 0 3px 0">
                     {currentOrder + 1 + " "}/
                     {" " + this.props.playlist.playlist_items.length}
                   </Text>
-                  {nextItem && (
-                    <StyledIconWrapper
-                      onClick={() => {
-                        this.props.history.push(
-                          `/entries/${nextItem.entry_id}?list=${
-                            this.props.playlist.id
-                          }`
-                        );
-                      }}
-                    >
+                  <StyledIconWrapper
+                    onClick={() => {
+                      this.props.history.push(
+                        `/entries/${nextItem.entry_id}?list=${
+                          this.props.playlist.id
+                        }`
+                      );
+                    }}
+                  >
+                    {nextItem && (
                       <SkipNextIcon
                         fill={palette[colors.organisms.Header.Icon.Fill]}
                         width="28px"
                         height="28px"
                       />
-                    </StyledIconWrapper>
-                  )}
+                    )}
+                  </StyledIconWrapper>
                 </Wrapper>
               </Wrapper>
               <StyledPlaylistWrapper>
