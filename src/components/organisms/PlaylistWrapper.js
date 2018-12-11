@@ -106,7 +106,7 @@ class PlaylistWrapper extends React.Component {
                   background-color: ${palette[
                   colors.organisms.PlaylistWrapper.Top.Background
                 ]};
-                  padding-top: 0.2rem;
+                  padding-top: 0.6rem;
                 `}
               >
                 <Wrapper>
