@@ -35,7 +35,7 @@ class Entry extends Component {
             Video Social Bookmark
             {this.props.hasLoaded ? " | " + this.props.entry.title : ""}
           </title>
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="twitter:card" content="summary_large_image" />
           <meta property="og:url" content={entryUrl} />
           <meta
             property="og:title"

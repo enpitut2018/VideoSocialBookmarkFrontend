@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
-import Embed from "../atoms/Embed";
+import Embed from "../molecules/Embed";
 import Text from "../atoms/Text";
 import { component } from "../mediaQuery";
 import { style } from "../mediaQuery";
@@ -35,40 +35,6 @@ const StyledEmbed = styled.div`
 `;
 
 class EntryTop extends Component {
-  state = {
-    shouldRedirectNextUrl: undefined
-  };
-
-  componentWillReceiveProps(nextProps) {
-    const currentIndex =
-      nextProps.playlist !== undefined &&
-      nextProps.playlist !== null &&
-      nextProps.playlist.playlist_items.findIndex(
-        item => item.entry.id === nextProps.entry.id
-      );
-    if (
-      nextProps.playlist !== undefined &&
-      nextProps.playlist !== null &&
-      currentIndex !== -1
-    ) {
-      const currentPlaylistItem = nextProps.playlist.playlist_items.find(
-        item => item.entry.id === nextProps.entry.id
-      );
-      const nextPlaylistItem =
-        currentPlaylistItem !== undefined &&
-        nextProps.playlist.playlist_items.find(
-          item => item.id === currentPlaylistItem.next_id
-        );
-      this.setState({
-        shouldRedirectNextUrl:
-          nextPlaylistItem !== undefined &&
-          `/entries/${nextPlaylistItem.entry_id}?list=${
-            nextPlaylistItem.playlist_id
-          }`
-      });
-    }
-  }
-
   bookmarkButton = () =>
     this.props.isSignedIn &&
     component({
@@ -228,7 +194,8 @@ class EntryTop extends Component {
                   thumbnail_url={this.props.entry.thumbnail_url}
                   alt={this.props.entry.title}
                   width="100%"
-                  shouldRedirectNextUrl={this.state.shouldRedirectNextUrl}
+                  playlist={this.props.playlist}
+                  entry={this.props.entry}
                 />
               </StyledEmbed>
             </Wrapper>

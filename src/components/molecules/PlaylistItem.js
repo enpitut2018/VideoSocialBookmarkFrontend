@@ -7,25 +7,23 @@ import Wrapper from "../atoms/Wrapper";
 import Text from "../atoms/Text";
 
 const PlaylistItemWrapper = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 `;
 
 const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  align-items: flex-start;
 
-  margin: 2px 0;
+  margin: 4px 0;
 
   ${AnkerStyle};
 `;
 
-const StyledThumbnail = styled.div``;
-
 const titleStyle = `
   width: 160px;
   margin: 0;
+  margin-left: 0.5rem;
   overflow: hidden;
   white-space: normal;
   -webkit-box-orient: vertical;
@@ -36,10 +34,10 @@ const titleStyle = `
   display: -moz-box;
   display: -o-box;
   display: -ms-box;
-  -webkit-line-clamp: 2;
-  -moz-line-clamp: 2;
-  -o-line-clamp: 2;
-  -ms-line-clamp: 2;
+  -webkit-line-clamp: 3;
+  -moz-line-clamp: 3;
+  -o-line-clamp: 3;
+  -ms-line-clamp: 3;
 `;
 
 export default class PlaylistItem extends Component {
@@ -48,25 +46,49 @@ export default class PlaylistItem extends Component {
       <PlaylistItemWrapper>
         <Wrapper>
           {this.props.order === undefined ? (
-            <Text>▶</Text>
+            <Text
+              css={`
+                margin-left: 0.1rem;
+                margin-right: 0.6rem;
+                width: 1rem;
+              `}
+            >
+              ▶
+            </Text>
           ) : (
-            <Text>{this.props.order}</Text>
+            <Text
+              css={`
+                margin-left: 0.1rem;
+                margin-right: 0.6rem;
+                width: 1rem;
+              `}
+            >
+              {this.props.order}
+            </Text>
           )}
-          <StyledThumbnail>
+          <Wrapper>
             <StyledLink
               to={`/entries/${this.props.entry.id}?list=${
                 this.props.playlistId
               }`}
             >
-              <Thumbnail
-                provider={this.props.entry.provider}
-                src={this.props.entry.thumbnail_url}
-                alt={this.props.entry.title}
-                height="90px"
-              />
+              <Wrapper
+                css={`
+                  width: 120px;
+                  height: 80px;
+                  background: #000;
+                `}
+              >
+                <Thumbnail
+                  provider={this.props.entry.provider}
+                  src={this.props.entry.thumbnail_url}
+                  alt={this.props.entry.title}
+                  width="120px"
+                />
+              </Wrapper>
               <Text css={titleStyle}>{this.props.entry.title}</Text>
             </StyledLink>
-          </StyledThumbnail>
+          </Wrapper>
         </Wrapper>
       </PlaylistItemWrapper>
     );

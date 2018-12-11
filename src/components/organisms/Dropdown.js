@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-// import Wrapper from "../atoms/Wrapper";
 import Card from "../atoms/Card";
 
 import colors from "../../theme/colors.json";
@@ -22,7 +21,6 @@ const StyledWrapper = styled(Card)`
 const StyledDropdown = styled.div`
   position: relative;
   z-index: 10;
-  cursor: pointer;
 
   display: flex;
   flex-direction: column;

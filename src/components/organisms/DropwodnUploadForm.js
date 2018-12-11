@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
 import DropdownItem from "../molecules/DropdownItem";
+import Text from "../atoms/Text";
 import URLSubmitForm from "../organisms/URLSubmitForm";
 import UploadIcon from "../../assets/images/material-icon/baseline-cloud_upload-24px.svg";
 import elevate from "../../theme/shadows";
@@ -15,7 +16,6 @@ const StyledUploadIconWrapper = styled.div`
   align-items: center;
 
   height: 53px;
-  width: 48px;
   margin: auto;
 
   ${elevate(2)};
@@ -32,13 +32,20 @@ export default class DropdownUploadForm extends Component {
     return (
       <Dropdown
         renderHeader={onClickHandler => (
-          <StyledUploadIconWrapper>
+          <StyledUploadIconWrapper onClick={onClickHandler}>
             <UploadIcon
               fill={palette[colors.organisms.Header.Icon.Fill]}
-              onClick={onClickHandler}
-              width="30px"
-              height="30px"
+              width="28px"
+              height="28px"
             />
+            <Text
+              size="M"
+              css={`
+                user-select: none;
+              `}
+            >
+              新規ブックマーク
+            </Text>
           </StyledUploadIconWrapper>
         )}
         css={`
@@ -53,6 +60,7 @@ export default class DropdownUploadForm extends Component {
         <DropdownItem
           width="350px"
           css={`
+            cursor: default;
             background-color: ${palette[
         colors.organisms.Header.URLSubmitForm.Background
       ]};
