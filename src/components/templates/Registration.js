@@ -134,7 +134,7 @@ class Registration extends Component {
 
               <Button mode="Primary" type="submit">
                 <Text fontWeight={"bold"} color={palette["White00"]}>
-                  送信
+                  登録
                 </Text>
               </Button>
             </>
