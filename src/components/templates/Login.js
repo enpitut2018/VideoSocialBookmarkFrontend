@@ -49,15 +49,21 @@ class Login extends Component {
             <>
               <LabeledInput
                 name="email"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.5rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     メールアドレス
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextInput
-                    placeholder="メールアドレス"
                     handleChange={this.handleEmailChange}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     name="email"
                     value={this.state.email}
                     required
@@ -67,16 +73,22 @@ class Login extends Component {
               />
               <LabeledInput
                 name="password"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.5rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     パスワード
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextInput
                     type="password"
-                    placeholder="パスワード"
                     handleChange={this.handlePasswordChange}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     name="password"
                     value={this.state.password}
                     required

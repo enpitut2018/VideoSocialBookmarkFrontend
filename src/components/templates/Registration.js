@@ -59,17 +59,23 @@ class Registration extends Component {
             <>
               <LabeledInput
                 name="email"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.5rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     メールアドレス
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextInput
-                    placeholder="メールアドレス"
                     handleChange={this.handleEmailChange}
                     name="email"
                     value={this.state.email}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     required
                   />
                 )}
@@ -77,36 +83,48 @@ class Registration extends Component {
               />
               <LabeledInput
                 name="name"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.5rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     名前
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextInput
-                    placeholder="名前"
                     handleChange={this.handleNameChange}
                     name="name"
                     value={this.state.name}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     required
                   />
                 )}
-                value={this.state.email}
+                value={this.state.name}
               />
               <LabeledInput
                 name="password"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.5rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     パスワード
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextInput
                     type="password"
-                    placeholder="パスワード"
                     handleChange={this.handlePasswordChange}
                     name="password"
                     value={this.state.password}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     required
                   />
                 )}
@@ -114,18 +132,24 @@ class Registration extends Component {
               />
               <LabeledInput
                 name="passwordConfirmation"
-                label={() => (
-                  <Text size="S" margin="0.5rem 0 0 26px">
+                label={isFocused => (
+                  <Text
+                    size="S"
+                    margin="0.5rem 0 0 26px"
+                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    css="transition: all 0.2s ease-in-out;"
+                  >
                     パスワードの確認
                   </Text>
                 )}
-                input={() => (
+                input={(handleFocus, handleBlur) => (
                   <TextInput
                     type="password"
-                    placeholder="パスワードの確認"
                     handleChange={this.handlePasswordConfirmationChange}
                     name="passwordConfirmation"
                     value={this.state.passwordConfirmation}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     required
                   />
                 )}

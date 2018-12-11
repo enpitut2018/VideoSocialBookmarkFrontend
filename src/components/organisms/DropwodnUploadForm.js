@@ -38,7 +38,14 @@ export default class DropdownUploadForm extends Component {
               width="28px"
               height="28px"
             />
-            <Text size="M">新規ブックマーク</Text>
+            <Text
+              size="M"
+              css={`
+                user-select: none;
+              `}
+            >
+              新規ブックマーク
+            </Text>
           </StyledUploadIconWrapper>
         )}
         css={`
@@ -53,6 +60,7 @@ export default class DropdownUploadForm extends Component {
         <DropdownItem
           width="350px"
           css={`
+            cursor: default;
             background-color: ${palette[
         colors.organisms.Header.URLSubmitForm.Background
       ]};

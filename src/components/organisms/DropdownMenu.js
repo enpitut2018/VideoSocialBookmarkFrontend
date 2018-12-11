@@ -21,7 +21,7 @@ const StyledWrapper = styled(Card)`
 const StyledDropdownMenu = styled.div`
   position: relative;
   z-index: 10;
-  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
