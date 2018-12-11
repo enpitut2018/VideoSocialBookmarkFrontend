@@ -18,12 +18,6 @@ export default class Entry extends Component {
               {this.props.isSignedIn && (
                 <CommentSubmitForm entryId={this.props.entry.id} />
               )}
-              {this.props.entry && (
-                <Pagination
-                  pageCount={this.props.entry.comments_page_count}
-                  onPageChange={this.props.handlePageChange}
-                />
-              )}
               {this.props.entry.comments &&
                 this.props.entry.comments.map(
                   comment =>
@@ -31,6 +25,12 @@ export default class Entry extends Component {
                       <EntryItem comment={comment} key={comment.id} />
                     )
                 )}
+              {this.props.entry && (
+                <Pagination
+                  pageCount={this.props.entry.comments_page_count}
+                  onPageChange={this.props.handlePageChange}
+                />
+              )}
             </Wrapper>
             <PlaylistWrapper
               playlistId={this.props.playlistId}

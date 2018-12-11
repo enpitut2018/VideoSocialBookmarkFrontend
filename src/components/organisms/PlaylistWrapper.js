@@ -11,6 +11,7 @@ import palette from "../../theme/palette";
 import PlaylistPlayIcon from "../../assets/images/material-icon/baseline-playlist_play-24px.svg";
 import SkipNextIcon from "../../assets/images/material-icon/baseline-skip_next-24px.svg";
 import SkipPreviousIcon from "../../assets/images/material-icon/baseline-skip_previous-24px.svg";
+import ReplayIcon from "../../assets/images/material-icon/baseline-replay-24px.svg";
 import elevate from "../../theme/shadows";
 import { withRouter } from "react-router-dom";
 
@@ -75,6 +76,12 @@ class PlaylistWrapper extends React.Component {
     const currentOrder =
       linkSorted &&
       linkSorted.findIndex(item => item.entry.id === this.props.entryId);
+    const firstItem =
+      this.props.playlist !== undefined &&
+      this.props.playlist !== null &&
+      this.props.playlist.playlist_items.find(
+        item => item.entry.prev_id === undefined
+      );
     return (
       <>
         {this.props.playlist === undefined ? (
@@ -143,14 +150,20 @@ class PlaylistWrapper extends React.Component {
                   <StyledIconWrapper
                     onClick={() => {
                       this.props.history.push(
-                        `/entries/${nextItem.entry_id}?list=${
-                          this.props.playlist.id
-                        }`
+                        `/entries/${
+                          nextItem ? nextItem.entry_id : firstItem.entry_id
+                        }?list=${this.props.playlist.id}`
                       );
                     }}
                   >
-                    {nextItem && (
+                    {nextItem ? (
                       <SkipNextIcon
+                        fill={palette[colors.organisms.Header.Icon.Fill]}
+                        width="28px"
+                        height="28px"
+                      />
+                    ) : (
+                      <ReplayIcon
                         fill={palette[colors.organisms.Header.Icon.Fill]}
                         width="28px"
                         height="28px"
