@@ -1,10 +1,19 @@
-import { SET_PAGE_ENTRY, SET_POPUP_ENTRY, POPUP_PLAY, POPUP_PAUSE, POPUP_STOP } from "../actions/PopupActions";
+import {
+  SET_PAGE_ENTRY,
+  SET_POPUP_ENTRY,
+  POPUP_PLAY,
+  POPUP_PAUSE,
+  POPUP_STOP,
+  DELETE_PAGE_ENTRY,
+  DELETE_POPUP_ENTRY
+} from "../actions/PopupActions";
 
 const initialState = {
   pageEntry: null,
   popupEntry: null,
   flip: -1,
-  videoStatus: "standBy"
+  pageVideoStatus: "standBy",
+  popupVideoStatus: "standBy"
 };
 
 export default (state = initialState, action) => {
@@ -12,17 +21,17 @@ export default (state = initialState, action) => {
   case POPUP_PLAY:
     return {
       ...state,
-      videoStatus: "playing"
+      [`${action.page_or_popup}VideoStatus`]: "playing"
     };
   case POPUP_PAUSE:
     return {
       ...state,
-      videoStatus: "pausing"
+      [`${action.page_or_popup}VideoStatus`]: "pausing"
     };
   case POPUP_STOP:
     return {
       ...state,
-      videoStatus: "standBy"
+      [`${action.page_or_popup}VideoStatus`]: "standBy"
     };
   case SET_PAGE_ENTRY:
     return {
@@ -34,6 +43,18 @@ export default (state = initialState, action) => {
       ...state,
       popupEntry: action.entry,
       flip: -1 * state.flip
+    };
+  case DELETE_PAGE_ENTRY:
+    return {
+      ...state,
+      pageEntry: null,
+      pageVideoStatus: "standBy"
+    };
+  case DELETE_POPUP_ENTRY:
+    return {
+      ...state,
+      popupEntry: null,
+      popupVideoStatus: "standBy"
     };
   default:
     return state;

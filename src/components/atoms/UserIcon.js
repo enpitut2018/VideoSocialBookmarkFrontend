@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import elevate from "../../theme/shadows";
-import userIcon from "../../assets/images/usericon.svg";
+import DefaultUserIcon from "../../assets/images/material-icon/baseline-account_circle-24px.svg";
+import palette from "../../theme/palette";
+import colors from "../../theme/colors";
 
 const StyledUserIcon = styled.img`
   height: 44px;
@@ -21,11 +23,14 @@ const StyledUserIcon = styled.img`
 
 export default class UserIcon extends Component {
   render() {
-    return <StyledUserIcon
-      src={this.props.url && this.props.url.length !== 0 ?
-        this.props.url : userIcon
-      }
-      alt="User"
-    />;
+    return this.props.url && this.props.url.length !== 0 ? (
+      <StyledUserIcon src={this.props.url} alt="User" />
+    ) : (
+      <DefaultUserIcon
+        fill={palette[colors.organisms.Header.Icon.Fill]}
+        width="32px"
+        height="32px"
+      />
+    );
   }
 }

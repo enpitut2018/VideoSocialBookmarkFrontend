@@ -26,6 +26,7 @@ export default class Embed extends Component {
     const provider = this.props.provider;
     const id = this.props.video_id;
     const title = this.props.title;
+    const embed_id = this.props.embed_id;
     switch (provider) {
     case "youtube":
       return(
@@ -43,7 +44,7 @@ export default class Embed extends Component {
         <IframeWrapper>
           <StyledIframe
             title={title}
-            src={`https://embed.nicovideo.jp/watch/${id}?jsapi=1`}
+            src={`https://embed.nicovideo.jp/watch/${id}?jsapi=1${embed_id ? `&playerId=${embed_id}` : ``}`}
             allowFullScreen
             frameBorder="0"
           />

@@ -15,9 +15,15 @@ import { getUserIcon } from "../../actions/UserActions";
 
 const UserIconWrapper = styled.div`
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 24px;
   margin: 2px 22px;
 `;
@@ -27,13 +33,12 @@ const StyledLink = styled(Link)`
 
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0.8rem 0;
+  justify-content: center;
 `;
 
 class DropdownMyMenu extends React.Component {
   componentWillMount() {
-    if(!this.props.userIconHasLoaded){
+    if (!this.props.userIconHasLoaded) {
       this.props.dispatch(getUserIcon());
     }
   }
@@ -42,9 +47,7 @@ class DropdownMyMenu extends React.Component {
       <DropdownMenu
         renderHeader={() => (
           <UserIconWrapper>
-            {this.props.userIconHasLoaded &&
-              <UserIcon url={this.props.url} />
-            }
+            {this.props.userIconHasLoaded && <UserIcon url={this.props.url} />}
           </UserIconWrapper>
         )}
         css="margin-right: 5px;"
@@ -76,5 +79,5 @@ class DropdownMyMenu extends React.Component {
 
 export default connect(store => ({
   userIconHasLoaded: store.userIcon.hasLoaded,
-  url: store.userIcon.url,
+  url: store.userIcon.url
 }))(DropdownMyMenu);

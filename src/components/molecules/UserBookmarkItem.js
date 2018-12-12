@@ -13,7 +13,7 @@ const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 
-  margin: 2px 0;
+  margin: 4px 0;
 
   ${AnkerStyle};
 
@@ -80,7 +80,7 @@ export default class UserBookmarkItem extends Component {
                 provider={this.props.bookmark.entry.provider}
                 src={this.props.bookmark.entry.thumbnail_url}
                 alt={this.props.bookmark.entry.title}
-                height="90px"
+                width="160px"
               />
             </StyledThumbnail>
             <StyledWrapper type="right" dir="column">

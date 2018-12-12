@@ -9,13 +9,13 @@ class Search extends Component {
     this.props.searchEntry(this.props.match.params.query);
   }
 
-  componentWillReceiveProps(newProps){
-    if(this.props.match.params.query != newProps.match.params.query){
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.params.query !== newProps.match.params.query) {
       this.props.searchEntry(newProps.match.params.query);
     }
   }
 
-  handlePageChange = (page) => {
+  handlePageChange = page => {
     this.props.searchEntry(this.props.match.params.query, page);
   };
 

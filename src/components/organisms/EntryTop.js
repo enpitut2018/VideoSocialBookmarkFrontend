@@ -20,7 +20,8 @@ import {
 import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
 import {
   setPageEntry,
-  setPopupEntry
+  setPopupEntry,
+  deletePageEntry
 } from "../../actions/PopupActions";
 import { setEntryBookmarked } from "../../actions/EntryActions";
 import DropdownPlaylistMenu from "./DropdownPlaylistMenu";
@@ -174,96 +175,108 @@ class EntryTop extends Component {
   }
 
   componentWillUnmount = () => {
-    this.props.dispatch(setPageEntry(null));
-    if(this.props.videoStatus == "playing")
+    this.props.dispatch(deletePageEntry());
+    if(this.props.pageVideoStatus == "playing")
       this.props.dispatch(setPopupEntry(this.props.entry));
   }
 
   render() {
-    const entryUrl =
-      `${config.frontend_base_url}/entries/${this.props.entry.id}`;
+    const entryUrl = `${config.frontend_base_url}/entries/${
+      this.props.entry.id
+    }`;
+
     return (
-      <Wrapper
-        dir="column"
-        css={`
-          ${style({
+      <Wrapper>
+        <Wrapper
+          dir="column"
+          css={`
+            ${style({
         XL: `width: 852px`,
         L: `width: 90vw`,
         M: `width: 90vw`,
         S: `width: 95vw`
       })};
-          margin: auto;
-        `}
-      >
-        <StyledA
-          target="_blank"
-          rel="noopener noreferrer"
-          href={this.props.entry.url}
-        >
-          <Wrapper dir="column">
-            <this.title />
-            <VideoContainer id="popup-container" />
-          </Wrapper>
-        </StyledA>
-
-        <Wrapper
-          css={`
-            margin: 2.1rem 1rem;
-            width: 100%;
-            justify-content: space-between;
+            margin: auto;
           `}
         >
-          <TwitterShareButton
-            url={entryUrl}
-            title={this.props.entry.title}
-            style={{ cursor: "pointer" }}
+          <StyledA
+            target="_blank"
+            rel="noopener noreferrer"
+            href={this.props.entry.url}
           >
-            <TwitterIcon size={48} round />
-          </TwitterShareButton>
-          <FacebookShareButton
-            url={entryUrl}
-            quote={this.props.entry.title}
-            style={{ cursor: "pointer" }}
-          >
-            <FacebookIcon size={48} round />
-          </FacebookShareButton>
-          <RedditShareButton
-            url={entryUrl}
-            title={this.props.entry.title}
-            style={{ cursor: "pointer" }}
-          >
-            <RedditIcon size={48} round />
-          </RedditShareButton>
-          {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
-        </Wrapper>
+            <Wrapper dir="column">
+              <this.title />
+              <VideoContainer id="popup-container" />
+            </Wrapper>
+          </StyledA>
 
-        <Wrapper
-          css={`
-            margin: 1rem;
-            width: 100%;
-            justify-content: space-around;
-            ${style({
+          <Wrapper
+            css={`
+              margin: 2.1rem 1rem;
+              width: 100%;
+              justify-content: space-between;
+            `}
+          >
+            <Wrapper
+              css={`
+                margin: 2.1rem 1rem;
+                width: 100%;
+                justify-content: space-between;
+              `}
+            >
+              <TwitterShareButton
+                url={entryUrl}
+                title={this.props.entry.title}
+                style={{ cursor: "pointer" }}
+              >
+                <TwitterIcon size={48} round />
+              </TwitterShareButton>
+              <FacebookShareButton
+                url={entryUrl}
+                quote={this.props.entry.title}
+                style={{ cursor: "pointer" }}
+              >
+                <FacebookIcon size={48} round />
+              </FacebookShareButton>
+              <RedditShareButton
+                url={entryUrl}
+                title={this.props.entry.title}
+                style={{ cursor: "pointer" }}
+              >
+                <RedditIcon size={48} round />
+              </RedditShareButton>
+              {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
+            </Wrapper>
+
+            <Wrapper
+              css={`
+                margin: 1rem;
+                width: 100%;
+                justify-content: space-around;
+                ${style({
         S: `flex-direction: column`,
         M: `flex-direction: column`,
         L: ``,
         XL: ``
       })};
-          `}
-        >
-          <Wrapper
-            css={`
-              ${style({
+              `}
+            >
+              <Wrapper
+                css={`
+                  ${style({
         S: `flex-direction: column; margin-bottom: 1.6rem;`,
         M: ` margin-bottom: 1.8rem;`,
         L: ``,
         XL: ``
       })};
-            `}
-          >
-            <this.bookmarkLabel />
-            <this.bookmarkButton />
+                `}
+              >
+                <this.bookmarkLabel />
+                <this.bookmarkButton />
+              </Wrapper>
+              <this.addPlaylistButton />
+            </Wrapper>
           </Wrapper>
-          <this.addPlaylistButton />
         </Wrapper>
       </Wrapper>
     );
@@ -272,5 +285,6 @@ class EntryTop extends Component {
 
 export default connect(store => ({
   isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
-  videoStatus: store.popup.videoStatus
+  pageVideoStatus: store.popup.pageVideoStatus,
+  playlist: store.playlists.playlist
 }))(EntryTop);

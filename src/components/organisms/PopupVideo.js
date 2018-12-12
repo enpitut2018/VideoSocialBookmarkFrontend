@@ -6,6 +6,7 @@ import {play, pause, stop} from "../../actions/PopupActions";
 class PopupVideo extends Component {
   genPage = () => {
     const entry = this.props.pageEntry;
+    const key = this.props.flip;
     const container = document.getElementById("popup-container");
     const container_abs_pos = container.getBoundingClientRect();
     const container_pos = {
@@ -15,7 +16,7 @@ class PopupVideo extends Component {
       height: container_abs_pos.height
     };
     return(
-      <div key={this.props.flip} style={{
+      <div key={key} style={{
         position: "absolute",
         ...container_pos
       }}>
@@ -25,6 +26,7 @@ class PopupVideo extends Component {
           thumbnail_url={entry.thumbnail_url}
           alt={entry.title}
           width="100%"
+          embed_id={key.toString()}
         />
       </div>
     );
@@ -32,13 +34,15 @@ class PopupVideo extends Component {
 
   genPopup = () => {
     const entry = this.props.popupEntry;
+    const key = this.props.flip * -1;
     return(
-      <div key={this.props.flip * -1} style={{
+      <div key={key} style={{
         position: "fixed",
         right: 10,
         bottom: 20,
         width: "400px",
-        height: "auto"
+        height: "auto",
+        zIndex: 10
       }}>
         <Embed
           provider={entry.provider}
@@ -46,6 +50,7 @@ class PopupVideo extends Component {
           thumbnail_url={entry.thumbnail_url}
           alt={entry.title}
           width="100%"
+          embed_id={key.toString()}
         />
       </div>
     );
@@ -56,18 +61,14 @@ class PopupVideo extends Component {
       if (e.origin === "https://embed.nicovideo.jp") {
         if(e.data.eventName === "playerStatusChange"){
           const status = e.data.data.playerStatus;
+          const page_or_popup =
+            this.props.flip == e.data.playerId ? "page" : "popup";
           switch(status){
-          case 2: this.props.play(); break;
-          case 3: this.props.pause(); break;
-          case 4: this.props.stop(); break;
+          case 2: this.props.play(page_or_popup); break;
+          case 3: this.props.pause(page_or_popup); break;
+          case 4: this.props.stop(page_or_popup); break;
           }
         }
-        /**
-     * e.data.data
-     * e.data.eventName
-     * e.data.playerId
-     * e.data.sourceConnectorType
-    **/
       }
     });
   }

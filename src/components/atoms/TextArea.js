@@ -41,6 +41,8 @@ export default class TextArea extends React.Component {
         {...this.props}
         value={this.props.value}
         onChange={this.props.handleChange}
+        onFocus={this.props.handleFocus}
+        onBlur={this.props.handleBlur}
         placeholder={this.props.placeholder}
         title={`送信: Ctrl+Enter
 改行: Enter`}

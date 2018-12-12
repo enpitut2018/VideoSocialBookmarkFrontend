@@ -11,13 +11,15 @@ export default class MyPageTemplate extends Component {
     return (
       <BasicPageWrapper>
         <Wrapper dir="column">
-          <Text level="XL">マイプレイリスト</Text>
-          {this.props.hasLoaded && (
-            <Playlists user_id={this.props.user.id} />
-          )}
+          <Text size="L" margin="10px 0 15px 0">
+            マイプレイリスト
+          </Text>
+          {this.props.hasLoaded && <Playlists user_id={this.props.user.id} />}
         </Wrapper>
         <Wrapper dir="column">
-          <Text level="XL">マイブックマーク</Text>
+          <Text size="L" margin="10px 0 15px 0">
+            マイブックマーク
+          </Text>
           {this.props.hasLoaded && (
             <UserBookmarks user_id={this.props.user.id} />
           )}

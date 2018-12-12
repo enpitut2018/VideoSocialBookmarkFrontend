@@ -11,21 +11,19 @@ class Playlists extends Component {
   }
 
   render() {
-    return (
-      <>
-      {this.props.playlists !== undefined &&
-       this.props.playlists.length !== 0 ? (
-          <>
-            <Wrapper dir="column" css="padding-bottom: 20px;">
-              {this.props.playlists.map((playlist) => (
-                <PlaylistOverview playlist={playlist} key={playlist.id} />
-              ))}
-            </Wrapper>
-          </>
-        ) : (
-          <LoadingIcon />
-        )}
-      </>
+    return this.props.playlists !== undefined ? (
+      <Wrapper
+        dir="column"
+        css={`
+          padding-bottom: 20px;
+        `}
+      >
+        {this.props.playlists.map(playlist => (
+          <PlaylistOverview playlist={playlist} key={playlist.id} />
+        ))}
+      </Wrapper>
+    ) : (
+      <LoadingIcon />
     );
   }
 }

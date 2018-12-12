@@ -3,7 +3,7 @@ import ReactPaginate from "react-paginate";
 import "./Pagination.css";
 
 export default class Pagination extends Component {
-  handlePageChange = (data) => {
+  handlePageChange = data => {
     const page = data.selected + 1;
     this.props.onPageChange(page);
   };
@@ -11,8 +11,10 @@ export default class Pagination extends Component {
   render() {
     return (
       <>
-        {this.props.pageCount > 1 &&
+        {this.props.pageCount > 1 && (
           <ReactPaginate
+            initialPage={this.props.initialPage - 1}
+            forcePage={this.props.forcePage - 1 || null}
             pageCount={this.props.pageCount}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
@@ -30,7 +32,7 @@ export default class Pagination extends Component {
             nextLinkClassName={"pagination-a"}
             activeLinkClassName={"pagination-a active"}
           />
-        }
+        )}
       </>
     );
   }

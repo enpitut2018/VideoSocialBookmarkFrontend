@@ -13,9 +13,7 @@ import DropdownMyMenu from "./DropdownMyMenu";
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
 import { style } from "../mediaQuery";
-import Form from "../molecules/Form";
-import TextInput from "../atoms/TextInput";
-import Button from "../atoms/Button";
+import SearchForm from "./SearchForm";
 import { getUserIcon } from "../../actions/UserActions";
 
 const StyledLink = styled(Link)`
@@ -31,11 +29,6 @@ const StyledCard = styled(Card)`
   z-index: 100;
   position: relative;
   margin-bottom: 1rem;
-`;
-
-const SearchButton = styled(Button)`
-  display: block;
-  width: 80px;
 `;
 
 export const StyledTextLink = styled(StyledLink)`
@@ -85,42 +78,17 @@ class Header extends React.Component {
           <Logo />
         </StyledLink>
 
-        <Form
-          onSubmit={this.submit}
-          css=""
-          render={() => (
-            <Wrapper dir="row">
-              <TextInput
-                placeholder=""
-                name="query"
-                width="calc(100% - 52px)"
-                submit={this.submit}
-                value={this.state.query}
-                handleChange={this.handleQueryChange}
-                onClick={e => e.stopPropagation()}
-                css={`
-                  margin: 0;
-                  padding: 0.5rem;
-                  border-radius: 3px;
-                `}
-                required
-              />
-              <SearchButton mode="Primary" type="submit">
-                <Text fontWeight={"bold"} color={palette["White00"]}>
-                  検索
-                </Text>
-              </SearchButton>
-            </Wrapper>
-          )}
+        <SearchForm
+          query={this.state.query}
+          handleQueryChange={this.handleQueryChange}
+          submit={this.submit}
         />
 
         {this.props.isSignedIn ? (
-          <>
-            <Wrapper type="right">
-              <DropdownUploadForm />
-              <DropdownMyMenu url={this.props.url} />
-            </Wrapper>
-          </>
+          <RightContentsWrapper type="right">
+            <DropdownUploadForm />
+            <DropdownMyMenu url={this.props.url} />
+          </RightContentsWrapper>
         ) : (
           <RightContentsWrapper type="right">
             <StyledTextLink to="/login">

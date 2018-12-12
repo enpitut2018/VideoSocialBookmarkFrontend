@@ -5,22 +5,33 @@ import PlaylistOverviewItem from "../molecules/PlaylistOverviewItem";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import AnkerStyle from "../atoms/AnkerStyle";
+import PlaylistPlayIcon from "../../assets/images/material-icon/baseline-playlist_play-24px.svg";
+import { style } from "../mediaQuery";
+import palette from "../../theme/palette";
+import colors from "../../theme/colors";
+import DropdownPlyalistMoreMenu from "./DropdownPlyalistMoreMenu";
 
 const RootWrapper = styled(Wrapper)`
-box-shadow: 0px 1px 1px 1px grey;
-margin: 5px;
-padding-top: 5px;
-width: 90vw;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  justify-content: left;
+
+  ${style({
+    S: `width: 98vw`,
+    M: `width: 90vw`,
+    L: `width: 90vw`,
+    XL: `width: 800px`
+  })};
 `;
 
 const PlaylistWrapper = styled(Wrapper)`
-overflow-x: scroll;
-width: calc(90vw - 52px);
-justify-content: left;
+  overflow-x: scroll;
+  justify-content: left;
 `;
 
 const TitleWrapper = styled(Wrapper)`
-width: calc(20vw);
+  margin: auto 1.5rem auto 0.8rem;
+  min-width: 120px;
 `;
 
 const StyledLink = styled(Link)`
@@ -29,26 +40,61 @@ const StyledLink = styled(Link)`
 
 export default class PlaylistOverview extends React.Component {
   render() {
+    const firstItem = this.props.playlist.playlist_items.find(
+      item => item.prev_id === null
+    );
     return (
-      <>
-        <StyledLink to={"/playlist/" + this.props.playlist.id}>
-          <RootWrapper dir="row">
-            <TitleWrapper>
-              <Text level="L" margin="10px 0 13px 0">
-                { this.props.playlist.name }
-              </Text>
-            </TitleWrapper>
-            <PlaylistWrapper dir="row">
-              {this.props.playlist.playlist_items.map(item => (
-                <PlaylistOverviewItem
-                  entry={item.entry}
-                  key={item.id}
-                />
-              ))}
-            </PlaylistWrapper>
-          </RootWrapper>
-        </StyledLink>
-      </>
+      this.props.playlist.playlist_items.length > 0 && (
+        <RootWrapper
+          css={`
+            align-items: flex-start;
+          `}
+        >
+          <StyledLink
+            to={`/entries/${firstItem.entry.id}?list=${this.props.playlist.id}`}
+          >
+            <RootWrapper
+              dir="row"
+              css={`
+                width: 600px;
+              `}
+            >
+              <TitleWrapper>
+                <Wrapper dir="column">
+                  <Wrapper>
+                    <PlaylistPlayIcon
+                      fill={palette[colors.organisms.Header.Icon.Fill]}
+                      width="28px"
+                      height="28px"
+                    />
+                    <Text size="L" margin="10px 0 13px 0">
+                      {this.props.playlist.name}
+                    </Text>
+                  </Wrapper>
+                  <Text size="M" margin="10px 0 13px 0">
+                    {this.props.playlist.playlist_items.length}本の動画
+                  </Text>
+                </Wrapper>
+              </TitleWrapper>
+
+              <PlaylistWrapper>
+                {this.props.playlist.playlist_items.map(item => (
+                  <PlaylistOverviewItem entry={item.entry} key={item.id} />
+                ))}
+              </PlaylistWrapper>
+            </RootWrapper>
+          </StyledLink>
+
+          <Wrapper
+            css={`
+              margin: 1rem;
+              margin-top: 0.1rem;
+            `}
+          >
+            <DropdownPlyalistMoreMenu playlist={this.props.playlist} />
+          </Wrapper>
+        </RootWrapper>
+      )
     );
   }
 }
