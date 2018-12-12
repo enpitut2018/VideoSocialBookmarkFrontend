@@ -9,6 +9,7 @@ import PlaylistPlayIcon from "../../assets/images/material-icon/baseline-playlis
 import { style } from "../mediaQuery";
 import palette from "../../theme/palette";
 import colors from "../../theme/colors";
+import DropdownPlyalistMoreMenu from "./DropdownPlyalistMoreMenu";
 
 const RootWrapper = styled(Wrapper)`
   border-radius: 2px;
@@ -44,11 +45,20 @@ export default class PlaylistOverview extends React.Component {
     );
     return (
       this.props.playlist.playlist_items.length > 0 && (
-        <>
+        <RootWrapper
+          css={`
+            align-items: flex-start;
+          `}
+        >
           <StyledLink
             to={`/entries/${firstItem.entry.id}?list=${this.props.playlist.id}`}
           >
-            <RootWrapper dir="row">
+            <RootWrapper
+              dir="row"
+              css={`
+                width: 600px;
+              `}
+            >
               <TitleWrapper>
                 <Wrapper dir="column">
                   <Wrapper>
@@ -74,7 +84,16 @@ export default class PlaylistOverview extends React.Component {
               </PlaylistWrapper>
             </RootWrapper>
           </StyledLink>
-        </>
+
+          <Wrapper
+            css={`
+              margin: 1rem;
+              margin-top: 0.1rem;
+            `}
+          >
+            <DropdownPlyalistMoreMenu />
+          </Wrapper>
+        </RootWrapper>
       )
     );
   }
