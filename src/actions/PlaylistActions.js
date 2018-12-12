@@ -176,9 +176,12 @@ export const deletePlaylist = id => dispatch => {
   setAuthKeys();
 
   return axios
-    .delete(`${config.backend_api_url}/playlists/${id}`)
+    .delete(`${config.backend_api_url}/playlists`, {
+      data: { playlist: { id } }
+    })
     .then(_ => {
       dispatch({ type: DELETE_PLAYLIST_SUCCESS });
+      dispatch(getCurrentUserPlaylists());
     })
     .catch(_ => {
       dispatch({ type: DELETE_PLAYLIST_FAILURE, error: "" });
