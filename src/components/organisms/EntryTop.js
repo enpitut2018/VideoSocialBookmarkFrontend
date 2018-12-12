@@ -209,33 +209,39 @@ class EntryTop extends Component {
               <VideoContainer id="popup-container" />
             </Wrapper>
           </StyledA>
+          <Wrapper
+            css={`
+              margin: 2.1rem 1rem;
+              width: 100%;
+              justify-content: space-between;
+            `}
+          >
+            <TwitterShareButton
+              url={entryUrl}
+              title={this.props.entry.title}
+              style={{ cursor: "pointer" }}
+            >
+              <TwitterIcon size={48} round />
+            </TwitterShareButton>
+            <FacebookShareButton
+              url={entryUrl}
+              quote={this.props.entry.title}
+              style={{ cursor: "pointer" }}
+            >
+              <FacebookIcon size={48} round />
+            </FacebookShareButton>
+            <RedditShareButton
+              url={entryUrl}
+              title={this.props.entry.title}
+              style={{ cursor: "pointer" }}
+            >
+              <RedditIcon size={48} round />
+            </RedditShareButton>
+            {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
+          </Wrapper>
 
-          <TwitterShareButton
-            url={entryUrl}
-            title={this.props.entry.title}
-            style={{ cursor: "pointer" }}
-          >
-            <TwitterIcon size={48} round />
-          </TwitterShareButton>
-          <FacebookShareButton
-            url={entryUrl}
-            quote={this.props.entry.title}
-            style={{ cursor: "pointer" }}
-          >
-            <FacebookIcon size={48} round />
-          </FacebookShareButton>
-          <RedditShareButton
-            url={entryUrl}
-            title={this.props.entry.title}
-            style={{ cursor: "pointer" }}
-          >
-            <RedditIcon size={48} round />
-          </RedditShareButton>
-          {this.props.isSignedIn && <Star entryId={this.props.entry.id} />}
-        </Wrapper>
-
-        <Wrapper
-          css={`
+          <Wrapper
+            css={`
                 margin: 1rem;
                 width: 100%;
                 justify-content: space-around;
@@ -246,9 +252,9 @@ class EntryTop extends Component {
         XL: ``
       })};
               `}
-        >
-          <Wrapper
-            css={`
+          >
+            <Wrapper
+              css={`
                   ${style({
         S: `flex-direction: column; margin-bottom: 1.6rem;`,
         M: ` margin-bottom: 1.8rem;`,
@@ -256,10 +262,11 @@ class EntryTop extends Component {
         XL: ``
       })};
                 `}
-          >
-            <this.bookmarkLabel />
-            <this.bookmarkButton />
-            <this.addPlaylistButton />
+            >
+              <this.bookmarkLabel />
+              <this.bookmarkButton />
+              <this.addPlaylistButton />
+            </Wrapper>
           </Wrapper>
         </Wrapper>
       </Wrapper>
