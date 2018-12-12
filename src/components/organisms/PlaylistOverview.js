@@ -91,7 +91,7 @@ export default class PlaylistOverview extends React.Component {
               margin-top: 0.1rem;
             `}
           >
-            <DropdownPlyalistMoreMenu />
+            <DropdownPlyalistMoreMenu playlist={this.props.playlist} />
           </Wrapper>
         </RootWrapper>
       )
