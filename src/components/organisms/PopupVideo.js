@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Embed from "../atoms/Embed";
+import Embed from "../molecules/Embed";
 import {play, pause, stop} from "../../actions/PopupActions";
 
 class PopupVideo extends Component {

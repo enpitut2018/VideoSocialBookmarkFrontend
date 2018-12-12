@@ -84,6 +84,7 @@ class Embed extends Component {
     const id = this.props.video_id;
     const title = this.props.title;
     const autoplay = this.props.playlist !== undefined;
+    const embed_id = this.props.embed_id;
     switch (provider) {
     case "youtube":
       return (
@@ -94,7 +95,6 @@ class Embed extends Component {
               autoplay ? 1 : 0
             }&origin=https://video-social-bookmark.herokuapp.com`}
             allowFullScreen
-            allow="autoplay"
             frameBorder="0"
           />
         </IframeWrapper>
@@ -104,7 +104,7 @@ class Embed extends Component {
         <IframeWrapper>
           <StyledIframe
             title={title}
-            src={`https://embed.nicovideo.jp/watch/${id}?jsapi=1&playerId=player`}
+            src={`https://embed.nicovideo.jp/watch/${id}?jsapi=1&${embed_id ? `&playerId=${embed_id}` : `player`}`}
             allowFullScreen
             allow="autoplay"
             frameBorder="0"

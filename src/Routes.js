@@ -44,9 +44,9 @@ class Routes extends React.Component {
             <Route exact={true} path="/registration" component={Registration} />
             <Route exact={true} path="/help" component={Help} />
             <Route path="*" component={NotFound_404} />
+            <PopupVideo />
           </Switch>
         </BrowserRouter>
-        <PopupVideo />
       </>
     );
   }
