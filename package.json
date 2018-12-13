@@ -85,7 +85,7 @@
       "yarn eslint --fix",
       "git add"
     ],
-    "src/(*.ts|*.tsx|(actions|components|reducers|config)/**/*.ts)|(actions|components|reducers|config)/**/*.tsx)": [
+    "src/**/*.ts|src/**/*.tsx": [
       "yarn tslint --fix --format stylish",
       "git add"
     ],
