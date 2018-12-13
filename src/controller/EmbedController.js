@@ -39,7 +39,7 @@ export default class EmbedController {
         }
       }
       if (playerStopped) {
-        // this.skipNext();
+        this.skipNext();
       }
     }
   }
