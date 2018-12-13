@@ -7,8 +7,12 @@ import { getComments } from "../../actions/CommentActions";
 import config from "../../config";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 import { parse } from "query-string";
+import EmbedController from "../../controller/EmbedController";
 
 class Entry extends Component {
+
+  embedController = null;
+
   componentWillMount() {
     this.props.dispatch(getEntry(this.props.match.params.id));
   }
@@ -17,6 +21,30 @@ class Entry extends Component {
     if (nextProps.location !== this.props.location) {
       this.props.dispatch(getEntry(nextProps.match.params.id));
     }
+  }
+
+  setup = () => {
+    const isPlaylistMode = this.props.location.search !== "";
+    if(this.props.entry && isPlaylistMode)
+      this.embedController =
+        new EmbedController(
+          this.props.entry,
+          this.props.playlist,
+          this.props.history
+        );
+  }
+
+  componentDidMount(){
+    this.setup();
+  }
+
+  componentDidUpdate(){
+    this.setup();
+  }
+
+  componentWillUnmount(){
+    if(this.props.entry && this.isPlaylistMode)
+      this.embedController.release();
   }
 
   handlePageChange = page => {
@@ -77,5 +105,6 @@ class Entry extends Component {
 export default connect(store => ({
   hasLoaded: store.entries.hasLoaded,
   entry: store.entries.entry,
-  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
+  playlist: store.playlists.playlist
 }))(Entry);

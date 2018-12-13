@@ -23,63 +23,7 @@ const StyledIframe = styled.iframe`
 `;
 
 class Embed extends Component {
-  skipNext = () => {
-    if (this.props.playlist === undefined || this.props.playlist === null) {
-      return;
-    }
-    const currentItem = this.props.playlist.playlist_items.find(
-      item => item.entry.id === this.props.entry.id
-    );
-    if (currentItem === undefined) {
-      return;
-    }
-    const nextItem = this.props.playlist.playlist_items.find(
-      item => item.id === currentItem.next_id
-    );
-    if (nextItem === undefined) {
-      return;
-    }
-    this.props.history.push(
-      `/entries/${nextItem.entry_id}?list=${this.props.playlist.id}`
-    );
-  };
-  componentDidUpdate() {
-    const provider = this.props.provider;
-    switch (provider) {
-    case "nicovideo": {
-      // Listen player stopped message
-      window.addEventListener("message", e => {
-        if (e.origin === "https://embed.nicovideo.jp") {
-          const playerStopped =
-              e.data.eventName === "playerStatusChange" &&
-              e.data.data.playerStatus === 4;
-          const playerLoaded = e.data.eventName === "loadComplete";
-          if (playerLoaded) {
-            // Set autoplay
-            const player = document.getElementById("embed");
-            const origin = "https://embed.nicovideo.jp";
-            const playMessage = {
-              sourceConnectorType: 1,
-              playerId: "player", // String. not Integer.
-              eventName: "play"
-            };
-            if (player !== null) {
-              player.contentWindow.postMessage(playMessage, origin);
-            }
-          }
-          if (playerStopped) {
-            this.skipNext();
-          }
-        }
-      });
-      break;
-    }
-    default: {
-      break;
-    }
-    }
-  }
-  genEmbed = () => {
+  genEmbedFrame = () => {
     const provider = this.props.provider;
     const id = this.props.video_id;
     const title = this.props.title;
@@ -138,10 +82,10 @@ class Embed extends Component {
     }
   };
   render() {
-    const embed = this.genEmbed();
+    const EmbedFrame = this.genEmbedFrame();
     return (
       <>
-        {embed === null ? (
+        {EmbedFrame === null ? (
           <Thumbnail
             provider={this.props.provider}
             width={this.props.width}
@@ -149,7 +93,7 @@ class Embed extends Component {
             title={this.props.title}
           />
         ) : (
-          embed
+          EmbedFrame
         )}
       </>
     );
