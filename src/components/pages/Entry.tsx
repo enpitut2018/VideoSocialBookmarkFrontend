@@ -8,7 +8,6 @@ import { getComments } from "../../actions/CommentActions";
 import { getEntry } from "../../actions/EntryActions";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 import config from "../../config";
-import EmbedController from "../../controller/EmbedController";
 import EntryTemplate from "../templates/Entry";
 
 type ReturnType<T> = T extends ((...param: any[]) => infer R) ? R : never;
@@ -57,8 +56,6 @@ type Props = StateProps & DispatchProps & OwnProps;
 interface State {}
 
 class Entry extends Component<Props, State> {
-  public embedController: EmbedController | null = null;
-
   public componentWillMount() {
     this.props.getEntry(this.props.match.params.id);
   }
@@ -66,28 +63,6 @@ class Entry extends Component<Props, State> {
   public componentWillReceiveProps(nextProps: Props) {
     if (nextProps.location !== this.props.location) {
       this.props.getEntry(nextProps.match.params.id);
-    }
-  }
-
-  public setup = () => {
-    const isPlaylistMode = this.props.location.search !== "";
-    if (this.props.entry && isPlaylistMode) {
-      this.embedController = new EmbedController(this.props.entry, this.props.playlist, this.props.history);
-    }
-  };
-
-  public componentDidMount() {
-    this.setup();
-  }
-
-  public componentDidUpdate() {
-    this.setup();
-  }
-
-  public componentWillUnmount() {
-    const isPlaylistMode = this.props.location.search !== "";
-    if (this.props.entry && isPlaylistMode && this.embedController) {
-      this.embedController.release();
     }
   }
 

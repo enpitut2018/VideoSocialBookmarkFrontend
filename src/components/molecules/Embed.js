@@ -3,8 +3,10 @@ import Thumbnail from "../atoms/Thumbnail";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
 import YouTube from "react-youtube";
+import EmbedController from "../../controller/EmbedController";
 
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 const IframeWrapper = styled(Wrapper)`
   position: relative;
@@ -33,6 +35,42 @@ const StyledYouTubeIframe = styled(YouTube)`
 `;
 
 class Embed extends Component {
+  embedController = null;
+
+  setup = () => {
+    const isPlaylistMode = this.props.location.search !== "";
+    if (this.props.entry && isPlaylistMode) {
+      this.embedController =
+        new EmbedController(
+          this.props.entry,
+          this.props.playlist,
+          this.props.history
+        );
+    }
+  };
+
+  componentDidMount() {
+    this.setup();
+  }
+
+  componentDidUpdate() {
+    this.setup();
+  }
+
+  componentWillUnmount() {
+    const isPlaylistMode = this.props.location.search !== "";
+    if (this.props.entry && isPlaylistMode && this.embedController) {
+      this.embedController.release();
+    }
+  }
+
+  skipNext = () => {
+    const isPlaylistMode = this.props.location.search !== "";
+    if(this.props.entry && isPlaylistMode && this.embedController){
+      this.embedController.skipNext();
+    }
+  }
+
   genEmbedFrame = () => {
     const provider = this.props.provider;
     const id = this.props.video_id;
@@ -114,4 +152,6 @@ class Embed extends Component {
   }
 }
 
-export default withRouter(Embed);
+export default withRouter(connect(store => ({
+  playlist: store.playlists.playlist
+}))(Embed));
