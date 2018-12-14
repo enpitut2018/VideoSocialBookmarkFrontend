@@ -4,7 +4,7 @@ import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
 import Text from "../atoms/Text";
-import { responsive } from "../mediaQuery";
+import proped from "../mediaQuery";
 import { style } from "../mediaQuery";
 import Star from "../molecules/Star";
 import config from "../../config";
@@ -81,42 +81,30 @@ const EntryDetailWrapper = styled(Wrapper)`
   })};
 `;
 
-const TitleStyledText = props => (
-  responsive(R => (
-    <Text
-      size={{
-        XL:"XL",
-        L:"XL",
-        M:"L",
-        S:"L"
-      }[R]}
-      margin={{
-        XL: "41px 0 15px 0",
-        L: "38px 0 15px 0",
-        M: "35px 0 13px 0",
-        S: "30px 0 10px 0"
-      }[R]}
-    >
-      {props.children}
-    </Text>
-  ))
-);
+const TitleStyledText = proped(Text)({
+  size: {
+    XL:"XL",
+    L:"XL",
+    M:"L",
+    S:"L"
+  },
+  margin: {
+    XL: "41px 0 15px 0",
+    L: "38px 0 15px 0",
+    M: "35px 0 13px 0",
+    S: "30px 0 10px 0"
+  }
+});
 
-const BookmarkLabelStyledText = props => (
-  responsive(R=>(
-    <Text
-      size="M"
-      margin={{
-        XL: "1rem 2rem 1rem 1rem",
-        L: "1rem",
-        M: "1rem",
-        S: "0.5rem"
-      }[R]}
-    >
-      {props.children}
-    </Text>
-  ))
-);
+const BookmarkLabelStyledText = proped(Text)({
+  size: "M",
+  margin: {
+    XL: "1rem 2rem 1rem 1rem",
+    L: "1rem",
+    M: "1rem",
+    S: "0.5rem"
+  }
+});
 
 class EntryTop extends Component {
   bookmarkButton = () => (

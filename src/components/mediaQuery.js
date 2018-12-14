@@ -7,27 +7,6 @@ const width = {
   S: 480
 };
 
-export const responsive = (components) => (
-  <>
-    <Media
-      query={`(min-width: ${width.L}px)`}
-      render={() => components("XL")}
-    />
-    <Media
-      query={`(min-width: ${width.M}px) and (max-width: ${width.L - 1}px)`}
-      render={() => components("L")}
-    />
-    <Media
-      query={`(min-width: ${width.S}px) and (max-width: ${width.M - 1}px)`}
-      render={() => components("M")}
-    />
-    <Media
-      query={`(max-width: ${width.S - 1}px)`}
-      render={() => components("S")}
-    />
-  </>
-);
-
 export const component = components => (
   <>
     {"XL" in components && (
@@ -86,3 +65,33 @@ export const styledAttr = (attr, style) => `
     ${attr}: ${"S" in style && style.S}
   }
 `;
+
+const proped = Component => Props =>
+  function PropedComponent(props){
+    const pickProps =
+      size => Object.assign(...Object.entries(Props).map(([k,v]) => ({
+        [k]: v instanceof Object ? v[size] : v
+      })));
+    return(
+      <>
+        <Media
+          query={`(min-width: ${width.L}px)`}
+          render={() => <Component {...pickProps("XL")} {...props} />}
+        />
+        <Media
+          query={`(min-width: ${width.M}px) and (max-width: ${width.L - 1}px)`}
+          render={() => <Component {...pickProps("L")} {...props} />}
+        />
+        <Media
+          query={`(min-width: ${width.S}px) and (max-width: ${width.M - 1}px)`}
+          render={() => <Component {...pickProps("M")} {...props} />}
+        />
+        <Media
+          query={`(max-width: ${width.S - 1}px)`}
+          render={() => <Component {...pickProps("S")} {...props} />}
+        />
+      </>
+    );
+  };
+
+export default proped;
