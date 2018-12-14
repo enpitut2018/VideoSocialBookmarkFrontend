@@ -10,7 +10,14 @@ export default class Form extends Component {
   render() {
     return (
       <StyledForm css={this.props.css} onSubmit={this.props.onSubmit}>
-        <Wrapper dir="column">{this.props.render()}</Wrapper>
+        <Wrapper
+          dir="column"
+          css={`
+            width: 100%;
+          `}
+        >
+          {this.props.render()}
+        </Wrapper>
       </StyledForm>
     );
   }

@@ -6,14 +6,21 @@ import CommentSubmitForm from "../organisms/CommentSubmitForm";
 import BasicPageWrapper from "../../BasicPageWrapper";
 import Pagination from "../organisms/Pagination";
 import PlaylistWrapper from "../organisms/PlaylistWrapper";
+import styled from "styled-components";
+
+const EntryPageWrapper = styled(Wrapper)`
+  align-items: baseline;
+`;
+
+const EntryWrapper = styled(Wrapper)``;
 
 export default class Entry extends Component {
   render() {
     return (
       <BasicPageWrapper>
         {this.props.hasLoaded && (
-          <Wrapper css="align-items: baseline;">
-            <Wrapper dir="column">
+          <EntryPageWrapper>
+            <EntryWrapper dir="column">
               <EntryTop entry={this.props.entry} />
               {this.props.isSignedIn && (
                 <CommentSubmitForm entryId={this.props.entry.id} />
@@ -31,12 +38,12 @@ export default class Entry extends Component {
                   onPageChange={this.props.handlePageChange}
                 />
               )}
-            </Wrapper>
+            </EntryWrapper>
             <PlaylistWrapper
               playlistId={this.props.playlistId}
               entryId={this.props.entry.id}
             />
-          </Wrapper>
+          </EntryPageWrapper>
         )}
       </BasicPageWrapper>
     );

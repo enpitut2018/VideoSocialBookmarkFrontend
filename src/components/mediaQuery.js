@@ -7,10 +7,34 @@ const width = {
   S: 480
 };
 
+export const responsive = (components) => (
+  <>
+    <Media
+      query={`(min-width: ${width.L}px)`}
+      render={() => components("XL")}
+    />
+    <Media
+      query={`(min-width: ${width.M}px) and (max-width: ${width.L - 1}px)`}
+      render={() => components("L")}
+    />
+    <Media
+      query={`(min-width: ${width.S}px) and (max-width: ${width.M - 1}px)`}
+      render={() => components("M")}
+    />
+    <Media
+      query={`(max-width: ${width.S - 1}px)`}
+      render={() => components("S")}
+    />
+  </>
+);
+
 export const component = components => (
   <>
     {"XL" in components && (
-      <Media query={`(min-width: ${width.L}px)`} render={() => components.XL} />
+      <Media
+        query={`(min-width: ${width.L}px)`}
+        render={() => components.XL}
+      />
     )}
     {"L" in components && (
       <Media
@@ -45,5 +69,20 @@ export const style = styles => `
   }
   @media screen and (max-width:${width.S - 1}px) {
     ${"S" in styles && styles.S}
+  }
+`;
+
+export const styledAttr = (attr, style) => `
+  @media screen and (min-width: ${width.L}px) {
+    ${attr}: ${"XL" in style && style.XL}
+  }
+  @media screen and (min-width: ${width.M}px) and (max-width:${width.L - 1}px) {
+    ${attr}: ${"L" in style && style.L}
+  }
+  @media screen and (min-width: ${width.S}px) and (max-width:${width.M - 1}px) {
+    ${attr}: ${"M" in style && style.M}
+  }
+  @media screen and (max-width:${width.S - 1}px) {
+    ${attr}: ${"S" in style && style.S}
   }
 `;

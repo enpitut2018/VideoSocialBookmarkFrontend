@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import Thumbnail from "../atoms/Thumbnail";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
+import YouTube from "react-youtube";
+import EmbedController from "../../controller/EmbedController";
+
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 const IframeWrapper = styled(Wrapper)`
   position: relative;
@@ -22,83 +26,75 @@ const StyledIframe = styled.iframe`
   height: 100%;
 `;
 
+const StyledYouTubeIframe = styled(YouTube)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 class Embed extends Component {
-  skipNext = () => {
-    if (this.props.playlist === undefined || this.props.playlist === null) {
-      return;
+  embedController = null;
+
+  setup = () => {
+    const isPlaylistMode = this.props.location.search !== "";
+    if (this.props.entry && isPlaylistMode) {
+      this.embedController =
+        new EmbedController(
+          this.props.entry,
+          this.props.playlist,
+          this.props.history
+        );
     }
-    const currentItem = this.props.playlist.playlist_items.find(
-      item => item.entry.id === this.props.entry.id
-    );
-    if (currentItem === undefined) {
-      return;
-    }
-    const nextItem = this.props.playlist.playlist_items.find(
-      item => item.id === currentItem.next_id
-    );
-    if (nextItem === undefined) {
-      return;
-    }
-    this.props.history.push(
-      `/entries/${nextItem.entry_id}?list=${this.props.playlist.id}`
-    );
   };
+
+  componentDidMount() {
+    this.setup();
+  }
+
   componentDidUpdate() {
-    const provider = this.props.provider;
-    switch (provider) {
-    case "nicovideo": {
-      // Listen player stopped message
-      window.addEventListener("message", e => {
-        if (e.origin === "https://embed.nicovideo.jp") {
-          const playerStopped =
-              e.data.eventName === "playerStatusChange" &&
-              e.data.data.playerStatus === 4;
-          const playerLoaded = e.data.eventName === "loadComplete";
-          if (playerLoaded) {
-            // Set autoplay
-            const player = document.getElementById("embed");
-            const origin = "https://embed.nicovideo.jp";
-            const playMessage = {
-              sourceConnectorType: 1,
-              playerId: "player", // String. not Integer.
-              eventName: "play"
-            };
-            if (player !== null) {
-              player.contentWindow.postMessage(playMessage, origin);
-            }
-          }
-          if (playerStopped) {
-            this.skipNext();
-          }
-        }
-      });
-      break;
-    }
-    default: {
-      break;
-    }
+    this.setup();
+  }
+
+  componentWillUnmount() {
+    const isPlaylistMode = this.props.location.search !== "";
+    if (this.props.entry && isPlaylistMode && this.embedController) {
+      this.embedController.release();
     }
   }
-  genEmbed = () => {
+
+  skipNext = () => {
+    const isPlaylistMode = this.props.location.search !== "";
+    if(this.props.entry && isPlaylistMode && this.embedController){
+      this.embedController.skipNext();
+    }
+  }
+
+  genEmbedFrame = () => {
     const provider = this.props.provider;
     const id = this.props.video_id;
     const title = this.props.title;
     const autoplay = this.props.playlist !== undefined;
     switch (provider) {
-    case "youtube":
+    case "youtube": {
       return (
         <IframeWrapper>
-          <StyledIframe
-            title={title}
-            src={`https://www.youtube.com/embed/${id}?autoplay=${
-              autoplay ? 1 : 0
-            }&origin=https://video-social-bookmark.herokuapp.com`}
-            allowFullScreen
-            allow="autoplay"
-            frameBorder="0"
+          <StyledYouTubeIframe
+            videoId={id}
+            onEnd={this.skipNext}
+            opts={
+              {
+                // https://developers.google.com/youtube/player_parameters
+                playerVars: {
+                  autoplay: autoplay ? 1 : 0
+                }
+              }
+            }
           />
         </IframeWrapper>
       );
+    }
     case "nicovideo":
       return (
         <IframeWrapper>
@@ -138,10 +134,10 @@ class Embed extends Component {
     }
   };
   render() {
-    const embed = this.genEmbed();
+    const EmbedFrame = this.genEmbedFrame();
     return (
       <>
-        {embed === null ? (
+        {EmbedFrame === null ? (
           <Thumbnail
             provider={this.props.provider}
             width={this.props.width}
@@ -149,11 +145,13 @@ class Embed extends Component {
             title={this.props.title}
           />
         ) : (
-          embed
+          EmbedFrame
         )}
       </>
     );
   }
 }
 
-export default withRouter(Embed);
+export default withRouter(connect(store => ({
+  playlist: store.playlists.playlist
+}))(Embed));
