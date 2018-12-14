@@ -9,27 +9,8 @@ import { getEntry } from "../../actions/EntryActions";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 import config from "../../config";
 import EmbedController from "../../controller/EmbedController";
+import Types, { ReduxStore } from "../../types";
 import EntryTemplate from "../templates/Entry";
-
-type ReturnType<T> = T extends ((...param: any[]) => infer R) ? R : never;
-
-interface ReduxStore {
-  entries: {
-    readonly hasLoaded: boolean;
-    readonly entry: any;
-  };
-  reduxTokenAuth: {
-    currentUser: {
-      readonly isSignedIn: boolean;
-    };
-  };
-  playlists: {
-    readonly playlist: any;
-  };
-  popup: {
-    readonly flip: number;
-  };
-}
 
 const mapStateToProps = (store: ReduxStore) => ({
   hasLoaded: store.entries.hasLoaded,
@@ -38,31 +19,20 @@ const mapStateToProps = (store: ReduxStore) => ({
   playlist: store.playlists.playlist,
   flip: store.popup.flip,
 });
-type StateProps = ReturnType<typeof mapStateToProps>;
 
 const mapDispatchToProps = {
   getEntry,
   getComments,
 };
-// type DispatchProps = ResolveThunks<typeof mapDispatchToProps>;
-interface DispatchProps {
-  getEntry: (id: string) => void;
-  getComments: (entryId: string, page?: number) => void;
-}
 
-interface RouteParamaters {
-  id: string;
-}
+const redux = new Types<typeof mapStateToProps, typeof mapDispatchToProps, {}, { id: string }>(
+  mapStateToProps,
+  mapDispatchToProps
+);
 
-interface OwnProps extends RouteComponentProps<RouteParamaters> {}
-
-type Props = StateProps & DispatchProps & OwnProps;
-
-interface State {
-  isRefreshed: boolean;
-}
-
-class Entry extends Component<Props, State> {
+type Props = ReturnType<typeof redux.Props>;
+@redux.connect
+export default class Entry extends Component<Props, { isRefreshed: boolean }> {
   public embedController: EmbedController | null = null;
   constructor(props: Props) {
     super(props);
@@ -146,8 +116,3 @@ class Entry extends Component<Props, State> {
     );
   }
 }
-
-export default connect<StateProps, DispatchProps, OwnProps, ReduxStore>(
-  mapStateToProps,
-  mapDispatchToProps
-)(Entry);
