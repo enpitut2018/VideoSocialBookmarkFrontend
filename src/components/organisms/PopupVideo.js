@@ -62,11 +62,12 @@ class PopupVideo extends Component {
         if(e.data.eventName === "playerStatusChange"){
           const status = e.data.data.playerStatus;
           const page_or_popup =
-            this.props.flip == e.data.playerId ? "page" : "popup";
+            this.props.flip.toString() === e.data.playerId ? "page" : "popup";
           switch(status){
           case 2: this.props.play(page_or_popup); break;
           case 3: this.props.pause(page_or_popup); break;
           case 4: this.props.stop(page_or_popup); break;
+          default: break;
           }
         }
       }

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Thumbnail from "../atoms/Thumbnail";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
-import { withRouter } from "react-router-dom";
 
 const IframeWrapper = styled(Wrapper)`
   position: relative;
@@ -22,7 +21,7 @@ const StyledIframe = styled.iframe`
   height: 100%;
 `;
 
-class Embed extends Component {
+export default class Embed extends Component {
   genEmbedFrame = () => {
     const provider = this.props.provider;
     const id = this.props.video_id;
@@ -99,5 +98,3 @@ class Embed extends Component {
     );
   }
 }
-
-export default withRouter(Embed);

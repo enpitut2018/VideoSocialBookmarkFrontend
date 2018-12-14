@@ -148,7 +148,7 @@ class EntryTop extends Component {
 
   componentWillUnmount = () => {
     this.props.dispatch(deletePageEntry());
-    if(this.props.pageVideoStatus == "playing")
+    if(this.props.pageVideoStatus === "playing")
       this.props.dispatch(setPopupEntry(this.props.entry));
   }
 
