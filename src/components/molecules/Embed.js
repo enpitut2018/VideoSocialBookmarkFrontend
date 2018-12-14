@@ -66,7 +66,9 @@ class Embed extends Component {
               playerId: "player", // String. not Integer.
               eventName: "play"
             };
-            player.contentWindow.postMessage(playMessage, origin);
+            if (player !== null) {
+              player.contentWindow.postMessage(playMessage, origin);
+            }
           }
           if (playerStopped) {
             this.skipNext();
