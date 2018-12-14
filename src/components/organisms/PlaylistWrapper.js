@@ -38,7 +38,7 @@ class PlaylistWrapper extends React.Component {
       return;
     }
     let res = [];
-    let item = arr[0];
+    let item = arr.find(elm => elm.prev_id === null);
     const isNextItem = elm => elm.id === item.next_id;
     while (item !== undefined && item.next_id !== undefined) {
       res.push(item);

@@ -3,7 +3,7 @@ import React from "react";
 const PlaylistAddCheckIcon = props => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
     width="24"
     height="24"
     viewBox="0 0 24 24"

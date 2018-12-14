@@ -1,0 +1,42 @@
+{
+    "defaultSeverity": "error",
+    "rulesDirectory": [
+        "tslint-plugin-prettier"
+    ],
+    "extends": [
+        "tslint:recommended",
+        "tslint-react",
+        "tslint-config-prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+        "prettier": [
+            true,
+            {
+                "semi": true,
+                "doubleQuote": true,
+                "printWidth": 120,
+                "trailingComma": "es5"
+            }
+        ],
+        "no-empty-interface": false,
+        "interface-name": false,
+        "object-literal-sort-keys":false,
+        "indent": [
+            true,
+            "spaces",
+            2
+        ],
+        "quotemark": [
+            true,
+            "double",
+            "jsx-double"
+        ],
+        "max-line-length": [
+            true,
+            {
+                "ignore-pattern": "^import [^,]+ from |^export | implements "
+            }
+        ]
+    }
+}
