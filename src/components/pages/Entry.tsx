@@ -1,7 +1,9 @@
 import { parse } from "query-string";
-import * as React from "react";
-import { Component } from "react";
+import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import { connect, ResolveThunks } from "react-redux";
+import { RouteComponentProps } from "react-router-dom";
+import { bindActionCreators, Dispatch } from "redux";
 import { getComments } from "../../actions/CommentActions";
 import { getEntry } from "../../actions/EntryActions";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
@@ -9,32 +11,48 @@ import config from "../../config";
 import EmbedController from "../../controller/EmbedController";
 import EntryTemplate from "../templates/Entry";
 
-import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
-type MyReduxState = any;
-type MyReduxAction = any;
-type EntryActionTypesgetEntry = any;
-type CommentActionTypesgetComments = any;
+type ReturnType<T> = T extends ((...param: any[]) => infer R) ? R : never;
 
-export interface OwnProps {}
-
-interface StateProps {
-  hasLoaded: boolean;
-  entry: any;
-  isSignedIn: boolean;
-  playlist: any;
+interface ReduxStore {
+  entries: {
+    readonly hasLoaded: boolean;
+    readonly entry: any;
+  };
+  reduxTokenAuth: {
+    currentUser: {
+      readonly isSignedIn: boolean;
+    };
+  };
+  playlists: {
+    readonly playlist: any;
+  };
 }
 
+const mapStateToProps = (store: ReduxStore) => ({
+  hasLoaded: store.entries.hasLoaded,
+  entry: store.entries.entry,
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
+  playlist: store.playlists.playlist,
+});
+type StateProps = ReturnType<typeof mapStateToProps>;
+
+const mapDispatchToProps = {
+  getEntry,
+  getComments,
+};
+// type DispatchProps = ResolveThunks<typeof mapDispatchToProps>;
 interface DispatchProps {
-  getEntry: EntryActionTypesgetEntry;
-  getComments: CommentActionTypesgetComments;
+  getEntry: (id: string) => void;
+  getComments: (entryId: string, page?: number) => void;
 }
 
 interface RouteParamaters {
   id: string;
 }
 
-type Props = StateProps & DispatchProps & OwnProps & RouteComponentProps<RouteParamaters>;
+interface OwnProps extends RouteComponentProps<RouteParamaters> {}
+
+type Props = StateProps & DispatchProps & OwnProps;
 
 interface State {}
 
@@ -108,12 +126,7 @@ class Entry extends Component<Props, State> {
   }
 }
 
-export default connect<StateProps, DispatchProps>(
-  (state: MyReduxState) => ({
-    hasLoaded: state.entries.hasLoaded,
-    entry: state.entries.entry,
-    isSignedIn: state.reduxTokenAuth.currentUser.isSignedIn,
-    playlist: state.playlists.playlist,
-  }),
-  { getEntry, getComments }
+export default connect<StateProps, DispatchProps, OwnProps, ReduxStore>(
+  mapStateToProps,
+  mapDispatchToProps
 )(Entry);
