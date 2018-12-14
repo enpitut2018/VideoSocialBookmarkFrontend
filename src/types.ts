@@ -34,9 +34,9 @@ export default interface MakeTypes<TMapStateToProps, TDispatchProps, TOwnProps, 
   State: State;
 }
 
-export function connect<Types extends MakeTypes<{}, {}, {}, {}, {}>>(
-  mapStateToProps: any,
-  mapDispatchToProps: any
+export function connect<Types extends MakeTypes<(store: ReduxStore) => {}, {}, {}, {}, {}>>(
+  mapStateToProps: Types["TMapStateToProps"],
+  mapDispatchToProps: Types["TDispatchProps"]
 ): any {
   return originalConnect<Types["TStateProps"], Types["TDispatchProps"], Types["TOwnProps"], ReduxStore>(
     mapStateToProps,
