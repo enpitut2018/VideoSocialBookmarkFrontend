@@ -24,6 +24,14 @@ const StyledIframe = styled.iframe`
   height: 100%;
 `;
 
+const StyledYouTubeIframe = styled(YouTube)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 class Embed extends Component {
   skipNext = () => {
     if (this.props.playlist === undefined || this.props.playlist === null) {
@@ -90,18 +98,20 @@ class Embed extends Component {
     switch (provider) {
     case "youtube": {
       return (
-        <YouTube
-          videoId={id}
-          onEnd={this.skipNext}
-          opts={
-            {
-              // https://developers.google.com/youtube/player_parameters
-              playerVars: {
-                autoplay: autoplay ? 1 : 0
+        <IframeWrapper>
+          <StyledYouTubeIframe
+            videoId={id}
+            onEnd={this.skipNext}
+            opts={
+              {
+                // https://developers.google.com/youtube/player_parameters
+                playerVars: {
+                  autoplay: autoplay ? 1 : 0
+                }
               }
             }
-          }
-        />
+          />
+        </IframeWrapper>
       );
     }
     case "nicovideo":
