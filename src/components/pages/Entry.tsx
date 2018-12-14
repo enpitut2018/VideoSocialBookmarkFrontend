@@ -1,15 +1,12 @@
 import { parse } from "query-string";
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-import { connect, ResolveThunks } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
-import { bindActionCreators, Dispatch } from "redux";
 import { getComments } from "../../actions/CommentActions";
 import { getEntry } from "../../actions/EntryActions";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 import config from "../../config";
 import EmbedController from "../../controller/EmbedController";
-import Types, { ReduxStore } from "../../types";
+import MakeTypes, { connect, ReduxStore } from "../../types";
 import EntryTemplate from "../templates/Entry";
 
 const mapStateToProps = (store: ReduxStore) => ({
@@ -25,14 +22,15 @@ const mapDispatchToProps = {
   getComments,
 };
 
-const redux = new Types<typeof mapStateToProps, typeof mapDispatchToProps, {}, { id: string }>(
+type Types = MakeTypes<typeof mapStateToProps, typeof mapDispatchToProps, {}, { isRefreshed: boolean }, { id: string }>;
+type Props = Types["Props"];
+type State = Types["State"];
+
+@connect<Types>(
   mapStateToProps,
   mapDispatchToProps
-);
-
-type Props = ReturnType<typeof redux.Props>;
-@redux.connect
-export default class Entry extends Component<Props, { isRefreshed: boolean }> {
+)
+export default class Entry extends Component<Props, State> {
   public embedController: EmbedController | null = null;
   constructor(props: Props) {
     super(props);

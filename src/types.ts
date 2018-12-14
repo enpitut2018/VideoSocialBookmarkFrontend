@@ -1,4 +1,4 @@
-import { ResolveThunks } from "react-redux";
+import { InferableComponentEnhancerWithProps, ResolveThunks } from "react-redux";
 import { connect as originalConnect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 
@@ -22,16 +22,24 @@ export interface ReduxStore {
 
 type ReturnType<T> = T extends ((...param: any[]) => infer R) ? R : never;
 
-export default class Types<IMapStateToProps, IMapDispatchToProps, OwnProps, RouteParamaters> {
-  public c: any;
-  public connect: any;
-  constructor(s: any, d: any) {
-    this.connect = originalConnect<ReturnType<IMapStateToProps>, IMapDispatchToProps, OwnProps, ReduxStore>(s, d);
-  }
-  public Props(): ReturnType<IMapStateToProps> &
-    ResolveThunks<IMapDispatchToProps> &
-    RouteComponentProps<RouteParamaters> &
-    OwnProps {
-    return this.c;
-  }
+export default interface MakeTypes<TMapStateToProps, TDispatchProps, TOwnProps, State, IRouteParamaters> {
+  TMapStateToProps: TMapStateToProps;
+  TStateProps: ReturnType<TMapStateToProps>;
+  TDispatchProps: TDispatchProps;
+  TOwnProps: TOwnProps;
+  Props: ReturnType<TMapStateToProps> &
+    ResolveThunks<TDispatchProps> &
+    RouteComponentProps<IRouteParamaters> &
+    TOwnProps;
+  State: State;
+}
+
+export function connect<Types extends MakeTypes<{}, {}, {}, {}, {}>>(
+  mapStateToProps: any,
+  mapDispatchToProps: any
+): any {
+  return originalConnect<Types["TStateProps"], Types["TDispatchProps"], Types["TOwnProps"], ReduxStore>(
+    mapStateToProps,
+    mapDispatchToProps
+  );
 }
