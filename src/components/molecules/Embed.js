@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Thumbnail from "../atoms/Thumbnail";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
+import YouTube from "react-youtube";
+
 import { withRouter } from "react-router-dom";
 
 const IframeWrapper = styled(Wrapper)`
@@ -43,6 +45,7 @@ class Embed extends Component {
       `/entries/${nextItem.entry_id}?list=${this.props.playlist.id}`
     );
   };
+
   componentDidUpdate() {
     const provider = this.props.provider;
     switch (provider) {
@@ -83,20 +86,22 @@ class Embed extends Component {
     const title = this.props.title;
     const autoplay = this.props.playlist !== undefined;
     switch (provider) {
-    case "youtube":
+    case "youtube": {
       return (
-        <IframeWrapper>
-          <StyledIframe
-            title={title}
-            src={`https://www.youtube.com/embed/${id}?autoplay=${
-              autoplay ? 1 : 0
-            }&origin=https://video-social-bookmark.herokuapp.com`}
-            allowFullScreen
-            allow="autoplay"
-            frameBorder="0"
-          />
-        </IframeWrapper>
+        <YouTube
+          videoId={id}
+          onEnd={this.skipNext}
+          opts={
+            {
+              // https://developers.google.com/youtube/player_parameters
+              playerVars: {
+                autoplay: autoplay ? 1 : 0
+              }
+            }
+          }
+        />
       );
+    }
     case "nicovideo":
       return (
         <IframeWrapper>
