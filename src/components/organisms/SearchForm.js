@@ -7,6 +7,7 @@ import TextInput from "../atoms/TextInput";
 import palette from "../../theme/palette";
 import SearchIcon from "../../assets/images/material-icon/baseline-search-24px.svg";
 import elevate from "../../theme/shadows";
+import { style } from "../mediaQuery";
 
 const SearchButton = styled(Button)`
   display: flex;
@@ -35,12 +36,25 @@ export default class SearchForm extends Component {
   state = { onFocus: false };
 
   render() {
+    return this.state.enable ? this.defaultRender() : this.defaultRender();
+  }
+
+  defaultRender = () => {
     return (
       <Form
         onSubmit={this.props.submit}
         css={`
           height: 58px;
+
+          ${style({
+          XL: `width: 500px;`,
+          L: `width: 350px;`,
+          M: `width: 300px;`,
+          S: `width: 200px;`
+        })};
+
           background: ${palette["White00"]};
+          margin: 0 1rem;
 
           &:hover {
             border-bottom: 2px solid ${palette["Blue00"]};
@@ -50,23 +64,27 @@ export default class SearchForm extends Component {
             `border-bottom: 2px solid ${palette["Blue00"]};`}
         `}
         render={() => (
-          <Wrapper dir="row">
+          <Wrapper
+            dir="row"
+            css={`
+              width: 100%;
+            `}
+          >
             <TextInput
               placeholder="検索"
               name="query"
-              width="calc(100% - 52px)"
               submit={this.props.submit}
               value={this.props.query}
               handleChange={this.props.handleQueryChange}
               onClick={e => e.stopPropagation()}
               onFocus={() => this.setState({ onFocus: true })}
               onBlur={() => this.setState({ onFocus: false })}
+              width="100%"
               css={`
                 padding: 0.5rem;
                 border-radius: 3px;
                 filter: none;
                 background: ${palette["White00"]};
-                width: 310px;
               `}
               required
             />
@@ -78,12 +96,12 @@ export default class SearchForm extends Component {
               `}
             >
               <IconWrapper>
-                <SearchIcon fill={palette["Black06"]} />
+                <SearchIcon fill={palette["Black03"]} />
               </IconWrapper>
             </SearchButton>
           </Wrapper>
         )}
       />
     );
-  }
+  };
 }

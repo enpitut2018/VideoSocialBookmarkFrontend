@@ -8,7 +8,7 @@ import UploadIcon from "../../assets/images/material-icon/baseline-cloud_upload-
 import elevate from "../../theme/shadows";
 import colors from "../../theme/colors.json";
 import palette from "../../theme/palette.json";
-import { style } from "../mediaQuery";
+import { style, component } from "../mediaQuery";
 
 const StyledUploadIconWrapper = styled.div`
   display: flex;
@@ -44,7 +44,12 @@ export default class DropdownUploadForm extends Component {
                 user-select: none;
               `}
             >
-              新規ブックマーク
+              {component({
+                S: "",
+                M: "",
+                L: "新規ブックマーク",
+                XL: "新規ブックマーク"
+              })}
             </Text>
           </StyledUploadIconWrapper>
         )}

@@ -26,6 +26,7 @@ const StyledLink = styled(Link)`
     L: `width: 90vw`,
     XL: `width: 800px`
   })};
+  max-width: 98vw;
 `;
 
 const StyledThumbnail = styled.div`
@@ -48,7 +49,6 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
   height: 90px;
-  width: 640px;
 `;
 
 const titleStyle = `
