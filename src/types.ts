@@ -1,24 +1,9 @@
 import { ResolveThunks } from "react-redux";
 import { connect as originalConnect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
+import { Store } from "./reducers";
 
-export interface ReduxStore {
-  entries: {
-    readonly hasLoaded: boolean;
-    readonly entry: any;
-  };
-  reduxTokenAuth: {
-    currentUser: {
-      readonly isSignedIn: boolean;
-    };
-  };
-  playlists: {
-    readonly playlist: any;
-  };
-  popup: {
-    readonly flip: number;
-  };
-}
+export type ErrorMessage = any;
 
 type ReturnType<T> = T extends ((...param: any[]) => infer R) ? R : never;
 
@@ -38,7 +23,7 @@ export function connect<Types extends MakeTypes<any, any, any, any, any>>(
   mapStateToProps: Types["TMapStateToProps"],
   mapDispatchToProps: Types["TDispatchProps"]
 ): any {
-  return originalConnect<Types["TStateProps"], Types["TDispatchProps"], Types["TOwnProps"], ReduxStore>(
+  return originalConnect<Types["TStateProps"], Types["TDispatchProps"], Types["TOwnProps"], Store>(
     mapStateToProps,
     mapDispatchToProps
   );

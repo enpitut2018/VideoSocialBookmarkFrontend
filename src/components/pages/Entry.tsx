@@ -6,10 +6,11 @@ import { getEntry } from "../../actions/EntryActions";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 import config from "../../config";
 import EmbedController from "../../controller/EmbedController";
-import MakeTypes, { connect, ReduxStore } from "../../types";
+import { Store } from "../../reducers";
+import MakeTypes, { connect } from "../../types";
 import EntryTemplate from "../templates/Entry";
 
-const mapStateToProps = (store: ReduxStore) => ({
+const mapStateToProps = (store: Store) => ({
   hasLoaded: store.entries.hasLoaded,
   entry: store.entries.entry,
   isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
