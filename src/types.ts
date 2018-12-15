@@ -1,4 +1,4 @@
-import { InferableComponentEnhancerWithProps, ResolveThunks } from "react-redux";
+import { ResolveThunks } from "react-redux";
 import { connect as originalConnect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 
@@ -34,7 +34,7 @@ export default interface MakeTypes<TMapStateToProps, TDispatchProps, TOwnProps, 
   State: State;
 }
 
-export function connect<Types extends MakeTypes<(store: ReduxStore) => {}, {}, {}, {}, {}>>(
+export function connect<Types extends MakeTypes<any, any, any, any, any>>(
   mapStateToProps: Types["TMapStateToProps"],
   mapDispatchToProps: Types["TDispatchProps"]
 ): any {
