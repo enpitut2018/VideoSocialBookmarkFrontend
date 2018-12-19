@@ -33,7 +33,7 @@ export type Playlists = DeepReadonly<{
   state: "" | "loaded";
   playlists: Playlist[];
   playlist: Playlist | null;
-  url: URL;
+  url: string;
   error: ErrorMessage;
 }>;
 
@@ -41,7 +41,7 @@ const initialState: Playlists = {
   state: "",
   playlists: [],
   playlist: null,
-  url: new URL(""),
+  url: "",
   error: "",
 };
 

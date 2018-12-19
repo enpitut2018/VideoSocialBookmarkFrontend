@@ -13,7 +13,7 @@ export type Trend = DeepReadonly<{
         data: Entry[];
       } & TrendDetails
     | null;
-  url: URL | null;
+  url: string | null;
   error: ErrorMessage | null;
 }>;
 

@@ -4,7 +4,7 @@ import { GET_USER_ICON_FAILURE, GET_USER_ICON_REQUEST, GET_USER_ICON_SUCCESS } f
 export type UserIcon = DeepReadonly<{
   hasLoaded: boolean;
   userIcon: string | null;
-  url: URL | null;
+  url: string | null;
 }>;
 
 const initialState: UserIcon = {

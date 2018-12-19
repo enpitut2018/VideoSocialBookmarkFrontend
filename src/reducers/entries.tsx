@@ -18,7 +18,7 @@ export type Entries = DeepReadonly<{
   state: "" | "posting" | "success" | "failure";
   entries: { [n: number]: Entry };
   entry: Entry | null;
-  url: URL;
+  url: string;
 }>;
 
 const initialState: Entries = {
@@ -26,7 +26,7 @@ const initialState: Entries = {
   state: "",
   entries: {},
   entry: null,
-  url: new URL(""),
+  url: "",
 };
 
 export default (state = initialState, action: any): Entries => {
