@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Thumbnail from "../atoms/Thumbnail";
 import styled from "styled-components";
 import Wrapper from "../atoms/Wrapper";
+import YouTube from "react-youtube";
+import EmbedController from "../../controller/EmbedController";
+
+import { connect } from "react-redux";
 
 const IframeWrapper = styled(Wrapper)`
   position: relative;
@@ -21,7 +25,48 @@ const StyledIframe = styled.iframe`
   height: 100%;
 `;
 
-export default class Embed extends Component {
+const StyledYouTubeIframe = styled(YouTube)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+class Embed extends Component {
+  embedController = null;
+
+  setup = () => {
+    if (this.props.entry) {
+      this.embedController =
+        new EmbedController(
+          this.props.entry,
+          this.props.playlist,
+          this.props.history
+        );
+    }
+  };
+
+  componentDidMount() {
+    this.setup();
+  }
+
+  componentDidUpdate() {
+    this.setup();
+  }
+
+  componentWillUnmount() {
+    if (this.props.entry && this.embedController) {
+      this.embedController.release();
+    }
+  }
+
+  skipNext = () => {
+    if(this.props.entry && this.embedController){
+      this.embedController.skipNext();
+    }
+  }
+
   genEmbedFrame = () => {
     const provider = this.props.provider;
     const id = this.props.video_id;
@@ -29,19 +74,24 @@ export default class Embed extends Component {
     const autoplay = this.props.playlist !== undefined;
     const embed_id = this.props.embed_id;
     switch (provider) {
-    case "youtube":
+    case "youtube": {
       return (
         <IframeWrapper>
-          <StyledIframe
-            title={title}
-            src={`https://www.youtube.com/embed/${id}?autoplay=${
-              autoplay ? 1 : 0
-            }&origin=https://video-social-bookmark.herokuapp.com`}
-            allowFullScreen
-            frameBorder="0"
+          <StyledYouTubeIframe
+            videoId={id}
+            onEnd={this.skipNext}
+            opts={
+              {
+                // https://developers.google.com/youtube/player_parameters
+                playerVars: {
+                  autoplay: autoplay ? 1 : 0
+                }
+              }
+            }
           />
         </IframeWrapper>
       );
+    }
     case "nicovideo":
       return (
         <IframeWrapper>
@@ -98,3 +148,7 @@ export default class Embed extends Component {
     );
   }
 }
+
+export default connect(store => ({
+  playlist: store.playlists.playlist
+}))(Embed);
