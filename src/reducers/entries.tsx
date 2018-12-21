@@ -23,6 +23,7 @@ export type Entries = DeepReadonly<{
   entry: Entry | null;
   url: string;
   didMount: boolean;
+  res: any;
 }>;
 
 const initialState: Entries = {
@@ -32,6 +33,7 @@ const initialState: Entries = {
   entry: null,
   url: "",
   didMount: false,
+  res: null,
 };
 
 export default (state = initialState, action: any): Entries => {
@@ -76,6 +78,7 @@ export default (state = initialState, action: any): Entries => {
         ...state,
         state: "success",
         url: action.url,
+        res: action.res,
       };
     case POST_ENTRY_FAILURE:
       return {
