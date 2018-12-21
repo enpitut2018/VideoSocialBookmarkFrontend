@@ -7,7 +7,8 @@ const StyledLabel = styled.label`
   position: relative;
   top: ${props => (props.isFocused ? "0.2rem" : "2.8rem")};
   font-size: ${props => (props.isFocused ? "12rem" : "0.5rem")} !important;
-  z-index: 10000;
+  user-select: none;
+  z-index: ${props => props.isFocused ? "10000" : "-10000"};
 `;
 
 export default class LabeledInput extends Component {
@@ -33,9 +34,9 @@ export default class LabeledInput extends Component {
         <StyledLabel
           htmlFor={this.props.name}
           value={this.props.value}
-          isFocused={this.props.value !== "" || this.state.isFocused}
+          isFocused={this.props.value !== ""}
         >
-          {this.props.label(this.props.value !== "" || this.state.isFocused)}
+          {this.props.label(this.props.value !== "")}
         </StyledLabel>
         {this.props.input(this.handleFocus, this.handleBlur)}
       </Wrapper>

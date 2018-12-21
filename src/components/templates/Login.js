@@ -66,6 +66,7 @@ class Login extends Component {
                     handleBlur={handleBlur}
                     name="email"
                     value={this.state.email}
+                    placeholder="メールアドレス"
                     required
                   />
                 )}
@@ -91,6 +92,7 @@ class Login extends Component {
                     handleBlur={handleBlur}
                     name="password"
                     value={this.state.password}
+                    placeholder="パスワード"
                     required
                   />
                 )}
