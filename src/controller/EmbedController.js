@@ -31,7 +31,7 @@ export default class EmbedController {
         const origin = "https://embed.nicovideo.jp";
         const playMessage = {
           sourceConnectorType: 1,
-          playerId: "player", // String. not Integer.
+          playerId: this.playerId.toString(), // String. not Integer.
           eventName: "play"
         };
         if (player !== null) {
@@ -43,10 +43,11 @@ export default class EmbedController {
       }
     }
   }
-  constructor(entry, playlist, routerHistory) {
+  constructor(entry, playlist, routerHistory, playerId) {
     this.entry = entry;
     this.playlist = playlist;
     this.routerHistory = routerHistory;
+    this.playerId = playerId;
     switch (entry.provider) {
     case "nicovideo": {
       window.addEventListener("message", this.nicovideoEventListener);
