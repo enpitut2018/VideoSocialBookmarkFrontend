@@ -1,68 +1,37 @@
 import { parse } from "query-string";
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-import { connect, ResolveThunks } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
-import { bindActionCreators, Dispatch } from "redux";
 import { getComments } from "../../actions/CommentActions";
 import { getEntry } from "../../actions/EntryActions";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 import config from "../../config";
 import EmbedController from "../../controller/EmbedController";
+import { Store } from "../../reducers";
+import MakeTypes, { connect } from "../../types";
 import EntryTemplate from "../templates/Entry";
 
-type ReturnType<T> = T extends ((...param: any[]) => infer R) ? R : never;
-
-interface ReduxStore {
-  entries: {
-    readonly hasLoaded: boolean;
-    readonly entry: any;
-  };
-  reduxTokenAuth: {
-    currentUser: {
-      readonly isSignedIn: boolean;
-    };
-  };
-  playlists: {
-    readonly playlist: any;
-  };
-  popup: {
-    readonly flip: number;
-  };
-}
-
-const mapStateToProps = (store: ReduxStore) => ({
+const mapStateToProps = (store: Store) => ({
   hasLoaded: store.entries.hasLoaded,
   entry: store.entries.entry,
   isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
   playlist: store.playlists.playlist,
   flip: store.popup.flip,
 });
-type StateProps = ReturnType<typeof mapStateToProps>;
 
 const mapDispatchToProps = {
   getEntry,
   getComments,
 };
-// type DispatchProps = ResolveThunks<typeof mapDispatchToProps>;
-interface DispatchProps {
-  getEntry: (id: string) => void;
-  getComments: (entryId: string, page?: number) => void;
-}
 
-interface RouteParamaters {
-  id: string;
-}
+type Types = MakeTypes<typeof mapStateToProps, typeof mapDispatchToProps, {}, { isRefreshed: boolean }, { id: string }>;
+type Props = Types["Props"];
+type State = Types["State"];
 
-interface OwnProps extends RouteComponentProps<RouteParamaters> {}
-
-type Props = StateProps & DispatchProps & OwnProps;
-
-interface State {
-  isRefreshed: boolean;
-}
-
-class Entry extends Component<Props, State> {
+@connect<Types>(
+  mapStateToProps,
+  mapDispatchToProps
+)
+export default class Entry extends Component<Props, State> {
   public embedController: EmbedController | null = null;
   constructor(props: Props) {
     super(props);
@@ -146,8 +115,3 @@ class Entry extends Component<Props, State> {
     );
   }
 }
-
-export default connect<StateProps, DispatchProps, OwnProps, ReduxStore>(
-  mapStateToProps,
-  mapDispatchToProps
-)(Entry);
