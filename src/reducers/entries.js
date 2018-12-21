@@ -6,7 +6,9 @@ import {
   POST_ENTRY_SUCCESS,
   POST_ENTRY_FAILURE,
   PRELOAD_ENTRIES,
-  SET_ENTRY_BOOKMARKED
+  SET_ENTRY_BOOKMARKED,
+  ENTRY_DID_MOUNT,
+  ENTRY_WILL_UNMOUNT
 } from "../actions/EntryActions";
 
 import {
@@ -21,7 +23,8 @@ const initialState = {
   entries: {},
   entry: null,
   url: "",
-  res: null
+  res: null,
+  didMount: false
 };
 
 export default (state = initialState, action) => {
@@ -54,7 +57,10 @@ export default (state = initialState, action) => {
     };
     return {
       ...state,
-      entries: Object.assign(state.entries, ObjectToDictById(action.trend.data))
+      entries: Object.assign(
+        state.entries,
+        ObjectToDictById(action.trend.data)
+      )
     };
   }
   case POST_ENTRY_REQUEST:
@@ -97,6 +103,16 @@ export default (state = initialState, action) => {
   case GET_COMMENTS_FAILURE:
     return {
       ...state
+    };
+  case ENTRY_DID_MOUNT:
+    return {
+      ...state,
+      didMount: true
+    };
+  case ENTRY_WILL_UNMOUNT:
+    return {
+      ...state,
+      didMount: false
     };
   default:
     return state;

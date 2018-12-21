@@ -16,6 +16,8 @@ export const POST_ENTRY_SUCCESS = "POST_ENTRY_SUCCESS";
 export const POST_ENTRY_FAILURE = "POST_ENTRY_FAILURE";
 export const PRELOAD_ENTRIES = "PRELOAD_ENTRIES";
 export const SET_ENTRY_BOOKMARKED = "SET_ENTRY_BOOKMARKED";
+export const ENTRY_DID_MOUNT = "ENTRY_DID_MOUNT";
+export const ENTRY_WILL_UNMOUNT = "ENTRY_WILL_UNMOUNT";
 
 export const preloadTrend = (page = 1) => dispatch => {
   return axios
@@ -61,6 +63,14 @@ export const postEntry = (url, comment) => dispatch => {
     .catch(_ => {
       dispatch({ type: POST_ENTRY_FAILURE, error: "" });
     });
+};
+
+export const entryDidMount = () => dispatch => {
+  dispatch({ type: ENTRY_DID_MOUNT });
+};
+
+export const entryWillUnmount = () => dispatch => {
+  dispatch({ type: ENTRY_WILL_UNMOUNT });
 };
 
 export const setEntryBookmarked = bookmarked => dispatch =>

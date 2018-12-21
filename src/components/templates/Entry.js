@@ -7,6 +7,8 @@ import BasicPageWrapper from "../../BasicPageWrapper";
 import Pagination from "../organisms/Pagination";
 import PlaylistWrapper from "../organisms/PlaylistWrapper";
 import styled from "styled-components";
+import store from "../../store";
+import { entryDidMount, entryWillUnmount } from "../../actions/EntryActions";
 
 const EntryPageWrapper = styled(Wrapper)`
   align-items: baseline;
@@ -15,6 +17,13 @@ const EntryPageWrapper = styled(Wrapper)`
 const EntryWrapper = styled(Wrapper)``;
 
 export default class Entry extends Component {
+  componentDidUpdate() {
+    store.dispatch(entryDidMount());
+  }
+  componentWillReceiveProps() {
+    store.dispatch(entryWillUnmount());
+  }
+
   render() {
     return (
       <BasicPageWrapper>
