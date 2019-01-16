@@ -1,4 +1,5 @@
 import { DeepReadonly } from "utility-types";
+
 import {
   DELETE_PLAYLIST_FAILURE,
   DELETE_PLAYLIST_REQUEST,
@@ -24,13 +25,16 @@ import {
   REMOVE_ENTRY_FROM_PLAYLIST_FAILURE,
   REMOVE_ENTRY_FROM_PLAYLIST_REQUEST,
   REMOVE_ENTRY_FROM_PLAYLIST_SUCCESS,
+  SAVE_PLAYLIST_FAILURE,
+  SAVE_PLAYLIST_REQUEST,
+  SAVE_PLAYLIST_SUCCESS,
 } from "../actions/PlaylistActions";
 import { ErrorMessage } from "../types";
 
 type Playlist = any;
 
 export type Playlists = DeepReadonly<{
-  state: "" | "loaded";
+  state: "" | "requested" | "loaded" | "failure";
   playlists: Playlist[];
   playlist: Playlist | null;
   url: string;
@@ -156,6 +160,21 @@ export default (state = initialState, action: any): Playlists => {
     case DELETE_PLAYLIST_FAILURE:
       return {
         ...state,
+      };
+    case SAVE_PLAYLIST_REQUEST:
+      return {
+        ...state,
+        state: "requested",
+      };
+    case SAVE_PLAYLIST_SUCCESS:
+      return {
+        ...state,
+        state: "requested",
+      };
+    case SAVE_PLAYLIST_FAILURE:
+      return {
+        ...state,
+        state: "failure",
       };
     default:
       return state;

@@ -11,6 +11,8 @@ export const LOGIN_TOAST = "LOGIN_TOAST";
 export const LOGOUT_TOAST = "LOGOUT_TOAST";
 export const ADD_PLAYLIST_TOAST = "ADD_PLAYLIST_TOAST";
 export const REMOVE_PLAYLIST_TOAST = "REMOVE_PLAYLIST_TOAST";
+export const DELETE_PLAYLIST_TOAST = "DELETE_PLAYLIST_TOAST";
+export const SAVE_PLAYLIST_TOAST = "SAVE_PLAYLIST_TOAST";
 
 const ToastWrapper = styled.div`
   position: fixed;

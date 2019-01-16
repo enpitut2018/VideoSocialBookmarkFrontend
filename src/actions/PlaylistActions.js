@@ -5,6 +5,8 @@ import { addToast } from "./ToastActions";
 import {
   ADD_PLAYLIST_TOAST,
   REMOVE_PLAYLIST_TOAST,
+  DELETE_PLAYLIST_TOAST,
+  SAVE_PLAYLIST_TOAST,
   timeout_ms
 } from "../components/organisms/ToastManager";
 
@@ -45,6 +47,10 @@ export const PUT_PLAYLIST_FAILURE = "PUT_PLAYLIST_FAILURE";
 export const DELETE_PLAYLIST_REQUEST = "DELETE_PLAYLIST_REQUEST";
 export const DELETE_PLAYLIST_SUCCESS = "DELETE_PLAYLIST_SUCCESS";
 export const DELETE_PLAYLIST_FAILURE = "DELETE_PLAYLIST_FAILURE";
+
+export const SAVE_PLAYLIST_REQUEST = "SAVE_PLAYLIST_REQUEST";
+export const SAVE_PLAYLIST_SUCCESS = "SAVE_PLAYLIST_SUCCESS";
+export const SAVE_PLAYLIST_FAILURE = "SAVE_PLAYLIST_FAILURE";
 
 export const getCurrentUserPlaylists = () => dispatch => {
   dispatch({ type: GET_CURRENT_USER_PLAYLISTS_REQUEST });
@@ -181,6 +187,13 @@ export const deletePlaylist = id => dispatch => {
     })
     .then(_ => {
       dispatch({ type: DELETE_PLAYLIST_SUCCESS });
+      dispatch(
+        addToast(
+          DELETE_PLAYLIST_TOAST,
+          `プレイリストを削除しました`,
+          timeout_ms
+        )
+      );
       dispatch(getCurrentUserPlaylists());
     })
     .catch(_ => {
@@ -198,5 +211,20 @@ export const getPlaylist = id => dispatch => {
     })
     .catch(error => {
       dispatch({ type: GET_PLAYLIST_FAILURE, error });
+    });
+};
+
+export const savePlaylist = id => dispatch => {
+  dispatch({ type: SAVE_PLAYLIST_REQUEST });
+  return axios
+    .post(`${config.backend_api_url}/playlists/save/${id}`)
+    .then(() => {
+      dispatch({ type: SAVE_PLAYLIST_SUCCESS });
+      dispatch(
+        addToast(SAVE_PLAYLIST_TOAST, `プレイリストを保存しました`, timeout_ms)
+      );
+    })
+    .catch(error => {
+      dispatch({ type: SAVE_PLAYLIST_FAILURE, error });
     });
 };

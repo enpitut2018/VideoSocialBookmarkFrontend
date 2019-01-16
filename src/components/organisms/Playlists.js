@@ -19,7 +19,11 @@ class Playlists extends Component {
         `}
       >
         {this.props.playlists.map(playlist => (
-          <PlaylistOverview playlist={playlist} key={playlist.id} />
+          <PlaylistOverview
+            playlist={playlist}
+            isMine={this.props.isMine}
+            key={playlist.id}
+          />
         ))}
       </Wrapper>
     ) : (

@@ -4,21 +4,21 @@ import styled, { css } from "styled-components";
 import React, { Component } from "react";
 
 const fontSizes = {
-  XS: "0.7rem",
-  S: "0.7rem",
+  XS: "0.8rem",
+  S: "0.9rem",
   M: "1.0rem",
   L: "1.3rem",
   XL: "1.5rem"
 };
 const fontOpacities = {
-  XS: 0.75,
-  S: 0.85,
+  XS: 0.85,
+  S: 0.9,
   M: 1.0,
   L: 1.0,
   XL: 1.0
 };
 const fontMargins = {
-  XS: "1px 2px",
+  XS: "1px 4px",
   S: "1px 4px",
   M: "4px 8px",
   L: "8px 16px",
@@ -32,7 +32,7 @@ const fontWeights = {
   XL: "300"
 };
 const fontLineHeights = {
-  XS: "1.1rem",
+  XS: "0.9rem",
   S: "1.2rem",
   M: "1.5rem",
   L: "1.9rem",
