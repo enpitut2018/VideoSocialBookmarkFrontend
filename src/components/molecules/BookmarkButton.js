@@ -21,7 +21,7 @@ export default class BookmarkButton extends Component {
         {...this.props}
       >
         <Text
-          size={this.props.size ? this.props.size : "S"}
+          size={this.props.size ? this.props.size : "XS"}
           fontWeight={this.props.bookmarked ? "bold" : "300"}
           color={
             this.props.bookmarked ? palette["White00"] : palette["Black00"]

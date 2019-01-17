@@ -14,7 +14,9 @@ export default class MyPageTemplate extends Component {
           <Text size="L" margin="10px 0 15px 0">
             マイプレイリスト
           </Text>
-          {this.props.hasLoaded && <Playlists user_id={this.props.user.id} />}
+          {this.props.hasLoaded && (
+            <Playlists user_id={this.props.user.id} isMine={true} />
+          )}
         </Wrapper>
         <Wrapper dir="column">
           <Text size="L" margin="10px 0 15px 0">

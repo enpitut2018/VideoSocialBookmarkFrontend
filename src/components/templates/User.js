@@ -8,16 +8,10 @@ export default class UserTemplate extends Component {
   render() {
     return (
       <BasicPageWrapper>
-        <Text size="XL">
-          User {this.props.user_id}
-        </Text>
-        <Text size="L">
-          プレイリスト
-        </Text>
-        <Playlists user_id={this.props.user_id} />
-        <Text size="L">
-          ブックマーク
-        </Text>
+        <Text size="XL">User {this.props.user_id}</Text>
+        <Text size="L">プレイリスト</Text>
+        <Playlists user_id={this.props.user_id} isMine={false} />
+        <Text size="L">ブックマーク</Text>
         <UserBookmarks user_id={this.props.user_id} />
       </BasicPageWrapper>
     );
