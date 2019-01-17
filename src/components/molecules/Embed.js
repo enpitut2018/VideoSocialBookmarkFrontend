@@ -6,6 +6,7 @@ import YouTube from "react-youtube";
 import EmbedController from "../../controller/EmbedController";
 
 import { connect } from "react-redux";
+import { skip } from "../../actions/PopupActions";
 
 const IframeWrapper = styled(Wrapper)`
   position: relative;
@@ -79,7 +80,7 @@ class Embed extends Component {
         <IframeWrapper>
           <StyledYouTubeIframe
             videoId={id}
-            onEnd={this.skipNext}
+            onEnd={this.props.skip}
             opts={
               {
                 // https://developers.google.com/youtube/player_parameters
@@ -150,5 +151,5 @@ class Embed extends Component {
 }
 
 export default connect(store => ({
-  playlist: store.playlists.playlist
-}))(Embed);
+  playlist: store.playlists.playlist,
+}), {skip})(Embed);
