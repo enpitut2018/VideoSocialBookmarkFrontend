@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import Wrapper from "../atoms/Wrapper";
 import styled from "styled-components";
 import AnkerStyle from "../atoms/AnkerStyle";
-import Embed from "../molecules/Embed";
 import Text from "../atoms/Text";
-import { responsive } from "../mediaQuery";
+import proped from "../mediaQuery";
 import { style } from "../mediaQuery";
 import Star from "../molecules/Star";
 import config from "../../config";
@@ -19,6 +18,11 @@ import {
   RedditIcon
 } from "react-share";
 import { postBookmark, deleteBookmark } from "../../actions/BookmarkActions";
+import {
+  setPageEntry,
+  setPopupEntry,
+  deletePageEntry
+} from "../../actions/PopupActions";
 import { setEntryBookmarked } from "../../actions/EntryActions";
 import DropdownPlaylistMenu from "./DropdownPlaylistMenu";
 import PropTypes from "prop-types";
@@ -30,9 +34,12 @@ const StyledVideoLink = styled.a`
   ${AnkerStyle};
 `;
 
-const EmbedWrapper = styled.div`
+const VideoContainer = styled(Wrapper)`
+  position: relative;
   margin: 10px 0;
   width: 100%;
+  height: 100%;
+  padding: 56.25% 0 0;
 `;
 
 const EntryTopWrapper = styled(Wrapper)`
@@ -74,42 +81,30 @@ const EntryDetailWrapper = styled(Wrapper)`
   })};
 `;
 
-const TitleStyledText = props => (
-  responsive(R => (
-    <Text
-      size={{
-        XL:"XL",
-        L:"XL",
-        M:"L",
-        S:"L"
-      }[R]}
-      margin={{
-        XL: "41px 0 15px 0",
-        L: "38px 0 15px 0",
-        M: "35px 0 13px 0",
-        S: "30px 0 10px 0"
-      }[R]}
-    >
-      {props.children}
-    </Text>
-  ))
-);
+const TitleStyledText = proped(Text)({
+  size: {
+    XL:"XL",
+    L:"XL",
+    M:"L",
+    S:"L"
+  },
+  margin: {
+    XL: "41px 0 15px 0",
+    L: "38px 0 15px 0",
+    M: "35px 0 13px 0",
+    S: "30px 0 10px 0"
+  }
+});
 
-const BookmarkLabelStyledText = props => (
-  responsive(R=>(
-    <Text
-      size="M"
-      margin={{
-        XL: "1rem 2rem 1rem 1rem",
-        L: "1rem",
-        M: "1rem",
-        S: "0.5rem"
-      }[R]}
-    >
-      {props.children}
-    </Text>
-  ))
-);
+const BookmarkLabelStyledText = proped(Text)({
+  size: "M",
+  margin: {
+    XL: "1rem 2rem 1rem 1rem",
+    L: "1rem",
+    M: "1rem",
+    S: "0.5rem"
+  }
+});
 
 class EntryTop extends Component {
   bookmarkButton = () => (
@@ -132,6 +127,19 @@ class EntryTop extends Component {
   addPlaylistButton = () =>
     <DropdownPlaylistMenu entryId={this.props.entry.id} />
 
+  componentDidMount = () => {
+    this.props.dispatch(setPageEntry(this.props.entry));
+  }
+  componentDidUpdate = () => {
+    this.props.dispatch(setPageEntry(this.props.entry));
+  }
+
+  componentWillUnmount = () => {
+    this.props.dispatch(deletePageEntry());
+    if(this.props.pageVideoStatus === "playing")
+      this.props.dispatch(setPopupEntry(this.props.entry));
+  }
+
   render() {
     const entryUrl = `${config.frontend_base_url}/entries/${
       this.props.entry.id
@@ -148,16 +156,7 @@ class EntryTop extends Component {
             <TitleStyledText>
               {this.props.entry.title}
             </TitleStyledText>
-            <EmbedWrapper>
-              <Embed
-                provider={this.props.entry.provider}
-                video_id={this.props.entry.video_id}
-                thumbnail_url={this.props.entry.thumbnail_url}
-                alt={this.props.entry.title}
-                width="100%"
-                entry={this.props.entry}
-              />
-            </EmbedWrapper>
+            <VideoContainer id="popup-container" />
           </VideoWrapper>
         </StyledVideoLink>
 
@@ -201,7 +200,9 @@ class EntryTop extends Component {
 }
 
 export default connect(store => ({
-  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn
+  isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
+  pageVideoStatus: store.popup.pageVideoStatus,
+  playlist: store.playlists.playlist
 }))(EntryTop);
 
 EntryTop.propTypes = {

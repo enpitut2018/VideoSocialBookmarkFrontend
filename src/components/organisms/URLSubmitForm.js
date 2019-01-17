@@ -106,6 +106,7 @@ SNSでシェアしますか？`}
                     value={this.state.url}
                     handleFocus={handleFocus}
                     handleBlur={handleBlur}
+                    placeholder="URL"
                     required
                   />
                 )}
@@ -133,6 +134,7 @@ SNSでシェアしますか？`}
                     value={this.state.comment}
                     handleFocus={handleFocus}
                     handleBlur={handleBlur}
+                    placeholder="コメント（任意）"
                   />
                 )}
                 value={this.state.comment}

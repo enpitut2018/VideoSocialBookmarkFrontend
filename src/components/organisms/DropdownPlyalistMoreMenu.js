@@ -6,7 +6,6 @@ import Wrapper from "../atoms/Wrapper";
 import palette from "../../theme/palette";
 import colors from "../../theme/colors";
 import DeleteIcon from "../../assets/images/material-icon/baseline-delete-24px.svg";
-import EditIcon from "../../assets/images/material-icon/baseline-edit-24px.svg";
 import Text from "../atoms/Text";
 import { deletePlaylist } from "../../actions/PlaylistActions";
 import store from "../../store";
@@ -25,22 +24,6 @@ export default class DropdownPlyalistMoreMenu extends Component {
           </Wrapper>
         )}
       >
-        <DropdownMenuItem onClick={() => ""}>
-          <Wrapper
-            css={`
-              height: 24px;
-              margin: 2px 22px;
-            `}
-          >
-            <EditIcon
-              fill={palette[colors.organisms.Header.Icon.Fill]}
-              height="24"
-              width="24"
-            />
-          </Wrapper>
-          <Text margin="0">編集</Text>
-        </DropdownMenuItem>
-
         <DropdownMenuItem
           onClick={() =>
             this.props.playlist &&

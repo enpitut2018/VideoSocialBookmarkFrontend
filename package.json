@@ -31,7 +31,8 @@
     "redux-token-auth": "amgad-naiem/redux-token-auth#master",
     "serve": "^10.0.2",
     "styled-components": "^4.0.3",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "utility-types": "^2.1.0"
   },
   "scripts": {
     "start:dev": "PORT=3001 react-scripts start",
@@ -40,7 +41,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint-js": "yarn eslint --fix src/actions src/components src/config src/reducers src/*.js",
+    "lint-js": "yarn eslint --fix src/actions src/components src/config src/*.js",
     "lint-ts": "tslint --fix --format stylish src/**/*.{ts,tsx}",
     "tslint-check-conflict-rules": "tslint-config-prettier-check ./tslint.json",
     "lint-st": "yarn stylelint src/components/**/*.{js,ts,tsx}",
@@ -82,7 +83,7 @@
     }
   },
   "lint-staged": {
-    "src/(*.js|(actions|components|reducers|config)/**/*.js)": [
+    "src/(*.js|(actions|components|config)/**/*.js)": [
       "yarn eslint --fix",
       "git add"
     ],

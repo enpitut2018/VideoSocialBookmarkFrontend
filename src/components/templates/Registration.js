@@ -63,7 +63,7 @@ class Registration extends Component {
                   <Text
                     size="S"
                     margin="0.5rem 0 0 26px"
-                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    fontSize={isFocused ? "0.8rem" : "1rem"}
                     css="transition: all 0.2s ease-in-out;"
                   >
                     メールアドレス
@@ -76,6 +76,7 @@ class Registration extends Component {
                     value={this.state.email}
                     handleFocus={handleFocus}
                     handleBlur={handleBlur}
+                    placeholder="メールアドレス"
                     required
                   />
                 )}
@@ -87,7 +88,7 @@ class Registration extends Component {
                   <Text
                     size="S"
                     margin="0.5rem 0 0 26px"
-                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    fontSize={isFocused ? "0.8rem" : "1rem"}
                     css="transition: all 0.2s ease-in-out;"
                   >
                     名前
@@ -100,6 +101,7 @@ class Registration extends Component {
                     value={this.state.name}
                     handleFocus={handleFocus}
                     handleBlur={handleBlur}
+                    placeholder="名前"
                     required
                   />
                 )}
@@ -111,7 +113,7 @@ class Registration extends Component {
                   <Text
                     size="S"
                     margin="0.5rem 0 0 26px"
-                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    fontSize={isFocused ? "0.8rem" : "1rem"}
                     css="transition: all 0.2s ease-in-out;"
                   >
                     パスワード
@@ -125,6 +127,7 @@ class Registration extends Component {
                     value={this.state.password}
                     handleFocus={handleFocus}
                     handleBlur={handleBlur}
+                    placeholder="パスワード"
                     required
                   />
                 )}
@@ -136,7 +139,7 @@ class Registration extends Component {
                   <Text
                     size="S"
                     margin="0.5rem 0 0 26px"
-                    fontSize={isFocused ? "0.7rem" : "1rem"}
+                    fontSize={isFocused ? "0.8rem" : "1rem"}
                     css="transition: all 0.2s ease-in-out;"
                   >
                     パスワードの確認
@@ -150,6 +153,7 @@ class Registration extends Component {
                     value={this.state.passwordConfirmation}
                     handleFocus={handleFocus}
                     handleBlur={handleBlur}
+                    placeholder="パスワードの確認"
                     required
                   />
                 )}

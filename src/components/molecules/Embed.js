@@ -5,7 +5,6 @@ import Wrapper from "../atoms/Wrapper";
 import YouTube from "react-youtube";
 import EmbedController from "../../controller/EmbedController";
 
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const IframeWrapper = styled(Wrapper)`
@@ -38,8 +37,7 @@ class Embed extends Component {
   embedController = null;
 
   setup = () => {
-    const isPlaylistMode = this.props.location.search !== "";
-    if (this.props.entry && isPlaylistMode) {
+    if (this.props.entry) {
       this.embedController =
         new EmbedController(
           this.props.entry,
@@ -58,15 +56,13 @@ class Embed extends Component {
   }
 
   componentWillUnmount() {
-    const isPlaylistMode = this.props.location.search !== "";
-    if (this.props.entry && isPlaylistMode && this.embedController) {
+    if (this.props.entry && this.embedController) {
       this.embedController.release();
     }
   }
 
   skipNext = () => {
-    const isPlaylistMode = this.props.location.search !== "";
-    if(this.props.entry && isPlaylistMode && this.embedController){
+    if(this.props.entry && this.embedController){
       this.embedController.skipNext();
     }
   }
@@ -76,6 +72,7 @@ class Embed extends Component {
     const id = this.props.video_id;
     const title = this.props.title;
     const autoplay = this.props.playlist !== undefined;
+    const embed_id = this.props.embed_id;
     switch (provider) {
     case "youtube": {
       return (
@@ -100,7 +97,7 @@ class Embed extends Component {
         <IframeWrapper>
           <StyledIframe
             title={title}
-            src={`https://embed.nicovideo.jp/watch/${id}?jsapi=1&playerId=player`}
+            src={`https://embed.nicovideo.jp/watch/${id}?jsapi=1&${embed_id ? `&playerId=${embed_id}` : `player`}`}
             allowFullScreen
             allow="autoplay"
             frameBorder="0"
@@ -152,6 +149,6 @@ class Embed extends Component {
   }
 }
 
-export default withRouter(connect(store => ({
+export default connect(store => ({
   playlist: store.playlists.playlist
-}))(Embed));
+}))(Embed);
