@@ -5,6 +5,16 @@ export const DELETE_POPUP_ENTRY = "DELETE_POPUP_ENTRY";
 export const POPUP_PLAY = "POPUP_PLAY";
 export const POPUP_PAUSE = "POPUP_PAUSE";
 export const POPUP_STOP = "POPUP_STOP";
+export const SKIP="SKIP";
+export const FIN="FIN";
+
+export const skip = () => dispatch => {
+  dispatch({type:SKIP});
+};
+
+export const fin = () => dispatch => {
+  dispatch({type:FIN});
+};
 
 export const play = page_or_popup => dispatch => {
   dispatch({type: POPUP_PLAY, page_or_popup: page_or_popup});

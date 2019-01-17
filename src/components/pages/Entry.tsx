@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 
 import { getComments } from "../../actions/CommentActions";
 import { getEntry } from "../../actions/EntryActions";
+import { fin } from "../../actions/PopupActions";
 import Placeholder from "../../assets/images/ThumbnailPlaceholder.svg";
 import config from "../../config";
 import EmbedController from "../../controller/EmbedController";
@@ -17,11 +18,13 @@ const mapStateToProps = (store: Store) => ({
   isSignedIn: store.reduxTokenAuth.currentUser.isSignedIn,
   playlist: store.playlists.playlist,
   flip: store.popup.flip,
+  isskip: store.popup.isskip,
 });
 
 const mapDispatchToProps = {
   getEntry,
   getComments,
+  fin,
 };
 
 type Types = MakeTypes<typeof mapStateToProps, typeof mapDispatchToProps, {}, { isRefreshed: boolean }, { id: string }>;
@@ -48,6 +51,12 @@ export default class Entry extends Component<Props, State> {
   public componentWillReceiveProps(nextProps: Props) {
     if (nextProps.location !== this.props.location) {
       this.props.getEntry(nextProps.match.params.id);
+    }
+    if (nextProps.isskip) {
+      if (this.embedController) {
+        this.embedController.skipNext();
+        nextProps.fin();
+      }
     }
   }
 
